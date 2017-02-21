@@ -1,44 +1,62 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <title>Trang Quan Tri</title>
 
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="~/Content/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/assets/toastr/toastr.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <link href="~/Content/css/style-responsive.css" rel="stylesheet" />
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+<body>
+    <section id="container">
+        <!--header start-->
+        @RenderPage("_HeaderAdmin.cshtml")
+        <!--header end-->
+        <!--sidebar start-->
+        <aside>
+            @RenderPage("_Sidebar.cshtml")
+        </aside>
+        <!--sidebar end-->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                @RenderBody()
+            </section>
+        </section>
+        <!--main content end-->
+        <!--footer start-->
+        @*<footer class="site-footer">
+                <div class="text-center">
+                    Trang Quản Trị Admin
+                </div>
+            </footer>*@
+        <!--footer end-->
+    </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="~/Content/js/jquery.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="~/Content/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/Content/js/jquery.scrollTo.min.js"></script>
+    <!--common script for all pages-->
+    <script src="~/Content/js/common-scripts.js"></script>
+
+    @*@RenderSection("scripts", false)
+    {
+    }*@
 </body>
+
 </html>
+
