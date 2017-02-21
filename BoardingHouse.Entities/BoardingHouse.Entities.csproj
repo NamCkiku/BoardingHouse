@@ -41,6 +41,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201702211329572_addDB.cs" />
+    <Compile Include="Migrations\201702211329572_addDB.Designer.cs">
+      <DependentUpon>201702211329572_addDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DbContexEntities.cs" />
+    <Compile Include="Models\District.cs" />
+    <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\MoreInfomation.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\PostType.cs" />
+    <Compile Include="Models\Province.cs" />
+    <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\RoomType.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\SystemSetting.cs" />
+    <Compile Include="Models\Ward.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702211329572_addDB.resx">
+      <DependentUpon>201702211329572_addDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
