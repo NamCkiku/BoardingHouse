@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoardingHouse.Common", "Boa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoardingHouse.Administrator", "BoardingHouse.Administrator\BoardingHouse.Administrator.csproj", "{3135660C-15A3-4B22-AE9D-CF8376871DE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoaringHouse.API", "BoaringHouse.API\BoaringHouse.API.csproj", "{6BB9019A-2CCA-4AA5-8D85-14F1A61B732E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{3135660C-15A3-4B22-AE9D-CF8376871DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3135660C-15A3-4B22-AE9D-CF8376871DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3135660C-15A3-4B22-AE9D-CF8376871DE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BB9019A-2CCA-4AA5-8D85-14F1A61B732E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BB9019A-2CCA-4AA5-8D85-14F1A61B732E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BB9019A-2CCA-4AA5-8D85-14F1A61B732E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BB9019A-2CCA-4AA5-8D85-14F1A61B732E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
