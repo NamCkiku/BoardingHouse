@@ -3,307 +3,139 @@
     ViewBag.Title = "Room";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    .line-style {
-        position: relative;
-        padding: 10px 5px !important;
-        border-bottom: 1px solid #000;
-        display: inline-block;
-    }
-
-        .line-style:before {
-            content: "";
-            display: block;
-            position: absolute;
-            left: 0;
-            bottom: 5px;
-            width: 100%;
-            height: 3px;
-            background: #000;
-        }
-
-    .panel-title {
-        color: #d9534f;
-        font-size: 24px;
-        padding-top: 20px;
-    }
-
-    .ar-bg {
-        background: #fff;
-        border: 1px solid #ddd;
-        box-shadow: 1px 1px 5px #ddd;
-        padding: 15px;
-        overflow: hidden;
-        margin-bottom: 15px;
-    }
-
-    .input-field > label {
-        color: #454545;
-        line-height: 30px;
-        margin-bottom: 0;
-        padding: 0;
-        text-transform: uppercase;
-        font-size: 11px;
-        margin: 0 0 10px;
-    }
-
-    .taskbar-order-main .input-group {
-        margin-bottom: 5px;
-        width: 100%;
-    }
-
-    .taskbar-order-main .input-group-checkbox {
-        border-radius: 0;
-        background: #fff;
-    }
-
-    .input-group-checkbox {
-        border-right: 0 none;
-        display: table-cell;
-        vertical-align: middle;
-        white-space: nowrap;
-        width: 1%;
-        background-color: #eee;
-        border-left: 1px solid #ccc;
-        border-top: 1px solid #ccc;
-        border-right: none;
-        border-bottom: 1px solid #ccc;
-        border-radius: 4px 0 0 4px;
-        color: #555;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1;
-        padding: 0;
-        text-align: center;
-    }
-
-        .input-group-checkbox > .c-checkbox {
-            margin-right: 0;
-        }
-
-        .input-group-checkbox > .checkbox {
-            display: block;
-            margin-bottom: 1px;
-            margin-top: 2px;
-            position: relative;
-            padding-right: 4px;
-        }
-
-    .radio label, .checkbox label {
-        cursor: pointer;
-        font-weight: normal;
-        margin-bottom: 0;
-        min-height: 19px;
-        padding-left: 16px;
-    }
-
-    input[type="checkbox"]:checked + span, input[type="radio"]:checked + span {
-        background-color: #0094cb;
-        border-color: #0094cb;
-    }
-
-    .c-checkbox input, .c-radio input {
-        margin-left: 0 !important;
-        opacity: 0;
-        position: absolute;
-        float: left;
-    }
-
-    .c-checkbox span, .c-radio span {
-        border: 1px solid #ccc;
-        border-radius: 2px;
-        display: inline-block;
-        height: 20px;
-        margin-left: -20px;
-        margin-right: 5px;
-        position: relative;
-        vertical-align: top;
-        width: 20px;
-    }
-
-    .input-group .k-combobox, .input-group .k-datepicker, .input-group .k-dropdown {
-        background: none repeat scroll 0 0 transparent !important;
-        width: 100% !important;
-        box-sizing: inherit !important;
-    }
-
-    .form-control {
-        border-radius: 0px !important;
-    }
-
-    .c-checkbox span::before, .c-radio span::before {
-        bottom: 0;
-        font-size: 12px;
-        left: 0;
-        line-height: 18px;
-        opacity: 0;
-        position: absolute;
-        right: 0;
-        text-align: center !important;
-        top: 0;
-        vertical-align: middle;
-    }
-
-    input[type="checkbox"]:checked + span::before, input[type="radio"]:checked + span::before {
-        color: #fff;
-        opacity: 1;
-        transition: color 0.3s ease-out 0s;
-    }
-
-    .c-checkbox span::before, .c-radio span::before {
-        bottom: 0;
-        font-size: 12px;
-        left: 0;
-        line-height: 18px;
-        opacity: 0;
-        position: absolute;
-        right: 0;
-        text-align: center !important;
-        top: 0;
-        vertical-align: middle;
-    }
-
-    .input-group .k-combobox, .input-group .k-datepicker, .input-group .k-dropdown {
-        background: none repeat scroll 0 0 transparent !important;
-        width: 100% !important;
-        box-sizing: inherit !important;
-    }
-
-    .taskbar-order-main .input-group .k-datepicker .k-picker-wrap {
-        border-radius: 0 !important;
-        background: #fff !important;
-    }
-
-    .input-group .k-combobox .k-dropdown-wrap, .input-group .k-datepicker .k-picker-wrap, .input-group .k-dropdown .k-dropdown-wrap {
-        padding-bottom: 2px !important;
-        padding-top: 2px !important;
-        background: none repeat scroll 0 0 #fff !important;
-        border-radius: 0 4px 4px 0 !important;
-        height: 28px;
-    }
-
-    .taskbar-order-main .k-state-default > .k-select {
-        background: #fff;
-        z-index: 999;
-    }
-</style>
-<div class="row" ng-controller="roomController">
-    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 padding-left-15">
-        <h3 class="panel-title">Room List</h3>
-    </div>
-    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7" style="padding-right: 25px; padding-top: 15px;">
-        <ul class="pull-right">
-            <li class="pull-left"><span class="btn btn-success btn-icon"><i class="fa fa-file-excel-o"></i>Export Exel</span></li>
-            <li class="pull-left" style="margin-left:20px"><span class="btn btn-danger btn-icon"><i class="fa fa-file-pdf-o"></i>Export PDF</span></li>
-
-        </ul>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 taskbar-order-main" style="margin:0">
-        <div class="col-lg-12">
-            <div class="input-field resv-date col-sm-6 col-lg-2 col-xs-12 ">
-                <label class="form-details-title">StartDate</label>
-                <div class="input-group">
-                    <div class="input-group-checkbox">
-                        <div class="checkbox c-checkbox pull-left">
-                            <label>
-                                <input type="checkbox">
-                                <span class="fa fa-check"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <input kendo-date-picker
-                           k-ng-model="searchInfo.startDate"
-                           class="form-control" />
+<div ng-controller="roomController">
+    <div class="row">
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+            <h3 class="panel-title">Room List</h3>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 taskbar-order-main margin-top-15">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="input-field col-sm-6 col-lg-2 col-xs-12 ">
+                    <label class="form-details-title">Từ khóa</label>
+                    <input ng-model="filter.Keywords" class="form-control"
+                           type="text">
                 </div>
-            </div>
-            <div class="input-field resv-date col-sm-6 col-lg-2 col-xs-12 ">
-                <label class="form-details-title">StartDate</label>
-                <div class="input-group">
-                    <div class="input-group-checkbox">
-                        <div class="checkbox c-checkbox pull-left">
-                            <label>
-                                <input type="checkbox">
-                                <span class="fa fa-check"></span>
-                            </label>
+                <div class="input-field col-sm-6 col-lg-2 col-xs-12 ">
+                    <label class="form-details-title">Start Date</label>
+                    <div class="input-group">
+                        <div class="input-group-checkbox">
+                            <div class="checkbox c-checkbox pull-left">
+                                <label>
+                                    <input type="checkbox" ng-model="filter.searchByStartDate">
+                                    <span class="fa fa-check"></span>
+                                </label>
+                            </div>
                         </div>
+                        <input kendo-date-picker
+                               k-ng-model="filter.StartDate"
+                               class="form-control" 
+                               ng-disabled="!filter.searchByStartDate"/>
                     </div>
-                    <input kendo-date-picker
-                           k-ng-model="searchInfo.startDate"
-                           class="form-control" />
+                </div>
+                <div class="input-field  col-sm-6 col-lg-2 col-xs-12 ">
+                    <label class="form-details-title">End Date</label>
+                    <div class="input-group">
+                        <div class="input-group-checkbox">
+                            <div class="checkbox c-checkbox pull-left">
+                                <label>
+                                    <input type="checkbox" ng-model="filter.searchByEndDate">
+                                    <span class="fa fa-check"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <input kendo-date-picker
+                               k-ng-model="filter.EndDate"
+                               class="form-control"
+                               ng-disabled="!filter.searchByEndDate"/>
+                    </div>
+                </div>
+                <div class="input-field col-sm-6 col-lg-2 col-xs-12">
+                    <label class="form-details-title">Trạng Thái</label>
+                    <input bs-switch
+                           ng-model="filter.Status"
+                           type="checkbox">
+                </div>
+                <div class="input-field col-sm-6 col-lg-2 col-xs-12" style="padding-top:24px;">
+                    <button type="button" ng-click="Search()" class="btn btn-info"><i style="padding-right:10px;" class="fa fa-search"></i>Tìm Kiếm</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0">
-        <div class="line-style col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0">
+            <div class="line-style col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            </div>
         </div>
     </div>
-</div>
-<div class="row" style="margin-top:20px">
-    <div class="col-sm-12">
-        <div class="ar-bg">
-            <div class="table-responsive margin-top-15">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr style="background:#178888 ; color:#fff;">
-                            <th>APPROVER</th>
-                            <th>THREESHOLD</th>
-                            <th style="width:100px;"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="table-level">
-                            <td>Level 1</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Alan Shepard</td>
-                            <td>1,000.00</td>
-                            <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>Alan Shepard</td>
-                            <td>1,000.00</td>
-                            <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>Alan Shepard</td>
-                            <td>1,000.00</td>
-                            <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>Alan Shepard</td>
-                            <td>1,000.00</td>
-                            <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
-                        </tr>
-                        <tr class="table-level">
-                            <td>Level 2</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Alan Shepard</td>
-                            <td>1,000.00</td>
-                            <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>Alan Shepard</td>
-                            <td>1,000.00</td>
-                            <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>Alan Shepard</td>
-                            <td>1,000.00</td>
-                            <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>Alan Shepard</td>
-                            <td>1,000.00</td>
-                            <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
-                        </tr>
-                    </tbody>
-                </table>
+    <div class="row margin-top-20">
+        <div class="col-sm-12">
+            <div class="list-content">
+                <ul class="add-request ">
+                    <li><button class="btn label-warning">+ Thêm Mới</button></li>
+                </ul>
+                <div class="table-responsive margin-top-30">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr style="background:#178888 ; color:#fff;">
+                                <th>APPROVER</th>
+                                <th>THREESHOLD</th>
+                                <th style="width:100px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-level">
+                                <td>Level 1</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Alan Shepard</td>
+                                <td>1,000.00</td>
+                                <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td>Alan Shepard</td>
+                                <td>1,000.00</td>
+                                <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td>Alan Shepard</td>
+                                <td>1,000.00</td>
+                                <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td>Alan Shepard</td>
+                                <td>1,000.00</td>
+                                <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                            <tr class="table-level">
+                                <td>Level 2</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Alan Shepard</td>
+                                <td>1,000.00</td>
+                                <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td>Alan Shepard</td>
+                                <td>1,000.00</td>
+                                <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td>Alan Shepard</td>
+                                <td>1,000.00</td>
+                                <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td>Alan Shepard</td>
+                                <td>1,000.00</td>
+                                <td><a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
