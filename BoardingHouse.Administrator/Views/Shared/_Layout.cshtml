@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 
 <head>
     <meta charset="utf-8">
@@ -13,10 +13,13 @@
     <link href="~/Content/css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
     <link href="~/Content/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/Content/assets/toastr/toastr.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
     <link href="~/Content/css/style.css" rel="stylesheet">
     <link href="~/Content/css/style-responsive.css" rel="stylesheet" />
+    <link href="~/Content/assets/kendo-ui/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/kendo-ui/styles/kendo.default.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/kendo-ui/styles/kendo.dataviz.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/kendo-ui/styles/kendo.dataviz.default.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -52,7 +55,12 @@
     <script src="~/Content/js/jquery.scrollTo.min.js"></script>
     <!--common script for all pages-->
     <script src="~/Content/js/common-scripts.js"></script>
-
+    <script src="~/Content/assets/kendo-ui/js/kendo.core.min.js"></script>
+    <script src="~/Content/assets/kendo-ui/js/kendo.all.min.js"></script>
+    <script src="~/bower_components/angular/angular.js"></script>
+    <script src="~/Content/assets/kendo-ui/js/kendo.angular.min.js"></script>
+    <script src="~/app/app.js"></script>
+    <script src="~/app/controller/RoomController/roomController.js"></script>
     @*@RenderSection("scripts", false)
     {
     }*@
