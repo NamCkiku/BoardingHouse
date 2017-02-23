@@ -72,7 +72,7 @@
                         type: "POST"
                     },
                     uploadUrl: __appBasePath + "ImageBrowser/upload",
-                    imageUrl:"/viewerImages/UserFiles/Images/{0}",
+                    imageUrl: __appBasePath + "Content/UserFiles/Images/{0}",
                     thumbnailUrl: __appBasePath + "ImageBrowser/thumbnail"
                 }
             },
@@ -93,7 +93,7 @@
                         type: "POST"
                     },
                     uploadUrl: __appBasePath + "FileBrowser/upload",
-                    fileUrl: __appBasePath + "FileBrowser/File?path={0}"
+                    fileUrl: __appBasePath + "Content/UserFiles/File/{0}",
                 }
             }
         };
