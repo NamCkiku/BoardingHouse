@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Kendo.Mvc, Version=2014.3.1119.440, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>App_Data\Kendo.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -196,21 +200,35 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FileBrowserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageBrowserController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DirectoryBrowser.cs" />
+    <Compile Include="Models\EntryType.cs" />
+    <Compile Include="Models\FileBrowserEntry.cs" />
+    <Compile Include="Models\FitImageResizer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImageSize.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ThumbnailCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controller\RoomController\roomController.js" />
+    <Content Include="App_Data\Kendo.Mvc.dll" />
+    <Content Include="bower_components\angular-animate\angular-animate.js" />
+    <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.css" />
+    <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.js" />
+    <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.min.css" />
+    <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.min.js" />
     <Content Include="bower_components\angular-bootstrap-switch\.gitattributes" />
     <Content Include="bower_components\angular-bootstrap-switch\.gitignore" />
     <Content Include="bower_components\angular-bootstrap-switch\common\module.js" />
@@ -382,6 +400,13 @@
     <Content Include="bower_components\jquery\src\var\support.js" />
     <Content Include="bower_components\jquery\src\var\toString.js" />
     <Content Include="bower_components\jquery\src\wrap.js" />
+    <Content Include="Content\assets\Bootstrap\bootstrap-filestyle.js" />
+    <Content Include="Content\assets\Bootstrap\bootstrap-filestyle.min.js" />
+    <Content Include="Content\assets\Bootstrap\ui-bootstrap-tpls-0.14.3.min.js" />
+    <Content Include="Content\assets\Bootstrap\ui-bootstrap-tpls.js" />
+    <Content Include="Content\assets\Bootstrap\ui-bootstrap-tpls.min.js" />
+    <Content Include="Content\assets\Bootstrap\ui-bootstrap.js" />
+    <Content Include="Content\assets\Bootstrap\ui-bootstrap.min.js" />
     <Content Include="Content\assets\font-awesome\css\font-awesome.css" />
     <Content Include="Content\assets\font-awesome\fonts\fontawesome-webfontba72.html" />
     <Content Include="Content\assets\font-awesome\fonts\fontawesome-webfontba72.svg" />
@@ -1335,6 +1360,20 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\StyleCustom.css" />
     <Content Include="Content\css\table-responsive.css" />
+    <Content Include="Content\img\arrow-up.png" />
+    <Content Include="Content\img\chat-search.png" />
+    <Content Include="Content\img\customSelect-arrow.gif" />
+    <Content Include="Content\img\input-spinner.gif" />
+    <Content Include="Content\img\left-arrow.png" />
+    <Content Include="Content\img\mask.png" />
+    <Content Include="Content\img\mega_icon1.png" />
+    <Content Include="Content\img\mega_icon2.png" />
+    <Content Include="Content\img\mega_icon3.png" />
+    <Content Include="Content\img\mega_icon4.png" />
+    <Content Include="Content\img\nav-expand.png" />
+    <Content Include="Content\img\right-arrow.png" />
+    <Content Include="Content\img\search-icon-white.png" />
+    <Content Include="Content\img\search-icon.png" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\common-scripts.js" />
     <Content Include="Content\js\jquery.dcjqaccordion.2.7.js" />
@@ -1376,9 +1415,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Content\images\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Views\FileBrowser\" />
+    <Folder Include="Views\ImageBrowser\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -2274,6 +2313,21 @@
     <Content Include="bower_components\jquery\external\sizzle\dist\sizzle.min.map" />
     <Content Include="bower_components\jquery\README.md" />
     <Content Include="bower_components\jquery\src\.eslintrc.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bower_components\angular-block-ui\.bower.json" />
+    <Content Include="bower_components\angular-block-ui\bower.json" />
+    <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.css.map" />
+    <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.js.map" />
+    <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.min.js.map" />
+    <Content Include="bower_components\angular-block-ui\dist\LICENSE" />
+    <Content Include="bower_components\angular-block-ui\dist\README.md" />
+    <Content Include="bower_components\angular-block-ui\LICENSE" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bower_components\angular-animate\.bower.json" />
+    <Content Include="bower_components\angular-animate\LICENSE.md" />
+    <Content Include="bower_components\angular-animate\README.md" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
