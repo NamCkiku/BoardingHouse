@@ -1,5 +1,4 @@
 ﻿using Kendo.Mvc.UI;
-using KendoEditorImageBrowser.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
