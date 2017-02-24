@@ -1,0 +1,12 @@
+﻿@using Stimulsoft.Report.Mvc;
+@Html.Stimulsoft().RenderMvcDesignerScripts()
+@Html.Stimulsoft().StiMvcViewer("MvcViewer", new StiMvcViewerOptions()
+{
+    Controller = "Report",
+    Actions =
+            {
+                GetReportSnapshot = "GetReportSnapshot",
+                ViewerEvent = "ViewerEvent",
+            },
+    Server = { GlobalReportCache = false }
+})
