@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('roomController', roomController);
 
-    roomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope'];
+    roomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService'];
 
-    function roomController($scope, blockUI, $modal, $rootScope) {
+    function roomController($scope, blockUI, $modal, $rootScope, BaseService) {
         $scope.filter = {
             Keywords: "",
             StartDate: "",
@@ -97,6 +97,16 @@
                 }
             }
         };
+        $scope.Add = Add;
+        function Add() {
+            BaseService.ValidatorForm("#frmAdd");
+            var frmAdd = angular.element(document.querySelector('#frmAdd'));
+            var formValidation = frmAdd.data('formValidation').validate();
+            if (formValidation.isValid()) {
+                alert(1);
+            }
+        }
+
         $scope.openModal = openModal;
         function openModal() {
             $scope.modalInstance = $modal.open({

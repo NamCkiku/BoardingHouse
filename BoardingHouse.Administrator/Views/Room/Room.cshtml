@@ -140,6 +140,45 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <section class="panel">
+                <header class="panel-heading">
+                    Basic Forms
+                </header>
+                <div class="panel-body">
+                    <div id="frmAdd" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="text"
+                                   data-fv-stringlength="true"
+                                   data-fv-stringlength-max="250"
+                                   data-fv-stringlength-message="Tiêu đề chỉ được 250 ký tự"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập tiêu đề"
+                                   ng-model="add.Name"
+                                   class="form-control"
+                                   name="Email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password"
+                                   data-fv-stringlength="true"
+                                   data-fv-stringlength-max="250"
+                                   data-fv-stringlength-message="Tiêu đề chỉ được 250 ký tự"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập tiêu đề"
+                                   ng-model="add.Name"
+                                   class="form-control"
+                                   name="Password" />
+                        </div>
+                        <button ng-click="Add();" type="button" class="btn btn-info">Submit</button>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
 </div>
 <script type="text/ng-template" id="Modal.html">
     <div class="modal-header">
