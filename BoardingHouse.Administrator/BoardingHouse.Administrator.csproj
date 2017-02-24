@@ -230,6 +230,7 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controller\RoomController\roomController.js" />
+    <Content Include="app\Service\BaseService.js" />
     <Content Include="App_Data\Kendo.Mvc.dll" />
     <Content Include="bower_components\angular-animate\angular-animate.js" />
     <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.css" />
@@ -1365,6 +1366,7 @@
     <Content Include="Content\assets\kendo-ui\styles\Uniform\sprite_kpi_2x.png" />
     <Content Include="Content\css\bootstrap-reset.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\formValidation.min.css" />
     <Content Include="Content\css\style-responsive.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\StyleCustom.css" />
@@ -1384,7 +1386,9 @@
     <Content Include="Content\img\search-icon-white.png" />
     <Content Include="Content\img\search-icon.png" />
     <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\bootstrapextend.min.js" />
     <Content Include="Content\js\common-scripts.js" />
+    <Content Include="Content\js\formValidation.min.js" />
     <Content Include="Content\js\jquery.dcjqaccordion.2.7.js" />
     <Content Include="Content\js\jquery.js" />
     <Content Include="Content\js\jquery.nicescroll.js" />
@@ -1425,6 +1429,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\" />
+    <Folder Include="Views\BaseService\" />
     <Folder Include="Views\FileBrowser\" />
     <Folder Include="Views\ImageBrowser\" />
   </ItemGroup>
