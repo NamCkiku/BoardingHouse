@@ -118,6 +118,9 @@
                 keyboard: false,
                 size: 'lg'
             });
+            //BaseService.postData("Report", "GetReportSnapshot", false, null).then(function (response) {
+            //    alert(1);
+            //})
             $scope.ok = function () {
                 $scope.modalInstance.dismiss('cancel');
             };

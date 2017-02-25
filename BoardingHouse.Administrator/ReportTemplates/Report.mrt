@@ -3,30 +3,264 @@
   <Dictionary Ref="1" type="Dictionary" isKey="true">
     <BusinessObjects isList="true" count="0" />
     <Databases isList="true" count="0" />
-    <DataSources isList="true" count="0" />
+    <DataSources isList="true" count="1">
+      <dtRoom Ref="2" type="DataTableSource" isKey="true">
+        <Alias>dtRoom</Alias>
+        <Columns isList="true" count="2">
+          <value>RoomName,System.String</value>
+          <value>Phone,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Name>dtRoom</Name>
+        <NameInSource>dtRoom</NameInSource>
+      </dtRoom>
+    </DataSources>
     <Relations isList="true" count="0" />
     <Report isRef="0" />
+    <Resources isList="true" count="0" />
     <Variables isList="true" count="10">
-      <value>,VarsEmp,VarsEmp,System.String,,False,False</value>
-      <value>,VarsReportTitle,VarsReportTitle,System.String,,False,False</value>
-      <value>,VarbIsClient,VarbIsClient,System.String,,False,False</value>
-      <value>,VarsClient,VarsClient,System.String,,False,False</value>
-      <value>,currentDate,currentDate,System.String,,False,False</value>
-      <value>,img,img,System.Drawing.Image,,False,False</value>
-      <value>,RevName,RevName,System.String,,False,False</value>
-      <value>,AreaName,AreaName,System.String,,False,False</value>
-      <value>,ShiftName,ShiftName,System.String,,False,False</value>
-      <value>,shiftTime,shiftTime,System.String,,False,False</value>
+      <value>,VarsEmp,VarsEmp,,System.String,,False,False,False,False</value>
+      <value>,VarsReportTitle,VarsReportTitle,,System.String,,False,False,False,False</value>
+      <value>,VarbIsClient,VarbIsClient,,System.String,,False,False,False,False</value>
+      <value>,VarsClient,VarsClient,,System.String,,False,False,False,False</value>
+      <value>,currentDate,currentDate,,System.String,,False,False,False,False</value>
+      <value>,img,img,,System.Drawing.Image,,False,False,False,False</value>
+      <value>,RevName,RevName,,System.String,,False,False,False,False</value>
+      <value>,AreaName,AreaName,,System.String,,False,False,False,False</value>
+      <value>,ShiftName,ShiftName,,System.String,,False,False,False,False</value>
+      <value>,shiftTime,shiftTime,,System.String,,False,False,False,False</value>
     </Variables>
   </Dictionary>
   <EngineVersion>EngineV2</EngineVersion>
   <GlobalizationStrings isList="true" count="0" />
   <MetaTags isList="true" count="0" />
   <Pages isList="true" count="1">
-    <Page1 Ref="2" type="Page" isKey="true">
+    <Page1 Ref="3" type="Page" isKey="true">
       <Border>None;Black;2;Solid;False;4;Black</Border>
       <Brush>Transparent</Brush>
-      <Components isList="true" count="0" />
+      <Components isList="true" count="4">
+        <ReportTitle Ref="4" type="ReportTitleBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.2,8.72,0.5</ClientRectangle>
+          <Components isList="true" count="1">
+            <ReportTitleText Ref="5" type="Text" isKey="true">
+              <Border>None;[0:0:39];1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,8.72,0.5</ClientRectangle>
+              <ComponentStyle>Blue Steel_Report_Title1</ComponentStyle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>e42d751c2b574b91b9f6eebd17cc9b5f</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>ReportTitleText</Name>
+              <Page isRef="3" />
+              <Parent isRef="4" />
+              <Text>NAMCKIKU</Text>
+              <TextBrush>[79:129:189]</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </ReportTitleText>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>146996bbccff4ff3b409b518af509129</Guid>
+          <Name>ReportTitle</Name>
+          <Page isRef="3" />
+          <Parent isRef="3" />
+        </ReportTitle>
+        <Header Ref="6" type="HeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,1.1,8.72,0.2</ClientRectangle>
+          <Components isList="true" count="6">
+            <HeaderText1 Ref="7" type="Text" isKey="true">
+              <Border>Top, Bottom;[0:0:39];2;Solid;False;4;Black;True</Border>
+              <Brush>[79:129:189]</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0,1.2,0.2</ClientRectangle>
+              <ComponentStyle>Blue Steel_Header1</ComponentStyle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9.75,Bold,Point,False,204</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>0982743541134b54ac8939d806c5e7fe</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderText1</Name>
+              <Page isRef="3" />
+              <Parent isRef="6" />
+              <Text>#</Text>
+              <TextBrush>White</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </HeaderText1>
+            <HeaderText2 Ref="8" type="Text" isKey="true">
+              <Border>Top, Bottom;[0:0:39];2;Solid;False;4;Black;True</Border>
+              <Brush>[79:129:189]</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>1.2,0,1.2,0.2</ClientRectangle>
+              <ComponentStyle>Blue Steel_Header1</ComponentStyle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9.75,Bold,Point,False,204</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>b00836a6ce1d4320940fd6bc09e80d15</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderText2</Name>
+              <Page isRef="3" />
+              <Parent isRef="6" />
+              <Text>Date</Text>
+              <TextBrush>White</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </HeaderText2>
+            <HeaderText3 Ref="9" type="Text" isKey="true">
+              <Border>Top, Bottom;[0:0:39];2;Solid;False;4;Black;True</Border>
+              <Brush>[79:129:189]</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>2.4,0,1.2,0.2</ClientRectangle>
+              <ComponentStyle>Blue Steel_Header1</ComponentStyle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9.75,Bold,Point,False,204</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>ec5f432674694883a90cf4d2166e6549</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderText3</Name>
+              <Page isRef="3" />
+              <Parent isRef="6" />
+              <Text>Company</Text>
+              <TextBrush>White</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </HeaderText3>
+            <HeaderText4 Ref="10" type="Text" isKey="true">
+              <Border>Top, Bottom;[0:0:39];2;Solid;False;4;Black;True</Border>
+              <Brush>[79:129:189]</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3.6,0,2.2,0.2</ClientRectangle>
+              <ComponentStyle>Blue Steel_Header1</ComponentStyle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9.75,Bold,Point,False,204</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>37a8a32538eb421b8cdb9f3a88dcdbad</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderText4</Name>
+              <Page isRef="3" />
+              <Parent isRef="6" />
+              <Text>First Name</Text>
+              <TextBrush>White</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </HeaderText4>
+            <HeaderText5 Ref="11" type="Text" isKey="true">
+              <Border>Top, Bottom;[0:0:39];2;Solid;False;4;Black;True</Border>
+              <Brush>[79:129:189]</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>5.8,0,1.2,0.2</ClientRectangle>
+              <ComponentStyle>Blue Steel_Header1</ComponentStyle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9.75,Bold,Point,False,204</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>a609426de7a645f7a6ea12f8708d472d</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderText5</Name>
+              <Page isRef="3" />
+              <Parent isRef="6" />
+              <Text>Last Name</Text>
+              <TextBrush>White</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </HeaderText5>
+            <HeaderText6 Ref="12" type="Text" isKey="true">
+              <Border>Top, Bottom;[0:0:39];2;Solid;False;4;Black;True</Border>
+              <Brush>[79:129:189]</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>7,0,1.7,0.2</ClientRectangle>
+              <ComponentStyle>Blue Steel_Header1</ComponentStyle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9.75,Bold,Point,False,204</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>a599d0301ebe470c9cf7712711c61f6b</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderText6</Name>
+              <Page isRef="3" />
+              <Parent isRef="6" />
+              <Text>Total</Text>
+              <TextBrush>White</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </HeaderText6>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>8fe27c5958e341189fc73b8b8938685c</Guid>
+          <Name>Header</Name>
+          <Page isRef="3" />
+          <Parent isRef="3" />
+        </Header>
+        <Data Ref="13" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,1.7,8.72,0.2</ClientRectangle>
+          <Components isList="true" count="2">
+            <DataText1 Ref="14" type="Text" isKey="true">
+              <Border>None;[0:0:39];1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0,1.2,0.2</ClientRectangle>
+              <ComponentStyle>Blue Steel_Data1</ComponentStyle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <Guid>3c69485d4acc44cca5774934fe7e04f2</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>DataText1</Name>
+              <Page isRef="3" />
+              <Parent isRef="13" />
+              <Text>{dtRoom.RoomName}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </DataText1>
+            <Text1 Ref="15" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.2,0,1.3,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="3" />
+              <Parent isRef="13" />
+              <Text>{dtRoom.Phone}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>Orders</DataSourceName>
+          <EvenStyle>Blue Steel_Data1_Even Style</EvenStyle>
+          <Filters isList="true" count="0" />
+          <Guid>c67ae2a65b734109a71bbf5db17a12c4</Guid>
+          <Name>Data</Name>
+          <OddStyle>Blue Steel_Data1_Odd Style</OddStyle>
+          <Page isRef="3" />
+          <Parent isRef="3" />
+          <Sort isList="true" count="0" />
+        </Data>
+        <Footer Ref="16" type="FooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,2.3,8.72,0.2</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <Guid>90f26429be804fe68fbd099b3cc05956</Guid>
+          <Name>Footer</Name>
+          <Page isRef="3" />
+          <Parent isRef="3" />
+        </Footer>
+      </Components>
       <Conditions isList="true" count="0" />
       <Guid>4c268c82ffc14ecabbef08fd3af7a52c</Guid>
       <Margins>0.39,0.39,0.39,0.39</Margins>
@@ -36,13 +270,13 @@
       <PageWidth>9.5</PageWidth>
       <PaperSize>Letter</PaperSize>
       <Report isRef="0" />
-      <Watermark Ref="3" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+      <Watermark Ref="17" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
         <Font>Arial,100</Font>
         <TextBrush>[50:0:0:0]</TextBrush>
       </Watermark>
     </Page1>
   </Pages>
-  <PrinterSettings Ref="4" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <PrinterSettings Ref="18" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
   <ReferencedAssemblies isList="true" count="8">
     <value>System.Dll</value>
     <value>System.Drawing.Dll</value>
@@ -54,13 +288,14 @@
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>2/24/2017 11:19:41 AM</ReportChanged>
+  <ReportChanged>2/25/2017 10:30:25 AM</ReportChanged>
   <ReportCreated>2/12/2015 3:21:08 PM</ReportCreated>
-  <ReportFile>C:\Instaill\BoardingHouse\BoardingHouse.Administrator\ReportTemplates\Report.mrt</ReportFile>
-  <ReportGuid>b8d1dac0a8794b13ae7b65ef504444ac</ReportGuid>
+  <ReportFile>E:\_Study\_SourceCode\_SourseGithub\BoardingHouse\BoardingHouse.Administrator\ReportTemplates\Report.mrt</ReportFile>
+  <ReportGuid>6cbf9b21f66446d7a1a6d5f779930a75</ReportGuid>
+  <ReportImage isNull="true" />
   <ReportName>Report</ReportName>
   <ReportUnit>Inches</ReportUnit>
-  <ReportVersion>2015.1.0</ReportVersion>
+  <ReportVersion>2016.3.0</ReportVersion>
   <Script>using System;
 using System.Drawing;
 using System.Windows.Forms;
