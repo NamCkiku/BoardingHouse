@@ -1,4 +1,5 @@
-﻿using Stimulsoft.Report;
+﻿using BoardingHouse.Service.IService;
+using Stimulsoft.Report;
 using Stimulsoft.Report.Export;
 using Stimulsoft.Report.Mvc;
 using System;
@@ -14,20 +15,25 @@ namespace BoardingHouse.Administrator.Controllers
 {
     public class ReportController : Controller
     {
-        public string ReportTempFolder = "~/ReportTemplates/";
-        public ActionResult _Report()
+        private readonly IRoomService _roomService;
+        public ReportController(IRoomService roomService)
         {
-            return View();
+            this._roomService = roomService;
+        }
+        public string ReportTempFolder = "~/ReportTemplates/";
+        [ChildActionOnly]
+        public PartialViewResult _Report()
+        {
+            return PartialView();
         }
         public ActionResult GetReportSnapshot()
         {
-            var TemplateName = TempData.ContainsKey("sReportFileName") ? TempData["sReportFileName"].ToString() : string.Empty;
             try
             {
                 var report = new StiReport();
                 TempData["dataExportFileTres"] = report;
-                report.Load(Server.MapPath("~/ReportTemplates/Report.mrt"));
-                report.RegData("Orders", ""); ;
+                report.Load(Server.MapPath(ReportTempFolder + "Report.mrt"));
+                report.RegData("dtRoom", _roomService.GetAll()); ;
                 return StiMvcViewer.GetReportSnapshotResult(report);
             }
             catch (Exception ex)
