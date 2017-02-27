@@ -21,7 +21,6 @@ namespace BoardingHouse.Administrator.Controllers
             this._roomService = roomService;
         }
         public string ReportTempFolder = "~/ReportTemplates/";
-        [ChildActionOnly]
         public PartialViewResult _Report()
         {
             return PartialView();

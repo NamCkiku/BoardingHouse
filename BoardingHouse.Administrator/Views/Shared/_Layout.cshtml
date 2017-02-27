@@ -24,6 +24,7 @@
     <link href="~/Content/assets/kendo-ui/styles/kendo.dataviz.min.css" rel="stylesheet" />
     <link href="~/Content/assets/kendo-ui/styles/kendo.dataviz.default.min.css" rel="stylesheet" />
     <link href="~/Content/css/formValidation.min.css" rel="stylesheet" />
+    <link href="~/bower_components/toastr/toastr.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -57,6 +58,7 @@
     <script src="~/Content/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="~/Content/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="~/Content/js/jquery.scrollTo.min.js"></script>
+    <script src="~/bower_components/toastr/toastr.js"></script>
     <!--common script for all pages-->
     <script src="~/Content/js/common-scripts.js"></script>
     <script src="~/Content/js/formValidation.min.js"></script>
@@ -72,6 +74,7 @@
     <script src="~/app/app.js"></script>
     <script src="~/app/Service/BaseService.js"></script>
     <script src="~/bower_components/angular-bootstrap-switch/dist/angular-bootstrap-switch.js"></script>
+    <script src="~/bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="~/bower_components/angular-block-ui/dist/angular-block-ui.js"></script>
     <script src="~/Content/assets/Bootstrap/ui-bootstrap.js"></script>
     <script src="~/Content/assets/Bootstrap/ui-bootstrap-tpls-0.14.3.min.js"></script>
@@ -80,6 +83,21 @@
     @*@RenderSection("scripts", false)
     {
     }*@
+    <script type="text/ng-template" id="NotificationCommonModal.html">
+        <div class="modal-header" ng-class="{ 'panel-danger' : type == 1,'panel-warning' : type == 2 }">
+            <button type="button" ng-hide="showBtnCancel==false" class="close" ng-click="cancel();" aria-hidden="true">×</button>
+            <h3 class="modal-title" id="modal-title">{{title}}</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <div ng-bind-html="message">
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button ng-hide="showBtnOK==false" class="btn btn-success" ng-click="ok()" style="width:150px;"><i class="fa fa-save" style="padding-right: 10px !important;"></i>{{btnOK}}</button>
+            <button ng-hide="showBtnCancel==false" type="button" class="btn btn-danger" ng-click="cancel()" style="width:150px;"><i class="fa fa-ban" style="padding-right: 10px !important;"></i>{{btnCancel}}</button>
+        </div>
+    </script>
 </body>
 
 </html>
