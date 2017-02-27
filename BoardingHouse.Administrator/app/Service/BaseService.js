@@ -1,5 +1,5 @@
 ﻿(function (app) {
-    var BaseService = function ($rootScope, $http, $q, $filter) {
+    var BaseService = function ($rootScope, $http, $q, $filter, $modal) {
         function postData(controller, action, isValidateToken, data) {
             var result = $q.defer();
             if (isValidateToken) {
@@ -104,7 +104,113 @@
 
             return age;
         }
+        var showCommonDialog = function (msgInfor) {
+            var defer = $q.defer();
+            var modalInstance = $modal.open({
+                animation: true,
+                size: msgInfor.size,
+                backdrop: 'static',
+                windowClass: 'center-modal',
+                templateUrl: 'NotificationCommonModal.html',
+                controller: function ($scope, $modalInstance) {
+                    $scope.title = msgInfor.headerText;
+                    $scope.message = msgInfor.bodyMsg;
+                    $scope.showBtnOK = msgInfor.showBtnOK == null ? true : msgInfor.showBtnOK;
+                    $scope.showBtnCancel = msgInfor.showBtnCancel == null ? true : msgInfor.showBtnCancel;
+                    $scope.btnOK = msgInfor.btnOK == null ? 'OK' : msgInfor.btnOK;
+                    $scope.btnCancel = msgInfor.btnCancel == null ? 'Cancel' : msgInfor.btnCancel;
+                    $scope.type = msgInfor.type;
+                    $scope.ok = function () {
+                        //modalInstance.close();
+                        defer.resolve(modalInstance);
+                    };
+                    $scope.cancel = function () {
+                        modalInstance.close();
+                        defer.reject();
+                    };
+                }
+            });
+            return defer.promise;
+        }
 
+        function displaySuccess(message, timeOut) {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "onclick": null,
+                "fadeIn": 300,
+                "fadeOut": 1000,
+                "timeOut": timeOut == null ? 3000 : timeOut,
+                "extendedTimeOut": 1000,
+                "showMethod": "slideDown",
+                "hideMethod": "slideUp"
+            };
+            toastr.success(message);
+        }
+
+        function displayError(error, timeOut) {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "onclick": null,
+                "fadeIn": 300,
+                "fadeOut": 1000,
+                "timeOut": timeOut == null ? 3000 : timeOut,
+                "extendedTimeOut": 1000,
+                "showMethod": "slideDown",
+                "hideMethod": "slideUp"
+            };
+            if (Array.isArray(error)) {
+                error.each(function (err) {
+                    toastr.error(err);
+                });
+            }
+            else {
+                toastr.error(error);
+            }
+        }
+
+        function displayWarning(message, timeOut) {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "onclick": null,
+                "fadeIn": 300,
+                "fadeOut": 1000,
+                "timeOut": timeOut == null ? 3000 : timeOut,
+                "extendedTimeOut": 1000,
+                "showMethod": "slideDown",
+                "hideMethod": "slideUp"
+            };
+            toastr.warning(message);
+        }
+
+        function displayInfo(message, timeOut) {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "onclick": null,
+                "fadeIn": 300,
+                "fadeOut": 1000,
+                "timeOut": timeOut == null ? 3000 : timeOut,
+                "extendedTimeOut": 1000,
+                "showMethod": "slideDown",
+                "hideMethod": "slideUp"
+            };
+            toastr.info(message);
+        }
 
         return {
             postData: postData,
@@ -112,9 +218,14 @@
             canculateAgeByDOB: canculateAgeByDOB,
             formatDate: formatDate,
             formatMonth: formatMonth,
-            formatFullDateTime: formatFullDateTime
+            formatFullDateTime: formatFullDateTime,
+            showCommonDialog: showCommonDialog,
+            displaySuccess: displaySuccess,
+            displayError: displayError,
+            displayWarning: displayWarning,
+            displayInfo: displayInfo,
         };
     }
-    BaseService.$inject = ['$rootScope', '$http', '$q', '$filter'];
+    BaseService.$inject = ['$rootScope', '$http', '$q', '$filter', '$modal'];
     app.service('BaseService', BaseService);
 })(angular.module('myApp'));
