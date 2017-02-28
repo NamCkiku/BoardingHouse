@@ -1,0 +1,51 @@
+﻿<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="input-field col-sm-6 col-lg-2 col-xs-12 ">
+        <label class="form-details-title">Từ khóa</label>
+        <input ng-model="filter.Keywords" class="form-control"
+               type="text">
+    </div>
+    <div class="input-field col-sm-6 col-lg-2 col-xs-12 ">
+        <label class="form-details-title">Start Date</label>
+        <div class="input-group">
+            <div class="input-group-checkbox">
+                <div class="checkbox c-checkbox pull-left">
+                    <label>
+                        <input type="checkbox" ng-model="filter.searchByStartDate">
+                        <span class="fa fa-check"></span>
+                    </label>
+                </div>
+            </div>
+            <input kendo-date-picker
+                   k-ng-model="filter.StartDate"
+                   class="form-control"
+                   ng-disabled="!filter.searchByStartDate" />
+        </div>
+    </div>
+    <div class="input-field  col-sm-6 col-lg-2 col-xs-12 ">
+        <label class="form-details-title">End Date</label>
+        <div class="input-group">
+            <div class="input-group-checkbox">
+                <div class="checkbox c-checkbox pull-left">
+                    <label>
+                        <input type="checkbox" ng-model="filter.searchByEndDate">
+                        <span class="fa fa-check"></span>
+                    </label>
+                </div>
+            </div>
+            <input kendo-date-picker
+                   k-ng-model="filter.EndDate"
+                   class="form-control"
+                   ng-disabled="!filter.searchByEndDate" />
+        </div>
+    </div>
+    <div class="input-field col-sm-6 col-lg-2 col-xs-12">
+        <label class="form-details-title">Trạng Thái</label>
+        <div class="clearfix"></div>
+        <input bs-switch
+               ng-model="filter.Status"
+               type="checkbox">
+    </div>
+    <div class="input-field col-sm-6 col-lg-2 col-xs-12" style="padding-top:24px;">
+        <button type="button" ng-click="Search()" class="btn btn-info"><i style="padding-right:10px;" class="fa fa-search"></i>Tìm Kiếm</button>
+    </div>
+</div>
