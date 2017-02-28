@@ -227,6 +227,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\SharedPartialViewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -239,6 +240,8 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controller\RoomController\roomController.js" />
+    <Content Include="app\Directive\pagerDirective.js" />
+    <Content Include="app\Directive\searchDirective.js" />
     <Content Include="app\Service\BaseService.js" />
     <Content Include="App_Data\Kendo.Mvc.dll" />
     <Content Include="bower_components\angular-animate\angular-animate.js" />
@@ -2385,6 +2388,9 @@
     <Content Include="bower_components\angular-sanitize\LICENSE.md" />
     <Content Include="bower_components\angular-sanitize\package.json" />
     <Content Include="bower_components\angular-sanitize\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SharedPartialView\_PVSearchControl.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

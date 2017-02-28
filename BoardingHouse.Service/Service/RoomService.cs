@@ -36,7 +36,16 @@ namespace BoardingHouse.Service.Service
 
         public IEnumerable<Room> GetAll()
         {
-            return _roomRepository.GetAll();
+            List<Room> lstroom = new List<Room>();
+            try
+            {
+                lstroom = _roomRepository.GetAll().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return lstroom;
         }
 
         public Room GetById(int id)
