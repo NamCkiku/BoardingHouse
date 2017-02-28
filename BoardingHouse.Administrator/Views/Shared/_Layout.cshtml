@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en" ng-app="myApp">
-
+@using BoardingHouse.Common.CommonConstants
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,7 @@
     <meta name="author" content="Mosaddek">
     <title>Trang Quan Tri</title>
     <baseurl value='@Url.Content("~/")'></baseurl>
+    <dateformat value="@Var.sDateFormat"></dateformat>
     <!-- Bootstrap core CSS -->
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/bootstrap-reset.css" rel="stylesheet">
@@ -26,8 +27,9 @@
     <link href="~/Content/css/formValidation.min.css" rel="stylesheet" />
     <link href="~/bower_components/toastr/toastr.css" rel="stylesheet" />
 </head>
-
+@using BoardingHouse.Administrator.AntiForgeryToken
 <body>
+    <input id="antiForgeryToken" value="@AntiForgeryExtension.GetTokenHeaderValue()" type="hidden" />
     <section id="container">
         <!--header start-->
         @RenderPage("_HeaderAdmin.cshtml")
@@ -81,7 +83,7 @@
     <script src="~/Content/assets/Bootstrap/ui-bootstrap.js"></script>
     <script src="~/Content/assets/Bootstrap/ui-bootstrap-tpls-0.14.3.min.js"></script>
     <script src="~/Content/assets/Bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="~/app/controller/RoomController/roomController.js"></script>
+    <script src="~/app/Controller/RoomController/roomController.js"></script>
     @*@RenderSection("scripts", false)
     {
     }*@

@@ -10,12 +10,16 @@ namespace BoardingHouse.Administrator.Controllers
     public class HomeController : Controller
     {
         private readonly IRoomService _roomService;
-        public HomeController(IRoomService roomService)
+        private readonly ISystemSettingService _settingService;
+        public HomeController(IRoomService roomService, ISystemSettingService settingService)
         {
             this._roomService = roomService;
+            this._settingService = settingService;
         }
         public ActionResult Home()
         {
+            _settingService.LoadDefaultValuesSetings();
+            _settingService.LoadSystemSettingConfiguration();
             return View();
         }
     }
