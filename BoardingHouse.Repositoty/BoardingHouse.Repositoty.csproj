@@ -58,6 +58,7 @@
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RoomRepository.cs" />
+    <Compile Include="Repositories\SystemSettingRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BoardingHouse.Common\BoardingHouse.Common.csproj">

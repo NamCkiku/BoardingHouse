@@ -214,6 +214,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AntiForgeryToken\AntiForgeryExtension.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -239,7 +240,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
-    <Content Include="app\controller\RoomController\roomController.js" />
+    <Content Include="app\Controller\RoomController\roomController.js" />
     <Content Include="app\Directive\pagerDirective.js" />
     <Content Include="app\Directive\searchDirective.js" />
     <Content Include="app\Service\BaseService.js" />
@@ -1449,7 +1450,6 @@
   <ItemGroup>
     <Folder Include="Scripts\" />
     <Folder Include="Views\BaseController\" />
-    <Folder Include="Views\BaseService\" />
     <Folder Include="Views\FileBrowser\" />
     <Folder Include="Views\ImageBrowser\" />
   </ItemGroup>

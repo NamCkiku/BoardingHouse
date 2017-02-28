@@ -17,5 +17,7 @@ namespace BoardingHouse.Common.CommonConstants
         public static string sMailEncoding = string.Empty;
         public static string sMailPort = string.Empty;
         public static bool bEnableSSL = true;
+
+        public static string sDateFormat = string.Empty;
     }
 }
