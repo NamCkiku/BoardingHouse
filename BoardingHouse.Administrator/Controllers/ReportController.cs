@@ -32,7 +32,7 @@ namespace BoardingHouse.Administrator.Controllers
                 var report = new StiReport();
                 TempData["dataExportFileTres"] = report;
                 report.Load(Server.MapPath(ReportTempFolder + "Report.mrt"));
-                report.RegData("dtRoom", _roomService.GetAll()); ;
+                //report.RegData("dtRoom", _roomService.GetAll());
                 return StiMvcViewer.GetReportSnapshotResult(report);
             }
             catch (Exception ex)

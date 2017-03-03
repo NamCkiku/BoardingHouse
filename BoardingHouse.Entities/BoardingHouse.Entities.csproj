@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\RoomEntity.cs" />
+    <Compile Include="Entities\SearchEntity.cs" />
     <Compile Include="Migrations\201702211329572_addDB.cs" />
     <Compile Include="Migrations\201702211329572_addDB.Designer.cs">
       <DependentUpon>201702211329572_addDB.cs</DependentUpon>

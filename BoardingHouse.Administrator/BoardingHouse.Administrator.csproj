@@ -243,6 +243,7 @@
     <Content Include="app\Controller\RoomController\roomController.js" />
     <Content Include="app\Directive\pagerDirective.js" />
     <Content Include="app\Directive\searchDirective.js" />
+    <Content Include="app\Service\apiService.js" />
     <Content Include="app\Service\BaseService.js" />
     <Content Include="App_Data\Kendo.Mvc.dll" />
     <Content Include="bower_components\angular-animate\angular-animate.js" />
@@ -2194,15 +2195,6 @@
     <Content Include="bower.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bower_components\angular\.bower.json" />
-    <Content Include="bower_components\angular\angular.min.js.gzip" />
-    <Content Include="bower_components\angular\angular.min.js.map" />
-    <Content Include="bower_components\angular\bower.json" />
-    <Content Include="bower_components\angular\LICENSE.md" />
-    <Content Include="bower_components\angular\package.json" />
-    <Content Include="bower_components\angular\README.md" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="bower_components\angular-bootstrap-switch\.bower.json" />
     <Content Include="bower_components\angular-bootstrap-switch\.bowerrc" />
     <Content Include="bower_components\angular-bootstrap-switch\.editorconfig" />
@@ -2391,6 +2383,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\SharedPartialView\_PVSearchControl.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bower_components\angular\.bower.json" />
+    <Content Include="bower_components\angular\angular.min.js.gzip" />
+    <Content Include="bower_components\angular\angular.min.js.map" />
+    <Content Include="bower_components\angular\bower.json" />
+    <Content Include="bower_components\angular\LICENSE.md" />
+    <Content Include="bower_components\angular\package.json" />
+    <Content Include="bower_components\angular\README.md" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
