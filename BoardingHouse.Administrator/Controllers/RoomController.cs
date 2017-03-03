@@ -1,4 +1,6 @@
-﻿using BoardingHouse.Service.IService;
+﻿using BoardingHouse.Common.Pagination;
+using BoardingHouse.Entities.Entities;
+using BoardingHouse.Service.IService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +21,7 @@ namespace BoardingHouse.Administrator.Controllers
         {
             return View();
         }
-        public JsonResult LoadAllRoom()
+        public JsonResult LoadAllRoom(SearchEntity filter, int page, int pageSize=20)
         {
             JsonResult jsonResult = new JsonResult();
             try
@@ -27,7 +29,15 @@ namespace BoardingHouse.Administrator.Controllers
                 HttpRequestBase request = this.HttpContext.Request;
                 if (ValidateRequestHeader(request))
                 {
-                    jsonResult = Json(new { success = true, lstData = _roomService.GetAll() }, JsonRequestBehavior.AllowGet);
+                    int totalRow = 0;
+                    var data = _roomService.GetAll(filter, page, pageSize, out totalRow);
+                    var paginationSet = new PaginationSet<RoomEntity>()
+                    {
+                        Items = data,
+                        TotalCount = totalRow,
+                        Success = true
+                    };
+                    jsonResult = Json(new { lstData = paginationSet }, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {

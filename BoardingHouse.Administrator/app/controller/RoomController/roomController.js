@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('roomController', roomController);
 
-    roomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'ENUMS'];
+    roomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'ENUMS', 'apiService'];
 
-    function roomController($scope, blockUI, $modal, $rootScope, BaseService, ENUMS) {
+    function roomController($scope, blockUI, $modal, $rootScope, BaseService, ENUMS, apiService) {
         $scope.enums = ENUMS;
         $scope.pageSize = 10;
         $scope.filter = {
@@ -21,6 +21,10 @@
             //myBlockUI.stop();
         }
         load();
+        $scope.Search = Search;
+        function Search() {
+            filterData();
+        }
         var __appBasePath = $rootScope.baseUrl;
         $scope.editorOptions = {
             tools: [
@@ -148,84 +152,72 @@
             }, function () {
             });
         }
-        function filterData () {
+        function filterData() {
             var myBlockUI = blockUI.instances.get('BlockUIRoom');
             myBlockUI.start();
             $scope.mainGridOptions = {
                 transport: {
                     read: function (options) {
-                        //var listResvStatus = '';
+                        if ($scope.filter.StartDate == null) {
+                            $scope.filter.StartDate = '';
 
-                        //angular.forEach($scope.statusModel, function (value, key) {
-                        //    listResvStatus += value.label + ",";
-                        //});
-                        //var listShift = '';
+                        }
 
-                        //angular.forEach($scope.statusModel1, function (value, key) {
-                        //    listShift += value.id + ",";
-                        //});
-                        //var listGuestType = '';
-
-                        //angular.forEach($scope.statusModel2, function (value, key) {
-                        //    listGuestType += value.id + ",";
-                        //});
-                        //var startDate;
-                        //var endDate;
-                        //if ($scope.searchInfo.searchByStartDate == false) {
-                        //    startDate = '';
-                        //} else {
-                        //    startDate = $scope.searchInfo.startDate;
-                        //}
-
-                        //if ($scope.searchInfo.searchByEndDate == false) {
-                        //    endDate = '';
-                        //} else {
-                        //    endDate = $scope.searchInfo.endDate;
-                        //}
-                        //var listRev = '';
-
-                        //angular.forEach($scope.statusModelRev, function (value, key) {
-                        //    listRev += value.label + ",";
-                        //});
-                        //var searchResvEntity = {
-                        //    startDate: startDate,
-                        //    endDate: endDate,
-                        //    lstStatus: listResvStatus,
-                        //    keyword: $scope.searchInfo.fullTextSearch,
-                        //    shift: listShift,
-                        //    revID: listRev,
-                        //    siteId: $scope.SiteInfo.SiteID,
-                        //    listguestType: listGuestType,
-                        //    pageSize: options.data.pageSize,
-                        //    pageNumber: options.data.page
-                        //};
-                        BaseService.postData("Room", "LoadAllRoom", true, null).then(function (response) {
-                            if (response.success == true) {
-                                options.success(response);
-                                $scope.data.AllRoom = response.lstData;
+                        if ($scope.filter.StartDate == null) {
+                            $scope.filter.StartDate = '';
+                        }
+                        var startDate;
+                        var endDate;
+                        if ($scope.filter.searchByStartDate == false) {
+                            startDate = '';
+                        }
+                        if ($scope.filter.searchByStartDate == true) {
+                            startDate = $scope.filter.StartDate;
+                        }
+                        if ($scope.filter.searchByEndDate == false) {
+                            endDate = '';
+                        }
+                        if ($scope.filter.searchByEndDate == true) {
+                            endDate = $scope.filter.EndDate;
+                        }
+                        var filter = {
+                            Keywords: $scope.filter.Keywords,
+                            StartDate: startDate,
+                            EndDate: endDate,
+                            Status: $scope.filter.Status,
+                            page: options.data.page,
+                            pageSize: options.data.pageSize
+                        }
+                        apiService.post('Room/LoadAllRoom', true, filter, function (respone) {
+                            if (respone.data.lstData.Success == true) {
+                                options.success(respone.data.lstData);
+                                myBlockUI.stop();
                             } else {
                             }
-                        }).finally(function () {
+                        }, function (respone) {
+                            console.log('Load product failed.');
+                            options.error(respone.data);
                             myBlockUI.stop();
-                        }, function () { });
+                        });
                     }
                 },
-                pageSize: $scope.pageSize,
-                group: false,
-                serverPaging: false,
-                sortable: false,
+                serverPaging: true,
+                sortable: true,
                 pageable: {
                     refresh: true,
                     pageSizes: true,
                     buttonCount: 5
                 },
+                pageSize: 10,
                 schema: {
-                    data: "lstData",
+                    data: "Items",
+                    total: "TotalCount"
                 }
             };
         };
         $scope.gridColumns = [
                { field: "RoomName", title: "Tên Phòng" },
+                { field: "Address", title: "Địa Chỉ" },
         ];
     }
 })(angular.module('myApp'));
