@@ -1,44 +1,373 @@
 ﻿<!DOCTYPE html>
+
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/assets/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/assets/font-awesome-4.5.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/assets/slidebar/slidebars.css" rel="stylesheet" />
+    <link href="~/Content/css/BoardingHouse.css" rel="stylesheet" />
+    <link href="~/Content/css/Responsive.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/slidebar/slidebars.min.js"></script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                $.slidebars();
+            });
+        })(jQuery);
+    </script>
+    <script>
+        $(document).ready(function () {
+            (function () {
 
+                var counter = 0,
+                    $items = document.querySelectorAll('.diy-slideshow figure'),
+                    numItems = $items.length;
+                var showCurrent = function () {
+                    var itemToShow = Math.abs(counter % numItems);
+                    [].forEach.call($items, function (el) {
+                        el.classList.remove('show');
+                    });
+
+                    $items[itemToShow].classList.add('show');
+                };
+
+                document.querySelector('.next').addEventListener('click', function () {
+                    counter++;
+                    showCurrent();
+                }, false);
+
+                document.querySelector('.prev').addEventListener('click', function () {
+                    counter--;
+                    showCurrent();
+                }, false);
+
+            })();
+            /* Toggle nav menu*/
+            $(document).on('click', '.toggle-menu', function () {
+                $(this).closest('.nav-menu').find('.navbar-collapse').toggle();
+                return false;
+            })
+        });
+
+    </script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div>
+        @RenderBody()
+    </div>
+    <header id="header" class="header-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-left">
+                        <a class="logo" href="#">
+                            <img class="img-responsive" src="http://phongtot.vn/themes/client/img/xphongtot_logo.png.pagespeed.ic.UejSBOLzW8.png">
+                        </a>
+                    </div>
+                    <div class="pull-right hidden-xs">
+                        <div class="header-top-avatar">
+                            <img class="img-responsive" src="http://phongtot.vn/themes/client/img/xavatar.png.pagespeed.ic.Hl7NHK7TGA.png">
+                        </div>
+                        <div class="header-top-user">
+                            <div class="user-login"><a class="load_modal_login" href="#" data-toggle="modal" data-target="#modal_auth">Đăng nhập</a></div>
+                            <div class="user-register load_modal_register">
+                                <a href="javascript: void(0);" data-toggle="modal" data-target="#modal_auth">Tạo tài khoản</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+        </div>
+    </header>
+    <div class="line_orn"></div>
+    <div id="header_nav" class="header-nav">
+        <nav class="navbar">
+            <div class="menu-top hidden-xs container">
+                <div class="navbar-header block-navbar">
+                    <a class="navbar-brand" href="http://phongtot.vn"><span class="fa fa-home"></span></a>
+                    <ul class="nav navbar-nav">
+                        <li><a href="http://phongtot.vn/phong-tro-nha-tro">Phòng trọ</a></li>
+                        <li><a href="http://phongtot.vn/nha-nguyen-can">Nhà nguyên căn</a></li>
+                        <li><a href="http://phongtot.vn/nha-mat-pho">Nhà mặt phố</a></li>
+                        <li><a href="http://phongtot.vn/van-phong">Văn phòng</a></li>
+                        <li><a href="http://phongtot.vn/chung-cu-can-ho">Chung cư, Căn hộ</a></li>
+                        <li><a href="http://phongtot.vn/mat-bang-cua-hang">Mặt bằng</a></li>
+                        <li><a href="http://phongtot.vn/mat-bang-cua-hang">Hướng dẫn</a></li>
+                        <li><a href="http://phongtot.vn/o-ghep">Ở ghép</a></li>
+                        <li><a href="http://phongtot.vn/bai-viet">Nạp Coin</a></li>
+                        <li><a class="active" href="http://phongtot.vn/bai-viet">Nạp Coin</a></li>
+                    </ul>
+                </div>
+            </div> <!--end Menu big-->
+            <div class="container hidden-sm hidden-md hidden-lg">
+                <div class="row block-navbar">
+                    <div class="col-md-12 no-padding">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header hidden-sm hidden-md hidden-lg">
+                            <div class="clear-fix"></div>
+                            <button type="button" class="navbar-toggle collapsed sb-toggle-left" data-toggle="offcanvas" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="http://phongtot.vn"><span class="fa fa-home"></span></a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="sb-slidebar sb-left sb-style-overlay hidden-sm hidden-md hidden-lg">
+                            <div id="box-action-mobile">
+                                <div id="box-tgnavbotton" class="navbar navbar-default hidden-sm hidden-md hidden-lg">
+                                    <button aria-controls="navbar-collapse-btp" class="navbar-toggle sb-toggle-left" data-toggle="offcanvas" data-target=".navmenu">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="nav-menumobile">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="http://phongtot.vn/phong-tro-nha-tro">Phòng trọ</a></li>
+                                    <li><a href="http://phongtot.vn/nha-nguyen-can">Nhà nguyên căn</a></li>
+                                    <li><a href="http://phongtot.vn/nha-mat-pho">Nhà mặt phố</a></li>
+                                    <li><a href="http://phongtot.vn/van-phong">Văn phòng</a></li>
+                                    <li><a href="http://phongtot.vn/chung-cu-can-ho">Chung cư, Căn hộ</a></li>
+                                    <li><a href="http://phongtot.vn/mat-bang-cua-hang">Mặt bằng</a></li>
+                                    <li><a href="http://phongtot.vn/mat-bang-cua-hang">Hướng dẫn</a></li>
+                                    <li><a href="http://phongtot.vn/o-ghep">Ở ghép</a></li>
+                                    <li><a href="http://phongtot.vn/bai-viet">Nạp Coin</a></li>
+                                    <li><a href="http://phongtot.vn/bai-viet">Đăng Nhập</a></li>
+                                    <li><a href="http://phongtot.vn/bai-viet">Đăng Ký</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+    <!-- End menu -->
+    <!-- Form SEARCH -->
+    <div class="search-form hidden-xs hidden-sm">
+        <div class="slide-home">
+            <div class="diy-slideshow hidden-xs hidden-sm">
+                <figure class="show">
+                    <img src="~/Content/img/city.jpg" width="100%" height="400" />
+                </figure>
+                <figure>
+                    <img src="http://phongtot.vn/themes/client/img/xslider-bg.png.pagespeed.ic.IGNTrbGlld.webp" width="100%" height="400" />
+                </figure>
+                <figure>
+                    <img src="~/Content/img/city.jpg" width="100%" height="400" />
+                </figure>
+                <span class="prev">&laquo;</span>
+                <span class="next">&raquo;</span>
+            </div>
+            <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 search-bar">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4">
+                        <div class="search-bar-group pull-left form-group">
+                            <div class="search-bar-group-title">Chọn khu vực</div>
+                            <div class="col-lg-12">
+                                <select id="search_room_type" class="form-control" name="type">
+                                    <option value="">--Chọn loại tin--</option>
+                                    <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                                    <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                                    <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                                    <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                                    <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-12">
+                                <select id="search_room_type" class="form-control" name="type">
+                                    <option value="">--Chọn loại tin--</option>
+                                    <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                                    <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                                    <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                                    <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                                    <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-12">
+                                <select id="search_room_type" class="form-control" name="type">
+                                    <option value="">--Chọn loại tin--</option>
+                                    <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                                    <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                                    <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                                    <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                                    <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="search-bar-group pull-left form-group">
+                            <div class="search-bar-group-title">Chọn loại phòng</div>
+                            <div class="col-lg-12">
+                                <select id="search_room_type" class="form-control" name="type">
+                                    <option value="">--Chọn loại phòng--</option>
+                                    <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                                    <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                                    <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                                    <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                                    <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-12">
+                                <select id="search_room_type" class="form-control" name="type">
+                                    <option value="">--Chọn đối tượng--</option>
+                                    <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                                    <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                                    <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                                    <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                                    <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" />
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-md btn-search"><span style="padding-right:15px" class="fa fa-search"></span>Tìm kiếm</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="search-bar-group pull-left form-group">
+                            <div class="search-bar-group-title">Chọn Khoảng giá</div>
+                            <div class="col-lg-12">
+                                <select id="search_room_type" class="form-control" name="type">
+                                    <option value="">--Chọn loại phòng--</option>
+                                    <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                                    <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                                    <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                                    <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                                    <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" />
+                            </div>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <div class="search-form-small hidden">
+        <div class="search-bar">
+            <div class="col-sm-12 col-xs-12 no-padding">
+                <div class="search-bar-group">
+                    <div class="search-bar-group-title">Chọn khu vực</div>
+                    <div class="col-xs-12 col-sm-12">
+                        <select id="search_room_type" class="form-control" name="type">
+                            <option value="">--Chọn loại tin--</option>
+                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-sm-12">
+                        <select id="search_room_type" class="form-control" name="type">
+                            <option value="">--Chọn loại tin--</option>
+                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-sm-12">
+                        <select id="search_room_type" class="form-control" name="type">
+                            <option value="">--Chọn loại tin--</option>
+                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xs-12 no-padding">
+                <div class="search-bar-group">
+                    <div class="search-bar-group-title">Chọn loại phòng</div>
+                    <div class="col-xs-12">
+                        <select id="search_room_type" class="form-control" name="type">
+                            <option value="">--Chọn loại phòng--</option>
+                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-sm-12">
+                        <select id="search_room_type" class="form-control" name="type">
+                            <option value="">--Chọn đối tượng--</option>
+                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-sm-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xs-12 no-padding">
+                <div class="search-bar-group">
+                    <div class="search-bar-group-title">Chọn Khoảng giá</div>
+                    <div class="col-xs-12 col-sm-12">
+                        <select id="search_room_type" class="form-control" name="type">
+                            <option value="">--Chọn loại phòng--</option>
+                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-sm-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-xs-12 col-sm-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="search-btn-submit">
+                    <button type="button" class="btn btn-md btn-primary"><span style="padding-right:15px" class="fa fa-search"></span>Tìm kiếm</button>
+                </div>
+            </div>
+        </div>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <!-- End Form SEARCH -->
+    <!-- CONTENT -->
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-9">
+                    <div class="row">
+                        <div class="col-md-12 room-main-content nopadding-xs">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-9">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End CONTENT -->
 </body>
 </html>
