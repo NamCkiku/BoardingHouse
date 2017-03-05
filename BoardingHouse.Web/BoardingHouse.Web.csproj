@@ -226,6 +226,7 @@
     <Content Include="Content\css\Responsive.css" />
     <Content Include="Content\img\city.jpg" />
     <Content Include="Content\img\floor-elevator.png" />
+    <Content Include="Content\img\icon_new_2.png" />
     <Content Include="Content\img\kak.png" />
     <Content Include="Content\img\orn.png" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />

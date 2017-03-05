@@ -397,6 +397,7 @@ figure.show {
 
     .search-form-small .search-bar .search-btn-submit button {
         width: 100%;
+        margin-bottom: 20px;
     }
 
 
@@ -404,12 +405,193 @@ figure.show {
 
 /*end form Search*/
 
-.main-content{
-    float:left;
-    width:100%;
+.main-content {
+    float: left;
+    width: 100%;
 }
+
 .room-main-content {
     margin-top: 30px;
 }
 
 /*Tabs Box*/
+.menu-tab-title {
+    float: left;
+    font-size: 22px;
+    margin-top: 5px;
+}
+
+    .menu-tab-title span {
+        color: #33cc66;
+    }
+
+    .menu-tab-title i {
+        font-size: 24px;
+    }
+
+    .menu-tab-title a {
+        color: #2e3339;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+        .menu-tab-title a:hover {
+            color: #33cc66;
+        }
+
+.nav-tabs {
+    border-bottom: 2px solid #DDD;
+    margin-right: 0px;
+}
+
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+        border-width: 0;
+    }
+
+    .nav-tabs > li > a { /*padding-left: 0px; padding-right: 30px;*/
+        font-size: 14px;
+        font-weight: 600;
+        border: none;
+        color: #2e3339;
+    }
+
+        .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            color: #33cc66 !important;
+            background: transparent;
+        }
+
+        .nav-tabs > li > a::after {
+            content: "";
+            background: #33cc66;
+            height: 2px;
+            position: absolute;
+            width: 100%;
+            left: 0px;
+            bottom: -1px;
+            transition: all 250ms ease 0s;
+            transform: scale(0);
+        }
+
+    .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after {
+        transform: scale(1);
+    }
+
+.tab-nav > li > a::after {
+    background: #21527d none repeat scroll 0% 0%;
+    color: #fff;
+}
+
+.tab-pane {
+    padding: 10px 0;
+    padding-bottom: 20px;
+}
+
+.nav-tabs > li {
+    float: right;
+}
+
+
+
+
+
+/*Main Container*/
+.room-info-list {
+}
+
+    .room-info-list .room-info-item {
+        padding-left: 7px;
+        padding-right: 7px;
+        margin-bottom: 20px;
+    }
+
+        .room-info-list .room-info-item .room-info {
+            padding: 0px;
+            border: 0px;
+            margin-bottom: 15px;
+            position: relative;
+            background: #000;
+            border-radius: 0px;
+        }
+
+            .room-info-list .room-info-item .room-info a > img {
+                width: 100%;
+                height: 150px;
+            }
+
+.room-item-price {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    background: rgba(255,0,71,.8);
+    padding: 3px 12px;
+}
+
+    .room-item-price a {
+        color: #ffF;
+        text-decoration: none;
+    }
+
+.room-item-vip {
+    width: 40px;
+    height: 50px;
+    display: block;
+    text-indent: -1000em;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    background-size: contain;
+    background: url(../img/icon_new_2.png) no-repeat;
+}
+
+.room-info-list .room-info-item .caption {
+    background: #2E3339;
+    color: #FFF;
+    font-size: 13px;
+    padding: 0px 5px;
+}
+
+    .room-info-list .room-info-item .caption .title {
+        font-size: 13px;
+        overflow: hidden;
+        margin-bottom: 5px;
+        height: 45px;
+    }
+
+        .room-info-list .room-info-item .caption .title h2 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 5px;
+            margin-bottom: 0px;
+            line-height: 1.42857143;
+        }
+
+            .room-info-list .room-info-item .caption .title h2 a {
+                text-decoration: none;
+                color: #FFF;
+            }
+
+    .room-info-list .room-info-item .caption .extra {
+        display: block;
+        overflow: auto;
+        font-size: 12px;
+        color: #FFF;
+        padding: 2px 0px;
+        border-top: 1px solid #484C51;
+    }
+
+        .room-info-list .room-info-item .caption .extra a {
+            color: #33cc66;
+            text-decoration: none;
+        }
+
+        .room-info-list .room-info-item .caption .extra .fa {
+            margin-right: 5px;
+        }
+
+        .room-info-list .room-info-item .caption .extra .type {
+            text-align: center;
+        }
