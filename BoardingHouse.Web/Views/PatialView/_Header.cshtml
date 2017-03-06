@@ -1,0 +1,102 @@
+﻿<div class="container" ng-controller="headerController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-left">
+                <a class="logo" href="#">
+                    <img class="img-responsive" src="http://phongtot.vn/themes/client/img/xphongtot_logo.png.pagespeed.ic.UejSBOLzW8.png">
+                </a>
+            </div>
+            <div class="pull-right hidden-xs">
+                <div class="header-top-avatar">
+                    <img class="img-responsive" src="http://phongtot.vn/themes/client/img/xavatar.png.pagespeed.ic.Hl7NHK7TGA.png">
+                </div>
+                <div class="header-top-user">
+                    <div class="user-login"><a class="load_modal_login" href="" ng-click="openLoginModal();">Đăng nhập</a></div>
+                    <div class="user-register load_modal_register">
+                        <a href="javascript: void(0);" data-toggle="modal" data-target="#modal_auth">Tạo tài khoản</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="ModalLogin.html">
+    <div class="modal-header popup_header">
+        <button aria-label="Close" data-dismiss="modal" ng-click="close();" class="close" type="button"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title popup_title" id="messageDel">
+            <img src="/Content/img/xphongtot_logo.png.pagespeed.ic.UejSBOLzW8.png" />
+        </h4>
+    </div>
+    <div class="line_orn"></div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="login-body">
+                <div class="login-header">
+                    <div class="login-title">
+                        <span class="title">Đăng nhập </span>
+                    </div>
+                    <div class="login_social">
+                        <input type="submit" name="ctl00$ctl00$btnFacebookLogin" value="" id="btnFacebookLogin" title="Đăng nhập nhanh bằng tài khoản Facebook" class="login_facebook">
+                    </div>
+                    <div class="login_label">
+                        (Hoặc) Đăng nhập nhanh
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="ok();"><i class="fa fa-pencil-square-o" aria-hidden="true" style="padding-right:10px"></i>Lưu</button>
+        <button class="btn btn-info" ng-click="close();" type="button"><i class="fa fa-reply-all" aria-hidden="true" style="padding-right:10px"></i>Quay Lại</button>
+    </div>
+</script>
+<style>
+    .popup_header {
+        background: #f4f0e2;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-bottom: none;
+    }
+
+    .popup_title img {
+        color: #FFFFFF;
+        display: block;
+        margin: 0 auto;
+        height: 45px;
+        width: 200px;
+        text-align: center;
+    }
+
+    .login-body {
+        width: 100%;
+         float: left;
+    }
+
+        .login-body .login-header {
+           
+        }
+
+            .login-body .login-header .login-title {
+                padding: 4px;
+                float: left;
+            }
+
+                .login-body .login-header .login-title .title {
+                    font-size: 18px;
+                    color: #8c6635;
+                    text-decoration: none;
+                    margin-bottom: 8px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    display: block;
+                    padding: 10px 0 5px 20px;
+                    float: left;
+                }
+
+    .login_social {
+        width: 120px;
+        margin-right: 30px;
+        float: right;
+        margin-top: 6px;
+    }
+</style>

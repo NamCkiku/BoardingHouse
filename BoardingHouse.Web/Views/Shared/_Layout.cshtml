@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 
-<html>
+<html ng-app="myApp">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
@@ -9,9 +9,20 @@
     <link href="~/Content/assets/slidebar/slidebars.css" rel="stylesheet" />
     <link href="~/Content/css/BoardingHouse.css" rel="stylesheet" />
     <link href="~/Content/css/Responsive.css" rel="stylesheet" />
+    <link href="~/bower_components/toastr/toastr.css" rel="stylesheet" />
     <script src="~/Content/js/jquery-1.10.2.min.js"></script>
     <script src="~/Content/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/Content/assets/slidebar/slidebars.min.js"></script>
+    <script src="~/bower_components/toastr/toastr.js"></script>
+    <script src="~/bower_components/angular/angular.js"></script>
+    <script src="~/app/app.js"></script>
+    <script src="~/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="~/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="~/bower_components/angular-block-ui/dist/angular-block-ui.js"></script>
+    <script src="~/Content/assets/UIBoostrap/ui-bootstrap.js"></script>
+    <script src="~/Content/assets/UIBoostrap/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <script src="~/Content/assets/UIBoostrap/ui-bootstrap-tpls.js"></script>
+    <script src="~/app/Controller/AccountController/headerController.js"></script>
     <script>
         (function ($) {
             $(document).ready(function () {
@@ -46,42 +57,13 @@
                 }, false);
 
             })();
-            /* Toggle nav menu*/
-            $(document).on('click', '.toggle-menu', function () {
-                $(this).closest('.nav-menu').find('.navbar-collapse').toggle();
-                return false;
-            })
         });
 
     </script>
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
     <header id="header" class="header-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="pull-left">
-                        <a class="logo" href="#">
-                            <img class="img-responsive" src="http://phongtot.vn/themes/client/img/xphongtot_logo.png.pagespeed.ic.UejSBOLzW8.png">
-                        </a>
-                    </div>
-                    <div class="pull-right hidden-xs">
-                        <div class="header-top-avatar">
-                            <img class="img-responsive" src="http://phongtot.vn/themes/client/img/xavatar.png.pagespeed.ic.Hl7NHK7TGA.png">
-                        </div>
-                        <div class="header-top-user">
-                            <div class="user-login"><a class="load_modal_login" href="#" data-toggle="modal" data-target="#modal_auth">Đăng nhập</a></div>
-                            <div class="user-register load_modal_register">
-                                <a href="javascript: void(0);" data-toggle="modal" data-target="#modal_auth">Tạo tài khoản</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @{ Html.RenderAction("_Header", "PatialView"); }
     </header>
     <div class="line_orn"></div>
     <div id="header_nav" class="header-nav">
@@ -358,128 +340,7 @@
             <div class="row">
                 <div class="col-lg-9 col-md-9">
                     <div class="row">
-                        <div class="col-md-12 room-main-content nopadding-xs">
-                            <div class="menu-tab">
-                                <div class="menu-tab-title"><a href=""><span>Tin</span> Mới nhất <i class="fa fa-angle-right"></i></a></div>
-                                <div class="menu-tab-title-right">
-                                    <ul class="nav nav-tabs ">
-                                        <li class="active">
-                                            <a href="#tab_type_1" data-toggle="tab">Tất cả</a>
-                                        </li>
-                                        <li class="">
-                                            <a href="#tab_type_2" data-toggle="tab">Phòng trọ, nhà trọ</a>
-                                        </li>
-                                        <li class="">
-                                            <a href="#tab_type_3" data-toggle="tab">Nhà nguyên căn</a>
-                                        </li>
-                                        <li class="">
-                                            <a href="#tab_type_4" data-toggle="tab">Văn phòng</a>
-                                        </li>
-                                        <li class="">
-                                            <a href="#tab_type_5" data-toggle="tab">Chung cư, căn hộ</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="tab_type_1">
-                                    <div class="room-info-list">
-                                        <div class="col-sm-6 col-md-4 room-info-item">
-                                            <div class="room-info">
-                                                <a href="#" title="CHO THUÊ NHÀ TRỌ QUẬN 4 GIÁ 3.2 TRIỆU THÁNG">
-                                                    <img class="cover img-reponsive" src="img/tim-nu-chung-cu-toa-nha-ct1-ngo-62-tran-binh-2kv8x.jpg">
-                                                </a>
-                                                <div class="room-item-vip">
-                                                    <a href="">Vip</a>
-                                                </div>
-                                                <div class="room-item-price">
-                                                    <a href="">3,200,000 Đ/tháng</a>
-                                                </div>
-                                                <div class="caption">
-                                                    <div class="title">
-                                                        <h2><a href="">CHO THUÊ NHÀ TRỌ QUẬN 4 GIÁ 3.2 TRIỆU THÁNG</a></h2>
-                                                    </div>
-                                                    <div class="extra">
-                                                        <div class="pull-left">
-                                                            <a href="#"><span class="fa fa-map-marker"></span>4</a>
-                                                        </div>
-                                                        <div class="pull-right">
-                                                            <a href=""><span class="fa fa-info"></span>11.8 m<sup>2</sup></a>
-                                                        </div>
-                                                        <div class="type">
-                                                            <a href=""><span class="fa fa-home"></span>Phòng trọ, nhà trọ</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- <div class="overlay">
-                                                    <a href="#" title="">
-                                                        <img src="img/play.png">
-                                                    </a>
-                                                </div> -->
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-4 room-info-item">
-                                            <div class="room-info">
-                                                <a href="#" title="CHO THUÊ NHÀ TRỌ QUẬN 4 GIÁ 3.2 TRIỆU THÁNG">
-                                                    <img class="cover img-reponsive" src="http://media.phongtot.vn/xc5tx4cj/ngoi-nha-46m²-tuyet-dep-co-chi-phi-hoan-thien-480-trieu-dong-chang-trai-8x-xay-tang-vo_cover-573eddf84424b.jpg">
-                                                </a>
-                                                <div class="room-item-vip">
-                                                    <a href="">Vip</a>
-                                                </div>
-                                                <div class="room-item-price">
-                                                    <a href="">3,200,000 Đ/tháng</a>
-                                                </div>
-                                                <div class="caption">
-                                                    <div class="title">
-                                                        <h2><a href="">CHO THUÊ NHÀ TRỌ QUẬN 4 GIÁ 3.2 TRIỆU THÁNG</a></h2>
-                                                    </div>
-                                                    <div class="extra">
-                                                        <div class="pull-left">
-                                                            <a href="#"><span class="fa fa-map-marker"></span>4</a>
-                                                        </div>
-                                                        <div class="pull-right">
-                                                            <a href=""><span class="fa fa-info"></span>11.8 m<sup>2</sup></a>
-                                                        </div>
-                                                        <div class="type">
-                                                            <a href=""><span class="fa fa-home"></span>Phòng trọ, nhà trọ</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-4 room-info-item">
-                                            <div class="room-info">
-                                                <a href="#" title="CHO THUÊ NHÀ TRỌ QUẬN 4 GIÁ 3.2 TRIỆU THÁNG">
-                                                    <img class="cover img-reponsive" src="http://media.phongtot.vn/xc5tx4cj/ngoi-nha-46m²-tuyet-dep-co-chi-phi-hoan-thien-480-trieu-dong-chang-trai-8x-xay-tang-vo_cover-573eddf84424b.jpg">
-                                                </a>
-                                                <div class="room-item-price">
-                                                    <a href="">3,200,000 Đ/tháng</a>
-                                                </div>
-                                                <div class="caption">
-                                                    <div class="title">
-                                                        <h2><a href="">CHO THUÊ NHÀ TRỌ QUẬN 4 GIÁ 3.2 TRIỆU THÁNG</a></h2>
-                                                    </div>
-                                                    <div class="extra">
-                                                        <div class="pull-left">
-                                                            <a href="#"><span class="fa fa-map-marker"></span>4</a>
-                                                        </div>
-                                                        <div class="pull-right">
-                                                            <a href=""><span class="fa fa-info"></span>11.8 m<sup>2</sup></a>
-                                                        </div>
-                                                        <div class="type">
-                                                            <a href=""><span class="fa fa-home"></span>Phòng trọ, nhà trọ</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane active" id="tab_type_2">
-
-                                </div>
-                            </div>
-                        </div>
+                        @RenderBody()
                     </div>
                 </div>
                 <div class="col-md-3 sidebar">
