@@ -4,6 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <baseurl value='@Url.Content("~/")'></baseurl>
     <link href="~/Content/assets/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/assets/font-awesome-4.5.0/css/font-awesome.css" rel="stylesheet" />
     <link href="~/Content/assets/slidebar/slidebars.css" rel="stylesheet" />
@@ -22,6 +23,8 @@
     <script src="~/Content/assets/UIBoostrap/ui-bootstrap.js"></script>
     <script src="~/Content/assets/UIBoostrap/ui-bootstrap-tpls-0.14.3.min.js"></script>
     <script src="~/Content/assets/UIBoostrap/ui-bootstrap-tpls.js"></script>
+    <script src="~/app/Directive/apiService.js"></script>
+    <script src="~/app/Directive/BaseService.js"></script>
     <script src="~/app/Controller/AccountController/headerController.js"></script>
     <script>
         (function ($) {
