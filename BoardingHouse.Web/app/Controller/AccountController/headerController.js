@@ -13,7 +13,31 @@
                 windowClass: 'center-modal',
                 scope: $scope,
                 keyboard: false,
-                size: 'lg'
+                size: 'md'
+            });
+            $scope.ok = function () {
+                $scope.modalInstance.dismiss('cancel');
+            };
+            $scope.close = function () {
+                $scope.modalInstance.dismiss('cancel');
+            };
+            $scope.modalInstance.rendered.then(function (response) {
+            })
+            $scope.modalInstance.result.then(function (response) {
+
+            }, function () {
+            });
+        }
+        $scope.openRegisterModal = openRegisterModal;
+        function openRegisterModal() {
+            $scope.modalInstance = $modal.open({
+                animation: true,
+                templateUrl: 'ModalRegister.html',
+                backdrop: 'static',
+                windowClass: 'center-modal',
+                scope: $scope,
+                keyboard: false,
+                size: 'md'
             });
             $scope.ok = function () {
                 $scope.modalInstance.dismiss('cancel');
