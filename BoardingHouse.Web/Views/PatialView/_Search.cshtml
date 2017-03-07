@@ -77,42 +77,36 @@
                             <div class="col-lg-12">
                                 <input type="text" class="form-control" />
                             </div>
-                            <div class="col-lg-12">
-                                <button type="button" class="btn btn-md btn-search"><span style="padding-right:15px" class="fa fa-search"></span>Tìm kiếm</button>
-                            </div>
+                           
 
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4">
-                        <div class="search-bar-group pull-left form-group">
+                        <div class="search-bar-group1 pull-left form-group">
                             <div class="search-bar-group-title">Chọn Khoảng giá</div>
                             <div class="col-lg-12">
                                 <rzslider rz-slider-model="slider.minValue"
                                           rz-slider-high="slider.maxValue"
                                           rz-slider-options="slider.options"></rzslider>
-                                <div class="extra-controls">
-                                    <div class="form-group input-price">
-                                        <div class="price-from">
-                                            <div class="input-group">
-                                                <input type="text" name="price_from" ng-model="slider.minValue" class="inp js-from form-control">
-                                                <span class="input-group-addon">Triệu</span>
-                                            </div>
-                                        </div>
-                                        <span class="input-price-title">Đến</span>
-                                        <div class="price-to">
-                                            <div class="input-group">
-                                                <input type="text" name="price_to" ng-model="slider.maxValue" class="inp js-to form-control">
-                                                <span class="input-group-addon">Triệu</span>
-                                            </div>
-                                        </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="price-from">
+                                    <div class="input-group">
+                                        <input type="text" name="price_from" ng-model="slider.minValue" class="inp js-from form-control">
+                                        <span class="input-group-addon">Triệu</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
-                                <input type="text" class="form-control" />
+                            <div class="col-lg-6">
+                                <div class="price-to">
+                                    <div class="input-group">
+                                        <input type="text" name="price_to" ng-model="slider.maxValue" class="inp js-to form-control">
+                                        <span class="input-group-addon">Triệu</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-lg-12">
-                                <input type="text" class="form-control" />
+                             <div class="col-lg-12 search-bar-group" style="margin-top:25px">
+                                <button type="button" class="btn btn-md btn-search"><span style="padding-right:15px" class="fa fa-search"></span>Tìm kiếm</button>
                             </div>
                         </div>
                     </div>
@@ -215,6 +209,11 @@
     </div>
 </div>
 <style>
+    .search-bar-group1 .rzslider {
+        margin-bottom: 42px;
+        margin-top:15px;
+    }
+
     .extra-controls {
         position: relative;
         margin-top: 10px;
