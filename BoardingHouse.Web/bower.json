@@ -11,6 +11,7 @@
     "ngdropzone": "~2.0.1",
     "angularjs-slider": "~5.5.1",
     "ng-timeago": "~0.0.2",
-    "jquery-steps": "~1.1.0"
+    "jquery-steps": "~1.1.0",
+    "angular-ui-tinymce": "~0.0.18"
   }
 }
