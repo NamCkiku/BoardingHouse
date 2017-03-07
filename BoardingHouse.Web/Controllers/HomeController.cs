@@ -12,5 +12,9 @@ namespace BoardingHouse.Web.Controllers
         {
             return View();
         }
+        public ActionResult CreateRoom()
+        {
+            return View();
+        }
     }
 }

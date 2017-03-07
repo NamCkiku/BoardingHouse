@@ -13,5 +13,13 @@ namespace BoardingHouse.Web.Controllers
         {
             return PartialView();
         }
+        public PartialViewResult _Search()
+        {
+            return PartialView();
+        }
+        public PartialViewResult _Menu()
+        {
+            return PartialView();
+        }
     }
 }
