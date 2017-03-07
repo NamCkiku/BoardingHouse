@@ -40,36 +40,6 @@
             });
         })(jQuery);
     </script>
-    <script>
-        $(document).ready(function () {
-            (function () {
-
-                var counter = 0,
-                    $items = document.querySelectorAll('.diy-slideshow figure'),
-                    numItems = $items.length;
-                var showCurrent = function () {
-                    var itemToShow = Math.abs(counter % numItems);
-                    [].forEach.call($items, function (el) {
-                        el.classList.remove('show');
-                    });
-
-                    $items[itemToShow].classList.add('show');
-                };
-
-                document.querySelector('.next').addEventListener('click', function () {
-                    counter++;
-                    showCurrent();
-                }, false);
-
-                document.querySelector('.prev').addEventListener('click', function () {
-                    counter--;
-                    showCurrent();
-                }, false);
-
-            })();
-        });
-
-    </script>
 </head>
 <body>
     <header id="header" class="header-top">
@@ -79,33 +49,16 @@
     @{ Html.RenderAction("_Menu", "PatialView"); }
     <!-- End menu -->
     <!-- Form SEARCH -->
-    @{ Html.RenderAction("_Search", "PatialView"); }
     <!-- End Form SEARCH -->
     <!-- CONTENT -->
     <div class="main-content">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9 col-md-9">
+                <div class="col-lg-12 col-md-12">
                     <div class="row">
                         @RenderBody()
                     </div>
-                </div>
-                <div class="col-md-3 sidebar">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-12 sidebar-ads">
-                            <img class="img-responsive" src="http://ngoaingu.net/themes/client/img/ads1.png" alt="">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div style="margin-bottom: 30px;" class="col-sm-6 col-md-12 sidebar-ads">
-                            <img class="img-responsive" src="http://media.phongtot.vn/xc5tx4cj/ads-3-min.png" alt="">
-                        </div>
-                        <div class="col-sm-6 col-md-12 sidebar-ads">
-                            <img class="img-responsive" src="http://media.phongtot.vn/xc5tx4cj/ads-4-min.png" alt="">
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+                </div>         
             </div>
         </div>
     </div>
