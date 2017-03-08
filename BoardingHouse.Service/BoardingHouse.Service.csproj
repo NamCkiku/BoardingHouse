@@ -50,9 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IService\IRoomService.cs" />
+    <Compile Include="IService\IRoomTypeService.cs" />
     <Compile Include="IService\ISystemSettingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\RoomService.cs" />
+    <Compile Include="Service\RoomTypeService.cs" />
     <Compile Include="Service\SystemSettingService.cs" />
   </ItemGroup>
   <ItemGroup>
