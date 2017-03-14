@@ -213,8 +213,8 @@
     <Content Include="app\Controller\AccountController\headerController.js" />
     <Content Include="app\Controller\RoomController\CreateRoomController.js" />
     <Content Include="app\Controller\SearchController\searchController.js" />
-    <Content Include="app\Directive\apiService.js" />
-    <Content Include="app\Directive\BaseService.js" />
+    <Content Include="app\Service\apiService.js" />
+    <Content Include="app\Service\BaseService.js" />
     <Content Include="bower_components\angular-animate\angular-animate.js" />
     <Content Include="bower_components\angular-animate\angular-animate.min.js" />
     <Content Include="bower_components\angular-animate\index.js" />
@@ -258,14 +258,6 @@
     <Content Include="bower_components\jasny-bootstrap\css\jasny-bootstrap.min.css" />
     <Content Include="bower_components\jasny-bootstrap\js\jasny-bootstrap.js" />
     <Content Include="bower_components\jasny-bootstrap\js\jasny-bootstrap.min.js" />
-    <Content Include="bower_components\jquery-steps\build\jquery.steps.js" />
-    <Content Include="bower_components\jquery-steps\build\jquery.steps.min.js" />
-    <Content Include="bower_components\jquery-steps\demo\css\jquery.steps.css" />
-    <Content Include="bower_components\jquery-steps\demo\css\main.css" />
-    <Content Include="bower_components\jquery-steps\demo\css\normalize.css" />
-    <Content Include="bower_components\jquery-steps\demo\index.html" />
-    <Content Include="bower_components\jquery-steps\demo\tabs.html" />
-    <Content Include="bower_components\jquery-steps\demo\vertical.html" />
     <Content Include="bower_components\jquery\AUTHORS.txt" />
     <Content Include="bower_components\jquery\dist\jquery.js" />
     <Content Include="bower_components\jquery\dist\jquery.min.js" />
@@ -573,12 +565,14 @@
     <Content Include="Content\assets\UIBoostrap\ui-bootstrap.js" />
     <Content Include="Content\assets\UIBoostrap\ui-bootstrap.min.js" />
     <Content Include="Content\css\BoardingHouse.css" />
+    <Content Include="Content\css\Step.css" />
     <Content Include="Content\css\Responsive.css" />
     <Content Include="Content\img\city.jpg" />
     <Content Include="Content\img\floor-elevator.png" />
     <Content Include="Content\img\icon_new_2.png" />
     <Content Include="Content\img\kak.png" />
     <Content Include="Content\img\orn.png" />
+    <Content Include="Content\img\reservas-paso-active.png" />
     <Content Include="Content\img\xphongtot_logo.png.pagespeed.ic.UejSBOLzW8.png" />
     <Content Include="Content\js\bootstrapextend.min.js" />
     <Content Include="Content\js\formValidation.min.js" />
@@ -622,7 +616,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\Service\" />
+    <Folder Include="app\Directive\" />
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
@@ -765,10 +759,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CreateRoom.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="bower_components\jquery-steps\.bower.json" />
-    <Content Include="bower_components\jquery-steps\bower.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_LayoutDetail.cshtml" />

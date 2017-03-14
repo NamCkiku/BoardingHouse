@@ -1,0 +1,35 @@
+﻿
+.panel-pasos .paso.active { color:#fff; background:#00798f url('../../Content/img/reservas-paso-active.png') no-repeat 100% 50% }
+.panel-pasos .paso.active .fa-stack-1x { color:#00798f }
+.panel-fecha ul li a.active { background:#00798f; color:#fff }
+.panel-carrito.active { background:#00798f; border-color:#00798f }
+.row { margin:0; }
+.col-r20 { padding:0 } 
+.col-0 { padding:0 }
+
+/*Reservas*/
+.panel-reservas { position:relative; border:1px solid #d0d0d0; border-radius:6px; } 
+.panel-reservas.disabled,#promoCode.disabled { opacity:.5; cursor:progress } 
+.panel-reservas.disabled .velo,#promoCode.disabled .velo { position:absolute;top:0;left:0;width:100%;height:100%;z-index:1000;opacity:0;filter:alpha(opacity=0); }
+.panel-pasos { overflow:hidden }
+    .panel-pasos .paso { display:inline-block; text-align:center; padding:10px 0; color:#c8c5be; cursor:default; }
+    .panel-pasos.last .paso.active { background-image:none }
+    .panel-pasos.last { text-align:right }
+    .panel-pasos .fa-lg { font-size:14px }
+    .panel-pasos .fa-stack-1x { font-size:16px } 
+    .panel-pasos .paso.active { width:58% }
+    .panel-pasos .paso:not(.active) { width:19%; /*cursor:pointer*/ }
+    .panel-pasos .paso:not(.active) .text { display:none }
+
+@media all and (min-width: 630px) 
+{     
+    .panel-pasos .paso.active { width:32% }
+    .panel-pasos .paso:not(.active) { width:32% }
+    .panel-pasos .paso:not(.active) .text { display:inline }      
+     
+}
+@media all and (min-width: 768px) 
+{ 
+    .panel-pasos .fa-lg { margin-bottom:5px }
+    .panel-pasos .paso .text { font-size:19px; }
+}

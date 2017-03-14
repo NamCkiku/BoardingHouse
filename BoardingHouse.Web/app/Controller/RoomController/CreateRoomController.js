@@ -1,9 +1,10 @@
 ﻿(function (app) {
     app.controller('CreateRoomController', CreateRoomController);
 
-    CreateRoomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope'];
+    CreateRoomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService'];
 
-    function CreateRoomController($scope, blockUI, $modal, $rootScope) {
+    function CreateRoomController($scope, blockUI, $modal, $rootScope, BaseService) {
+        $scope.isActive = '1';
         $scope.tinymceOptions = {
             height: 100,
             // menubar: false,
@@ -49,5 +50,17 @@
         };
         $scope.dzMethods = {
         };
+
+
+        $scope.nextStep = nextStep;
+        function nextStep() {
+            BaseService.ValidatorForm("#formStep1");
+            var frmAdd = angular.element(document.querySelector('#formStep1'));
+            var formValidation = frmAdd.data('formValidation').validate();
+            if (formValidation.isValid()) {
+                $scope.isActive = '2';
+            }
+        }
+
     }
 })(angular.module('myApp'));
