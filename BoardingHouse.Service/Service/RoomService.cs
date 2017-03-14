@@ -35,7 +35,7 @@ namespace BoardingHouse.Service.Service
             throw new NotImplementedException();
         }
 
-        public IEnumerable<RoomEntity> GetAll(SearchEntity filter, int page, int pageSize, out int totalRow)
+        public IEnumerable<RoomEntity> GetAllPaging(SearchEntity filter, int page, int pageSize, out int totalRow)
         {
             DateTime st = filter.StartDate == null ? DateTime.MinValue : filter.StartDate.Value.Date;
             DateTime et = filter.EndDate == null ? DateTime.MaxValue : filter.EndDate.Value.Date.AddDays(1);
@@ -95,6 +95,11 @@ namespace BoardingHouse.Service.Service
         public void Update(Room info)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<Room> GetAll()
+        {
+            return _roomRepository.GetAll();
         }
     }
 }
