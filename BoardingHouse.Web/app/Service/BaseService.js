@@ -176,7 +176,6 @@
         }
 
         return {
-            postData: postData,
             ValidatorForm: ValidatorForm,
             canculateAgeByDOB: canculateAgeByDOB,
             formatDate: formatDate,

@@ -6,35 +6,7 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
 <link href="~/bower_components/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
 <script src="~/bower_components/jasny-bootstrap/js/jasny-bootstrap.js"></script>
-<script>
-    $(document).ready(function () {
-        var form = $("#example-advanced-form");
-        form.steps({
-            headerTag: "h3",
-            bodyTag: "fieldset",
-            transitionEffect: "slideLeft",
-            labels: {
-                cancel: "Hủy",
-                finish: "Hoàn thành",
-                next: "Tiếp Tục",
-                previous: "Quay lại",
-            },
-            onStepChanging: function (event, currentIndex, newIndex) {
-                form.validate().settings.ignore = ":disabled,:hidden";
-                return form.valid();
-            },
-            onFinishing: function (event, currentIndex) {
-                form.validate().settings.ignore = ":disabled";
-                return form.valid();
-            },
-            onFinished: function (event, currentIndex) {
-                alert("Submitted!");
-            }
-        });
-
-
-    });
-</script>
+<link href="~/Content/css/Step.css" rel="stylesheet" />
 <style>
     .wizard > .steps .current a, .wizard > .steps .current a:hover, .wizard > .steps .current a:active {
         background: #33cc66;
@@ -59,180 +31,195 @@
         font-weight: normal;
         font-style: italic;
     }
-    /*.wizard > .steps .number {
-        border-radius: 17px 17px 17px 17px;
-        color: white;
-        display: block;
-        height: 28px;
-        float: left;
-        background: none repeat scroll 0 0 #ccc;
-        text-align: center;
-        width: 30px;
-        font-size: 18px;
-        padding-top: 2px;
-    }*/
+
+    .step label {
+        font-weight: normal;
+    }
 </style>
 <div class="row" ng-controller="CreateRoomController">
     <div class="col-lg-9">
-        <section class="panel">
-            <div class="panel-body">
-                <form id="example-advanced-form" action="#">
-                    <h3>Liên hệ</h3>
-                    <fieldset>
-                        <div class="steps_header">Thông tin liên hệ&nbsp;<span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục)</span></div>
-                        <div class="col-lg-8">
-                            <div class="form-group clearfix">
-                                <label class="col-lg-3 control-label " for="userName">Tên</label>
-                                <div class="col-lg-9">
-                                    <input class="form-control required" id="userName" name="userName" type="text">
-                                </div>
-                            </div>
-                            <div class="form-group clearfix">
-                                <label class="col-lg-3 control-label " for="password"> Email *</label>
-                                <div class="col-lg-9">
-                                    <input id="password" name="password" type="text" class="required form-control">
-                                </div>
-                            </div>
-                            <div class="form-group clearfix">
-                                <label class="col-lg-3 control-label " for="confirm">Số điện thoại *</label>
-                                <div class="col-lg-9">
-                                    <input id="phone" name="phone" type="text" class="required form-control">
-                                </div>
-                            </div>
-                            <div class="form-group clearfix">
-                                <label class="col-lg-3 control-label " for="confirm">Địa chỉ *</label>
-                                <div class="col-lg-9">
-                                    <input id="adress" name="adress" type="text" class="required form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
-                                <div>
-                                    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
-                                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </fieldset>
-                    <h3>Nội dung tin</h3>
-                    <fieldset>
-                        <div class="steps_header">Nội dung tin&nbsp;<span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục)</span></div>
-                        <div class="col-lg-8">
-                            <div class="form-group clearfix">
-                                <label class="col-lg-3 control-label " for="userName">Chuyên Mục</label>
-                                <div class="col-lg-9">
-                                    <select id="search_room_type" class="form-control" name="type">
-                                        <option value="">--Chọn loại tin--</option>
-                                        <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                                        <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                                        <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                                        <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                                        <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group clearfix">
-                                <label class="col-lg-3 control-label " for="userName">Tiêu đề:</label>
-                                <div class="col-lg-9">
-                                    <input class="form-control required" id="userName" name="userName" type="text">
-                                </div>
-                            </div>
-                            <div class="form-group clearfix">
-                                <label class="col-lg-3 control-label " for="userName">Giá tiền:</label>
-                                <div class="col-lg-9">
-                                    <input class="form-control required" id="userName" name="userName" type="text">
-                                </div>
-                            </div>
-                            <div class="form-group clearfix">
-                                <label class="col-lg-3 control-label " for="userName">Diện tích:</label>
-                                <div class="col-lg-9">
-                                    <input class="form-control required" id="userName" name="userName" type="text">
-                                </div>
-                            </div>
-                            <div class="form-group clearfix">
-                                <label class="col-lg-3 control-label " for="userName">Tiêu đề seo:</label>
-                                <div class="col-lg-9">
-                                    <input class="form-control required" id="userName" name="userName" type="text">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group clearfix">
-                                <div class="col-lg-12 no-padding">
-                                    <select id="search_room_type" class="form-control" name="type">
-                                        <option value="">--Chọn Tỉnh/Thành Phố--</option>
-                                        <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                                        <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                                        <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                                        <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                                        <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group clearfix">
-                                <div class="col-lg-12 no-padding">
-                                    <select id="search_room_type" class="form-control" name="type">
-                                        <option value="">--Chọn Quận/Huyện--</option>
-                                        <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                                        <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                                        <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                                        <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                                        <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group clearfix">
-                                <div class="col-lg-12 no-padding">
-                                    <select id="search_room_type" class="form-control" name="type">
-                                        <option value="">--Chọn Xã/Phường--</option>
-                                        <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                                        <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                                        <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                                        <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                                        <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group clearfix">
-                                <div class="col-lg-12 no-padding">
-                                    <input class="form-control required" id="userName" name="userName" type="text">
-                                </div>
-                            </div>
-                            <div class="form-group clearfix">
-                                <div class="col-lg-12 no-padding">
-                                    <input class="form-control required" id="userName" name="userName" type="text">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12" style="padding-bottom:15px;">
-                            <label class="col-lg-2 control-label " for="userName">Nội Dung</label>
-                            <div class="col-lg-10 no-padding">
-                                <textarea class="form-control"></textarea>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </fieldset>
-                    <h3>Hình ảnh</h3>
-                    <fieldset>
-                        <div class="steps_header">Hình ảnh & Thông tin thêm&nbsp;<span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục)</span></div>
-                        <div class="col-lg-12">
-                            <label class="col-lg-2 control-label " for="userName">Nội Dung</label>
-                            <div class="col-lg-10 no-padding">
-                                <ng-dropzone class="dropzone" options="dzOptions" callbacks="dzCallbacks" methods="dzMethods"></ng-dropzone>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <h3>Thông tin thêm</h3>
-                    <fieldset>
-                    </fieldset>
-                    <h3>Bản đồ</h3>
-                    <fieldset></fieldset>
-                </form>
+        <div class="panel panel-reservas panel-pasos" style="margin-top:20px;">
+            <div class="paso active col-lg-4" ng-class="{'active' : isActive=='1'}" id="paso1" title="Find the best deal">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-inverse fa-stack-1x">1</i>
+                </span>
+                <span class="text">Liên Hệ</span>
             </div>
-        </section>
+            <div class="paso col-lg-4" ng-class="{'active' : isActive=='2'}" id="paso2" title="Make a booking">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-inverse fa-stack-1x">2</i>
+                </span>
+                <span class="text">Nội dung</span>
+            </div>
+            <div class="paso col-lg-4" ng-class="{'active' : isActive=='3'}" id="paso3" title="Confirm your order">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-inverse fa-stack-1x">3</i>
+                </span>
+                <span class="text">Xác nhận</span>
+            </div>
+        </div>
+        <div class="step step1" id="formStep1" ng-show="isActive=='1'">
+            <div class="steps_header">Thông tin liên hệ&nbsp;<span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục)</span></div>
+            <div class="col-lg-8">
+                <div class="form-group clearfix">
+                    <label class="col-lg-3 control-label " for="userName">Tên</label>
+                    <div class="col-lg-9">
+                        <input class="form-control"
+                               data-fv-notempty="true"
+                               data-fv-notempty-message="Vui lòng nhập tiêu đề"
+                               id="userName"
+                               name="userName" type="text">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-lg-3 control-label " for="password"> Email *</label>
+                    <div class="col-lg-9">
+                        <input id="password"
+                               data-fv-stringlength="true"
+                               data-fv-stringlength-max="250"
+                               data-fv-stringlength-message="Tiêu đề chỉ được 250 ký tự"
+                               data-fv-notempty="true"
+                               data-fv-notempty-message="Vui lòng nhập tiêu đề"
+                               name="password" type="text"
+                               class="required form-control">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-lg-3 control-label " for="confirm">Số điện thoại *</label>
+                    <div class="col-lg-9">
+                        <input id="phone" name="phone" type="text" class="required form-control">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-lg-3 control-label " for="confirm">Địa chỉ *</label>
+                    <div class="col-lg-9">
+                        <input id="adress" name="adress" type="text" class="required form-control">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <button class="btn btn-success btn-sm right" ng-click="nextStep();">Tiếp Tục</button>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                    <div>
+                        <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="step step2" ng-show="isActive=='2'">
+            <div class="steps_header">Nội dung tin&nbsp;<span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục)</span></div>
+            <div class="col-lg-8">
+                <div class="form-group clearfix">
+                    <label class="col-lg-3 control-label " for="userName">Chuyên Mục</label>
+                    <div class="col-lg-9">
+                        <select id="search_room_type" class="form-control" name="type">
+                            <option value="">--Chọn loại tin--</option>
+                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-lg-3 control-label " for="userName">Tiêu đề:</label>
+                    <div class="col-lg-9">
+                        <input class="form-control required" id="userName" name="userName" type="text">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-lg-3 control-label " for="userName">Giá tiền:</label>
+                    <div class="col-lg-9">
+                        <input class="form-control required" id="userName" name="userName" type="text">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-lg-3 control-label " for="userName">Diện tích:</label>
+                    <div class="col-lg-9">
+                        <input class="form-control required" id="userName" name="userName" type="text">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-lg-3 control-label " for="userName">Tiêu đề seo:</label>
+                    <div class="col-lg-9">
+                        <input class="form-control required" id="userName" name="userName" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group clearfix">
+                    <div class="col-lg-12 no-padding">
+                        <select id="search_room_type" class="form-control" name="type">
+                            <option value="">--Chọn Tỉnh/Thành Phố--</option>
+                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-lg-12 no-padding">
+                        <select id="search_room_type" class="form-control" name="type">
+                            <option value="">--Chọn Quận/Huyện--</option>
+                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-lg-12 no-padding">
+                        <select id="search_room_type" class="form-control" name="type">
+                            <option value="">--Chọn Xã/Phường--</option>
+                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
+                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
+                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
+                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-lg-12 no-padding">
+                        <input class="form-control required" id="userName" name="userName" type="text">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-lg-12 no-padding">
+                        <input class="form-control required" id="userName" name="userName" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12" style="padding-bottom:15px;">
+                <label class="col-lg-2 control-label " for="userName">Nội Dung</label>
+                <div class="col-lg-10 no-padding">
+                    <textarea class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="step step3" ng-show="isActive=='3'">
+            <div class="steps_header">Hình ảnh & Thông tin thêm&nbsp;<span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục)</span></div>
+            <div class="col-lg-12">
+                <label class="col-lg-2 control-label " for="userName">Nội Dung</label>
+                <div class="col-lg-10 no-padding">
+                    <ng-dropzone class="dropzone" options="dzOptions" callbacks="dzCallbacks" methods="dzMethods"></ng-dropzone>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-lg-3">
 
