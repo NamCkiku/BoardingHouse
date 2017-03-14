@@ -1,8 +1,10 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using BoardingHouse.Administrator.Infrastructure.Core;
 using BoardingHouse.Entities.Models;
 using BoardingHouse.Repositoty.Infrastructure;
 using BoardingHouse.Repositoty.Repositories;
+using BoardingHouse.Service.IService;
 using BoardingHouse.Service.Service;
 using Microsoft.Owin;
 using Owin;
@@ -18,6 +20,12 @@ namespace BoardingHouse.Administrator
         {
             ConfigureAuth(app);
             ConfigAutofac(app);
+            var service = ServiceFactory.Get<ISystemSettingService>();
+            if (service != null)
+            {
+                service.LoadDefaultValuesSetings();
+                service.LoadSystemSettingConfiguration();
+            }
         }
         private void ConfigAutofac(IAppBuilder app)
         {

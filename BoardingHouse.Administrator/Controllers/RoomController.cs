@@ -30,7 +30,7 @@ namespace BoardingHouse.Administrator.Controllers
                 if (ValidateRequestHeader(request))
                 {
                     int totalRow = 0;
-                    var data = _roomService.GetAll(filter, page, pageSize, out totalRow);
+                    var data = _roomService.GetAllPaging(filter, page, pageSize, out totalRow);
                     var paginationSet = new PaginationSet<RoomEntity>()
                     {
                         Items = data,

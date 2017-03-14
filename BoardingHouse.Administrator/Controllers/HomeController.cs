@@ -18,8 +18,8 @@ namespace BoardingHouse.Administrator.Controllers
         }
         public ActionResult Home()
         {
-            _settingService.LoadDefaultValuesSetings();
-            _settingService.LoadSystemSettingConfiguration();
+            //_settingService.LoadDefaultValuesSetings();
+            //_settingService.LoadSystemSettingConfiguration();
             return View();
         }
     }
