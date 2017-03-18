@@ -45,7 +45,9 @@
         })(jQuery);
     </script>
 </head>
+@using BoardingHouse.Web.AntiForgeryToken
 <body>
+    <input id="antiForgeryToken" value="@AntiForgeryExtension.GetTokenHeaderValue()" type="hidden" />
     <header id="header" class="header-top">
         @{ Html.RenderAction("_Header", "PatialView"); }
     </header>

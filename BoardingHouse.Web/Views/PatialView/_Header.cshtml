@@ -1,4 +1,7 @@
-﻿<div class="container" ng-controller="headerController">
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using BoardingHouse.Web.Models;
+<div class="container" ng-controller="headerController">
     <div class="row">
         <div class="col-md-12">
             <div class="pull-left">
@@ -7,15 +10,30 @@
                 </a>
             </div>
             <div class="pull-right hidden-xs">
-                <div class="header-top-avatar">
-                    <img class="img-responsive" src="http://phongtot.vn/themes/client/img/xavatar.png.pagespeed.ic.Hl7NHK7TGA.png">
-                </div>
-                <div class="header-top-user">
-                    <div class="user-login"><a class="load_modal_login" href="" ng-click="openLoginModal();">Đăng nhập</a></div>
-                    <div class="user-register load_modal_register">
-                        <a href="javascript: void(0);" ng-click="openRegisterModal();">Tạo tài khoản</a>
+                @if (Request.IsAuthenticated)
+                {
+                    var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                    var currentUser = manager.FindById(User.Identity.GetUserId());
+                    <div class="header-top-avatar">
+                        <img class="img-responsive" src="@currentUser.Avatar">
                     </div>
-                </div>
+                    <div class="header-top-user">
+                        <div class="user-login"><a class="load_modal_login" href="" ng-click="LogOut();">Đăng Xuất</a></div>
+                    </div>
+                }
+                else
+                {
+                    <div class="header-top-avatar">
+                        <img class="img-responsive" src="http://phongtot.vn/themes/client/img/xavatar.png.pagespeed.ic.Hl7NHK7TGA.png">
+                    </div>
+                    <div class="header-top-user">
+                        <div class="user-login"><a class="load_modal_login" href="" ng-click="openLoginModal();">Đăng nhập</a></div>
+                        <div class="user-register load_modal_register">
+                            <a href="javascript: void(0);" ng-click="openRegisterModal();">Tạo tài khoản</a>
+                        </div>
+                    </div>
+                }
+
             </div>
         </div>
     </div>
@@ -46,11 +64,32 @@
                         <div class="line r"></div>
                     </div>
                     <div class="form loginBox">
-                        <div id="">
-                            <input id="email" class="form-control" type="text" placeholder="Tên tài khoản" name="email">
-                            <input id="password" class="form-control" type="password" placeholder="Mật khẩu" name="password">
-                            <input class="btn btn-default btn-login" type="button" value="Đăng Nhập">
+                        <div id="formLogin" class="">
+                            <div class="col-lg-12 form-group no-padding">
+                                <input id="email"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập Email"
+                                       data-fv-emailaddress="true"
+                                       data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                       ng-model="account.Email"
+                                       class="form-control"
+                                       type="text"
+                                       placeholder="Tên tài khoản"
+                                       name="email">
+                            </div>
+                            <div class="col-lg-12 form-group no-padding">
+                                <input id="password"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                       ng-model="account.Password"
+                                       class="form-control"
+                                       type="password"
+                                       placeholder="Mật khẩu"
+                                       name="password">
+
+                            </div>
                         </div>
+                        <input class="btn btn-default btn-login" ng-click="ok();" type="button" value="Đăng Nhập">
                     </div>
                 </div>
             </div>
@@ -95,11 +134,43 @@
                         <div class="line r"></div>
                     </div>
                     <div class="form loginBox">
-                        <div id="">
-                            <input id="email" class="form-control" type="text" placeholder="Tên tài khoản" name="email">
-                            <input id="password" class="form-control" type="password" placeholder="Mật khẩu" name="password">
-                            <input class="btn btn-default btn-login" type="button" value="Đăng Nhập">
+                        <div id="formRegister" class="">
+                            <div class="col-lg-12 form-group no-padding">
+                                <input id="email"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập Email"
+                                       data-fv-emailaddress="true"
+                                       data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                       ng-model="accountRegister.Email"
+                                       class="form-control"
+                                       type="text"
+                                       placeholder="Tên tài khoản"
+                                       name="email">
+                            </div>
+                            <div class="col-lg-12 form-group no-padding">
+                                <input id="password"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                       ng-model="accountRegister.Password"
+                                       class="form-control"
+                                       type="password"
+                                       placeholder="Mật khẩu"
+                                       name="password">
+
+                            </div>
+                            <div class="col-lg-12 form-group no-padding">
+                                <input id="ConfirmPassword"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                       ng-model="accountRegister.ConfirmPassword"
+                                       class="form-control"
+                                       type="password"
+                                       placeholder="Nhập lại mật khẩu"
+                                       name="ConfirmPassword">
+
+                            </div>
                         </div>
+                        <input class="btn btn-default btn-login" ng-click="ok();" type="button" value="Đăng kí">
                     </div>
                 </div>
             </div>
@@ -134,6 +205,7 @@
         width: 240px;
         text-align: center;
     }
+
     .login .modal-dialog {
         width: 350px;
     }
