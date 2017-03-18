@@ -53,14 +53,42 @@
 
 
         $scope.nextStep = nextStep;
-        function nextStep() {
-            BaseService.ValidatorForm("#formStep1");
-            var frmAdd = angular.element(document.querySelector('#formStep1'));
-            var formValidation = frmAdd.data('formValidation').validate();
-            if (formValidation.isValid()) {
+        function nextStep(item) {
+            if (item == 1) {
+                //BaseService.ValidatorForm("#formStep1");
+                //var frmAdd = angular.element(document.querySelector('#formStep1'));
+                //var formValidation = frmAdd.data('formValidation').validate();
+                //if (formValidation.isValid()) {
+                    
+                //}
                 $scope.isActive = '2';
             }
-        }
+            else if (item == 2) {
+                $scope.isActive = '3';
+            }
+            else {
+                $scope.isActive = '4';
+            }
 
+        }
+        $scope.previousStep = previousStep;
+        function previousStep(item) {
+            if (item == 1) {
+                //BaseService.ValidatorForm("#formStep1");
+                //var frmAdd = angular.element(document.querySelector('#formStep1'));
+                //var formValidation = frmAdd.data('formValidation').validate();
+                //if (formValidation.isValid()) {
+
+                //}
+                $scope.isActive = '1';
+            }
+            else if (item == 2) {
+                $scope.isActive = '2';
+            }
+            else {
+                $scope.isActive = '3';
+            }
+
+        }
     }
 })(angular.module('myApp'));
