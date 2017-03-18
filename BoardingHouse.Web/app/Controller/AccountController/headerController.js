@@ -1,9 +1,18 @@
 ﻿(function (app) {
     app.controller('headerController', headerController);
 
-    headerController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope'];
+    headerController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'apiService', '$window'];
 
-    function headerController($scope, blockUI, $modal, $rootScope) {
+    function headerController($scope, blockUI, $modal, $rootScope, BaseService, apiService, $window) {
+        $scope.account = {
+            Email: "",
+            Password: "",
+        }
+        $scope.accountRegister = {
+            Email: "",
+            Password: "",
+            ConfirmPassword: ""
+        }
         $scope.openLoginModal = openLoginModal;
         function openLoginModal() {
             $scope.modalInstance = $modal.open({
@@ -16,13 +25,25 @@
                 size: 'md'
             });
             $scope.ok = function () {
-                $scope.modalInstance.dismiss('cancel');
+                BaseService.ValidatorForm("#formLogin");
+                var frmAdd = angular.element(document.querySelector('#formLogin'));
+                var formValidation = frmAdd.data('formValidation').validate();
+                if (formValidation.isValid()) {
+                    apiService.post('Account/Login', true, $scope.account, function (respone) {
+                        if (respone.data.success == true) {
+                            $window.location.reload();
+                            $scope.modalInstance.dismiss('cancel');
+                        } else {
+                            alert(respone.data.message);
+                        }
+                    }, function (respone) {
+                        console.log('Load product failed.');
+                    });
+                }
             };
             $scope.close = function () {
                 $scope.modalInstance.dismiss('cancel');
             };
-            $scope.modalInstance.rendered.then(function (response) {
-            })
             $scope.modalInstance.result.then(function (response) {
 
             }, function () {
@@ -40,16 +61,43 @@
                 size: 'md'
             });
             $scope.ok = function () {
-                $scope.modalInstance.dismiss('cancel');
+                BaseService.ValidatorForm("#formRegister");
+                var frmAdd = angular.element(document.querySelector('#formRegister'));
+                var formValidation = frmAdd.data('formValidation').validate();
+                if (formValidation.isValid()) {
+                    apiService.post('Account/Register', true, $scope.accountRegister, function (respone) {
+                        if (respone.data.success == true) {
+                            $window.location.reload();
+                            $scope.modalInstance.dismiss('cancel');
+                        } else {
+                        }
+                    }, function (respone) {
+                        console.log('Load product failed.');
+                    });
+                }
             };
             $scope.close = function () {
                 $scope.modalInstance.dismiss('cancel');
             };
-            $scope.modalInstance.rendered.then(function (response) {
-            })
             $scope.modalInstance.result.then(function (response) {
 
             }, function () {
+            });
+        }
+
+
+
+        $scope.LogOut = LogOut;
+        function LogOut() {
+            apiService.post('Account/LogOff', true, null, function (respone) {
+                if (respone.data.success == true) {
+                    $window.location.reload();
+                    $scope.modalInstance.dismiss('cancel');
+                } else {
+                    alert("Log Out Không thành công");
+                }
+            }, function (respone) {
+                console.log('Load product failed.');
             });
         }
     }
