@@ -16,6 +16,9 @@ namespace BoaringHouse.API.Mappings
             {
                 config.CreateMap<Room, RoomViewModel>();
                 config.CreateMap<RoomType, RoomTypeViewModel>();
+                config.CreateMap<Province, ProvinceViewModel>();
+                config.CreateMap<District, DistrictViewModel>();
+                config.CreateMap<Ward, WardViewModel>();
             });
 
         }

@@ -14,6 +14,9 @@
         }
         $scope.data = {
             lstRoomType: [],
+            lstProvince: [],
+            lstDistrict: [],
+            lstWard: []
         }
         $scope.tinymceOptions = {
             height: 100,
@@ -60,7 +63,7 @@
         };
         $scope.dzMethods = {
         };
-        function load() {
+        function GetAllRoomType() {
             apiService.post('Management/GetAllRoomType', true, null, function (respone) {
                 if (respone.data.success == true) {
                     console.log(respone.data);
@@ -68,10 +71,40 @@
                 } else {
                 }
             }, function (respone) {
-                console.log('Load product failed.');
             });
         }
-        load();
+        function GetAllProvince() {
+            apiService.post('Management/GetAllProvince', true, null, function (respone) {
+                if (respone.data.success == true) {
+                    console.log(respone.data);
+                    $scope.data.lstProvince = respone.data.lstData;
+                } else {
+                }
+            }, function (respone) {
+            });
+        }
+        $scope.GetAllDistrict = GetAllDistrict;
+        function GetAllDistrict(id) {
+            apiService.post('Management/GetAllDistrict', true, { id: id }, function (respone) {
+                if (respone.data.success == true) {
+                    console.log(respone.data);
+                    $scope.data.lstDistrict = respone.data.lstData;
+                } else {
+                }
+            }, function (respone) {
+            });
+        }
+        $scope.GetAllWard = GetAllWard;
+        function GetAllWard(id) {
+            apiService.post('Management/GetAllWard', true, { id: id }, function (respone) {
+                if (respone.data.success == true) {
+                    console.log(respone.data);
+                    $scope.data.lstWard = respone.data.lstData;
+                } else {
+                }
+            }, function (respone) {
+            });
+        }     
         $scope.GetUserLogin = GetUserLogin;
         function GetUserLogin() {
             apiService.post('Home/GetUserLogin', true, null, function (respone) {
@@ -121,7 +154,6 @@
                 console.log('Load product failed.');
             });
         }
-
         $scope.nextStep = nextStep;
         function nextStep(item) {
             if (item == 1) {
@@ -159,5 +191,10 @@
             }
 
         }
+        function load() {
+            GetAllProvince();
+            GetAllRoomType();
+        }
+        load();
     }
 })(angular.module('myApp'));

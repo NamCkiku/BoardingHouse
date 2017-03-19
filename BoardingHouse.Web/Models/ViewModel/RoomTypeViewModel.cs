@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BoaringHouse.Web.Models.ViewModel
+namespace BoardingHouse.Web.Models.ViewModel
 {
     public class RoomTypeViewModel
     {
