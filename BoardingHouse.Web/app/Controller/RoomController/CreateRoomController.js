@@ -1,12 +1,15 @@
 ﻿(function (app) {
     app.controller('CreateRoomController', CreateRoomController);
 
-    CreateRoomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'apiService', '$window'];
+    CreateRoomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'apiService', '$window', 'fileUploadService'];
 
-    function CreateRoomController($scope, blockUI, $modal, $rootScope, BaseService, apiService, $window) {
+    function CreateRoomController($scope, blockUI, $modal, $rootScope, BaseService, apiService, $window, fileUploadService) {
         $scope.isActive = '1';
         $scope.rooms = {
-
+            MoreInfomations: {
+            },
+            Image: "No.jpg",
+            Alias:"No"
         }
         $scope.account = {
             Email: "",
@@ -104,7 +107,7 @@
                 }
             }, function (respone) {
             });
-        }     
+        }
         $scope.GetUserLogin = GetUserLogin;
         function GetUserLogin() {
             apiService.post('Home/GetUserLogin', true, null, function (respone) {
@@ -154,6 +157,13 @@
                 console.log('Load product failed.');
             });
         }
+
+
+        var roomImage = null;
+        $scope.prepareFiles = prepareFiles;
+        function prepareFiles($files) {
+            roomImage = $files;
+        }
         $scope.nextStep = nextStep;
         function nextStep(item) {
             if (item == 1) {
@@ -165,7 +175,22 @@
                 }
             }
             else if (item == 2) {
-                $scope.isActive = '3';
+                BaseService.ValidatorForm("#formStep2");
+                var frmAdd = angular.element(document.querySelector('#formStep2'));
+                var formValidation = frmAdd.data('formValidation').validate();
+                if (formValidation.isValid()) {
+                    apiService.post('Management/CreateRoom', true, $scope.rooms, function (respone) {
+                        if (respone.data.success == true) {
+                            if (roomImage) {
+                                fileUploadService.uploadImage(roomImage, 1003);
+                            }
+                            $scope.isActive = '3';
+                        } else {
+                        }
+                    }, function (respone) {
+                        console.log('Load product failed.');
+                    });
+                }
             }
             else {
                 $scope.isActive = '4';

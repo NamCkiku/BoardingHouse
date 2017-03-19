@@ -23,11 +23,11 @@ namespace BoardingHouse.Web.Models.ViewModel
 
         public string MoreImages { get; set; }
 
-        public int WardID { get; set; }
+        public int? WardID { get; set; }
 
-        public int DistrictID { get; set; }
+        public int? DistrictID { get; set; }
 
-        public int ProvinceID { get; set; }
+        public int? ProvinceID { get; set; }
         public string ProvinceName { get; set; }
 
         public double? Acreage { get; set; }
@@ -46,8 +46,9 @@ namespace BoardingHouse.Web.Models.ViewModel
 
         public bool Status { get; set; }
 
-        public double Lat { get; set; }
+        public double? Lat { get; set; }
 
-        public double Lng { get; set; }
+        public double? Lng { get; set; }
+        public virtual MoreInfomationViewModel MoreInfomations { get; set; }
     }
 }

@@ -14,15 +14,69 @@ namespace BoardingHouse.Service.Service
     public class RoomService : IRoomService
     {
         private readonly IRoomRepository _roomRepository;
+        private readonly IMoreInfomationRepository _moreInfomationRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public RoomService(IRoomRepository roomRepository, IUnitOfWork unitOfWork)
+        public RoomService(IRoomRepository roomRepository, IMoreInfomationRepository moreInfomationRepository, IUnitOfWork unitOfWork)
         {
             this._roomRepository = roomRepository;
+            this._moreInfomationRepository = moreInfomationRepository;
             this._unitOfWork = unitOfWork;
         }
-        public Room Add(Room info)
+        public Room Add(RoomEntity info)
         {
-            throw new NotImplementedException();
+            Room resultRoom = new Room();
+            try
+            {
+                if (info != null)
+                {
+                    var room = new Room
+                    {
+                        RoomName = info.RoomName,
+                        Alias = info.Alias,
+                        Phone = info.Phone,
+                        Address = info.Address,
+                        RoomTypeID = info.RoomTypeID,
+                        Image = info.Image,
+                        MoreImages = info.MoreImages,
+                        WardID = info.WardID,
+                        DistrictID = info.DistrictID,
+                        ProvinceID = info.ProvinceID,
+                        Acreage = info.Acreage,
+                        Price = info.Price,
+                        Lat = info.Lat,
+                        Lng = info.Lng,
+                        Description = info.Description,
+                        Content = info.Content,
+                        CreateDate = DateTime.Now,
+                        Status = false,
+                    };
+                    if (info.MoreInfomations != null)
+                    {
+                        MoreInfomation modal = new MoreInfomation
+                        {
+                            BedroomNumber = info.MoreInfomations.BedroomNumber,
+                            Compass = info.MoreInfomations.Compass,
+                            Convenient = info.MoreInfomations.Convenient,
+                            ElectricPrice = info.MoreInfomations.ElectricPrice,
+                            FloorNumber = info.MoreInfomations.FloorNumber,
+                            ToiletNumber = info.MoreInfomations.ToiletNumber,
+                            WaterPrice = info.MoreInfomations.WaterPrice
+                        };
+                        var result = _moreInfomationRepository.Add(modal);
+                        _unitOfWork.Commit();
+                        room.MoreInfomationID = result.MoreInfomationID;
+                    }
+                    resultRoom = _roomRepository.Add(room);
+                    _unitOfWork.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+                string FunctionName = string.Format("AddRoom('{0}')", info);
+                Common.Logs.LogCommon.WriteError(ex.ToString(), FunctionName);
+                return null;
+            }
+            return resultRoom;
         }
 
         public bool ChangeStatus(int id)
@@ -78,13 +132,20 @@ namespace BoardingHouse.Service.Service
             }
             catch (Exception ex)
             {
-                throw ex;
+                string FunctionName = string.Format("AddRoom('{0}')", "");
+                Common.Logs.LogCommon.WriteError(ex.ToString(), FunctionName);
+                return null;
             }
             return lstroom;
         }
         public Room GetById(int id)
         {
-            throw new NotImplementedException();
+            var room = new Room();
+            if (id > 0)
+            {
+                room = _roomRepository.GetSingleById(id);
+            }
+            return room;
         }
 
         public void SaveChanges()
@@ -94,7 +155,8 @@ namespace BoardingHouse.Service.Service
 
         public void Update(Room info)
         {
-            throw new NotImplementedException();
+            _roomRepository.Update(info);
+            _unitOfWork.Commit();
         }
 
         public IEnumerable<Room> GetAll()

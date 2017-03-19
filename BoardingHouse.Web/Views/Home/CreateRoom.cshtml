@@ -165,13 +165,19 @@
             </div>
             <div class="clearfix"></div>
         </div>
-        <div class="step step2" ng-show="isActive=='2'">
+        <div class="step step2" id="formStep2" ng-show="isActive=='2'">
             <div class="steps_header">Nội dung tin&nbsp;<span class="steps_header_notice">(Vui lòng điền đầy đủ tất cả các mục)</span></div>
             <div class="col-lg-8">
                 <div class="form-group clearfix">
                     <label class="col-lg-3 control-label " for="userName">Danh Mục</label>
                     <div class="col-lg-9 no-padding">
-                        <select id="search_room_type" ng-model="rooms.RoomTypeID" ng-options="option.RoomTypeID as option.RoomTypeName for option in data.lstRoomType" class="form-control" name="type">
+                        <select id="search_room_type"
+                                ng-model="rooms.RoomTypeID"
+                                ng-options="option.RoomTypeID as option.RoomTypeName for option in data.lstRoomType"
+                                class="form-control"
+                                data-fv-notempty="true"
+                                data-fv-notempty-message="Vui lòng chọn danh mục"
+                                name="Roomtype">
                             <option value="">--Chọn danh mục--</option>
                         </select>
                     </div>
@@ -180,9 +186,14 @@
                     <label class="col-lg-3 control-label " for="userName">Tiêu đề:</label>
                     <div class="col-lg-9  no-padding">
                         <input class="form-control"
-                               id="userName"
+                               data-fv-stringlength-min="20"
+                               data-fv-stringlength-message="Tiêu đề phải dài hơn 20 và dưới 250 ký tự"
+                               data-fv-stringlength-max="250"
+                               ng-model="rooms.RoomName"
+                               data-fv-notempty="true"
+                               data-fv-notempty-message="Vui lòng nhập Email"
                                placeholder="Tiêu đề phải dài hơn 20 kí tự"
-                               name="userName" type="text">
+                               name="title" type="text">
                     </div>
                 </div>
                 <div class="form-group clearfix">
@@ -196,7 +207,8 @@
                             <div>
                                 <span class="btn btn-success btn-sm btn-file">
                                     <span class="fileinput-new"><i class="fa fa-cloud-upload" style="margin-right:5px;" aria-hidden="true"></i>Chọn ảnh</span>
-                                    <span class="fileinput-exists"><i class="fa fa-wrench" style="margin-right:5px;" aria-hidden="true"></i>Thay đổi</span><input type="file" name="...">
+                                    <span class="fileinput-exists"><i class="fa fa-wrench" style="margin-right:5px;" aria-hidden="true"></i>Thay đổi</span>
+                                    <input type="file" name="Image" ng-file-select="prepareFiles($files)">
                                 </span>
                                 <a href="#" class="btn btn-danger btn-sm fileinput-exists" data-dismiss="fileinput"><i class="fa fa-trash-o" aria-hidden="true" style="margin-right:5px;"></i>Xóa</a>
                             </div>
@@ -212,13 +224,14 @@
             <div class="col-lg-4">
                 <div class="form-group clearfix">
                     <div class="col-lg-12 no-padding">
-                        <select class="form-control" name="type" ng-model="rooms.provinceid" ng-change="GetAllDistrict(rooms.provinceid)" ng-options="option.provinceid as option.name for option in data.lstProvince">
+                        <select class="form-control"
+                                data-fv-notempty="true"
+                                data-fv-notempty-message="Vui lòng chọn Tỉnh/Thành Phố"
+                                name="provinceid"
+                                ng-model="rooms.provinceid"
+                                ng-change="GetAllDistrict(rooms.provinceid)"
+                                ng-options="option.provinceid as option.name for option in data.lstProvince">
                             <option value="">--Chọn Tỉnh/Thành Phố--</option>
-                            @*<option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>*@
                         </select>
                     </div>
                 </div>
@@ -233,29 +246,38 @@
                     <div class="col-lg-12 no-padding">
                         <select id="search_room_type" ng-model="rooms.wardid" ng-options="option.wardid as option.name for option in data.lstWard" class="form-control" name="type">
                             <option value="">--Chọn Xã/Phường--</option>
-                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group clearfix">
                     <div class="col-lg-12 input-group">
                         <input class="form-control"
-                               id="userName"
+                               id="price"
+                               data-fv-notempty="true"
+                               data-fv-notempty-message="Vui lòng nhập giá tiền"
+                               data-fv-integer="true"
+                               ng-model="rooms.Price"
+                               data-fv-integer-message="Bạn phải nhập kiểu số"
+                               min="0" max="99999999999999999"
+                               data-fv-between-message="Gía tiền phải lớn hơn 0"
                                placeholder="Giá tiền"
-                               name="userName" type="number">
+                               name="price" type="number">
                         <span class="input-group-addon">đ/tháng</span>
                     </div>
                 </div>
                 <div class="form-group clearfix">
                     <div class="col-lg-12 input-group">
                         <input class="form-control"
-                               id="userName"
+                               id="Acreage"
+                               ng-model="rooms.Acreage"
+                               data-fv-integer="true"
+                               data-fv-integer-message="Bạn phải nhập kiểu số"
+                               data-fv-notempty="true"
+                               data-fv-notempty-message="Vui lòng nhập diện tích"
+                               min="0" max="99999999999999999"
+                               data-fv-between-message="Gía tiền phải lớn hơn 0"
                                placeholder="Diện tích"
-                               name="userName" type="text">
+                               name="Acreage" type="number">
                         <span class="input-group-addon">M<sup>2</sup></span>
                     </div>
                 </div>
@@ -265,14 +287,14 @@
                     <label class="col-lg-2 control-label " for="userName">Tag sản phẩm:</label>
                     <div class="col-lg-10 no-padding">
                         <input class="form-control"
-                               id="userName"
+                               ng-model="rooms.Alias"
                                placeholder="Sử dụng dấu phẩy để phân biệt giữa các tags"
-                               name="userName" type="text">
+                               name="tag" type="text">
                     </div>
                 </div>
                 <label class="col-lg-2 control-label " for="userName">Nội Dung</label>
                 <div class="col-lg-10 no-padding">
-                    <textarea class="form-control"></textarea>
+                    <textarea ng-model="rooms.Description" class="form-control"></textarea>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -281,39 +303,38 @@
                 <div class="form-group clearfix">
                     <label class="col-lg-3 control-label " for="userName">Tầng</label>
                     <div class="col-lg-9  no-padding">
-                        <select id="search_room_type" class="form-control" name="type">
+                        <select id="search_room_type" ng-model="rooms.MoreInfomations.FloorNumber" class="form-control">
                             <option value="">--Chọn Tầng--</option>
-                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                            <option value="Tầng 1">Tầng 1</option>
+                            <option value="Tầng 2">Tầng 2</option>
+                            <option value="Tầng 3">Tầng 3</option>
+                            <option value="Tầng 4">Tầng 4</option>
+                            <option value="Tầng 5">Tầng 5</option>
+                            <option value="Chưa xác định">Chưa xác định</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group clearfix">
                     <label class="col-lg-3 control-label " for="userName">Vệ Sinh</label>
                     <div class="col-lg-9  no-padding">
-                        <select id="search_room_type" class="form-control" name="type">
+                        <select id="search_room_type" ng-model="rooms.MoreInfomations.ToiletNumber" class="form-control">
                             <option value="">--Vệ Sinh--</option>
-                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                            <option value="Khép kín">Khép kín</option>
+                            <option value="Chung">Chung</option>
+                            <option value="Chưa xác định">Chưa xác định</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group clearfix">
                     <label class="col-lg-3 control-label " for="userName">Số người ở</label>
                     <div class="col-lg-9  no-padding">
-                        <select id="search_room_type" class="form-control" name="type">
+                        <select id="search_room_type" ng-model="rooms.MoreInfomations.BedroomNumber" class="form-control">
                             <option value="">--Số người ở tối đa--</option>
-                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">Chưa xác định</option>
                         </select>
                     </div>
                 </div>
@@ -322,18 +343,20 @@
                 <div class="form-group clearfix">
                     <div class="col-lg-12 input-group">
                         <input class="form-control"
-                               id="userName"
+                               id="ElectricPrice"
+                               ng-model="rooms.MoreInfomations.ElectricPrice"
                                placeholder="Giá điện"
-                               name="userName" type="number">
+                               name="ElectricPrice" type="number">
                         <span class="input-group-addon">đ/tháng</span>
                     </div>
                 </div>
                 <div class="form-group clearfix">
                     <div class="col-lg-12 input-group">
                         <input class="form-control"
-                               id="userName"
+                               id="WaterPrice"
+                               ng-model="rooms.MoreInfomations.WaterPrice"
                                placeholder="Giá nước"
-                               name="userName" type="text">
+                               name="WaterPrice" type="number">
                         <span class="input-group-addon">đ/tháng</span>
                     </div>
                 </div>

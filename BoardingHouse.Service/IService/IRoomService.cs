@@ -10,7 +10,7 @@ namespace BoardingHouse.Service.IService
 {
     public interface IRoomService
     {
-        Room Add(Room info);
+        Room Add(RoomEntity info);
 
         void Update(Room info);
 
