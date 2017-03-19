@@ -4,9 +4,12 @@ using BoaringHouse.API.Infrastructure.Core;
 using BoaringHouse.API.Models.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 
 namespace BoaringHouse.API.Controllers
@@ -78,5 +81,41 @@ namespace BoaringHouse.API.Controllers
                 return response;
             });
         }
+
+
+        [Route("images/uploadFile")]
+        public async Task UploadSingleFile()
+        {
+            if (!Request.Content.IsMimeMultipartContent())
+            {
+                Request.CreateErrorResponse(HttpStatusCode.UnsupportedMediaType, new NotSupportedException("Media type not supported"));
+            }
+            var root = HttpContext.Current.Server.MapPath("~/Content/images");
+            var dataFolder = HttpContext.Current.Server.MapPath("~/Content/images");
+            Directory.CreateDirectory(root);
+            var provider = new MultipartFormDataStreamProvider(root);
+            var result = await Request.Content.ReadAsMultipartAsync(provider);
+
+            string fileName = string.Empty;
+            foreach (MultipartFileData fileData in provider.FileData)
+            {
+                fileName = fileData.Headers.ContentDisposition.FileName;
+                if (fileName.StartsWith("\"") && fileName.EndsWith("\""))
+                {
+                    fileName = fileName.Trim('"');
+                }
+                if (fileName.Contains(@"/") || fileName.Contains(@"\"))
+                {
+                    fileName = result.FormData["model"] + "_"
+                              + Path.GetFileName(fileName);
+                }
+                if (File.Exists(Path.Combine(dataFolder, fileName)))
+                    File.Delete(Path.Combine(dataFolder, fileName));
+                File.Move(fileData.LocalFileName, Path.Combine(dataFolder, fileName));
+                File.Delete(fileData.LocalFileName);
+            }
+
+            Request.CreateResponse(HttpStatusCode.OK, new { fileName = fileName });
+        }       
     }
 }

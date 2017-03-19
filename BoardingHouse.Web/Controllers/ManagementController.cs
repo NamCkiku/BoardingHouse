@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace BoardingHouse.Web.Controllers
 {
@@ -109,6 +111,34 @@ namespace BoardingHouse.Web.Controllers
                     var responseData = responseMessage.Content.ReadAsStringAsync().Result;
                     var lstward = JsonConvert.DeserializeObject<List<WardViewModel>>(responseData);
                     jsonResult = Json(new { success = true, lstData = lstward }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
+            return jsonResult;
+        }
+
+
+        public JsonResult CreateRoom(RoomViewModel rooms)
+        {
+            JsonResult jsonResult = new JsonResult();
+            HttpRequestBase request = this.HttpContext.Request;
+            if (ValidateRequestHeader(request))
+            {
+                var json = new JavaScriptSerializer().Serialize(rooms);
+                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage responseMessage = client.PostAsync(url + "/room/addroom", content).Result;
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                    //var room = JsonConvert.DeserializeObject<RoomViewModel>(responseData);
+                    jsonResult = Json(new { success = true }, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {

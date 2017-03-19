@@ -214,6 +214,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ViewModel\DistrictViewModel.cs" />
+    <Compile Include="Models\ViewModel\MoreInfomationViewModel.cs" />
     <Compile Include="Models\ViewModel\ProvinceViewModel.cs" />
     <Compile Include="Models\ViewModel\RoomTypeViewModel.cs" />
     <Compile Include="Models\ViewModel\RoomViewModel.cs" />
@@ -228,6 +229,7 @@
     <Content Include="app\Controller\SearchController\searchController.js" />
     <Content Include="app\Service\apiService.js" />
     <Content Include="app\Service\BaseService.js" />
+    <Content Include="app\Service\fileUploadService.js" />
     <Content Include="bower_components\angular-animate\angular-animate.js" />
     <Content Include="bower_components\angular-animate\angular-animate.min.js" />
     <Content Include="bower_components\angular-animate\index.js" />
@@ -235,6 +237,7 @@
     <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.js" />
     <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.min.css" />
     <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.min.js" />
+    <Content Include="bower_components\angular-file-upload\angular-file-upload.js" />
     <Content Include="bower_components\angular-sanitize\angular-sanitize.js" />
     <Content Include="bower_components\angular-sanitize\angular-sanitize.min.js" />
     <Content Include="bower_components\angular-sanitize\index.js" />
