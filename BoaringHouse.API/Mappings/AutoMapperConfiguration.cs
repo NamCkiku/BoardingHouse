@@ -15,6 +15,7 @@ namespace BoaringHouse.API.Mappings
             Mapper.Initialize(config =>
             {
                 config.CreateMap<Room, RoomViewModel>();
+                config.CreateMap<RoomType, RoomTypeViewModel>();
             });
 
         }
