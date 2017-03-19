@@ -23,12 +23,12 @@ namespace BoardingHouse.Service.Service
             this._wardRepository = wardRepository;
             this._unitOfWork = unitOfWork;
         }
-        public IEnumerable<District> GetAllDistrict()
+        public IEnumerable<District> GetAllDistrict(int id)
         {
             List<District> lstdistrict = new List<District>();
             try
             {
-                lstdistrict = _districtRepository.GetAll().ToList();
+                lstdistrict = _districtRepository.GetAll().Where(x => x.provinceid == id).ToList();
             }
             catch (Exception ex)
             {
@@ -55,12 +55,12 @@ namespace BoardingHouse.Service.Service
             return lstprovince;
         }
 
-        public IEnumerable<Ward> GetAllWard()
+        public IEnumerable<Ward> GetAllWard(int id)
         {
             List<Ward> lstward = new List<Ward>();
             try
             {
-                lstward = _wardRepository.GetAll().ToList();
+                lstward = _wardRepository.GetAll().Where(x => x.districtid == id).ToList();
             }
             catch (Exception ex)
             {
