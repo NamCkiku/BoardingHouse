@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BoardingHouse.Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +10,7 @@ using System.Web.Mvc;
 
 namespace BoardingHouse.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -16,6 +19,36 @@ namespace BoardingHouse.Web.Controllers
         public ActionResult CreateRoom()
         {
             return View();
+        }
+        public JsonResult GetUserLogin()
+        {
+            JsonResult jsonResult = new JsonResult();
+            HttpRequestBase request = this.HttpContext.Request;
+            if (ValidateRequestHeader(request))
+            {
+                if (HttpContext.Request.IsAuthenticated)
+                {
+                    var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                    var user = manager.FindByIdAsync(User.Identity.GetUserId());
+                    if (user != null)
+                    {
+                        jsonResult = Json(new { success = true, user = user.Result }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        jsonResult = Json(new { success = true }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
+            return jsonResult;
         }
         public ActionResult SaveUploadedFile()
         {

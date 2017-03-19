@@ -67,8 +67,8 @@
                 font-size: 30px;
                 color: #ffbf00;
             }
-            
 </style>
+
 <div class="row" ng-controller="CreateRoomController">
     <div class="col-lg-9">
         <div class="panel panel-reservas panel-pasos" style="margin-top:20px;">
@@ -104,6 +104,7 @@
                                data-fv-notempty="true"
                                data-fv-notempty-message="Vui lòng nhập tên của bạn"
                                id="userName"
+                               ng-model="rooms.UserName"
                                placeholder="Tên của tôi là:"
                                name="userName" type="text">
                     </div>
@@ -116,6 +117,7 @@
                                data-fv-stringlength-max="250"
                                data-fv-stringlength-message="Tiêu đề chỉ được 250 ký tự"
                                data-fv-notempty="true"
+                               ng-model="rooms.Email"
                                placeholder="Email của tôi là:"
                                data-fv-notempty-message="Vui lòng nhập Email"
                                name="password" type="text"
@@ -128,6 +130,7 @@
                         <input id="phone"
                                name="phone"
                                type="text"
+                               ng-model="rooms.Phone"
                                data-fv-notempty="true"
                                data-fv-notempty-message="Vui lòng nhập số điện thoại"
                                placeholder="Số điện thoại của tôi là:"
@@ -139,6 +142,7 @@
                     <div class="col-lg-9 no-padding">
                         <input id="adress"
                                name="adress"
+                               ng-model="rooms.Address"
                                type="text"
                                placeholder="(ghi rõ số nhà, ngõ, phố, phường, quận để khách hàng dễ tìm thấy)"
                                class="required form-control">
@@ -150,12 +154,12 @@
                 <div class="quick-fill">
                     <div class="title-input"><i class="fa fa-info-circle" aria-hidden="true"></i><span>Tôi đã từng đăng tin trên phongtot.vn, hãy giúp tôi</span></div>
                     <div class="input">
-                        <button class="quick-fill-infor btn"><i class="fa fa-pencil" style="margin-right:10px;" aria-hidden="true"></i>Điền nhanh thông tin</button>
+                        <button class="quick-fill-infor btn" ng-click="GetUserLogin();"><i class="fa fa-pencil" style="margin-right:10px;" aria-hidden="true"></i>Điền nhanh thông tin</button>
                     </div>
                 </div>
             </div>
             <div class="col-lg-12" style="margin-top:20px;">
-                <div class="form-group clearfix">                   
+                <div class="form-group clearfix">
                     <button class="btn btn-success btn-sm" style="float:right;" ng-click="nextStep(1);"><i class="fa fa-step-forward" style="margin-right:10px;" aria-hidden="true"></i>Tiếp Tục</button>
                 </div>
             </div>
@@ -167,13 +171,8 @@
                 <div class="form-group clearfix">
                     <label class="col-lg-3 control-label " for="userName">Danh Mục</label>
                     <div class="col-lg-9 no-padding">
-                        <select id="search_room_type" class="form-control" name="type">
+                        <select id="search_room_type" ng-model="rooms.RoomType" ng-options="option.RoomTypeID as option.RoomTypeName for option in data.lstRoomType" class="form-control" name="type">
                             <option value="">--Chọn loại tin--</option>
-                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
                         </select>
                     </div>
                 </div>
@@ -388,3 +387,73 @@
     <div class="col-lg-3">
     </div>
 </div>
+<script type="text/ng-template" id="ModalLogin.html">
+    <div class="modal-header popup_header">
+        <button aria-label="Close" data-dismiss="modal" ng-click="close();" class="close" type="button"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title popup_title" id="messageDel">
+            <img src="/Content/img/xphongtot_logo.png.pagespeed.ic.UejSBOLzW8.png" />
+        </h4>
+    </div>
+    <div class="line_orn"></div>
+    <div class="modal-body login">
+        <div class="container-fluid">
+            <div class="box">
+                <div class="content">
+                    <div class="social">
+                        <a id="google_login" class="circle google" href="#">
+                            <i class="fa fa-google-plus fa-fw"></i>
+                        </a>
+                        <a id="facebook_login" class="circle facebook" href="#">
+                            <i class="fa fa-facebook fa-fw"></i>
+                        </a>
+                    </div>
+                    <div class="division">
+                        <div class="line l"></div>
+                        <span>Hoặc</span>
+                        <div class="line r"></div>
+                    </div>
+                    <div class="form loginBox">
+                        <div id="formLogin" class="">
+                            <div class="col-lg-12 form-group no-padding">
+                                <input id="email"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập Email"
+                                       data-fv-emailaddress="true"
+                                       data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                       ng-model="account.Email"
+                                       class="form-control"
+                                       type="text"
+                                       placeholder="Tên tài khoản"
+                                       name="email">
+                            </div>
+                            <div class="col-lg-12 form-group no-padding">
+                                <input id="password"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                       ng-model="account.Password"
+                                       class="form-control"
+                                       type="password"
+                                       placeholder="Mật khẩu"
+                                       name="password">
+
+                            </div>
+                        </div>
+                        <input class="btn btn-default btn-login" ng-click="ok();" type="button" value="Đăng Nhập">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer login">
+        <div class="forgot login-footer" style="display: block;">
+            <span>
+                <a href="javascript: showRegisterForm();">Tạo tài khoản</a>
+                ?
+            </span>
+        </div>
+        <div class="forgot register-footer" style="display: none;">
+            <span>Already have an account?</span>
+            <a href="javascript: showLoginForm();">Đăng Nhập</a>
+        </div>
+    </div>
+</script>
