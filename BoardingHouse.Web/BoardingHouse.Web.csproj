@@ -206,6 +206,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Core\PaginationSet.cs" />
     <Compile Include="Migrations\201703180606487_updatedentity.cs" />
     <Compile Include="Migrations\201703180606487_updatedentity.Designer.cs">
       <DependentUpon>201703180606487_updatedentity.cs</DependentUpon>
@@ -227,6 +228,7 @@
     <Content Include="app\app.js" />
     <Content Include="app\Controller\AccountController\headerController.js" />
     <Content Include="app\Controller\RoomController\CreateRoomController.js" />
+    <Content Include="app\Controller\RoomController\ListRoomController.js" />
     <Content Include="app\Controller\SearchController\searchController.js" />
     <Content Include="app\Service\apiService.js" />
     <Content Include="app\Service\BaseService.js" />

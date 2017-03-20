@@ -122,21 +122,26 @@ namespace BoardingHouse.Service.Service
             }
             return lstroom.Skip((page - 1) * pageSize).Take(pageSize);
         }
-        public IEnumerable<RoomEntity> GetAllListRoom()
+        public IEnumerable<RoomEntity> GetAllListRoom(int page, int pageSize, out int totalRow)
         {
             List<RoomEntity> lstroom = new List<RoomEntity>();
             try
             {
-                lstroom = _roomRepository.GetAllListRoom().Where(x => x.Status == true)
+                lstroom = _roomRepository.GetAllListRoom().Where(x => x.Status == false)
                     .ToList();
+                totalRow = lstroom.Count();
+                if (lstroom != null)
+                {
+                    lstroom.Skip((page - 1) * pageSize).Take(pageSize);
+                }
             }
             catch (Exception ex)
             {
                 string FunctionName = string.Format("AddRoom('{0}')", "");
                 Common.Logs.LogCommon.WriteError(ex.ToString(), FunctionName);
-                return null;
+                throw ex;
             }
-            return lstroom;
+            return lstroom.Skip((page - 1) * pageSize).Take(pageSize);
         }
         public Room GetById(int id)
         {
