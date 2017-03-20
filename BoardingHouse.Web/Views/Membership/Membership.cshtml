@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewBag.Title = "Membership";
+    Layout = "~/Views/Shared/_LayoutDetail.cshtml";
+}
+<style>
+    .profile-nav .user-heading {
+        background: #f4f0e2;
+        color: #33cc66;
+        border-radius: 4px 4px 0 0;
+        -webkit-border-radius: 4px 4px 0 0;
+        padding: 30px;
+        text-align: center;
+    }
+
+        .profile-nav .user-heading.round a {
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border: 10px solid rgba(255,255,255,0.3);
+            display: inline-block;
+        }
+
+        .profile-nav .user-heading a img {
+            width: 112px;
+            height: 112px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+        }
+
+        .profile-nav .user-heading h1 {
+            font-size: 22px;
+            font-weight: 300;
+            margin-bottom: 5px;
+        }
+
+        .profile-nav .user-heading p {
+            font-size: 12px;
+        }
+
+    .profile-userbuttons {
+        text-align: center;
+        margin-top: 10px;
+        color: #fff;
+    }
+
+    .profile-nav ul {
+        margin-top: 1px;
+        border: 1px solid #f4f0e2;
+    }
+
+        .profile-nav ul > li {
+            border-bottom: 1px dashed #ebeae6;
+            margin-top: 0;
+            line-height: 30px;
+        }
+
+            .profile-nav ul > li:last-child {
+                border-bottom: none;
+            }
+
+            .profile-nav ul > li > a {
+                border-radius: 0;
+                -webkit-border-radius: 0;
+                color: #89817f;
+                border-left: 5px solid #fff;
+            }
+
+                .profile-nav ul > li > a:hover, .profile-nav ul > li > a:focus, .profile-nav ul li.active a {
+                    background: #f8f7f5 !important;
+                    border-left: 5px solid #33cc66;
+                    color: #89817f !important;
+                }
+
+            .profile-nav ul > li:last-child > a:last-child {
+                border-radius: 0 0 4px 4px;
+                -webkit-border-radius: 0 0 4px 4px;
+            }
+
+            .profile-nav ul > li > a > i {
+                font-size: 16px;
+                padding-right: 10px;
+                color: #bcb3aa;
+            }
+
+    .portlet.light.bordered {
+            background: #f8f7f5 !important;
+        border: 1px solid #e7ecf1 !important;
+    }
+
+    .portlet.light {
+        padding: 12px 20px 15px;
+        background-color: #fff;
+    }
+
+    .profile-stat {
+        padding-bottom: 20px;
+    }
+
+    .list-separated {
+        margin-top: 10px;
+    }
+
+    .profile-stat-title {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .profile-stat-text {
+        color: #5b9bd1;
+        font-size: 11px;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+<div class="row" style="margin-top:30px">
+    <div class="col-lg-9"></div>
+    <div class="col-lg-3">
+        <aside class="profile-nav">
+            <section class="panel">
+                <div class="user-heading round">
+                    <a href="#">
+                        <img src="http://phongtot.vn/themes/client/img/xavatar.png.pagespeed.ic.Hl7NHK7TGA.png" alt="">
+                    </a>
+                    <h1>Jonathan Smith</h1>
+                    <p>jsmith@flatlab.com</p>
+                    <div class="profile-userbuttons">
+                        <button type="button" class="btn btn-primary btn-sm">Đăng Tin</button>
+                        <button type="button" class="btn btn-success btn-sm">Nạp Thẻ</button>
+                    </div>
+                </div>
+                <div class="portlet light bordered">
+                    <!-- STAT -->
+                    <div class="row list-separated profile-stat">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <div class="uppercase profile-stat-title"> 37 </div>
+                            <div class="uppercase profile-stat-text"> Xu </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <div class="uppercase profile-stat-title"> 51 </div>
+                            <div class="uppercase profile-stat-text"> Điểm thưởng </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <div class="uppercase profile-stat-title"> 61 </div>
+                            <div class="uppercase profile-stat-text"> Bài đăng </div>
+                        </div>
+                    </div>
+                    <!-- END STAT -->
+                </div>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="#"> <i class="fa fa-user"></i> Thông Tin</a></li>
+                    <li><a href="#"> <i class="fa fa-calendar"></i> Tin đã đăng <span class="label label-danger pull-right r-activity">9</span></a></li>
+                    <li><a href="#"> <i class="fa fa-edit"></i> Tin đã lưu</a></li>
+                </ul>
+
+            </section>
+        </aside>
+    </div>
+    
+</div>
