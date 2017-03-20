@@ -34,13 +34,13 @@ namespace BoardingHouse.Web.Models.ViewModel
 
         public decimal Price { get; set; }
 
-        public int MoreInfomationID { get; set; }
+        public int? MoreInfomationID { get; set; }
         public string Description { get; set; }
         public string Content { get; set; }
 
         public DateTime? CreateDate { get; set; }
 
-        public DateTime ExpireDate { get; set; }
+        public DateTime? ExpireDate { get; set; }
 
         public int ViewCount { get; set; }
 

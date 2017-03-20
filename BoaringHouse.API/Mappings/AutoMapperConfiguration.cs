@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BoardingHouse.Entities.Entities;
 using BoardingHouse.Entities.Models;
 using BoaringHouse.API.Models.ViewModel;
 using System;
@@ -15,6 +16,7 @@ namespace BoaringHouse.API.Mappings
             Mapper.Initialize(config =>
             {
                 config.CreateMap<Room, RoomViewModel>();
+                config.CreateMap<RoomEntity, RoomViewModel>();
                 config.CreateMap<RoomType, RoomTypeViewModel>();
                 config.CreateMap<Province, ProvinceViewModel>();
                 config.CreateMap<District, DistrictViewModel>();

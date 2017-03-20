@@ -9,7 +9,7 @@
             MoreInfomations: {
             },
             Image: "No.jpg",
-            Alias:"No"
+            Alias: "No"
         }
         $scope.account = {
             Email: "",
@@ -182,7 +182,7 @@
                     apiService.post('Management/CreateRoom', true, $scope.rooms, function (respone) {
                         if (respone.data.success == true) {
                             if (roomImage) {
-                                fileUploadService.uploadImage(roomImage, 1003);
+                                fileUploadService.uploadImage(roomImage, respone.data.objData.RoomID);
                             }
                             $scope.isActive = '3';
                         } else {

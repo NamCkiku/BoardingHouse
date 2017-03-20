@@ -23,15 +23,21 @@ namespace BoaringHouse.API.Controllers
             this._roomService = roomService;
         }
         [Route("getall")]
-        public HttpResponseMessage GetAllListInfoJoin(HttpRequestMessage request)
+        public HttpResponseMessage GetAll(HttpRequestMessage request, int page=0, int pageSize = 20)
         {
             return CreateHttpResponse(request, () =>
             {
-                var listRoom = _roomService.GetAll().OrderByDescending(x => x.CreateDate).Take(9).ToList();
-
+                int totalRow = 0;
+                var listRoom = _roomService.GetAllListRoom(page, pageSize, out totalRow).OrderByDescending(x => x.CreateDate);
                 var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
-
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listRoomVm);
+                var paginationSet = new PaginationSet<RoomViewModel>()
+                {
+                    Items = listRoomVm,
+                    Page = page,
+                    TotalCount = totalRow,
+                    TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
+                };
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
 
                 return response;
             });

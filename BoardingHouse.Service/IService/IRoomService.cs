@@ -16,6 +16,7 @@ namespace BoardingHouse.Service.IService
 
         Room Delete(int id);
         IEnumerable<RoomEntity> GetAllPaging(SearchEntity filter, int page, int pageSize, out int totalRow);
+        IEnumerable<RoomEntity> GetAllListRoom(int page, int pageSize, out int totalRow);
         IEnumerable<Room> GetAll();
 
         Room GetById(int id);
