@@ -13,5 +13,10 @@ namespace BoardingHouse.Web.Controllers
         {
             return View();
         }
+        public PartialViewResult _PVProfileInformation()
+        {
+            return PartialView();
+        }
+
     }
 }

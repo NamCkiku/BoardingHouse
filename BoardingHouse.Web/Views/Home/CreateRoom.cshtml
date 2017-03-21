@@ -4,71 +4,7 @@
     Layout = "~/Views/Shared/_LayoutDetail.cshtml";
 }
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
-<link href="~/bower_components/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
-<script src="~/bower_components/jasny-bootstrap/js/jasny-bootstrap.js"></script>
 <link href="~/Content/css/Step.css" rel="stylesheet" />
-<style>
-    .wizard > .steps .current a, .wizard > .steps .current a:hover, .wizard > .steps .current a:active {
-        background: #33cc66;
-        color: #fff;
-        cursor: default;
-    }
-
-    .step {
-        border: 1px dashed #33cc66;
-        background: #f4f0e2;
-        float: left;
-    }
-
-    .steps_header {
-        border-bottom: solid 3px #33cc66;
-        color: #999;
-        font-size: 18px;
-        font-weight: bold;
-        line-height: 25px;
-        margin-top: 10px;
-        margin-bottom: 15px;
-        padding-left: 5px;
-    }
-
-    .steps_header_notice {
-        color: #33cc66;
-        font-size: 12px;
-        font-weight: normal;
-        font-style: italic;
-    }
-
-    .step label {
-        font-weight: normal;
-    }
-
-    .quick-fill {
-        border: 1px dashed #ffbf00;
-        border-radius: 10px;
-        padding: 15px;
-        text-align: center;
-    }
-
-        .quick-fill .quick-fill-infor {
-            padding: 5px 20px 8px 20px;
-            text-decoration: none;
-            color: #fff;
-            background-color: #ffbf00;
-            font-size: 15px;
-            cursor: pointer;
-        }
-
-        .quick-fill div.title-input {
-            margin-bottom: 10px;
-        }
-
-            .quick-fill div.title-input i {
-                margin-right: 5px;
-                font-size: 30px;
-                color: #ffbf00;
-            }
-</style>
-
 <div class="row" ng-controller="CreateRoomController">
     <div class="col-lg-9">
         <div class="panel panel-reservas panel-pasos" style="margin-top:20px;">

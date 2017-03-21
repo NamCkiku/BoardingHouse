@@ -1,0 +1,206 @@
+﻿<section class="panel" ng-controller="PVProfileInformationController">
+    <div class="example-box-wrapper">
+        <ul class="list-group row list-group-icons">
+            <li class="col-md-3 active">
+                <a href="#tab-example-1" data-toggle="tab" class="list-group-item">
+                    <i class="font-red fa fa-bullhorn"></i>
+                    Thông Tin cá nhân
+                </a>
+            </li>
+            <li class="col-md-3">
+                <a href="#tab-example-2" data-toggle="tab" class="list-group-item">
+                    <i class="fa fa-tachometer"></i>
+                    Cài đặt tài khoản
+                </a>
+            </li>
+            <li class="col-md-3">
+                <a href="#tab-example-3" data-toggle="tab" class="list-group-item">
+                    <i class="fa fa-camera font-primary"></i>
+                    Lịch sử giao dịch
+                </a>
+            </li>
+            <li class="col-md-3">
+                <a href="#tab-example-4" data-toggle="tab" class="list-group-item">
+                    <i class="fa fa-camera font-blue-alt"></i>
+                    Đổi Point thành xu
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane pad0A active" id="tab-example-1">
+                <div class="content-box">
+                    <form class="form-horizontal pad15L pad15R bordered-row">
+                        <div class="form-group remove-border">
+                            <label class="col-sm-3 control-label">Email:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="email...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Họ tên *:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="Họ tên của bạn là:...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Tên Hiển thị :</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="tên hiển thị của bạn:...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Số điện thoại:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="Số điện thoại:...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label " for="userName">Ảnh đại diện:</label>
+                            <div class="col-lg-3">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail" style="width: 100%; height: 115px;">
+                                        <img src="/Content/img/img_code.jpg" />
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail" data-trigger="fileinput" style="width: 100%; height: 115px;"></div>
+                                    <div>
+                                        <span class="btn btn-success btn-sm btn-file">
+                                            <span class="fileinput-new"><i class="fa fa-cloud-upload" style="margin-right:5px;" aria-hidden="true"></i>Chọn ảnh</span>
+                                            <span class="fileinput-exists"><i class="fa fa-wrench" style="margin-right:5px;" aria-hidden="true"></i>Thay đổi</span>
+                                            <input type="file" name="Image" ng-file-select="prepareFiles($files)">
+                                        </span>
+                                        <a href="#" class="btn btn-danger btn-sm fileinput-exists" data-dismiss="fileinput"><i class="fa fa-trash-o" aria-hidden="true" style="margin-right:5px;"></i>Xóa</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5  no-padding">
+                                <div class="quick-fill">
+                                    <div class="title-input"><i class="fa fa-info-circle" aria-hidden="true"></i><span>Ảnh đẹp sẽ giúp tăng truy cập vào bài đăng của bạn</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"></label>
+                            <div class="col-sm-6">
+                                <button class="btn btn-info"><i style="margin-right:10px;" class="fa fa-user" aria-hidden="true"></i>Cập nhập</button>
+                                <button class="btn btn-danger">Hủy</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="tab-pane pad0A fade" id="tab-example-2">
+                <div class="content-box">
+                    <form class="form-horizontal pad15L pad15R clearfix bordered-row">
+                        <h3 class="content-box-header clearfix">
+                            Thay đổi mật khẩu
+                            <div class="font-size-11 float-right">
+                                <a href="#" title="">
+                                    <i class="glyph-icon mrg5R opacity-hover icon-plus"></i>
+                                </a>
+                                <a href="#" title="">
+                                    <i class="glyph-icon opacity-hover icon-cog"></i>
+                                </a>
+                            </div>
+                        </h3>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Email:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="email...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Họ tên *:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="Họ tên của bạn là:...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Tên Hiển thị :</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="tên hiển thị của bạn:...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"></label>
+                            <div class="col-sm-6">
+                                <button class="btn btn-info"><i style="margin-right:10px;" class="fa fa-user" aria-hidden="true"></i>Thay đổi</button>
+                                <button class="btn btn-danger">Hủy</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="tab-pane pad0A fade" id="tab-example-3">
+                <div class="content-box">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Row 1</th>
+                                <th>Row 2</th>
+                                <th>Row 3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#</td>
+                                <td>Row 1</td>
+                                <td>Row 2</td>
+                                <td>Row 3</td>
+                            </tr>
+                            <tr>
+                                <td>#</td>
+                                <td>Row 1</td>
+                                <td>Row 2</td>
+                                <td>Row 3</td>
+                            </tr>
+                            <tr>
+                                <td>#</td>
+                                <td>Row 1</td>
+                                <td>Row 2</td>
+                                <td>Row 3</td>
+                            </tr>
+                            <tr>
+                                <td>#</td>
+                                <td>Row 1</td>
+                                <td>Row 2</td>
+                                <td>Row 3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane pad0A fade" id="tab-example-4">
+                <div class="content-box">
+                    <form class="form-horizontal pad15L pad15R clearfix bordered-row">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Điểm thưởng:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="email...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Điểm cần đổi *:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="Họ tên của bạn là:...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Xu nhận được :</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="tên hiển thị của bạn:...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"></label>
+                            <div class="col-sm-6">
+                                <button class="btn btn-info"><i style="margin-right:10px;" class="fa fa-user" aria-hidden="true"></i>Đổi xu</button>
+                                <button class="btn btn-danger">Hủy</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
