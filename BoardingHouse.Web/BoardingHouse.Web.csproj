@@ -227,6 +227,8 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\Controller\AccountController\headerController.js" />
+    <Content Include="app\Controller\ProfileController\ProfileController.js" />
+    <Content Include="app\Controller\ProfileController\PVProfileInformationController.js" />
     <Content Include="app\Controller\RoomController\CreateRoomController.js" />
     <Content Include="app\Controller\RoomController\ListRoomController.js" />
     <Content Include="app\Controller\SearchController\searchController.js" />
@@ -810,6 +812,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Membership\Membership.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Membership\_PVProfileInformation.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
