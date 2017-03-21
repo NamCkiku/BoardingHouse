@@ -747,6 +747,15 @@ figure.show {
             color: #bcb3aa;
         }
 
+.box-typical {
+    background: #f4f0e2;
+    border: 1px solid #f4f0e2;
+}
+
+    .box-typical .box-typical-inner {
+        padding: 12px 15px;
+    }
+
 .profile .profile-info {
     float: left;
     width: 100%;

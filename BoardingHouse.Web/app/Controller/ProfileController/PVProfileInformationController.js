@@ -7,7 +7,9 @@
 
         angular.element(document).ready(function () {
         });
-        $scope.$on('fireLoadProfileInformationEvent', function (event, id) {
+        $scope.$on('fireLoadProfileInformationEvent', function (event, userInfo) {
+            console.log(userInfo);
+            $scope.UserInfomation = userInfo;
         });
     }
 })(angular.module('myApp'));

@@ -211,6 +211,10 @@
     <Compile Include="Migrations\201703180606487_updatedentity.Designer.cs">
       <DependentUpon>201703180606487_updatedentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703211228525_adduserInfo.cs" />
+    <Compile Include="Migrations\201703211228525_adduserInfo.Designer.cs">
+      <DependentUpon>201703211228525_adduserInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -808,6 +812,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201703180606487_updatedentity.resx">
       <DependentUpon>201703180606487_updatedentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703211228525_adduserInfo.resx">
+      <DependentUpon>201703211228525_adduserInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

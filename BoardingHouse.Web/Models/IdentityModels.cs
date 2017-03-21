@@ -13,12 +13,14 @@ namespace BoardingHouse.Web.Models
     {
         [MaxLength(256)]
         public string FullName { set; get; }
-
         [MaxLength(256)]
         public string Address { set; get; }
         public string Avatar { set; get; }
-
         public DateTime? BirthDay { set; get; }
+        [MaxLength(10)]
+        public string Sex { set; get; }
+        public int? Coin { set; get; }
+        public int? Point { set; get; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

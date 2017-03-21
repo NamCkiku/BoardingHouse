@@ -4,9 +4,10 @@
     ProfileController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'apiService', '$window'];
 
     function ProfileController($scope, blockUI, $modal, $rootScope, BaseService, apiService, $window) {
+        $scope.userInfo = {
 
-        angular.element(document).ready(function () {
-
+        }
+        angular.element(document).ready(function () { 
             $scope.load();
         });
         $scope.data = {
@@ -15,14 +16,25 @@
         $scope.changeTab = function (tabIndex) {
             return $scope.data.MainTab = tabIndex;
         }
-
+        
+        function GetAllUserInfo() {
+            apiService.post('Home/GetUserLogin', true, null, function (respone) {
+                if (respone.data.success == true) {
+                    $scope.userInfo = respone.data.user;
+                    console.log($scope.userInfo);
+                    $scope.fireLoadProfileInformationEvent();
+                } else {
+                }
+            }, function (respone) {
+            });
+        }
         $scope.load = function () {
-            $scope.fireLoadProfileInformationEvent();
+            GetAllUserInfo();  
         };
 
         $scope.fireLoadProfileInformationEvent = function () {
             $scope.changeTab(1);
-            $scope.$broadcast('fireLoadProfileInformationEvent',"");
+            $scope.$broadcast('fireLoadProfileInformationEvent', $scope.userInfo);
         };
     }
 })(angular.module('myApp'));
