@@ -18,7 +18,11 @@ namespace BoardingHouse.Web.Controllers
         }
         public ActionResult CreateRoom()
         {
-            return View();
+            if (HttpContext.Request.IsAuthenticated)
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
         }
         public JsonResult GetUserLogin()
         {
