@@ -881,8 +881,246 @@ a.list-group-item:focus, a.list-group-item:hover {
     padding: 15px;
     border-color: transparent;
 }
+/* === Sliebar Left === */
+.title_st {
+            height: 60px;
+            position: relative;
+            overflow: hidden;
+            background: #34495e;
+        }
+
+            .title_st h2 {
+                color: #fff;
+                font-size: 16px;
+                margin: 0 15px;
+                line-height: 60px;
+                text-transform: uppercase;
+                white-space: nowrap;
+                font-family: 'Roboto',sans-serif;
+                letter-spacing: 1px;
+            }
+
+        .show_nav_bar1 {
+            float: left;
+            margin-right: 10px;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .list_item_collection {
+            float: left;
+            width: 100%;
+            background: #fff;
+            border: 1px solid #ebebeb;
+        }
+
+            .list_item_collection ul {
+                margin: 1px 0 0;
+                list-style: none;
+                background: #fff;
+                max-height: 440px;
+                padding-left: 0px;
+                float: left;
+            }
+
+                .list_item_collection ul li {
+                    float: left;
+                    width: 100%;
+                    position: relative;
+                }
+
+                    .list_item_collection ul li.li_lv1 > a {
+                        background: url(//bizweb.dktcdn.net/100/069/071/themes/507444/assets/icon_collection-min.png?1489745875486) 15px center no-repeat;
+                        padding: 20px 15px 20px 40px;
+                    }
+
+                    .list_item_collection ul li.li_lv1:hover > a, .list_item_collection ul li.active:hover > a, .list_item_collection ul li.active > a {
+                        background: url(//bizweb.dktcdn.net/100/069/071/themes/507444/assets/icon_collection_cate.png?1489745875486) 15px center no-repeat;
+                        color: #bda87f;
+                    }
+
+                    .list_item_collection ul li a {
+                        font-size: 16px;
+                        padding: 20px 15px;
+                        display: block;
+                        color: #363636;
+                        border-bottom: 1px solid #ebebeb;
+                        text-decoration: none;
+                    }
 
 
+
+        .box_produt_hot ul {
+            border: 1px solid #ebebeb;
+            border-top: none;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            margin-bottom: 0px;
+            padding-left:0px;
+        }
+
+            .box_produt_hot ul li {
+                display: block;
+                float: left;
+                width: 100%;
+                border-bottom: 1px solid #ededed;
+                padding: 15px;
+            }
+            .box_pr_small {
+        float: left;
+        width: 100%;
+    }
+            .box_pr_img {
+        float: left;
+        margin-right: 10px;
+        width: 30%;
+    }
+            .box_pr_img img {
+        width: 100%;
+    }
+            .box_pr_title {
+        float: left;
+        width: 63%;
+    }
+            .box_pr_title h3 {
+        margin: 0px;
+        line-height: 16px;
+    }
+            .box_pr_title h3 a {
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        color: #000;
+        line-height: 18px;
+        word-break: break-word;
+    }
+            .more_view {
+        text-align: center;
+    }
+            .more_view a {
+        padding: 15px;
+        line-height: 40px;
+    }
+
+/* === FOOTER === */
+
+footer#footer {
+    background: #1a1c27;
+    margin-top: 30px;
+    position: relative;
+}
+
+div#back-top {
+    height: 60px;
+    position: absolute;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 60px;
+    text-align: center;
+    background: rgba(0,0,0,.25);
+    border-radius: 50%;
+    margin-top: -30px;
+    top: 0;
+    left: 50%;
+    margin-left: -30px;
+}
+
+    div#back-top a {
+        color: #fff;
+        text-transform: uppercase;
+        line-height: 50px;
+        background: #7b7d88;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        border-radius: 50%;
+    }
+
+footer#footer .widget {
+    padding-top: 50px;
+}
+
+    footer#footer .widget .widget-item {
+        margin-bottom: 30px;
+    }
+
+        footer#footer .widget .widget-item, footer#footer .widget .widget-item a {
+            color: #c2c2c2;
+        }
+
+            footer#footer .widget .widget-item h2.widget-title {
+                color: #fff;
+                font-size: 18px;
+                font-weight: 700;
+                margin-bottom: 30px;
+            }
+
+footer#footer ul.widget-menu {
+    padding: 0px;
+}
+
+    footer#footer ul.widget-menu li {
+        list-style: none;
+        padding: 10px 0;
+    }
+
+.theme_color {
+    color: #00b18a !important;
+}
+
+.w2 {
+    width: 20px !important;
+}
+
+footer#footer ul.social_icon {
+    padding-left: 0px;
+}
+
+    footer#footer ul.social_icon li {
+        float: left;
+        border-radius: 50%;
+        background: #292c3a;
+        margin: 15px 10px 15px 0 !important;
+        width: 40px;
+        text-align: center;
+        height: 40px;
+    }
+
+        footer#footer ul.social_icon li a {
+            color: #fff !important;
+            font-size: 16px !important;
+        }
+
+        footer#footer ul.social_icon li:hover {
+            background: #00b18a;
+        }
+
+.footer-bottom {
+    background: #121319;
+}
+
+    .footer-bottom ul li {
+        float: left;
+    }
+
+        .footer-bottom ul li a {
+            color: #959595;
+            text-decoration: none;
+            padding: 25px 0 25px 25px;
+            display: inline-block;
+        }
+
+.copyright {
+    color: #959595;
+    padding: 25px 0;
+    display: inline-block;
+}
+
+    .copyright a {
+        color: #fff;
+    }
 
 /* === Puclib === */
 .padding-0 {
