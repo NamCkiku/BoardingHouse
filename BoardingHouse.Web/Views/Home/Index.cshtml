@@ -3,11 +3,37 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .view-mode {
+    float: right;
+}
+    .view-mode a.active {
+    color: #33cc66;
+    border: 1px solid #33cc66;
+}
+    .view-mode a {
+    float: left;
+    font-size: 18px;
+    margin-left: 10px;
+    color: #9c9c9c;
+    line-height: 30px;
+    border: 1px solid #9c9c9c;
+    padding: 2px 8px 0;
+}
+</style>
 <div class="col-md-12 room-main-content nopadding-xs" ng-controller="ListRoomController">
     <div class="menu-tab">
         <div class="menu-tab-title"><a href=""><span>Tin</span> Mới nhất <i class="fa fa-angle-right"></i></a></div>
         <div class="menu-tab-title-right">
-            <ul class="nav nav-tabs ">
+            <div class="view-mode">
+                <a href="javascript:;" class="active">
+                    <i class="fa fa-th"></i>
+                </a>
+                <a href="javascript:;" class="switch-view" data-view="list">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            @*<ul class="nav nav-tabs ">
                 <li class="active">
                     <a href="#tab_type_1" data-toggle="tab">Tất cả</a>
                 </li>
@@ -23,9 +49,10 @@
                 <li class="">
                     <a href="#tab_type_5" data-toggle="tab">Chung cư, căn hộ</a>
                 </li>
-            </ul>
+            </ul>*@
         </div>
     </div>
+    <div class="clearfix"></div>
     <div class="tab-content">
         <div class="tab-pane active" id="tab_type_1">
             <div class="room-info-list">
@@ -239,6 +266,96 @@
                                 <img src="img/play.png">
                             </a>
                         </div> -->
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 room-info-item">
+                    <div class="room-info">
+                        <a href="#" title="CHO THUÊ NHÀ TRỌ QUẬN 4 GIÁ 3.2 TRIỆU THÁNG">
+                            <img class="cover img-reponsive" src="http://media.phongtot.vn/xc5tx4cj/ngoi-nha-46m²-tuyet-dep-co-chi-phi-hoan-thien-480-trieu-dong-chang-trai-8x-xay-tang-vo_cover-573eddf84424b.jpg">
+                        </a>
+                        <div class="room-item-vip">
+                            <a href="">Vip</a>
+                        </div>
+                        <div class="room-item-price">
+                            <a href="">3,200,000 Đ/tháng</a>
+                        </div>
+                        <div class="caption">
+                            <div class="title">
+                                <h2><a href="">CHO THUÊ NHÀ TRỌ QUẬN 4 GIÁ 3.2 TRIỆU THÁNG</a></h2>
+                            </div>
+                            <div class="extra">
+                                <div class="pull-left">
+                                    <a href="#"><span class="fa fa-map-marker"></span>4</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href=""><span class="fa fa-info"></span>11.8 m<sup>2</sup></a>
+                                </div>
+                                <div class="type">
+                                    <a href=""><span class="fa fa-home"></span>Phòng trọ, nhà trọ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 room-info-item">
+                    <div class="room-info">
+                        <a href="#" title="CHO THUÊ NHÀ TRỌ QUẬN 4 GIÁ 3.2 TRIỆU THÁNG">
+                            <img class="cover img-reponsive" src="http://media.phongtot.vn/xc5tx4cj/ngoi-nha-46m²-tuyet-dep-co-chi-phi-hoan-thien-480-trieu-dong-chang-trai-8x-xay-tang-vo_cover-573eddf84424b.jpg">
+                        </a>
+                        <div class="room-item-price">
+                            <a href="">3,200,000 Đ/tháng</a>
+                        </div>
+                        <div class="caption">
+                            <div class="title">
+                                <h2><a href="">CHO THUÊ NHÀ TRỌ QUẬN 4 GIÁ 3.2 TRIỆU THÁNG</a></h2>
+                            </div>
+                            <div class="extra">
+                                <div class="pull-left">
+                                    <a href="#"><span class="fa fa-map-marker"></span>4</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href=""><span class="fa fa-info"></span>11.8 m<sup>2</sup></a>
+                                </div>
+                                <div class="type">
+                                    <a href=""><span class="fa fa-home"></span>Phòng trọ, nhà trọ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 room-info-item">
+                    <div class="room-info">
+                        <a href="#" title="CHO THUÊ NHÀ TRỌ QUẬN 4 GIÁ 3.2 TRIỆU THÁNG">
+                            <img class="cover img-reponsive" src="img/tim-nu-chung-cu-toa-nha-ct1-ngo-62-tran-binh-2kv8x.jpg">
+                        </a>
+                        <div class="room-item-vip">
+                            <a href="">Vip</a>
+                        </div>
+                        <div class="room-item-price">
+                            <a href="">3,200,000 Đ/tháng</a>
+                        </div>
+                        <div class="caption">
+                            <div class="title">
+                                <h2><a href="">CHO THUÊ NHÀ TRỌ QUẬN 4 GIÁ 3.2 TRIỆU THÁNG</a></h2>
+                            </div>
+                            <div class="extra">
+                                <div class="pull-left">
+                                    <a href="#"><span class="fa fa-map-marker"></span>4</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href=""><span class="fa fa-info"></span>11.8 m<sup>2</sup></a>
+                                </div>
+                                <div class="type">
+                                    <a href=""><span class="fa fa-home"></span>Phòng trọ, nhà trọ</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="overlay">
+                <a href="#" title="">
+                    <img src="img/play.png">
+                </a>
+            </div> -->
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4 room-info-item">
