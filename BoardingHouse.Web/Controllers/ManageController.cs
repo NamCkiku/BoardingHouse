@@ -11,7 +11,7 @@ using BoardingHouse.Web.Models;
 namespace BoardingHouse.Web.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -32,9 +32,9 @@ namespace BoardingHouse.Web.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -48,6 +48,28 @@ namespace BoardingHouse.Web.Controllers
             {
                 _userManager = value;
             }
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<JsonResult> ChangeUserInfo(ApplicationUser model)
+        {
+            JsonResult jsonResult = new JsonResult();
+            HttpRequestBase request = this.HttpContext.Request;
+            if (ValidateRequestHeader(request))
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    await UserManager.UpdateAsync(model);
+                    jsonResult = Json(new { success = true }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            return jsonResult;
         }
 
         //
@@ -333,7 +355,7 @@ namespace BoardingHouse.Web.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -384,6 +406,6 @@ namespace BoardingHouse.Web.Controllers
             Error
         }
 
-#endregion
+        #endregion
     }
 }

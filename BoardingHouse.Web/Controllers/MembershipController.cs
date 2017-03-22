@@ -11,7 +11,11 @@ namespace BoardingHouse.Web.Controllers
         // GET: Membership
         public ActionResult Membership()
         {
-            return View();
+            if (HttpContext.Request.IsAuthenticated)
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
         }
         public PartialViewResult _PVProfileInformation()
         {

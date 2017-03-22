@@ -29,29 +29,54 @@
         <div class="tab-content">
             <div class="tab-pane pad0A active" id="tab-example-1">
                 <div class="content-box">
-                    <form class="form-horizontal pad15L pad15R bordered-row">
+                    <div class="form-horizontal pad15L pad15R bordered-row" id="UpdateUser">
                         <div class="form-group remove-border">
                             <label class="col-sm-3 control-label">Email:</label>
                             <div class="col-sm-6">
-                                <input type="text" ng-model="UserInfomation.Email" class="form-control" id="" placeholder="email...">
+                                <input type="text"
+                                       ng-model="UserInfomation.Email"
+                                       class="form-control"
+                                       name="Email"
+                                       disabled="disabled"
+                                       data-fv-stringlength="true"
+                                       data-fv-stringlength-max="250"
+                                       data-fv-stringlength-message="Tiêu đề chỉ được 250 ký tự"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập Email của bạn"
+                                       placeholder="Email...">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Họ tên *:</label>
+                            <label class="col-sm-3 control-label">Tên tài khoản:</label>
                             <div class="col-sm-6">
-                                <input type="text" ng-model="UserInfomation.UserName" class="form-control" id="" placeholder="Họ tên của bạn là:...">
+                                <input type="text"
+                                       ng-model="UserInfomation.UserName"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập tên tài khoản của bạn"
+                                       class="form-control"
+                                       name="UserName"
+                                       placeholder="Tên tài khoản của bạn là:...">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Tên Hiển thị :</label>
+                            <label class="col-sm-3 control-label">Họ và tên :</label>
                             <div class="col-sm-6">
-                                <input type="text" ng-model="UserInfomation.UserName" class="form-control" id="" placeholder="tên hiển thị của bạn:...">
+                                <input type="text"
+                                       ng-model="UserInfomation.FullName"
+                                       class="form-control"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập tên bạn muốn hiển thị của bạn"
+                                       name="FullName"
+                                       placeholder="tên hiển thị của bạn:...">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Số điện thoại:</label>
                             <div class="col-sm-6">
-                                <input type="text" ng-model="UserInfomation.PhoneNumber" class="form-control" id="" placeholder="Số điện thoại:...">
+                                <input type="text"
+                                       ng-model="UserInfomation.PhoneNumber"
+                                       class="form-control"
+                                       placeholder="Số điện thoại:...">
                             </div>
                         </div>
                         <div class="form-group">
@@ -81,11 +106,11 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"></label>
                             <div class="col-sm-6">
-                                <button class="btn btn-info"><i style="margin-right:10px;" class="fa fa-user" aria-hidden="true"></i>Cập nhập</button>
+                                <button class="btn btn-info" ng-click="SaveUpdateUser();"><i style="margin-right:10px;" class="fa fa-user" aria-hidden="true"></i>Cập nhập</button>
                                 <button class="btn btn-danger">Hủy</button>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             <div class="tab-pane pad0A fade" id="tab-example-2">
