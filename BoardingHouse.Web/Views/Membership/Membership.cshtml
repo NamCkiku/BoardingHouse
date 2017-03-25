@@ -41,7 +41,7 @@
                 </section>
                 <ul class="nav nav-pills nav-stacked">
                     <li ng-class="{'active' : data.MainTab==1}"><a href="#user-tap-1" ng-click="fireLoadProfileInformationEvent();" data-toggle="tab"> <i class="fa fa-user"></i> Thông Tin</a></li>
-                    <li><a href="#user-tap-2" data-toggle="tab"> <i class="fa fa-calendar"></i> Tin đã đăng</a></li>
+                    <li ng-class="{'active' : data.MainTab==2}"><a href="#user-tap-2" ng-click="fireLoadListRoomByUserEvent();" data-toggle="tab"> <i class="fa fa-calendar"></i> Tin đã đăng</a></li>
                     <li><a href="#user-tap-3" data-toggle="tab"> <i class="fa fa-edit"></i> Tin đã lưu</a></li>
                 </ul>
 
@@ -54,6 +54,7 @@
                 @{ Html.RenderAction("_PVProfileInformation", "Membership"); }
             </div>
             <div class="tab-pane fade" id="user-tap-2">
+                @{ Html.RenderAction("_PVProfileListRoom", "Membership"); }
             </div>
         </div>
     </div>

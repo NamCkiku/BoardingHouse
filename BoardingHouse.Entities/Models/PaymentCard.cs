@@ -19,6 +19,6 @@ namespace BoardingHouse.Entities.Models
         [StringLength(256)]
         public string Seri { get; set; }
         public bool? Status { get; set; }
-        public int UserID { get; set; }
+        public string UserID { get; set; }
     }
 }

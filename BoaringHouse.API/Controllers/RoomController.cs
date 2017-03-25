@@ -23,12 +23,32 @@ namespace BoaringHouse.API.Controllers
             this._roomService = roomService;
         }
         [Route("getall")]
-        public HttpResponseMessage GetAll(HttpRequestMessage request, int page=0, int pageSize = 20)
+        public HttpResponseMessage GetAll(HttpRequestMessage request, int page, int pageSize)
         {
             return CreateHttpResponse(request, () =>
             {
                 int totalRow = 0;
                 var listRoom = _roomService.GetAllListRoom(page, pageSize, out totalRow).OrderByDescending(x => x.CreateDate);
+                var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
+                var paginationSet = new PaginationSet<RoomViewModel>()
+                {
+                    Items = listRoomVm,
+                    Page = page,
+                    TotalCount = totalRow,
+                    TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
+                };
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+
+                return response;
+            });
+        }
+        [Route("getallbyuserid")]
+        public HttpResponseMessage GetAllByUserID(HttpRequestMessage request, string userID, int page = 0, int pageSize = 20)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                int totalRow = 0;
+                var listRoom = _roomService.GetAllListRoomByUser(userID, page, pageSize, out totalRow).OrderByDescending(x => x.CreateDate);
                 var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
                 var paginationSet = new PaginationSet<RoomViewModel>()
                 {

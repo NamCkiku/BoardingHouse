@@ -1,5 +1,6 @@
 ﻿using BoardingHouse.Web.Infrastructure.Core;
 using BoardingHouse.Web.Models.ViewModel;
+using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -131,12 +132,44 @@ namespace BoardingHouse.Web.Controllers
             HttpRequestBase request = this.HttpContext.Request;
             if (ValidateRequestHeader(request))
             {
-                HttpResponseMessage responseMessage = client.GetAsync(url + "/room/getall/?page=" + page + "?pageSize=" + pageSize).Result;
+                HttpResponseMessage responseMessage = client.GetAsync(url + "/room/getall/?page=" + page + "&&pageSize=" + pageSize + "").Result;
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var responseData = responseMessage.Content.ReadAsStringAsync().Result;
                     var lstroom = JsonConvert.DeserializeObject<PaginationSet<RoomViewModel>>(responseData);
                     jsonResult = Json(new { success = true, lstData = lstroom }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
+            return jsonResult;
+        }
+        public JsonResult GetAllRoomByUserID(int page = 0, int pageSize = 20)
+        {
+            JsonResult jsonResult = new JsonResult();
+            HttpRequestBase request = this.HttpContext.Request;
+            if (ValidateRequestHeader(request))
+            {
+                var userID = User.Identity.GetUserId();
+                if (userID != null)
+                {
+                    HttpResponseMessage responseMessage = client.GetAsync(url + "/room/getallbyuserid/?userID=" + userID + "&&page=" + page + "&&pageSize=" + pageSize + "").Result;
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                        var lstroom = JsonConvert.DeserializeObject<PaginationSet<RoomViewModel>>(responseData);
+                        jsonResult = Json(new { success = true, lstData = lstroom }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                    }
                 }
                 else
                 {

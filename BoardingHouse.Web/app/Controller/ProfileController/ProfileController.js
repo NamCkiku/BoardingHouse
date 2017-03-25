@@ -36,5 +36,9 @@
             $scope.changeTab(1);
             $scope.$broadcast('fireLoadProfileInformationEvent', $scope.userInfo);
         };
+        $scope.fireLoadListRoomByUserEvent = function () {
+            $scope.changeTab(2);
+            $scope.$broadcast('fireLoadListRoomByUserEvent', $scope.userInfo);
+        };
     }
 })(angular.module('myApp'));

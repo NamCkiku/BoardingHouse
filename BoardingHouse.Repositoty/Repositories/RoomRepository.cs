@@ -34,6 +34,8 @@ namespace BoardingHouse.Repositoty.Repositories
                              Image = a.Image,
                              CreateDate = a.CreateDate,
                              Acreage = a.Acreage,
+                             UserID = a.UserID,
+                             Status=a.Status,
                          }).ToList();
             return query;
         }
