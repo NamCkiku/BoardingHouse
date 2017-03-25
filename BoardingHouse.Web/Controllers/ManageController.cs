@@ -61,7 +61,15 @@ namespace BoardingHouse.Web.Controllers
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 if (user != null)
                 {
-                    await UserManager.UpdateAsync(model);
+                    user.AccessFailedCount = model.AccessFailedCount;
+                    user.Address = model.Address;
+                    user.Avatar = model.Avatar;
+                    user.BirthDay = model.BirthDay;
+                    user.Email = model.Email;
+                    user.FullName = model.FullName;
+                    user.Sex = model.Sex;
+                    user.PhoneNumber = model.PhoneNumber;
+                    var result = await UserManager.UpdateAsync(user);
                     jsonResult = Json(new { success = true }, JsonRequestBehavior.AllowGet);
                 }
                 else
@@ -245,25 +253,29 @@ namespace BoardingHouse.Web.Controllers
         //
         // POST: /Manage/ChangePassword
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
+        //[ValidateAntiForgeryToken]
+        public async Task<JsonResult> ChangePassword(ChangePasswordViewModel model)
         {
-            if (!ModelState.IsValid)
+            JsonResult jsonResult = new JsonResult();
+            HttpRequestBase request = this.HttpContext.Request;
+            if (ValidateRequestHeader(request))
             {
-                return View(model);
-            }
-            var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
-            if (result.Succeeded)
-            {
-                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                if (user != null)
+                var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+                if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                    if (user != null)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        jsonResult = Json(new { success = true }, JsonRequestBehavior.AllowGet);
+                    }
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                else
+                {
+                    jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                }
             }
-            AddErrors(result);
-            return View(model);
+            return jsonResult;
         }
 
         //
