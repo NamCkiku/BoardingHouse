@@ -33,11 +33,13 @@
                         <div class="form-group remove-border">
                             <label class="col-sm-3 control-label">Email:</label>
                             <div class="col-sm-6">
-                                <input type="text"
+                                <input type="email"
                                        ng-model="UserInfomation.Email"
                                        class="form-control"
                                        name="Email"
                                        disabled="disabled"
+                                       data-fv-emailaddress="true"
+                                       data-fv-emailaddress-message="Phải đúng là Email của bạn"
                                        data-fv-stringlength="true"
                                        data-fv-stringlength-max="250"
                                        data-fv-stringlength-message="Tiêu đề chỉ được 250 ký tự"
@@ -52,6 +54,7 @@
                                 <input type="text"
                                        ng-model="UserInfomation.UserName"
                                        data-fv-notempty="true"
+                                       disabled="disabled"
                                        data-fv-notempty-message="Vui lòng nhập tên tài khoản của bạn"
                                        class="form-control"
                                        name="UserName"
@@ -80,6 +83,24 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-3 control-label">Địa chỉ:</label>
+                            <div class="col-sm-6">
+                                <input type="text"
+                                       ng-model="UserInfomation.Address"
+                                       class="form-control"
+                                       placeholder="Địa chỉ:...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Ngày sinh:</label>
+                            <div class="col-sm-6">
+                                <input type="date"
+                                       ng-model="UserInfomation.BirthDay"
+                                       class="form-control"
+                                       placeholder="Ngày sinh:...">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-lg-3 control-label " for="userName">Ảnh đại diện:</label>
                             <div class="col-lg-3">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -88,12 +109,12 @@
                                     </div>
                                     <div class="fileinput-preview fileinput-exists thumbnail" data-trigger="fileinput" style="width: 100%; height: 115px;"></div>
                                     <div>
-                                        <span class="btn btn-success btn-sm btn-file">
+                                        <span class="btn btn-success btn-xs btn-file">
                                             <span class="fileinput-new"><i class="fa fa-cloud-upload" style="margin-right:5px;" aria-hidden="true"></i>Chọn ảnh</span>
                                             <span class="fileinput-exists"><i class="fa fa-wrench" style="margin-right:5px;" aria-hidden="true"></i>Thay đổi</span>
                                             <input type="file" name="Image" ng-file-select="prepareFiles($files)">
                                         </span>
-                                        <a href="#" class="btn btn-danger btn-sm fileinput-exists" data-dismiss="fileinput"><i class="fa fa-trash-o" aria-hidden="true" style="margin-right:5px;"></i>Xóa</a>
+                                        <a href="#" class="btn btn-danger btn-xs fileinput-exists" data-dismiss="fileinput"><i class="fa fa-trash-o" aria-hidden="true" style="margin-right:5px;"></i>Xóa</a>
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +136,7 @@
             </div>
             <div class="tab-pane pad0A fade" id="tab-example-2">
                 <div class="content-box">
-                    <form class="form-horizontal pad15L pad15R clearfix bordered-row">
+                    <div class="form-horizontal pad15L pad15R clearfix bordered-row" id="ChangePassword">
                         <h3 class="content-box-header clearfix">
                             Thay đổi mật khẩu
                             <div class="font-size-11 float-right">
@@ -128,31 +149,45 @@
                             </div>
                         </h3>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Email:</label>
+                            <label class="col-sm-3 control-label">Mật khẩu cũ:</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="" placeholder="email...">
+                                <input type="password"
+                                       class="form-control"
+                                       data-fv-notempty="true"
+                                       name="OldPassword"
+                                       ng-model="changePassword.OldPassword"
+                                       data-fv-notempty-message="Vui lòng nhập mật khẩu cũ của bạn"
+                                       placeholder="email...">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Họ tên *:</label>
+                            <label class="col-sm-3 control-label">Mật khẩu mới *:</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="" placeholder="Họ tên của bạn là:...">
+                                <input type="password"
+                                       class="form-control"
+                                       name="NewPassword"
+                                       ng-model="changePassword.NewPassword"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập mật khẩu mới của bạn">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Tên Hiển thị :</label>
+                            <label class="col-sm-3 control-label">Nhập lại mật khẩu :</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="" placeholder="tên hiển thị của bạn:...">
+                                <input type="password" class="form-control"
+                                       data-fv-notempty="true"
+                                       name="ConfirmPassword"
+                                       ng-model="changePassword.ConfirmPassword"
+                                       data-fv-notempty-message="Vui lòng nhập lại mật khẩu">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"></label>
                             <div class="col-sm-6">
-                                <button class="btn btn-info"><i style="margin-right:10px;" class="fa fa-user" aria-hidden="true"></i>Thay đổi</button>
-                                <button class="btn btn-danger">Hủy</button>
+                                <button class="btn btn-info" ng-click="ChangePassword();"><i style="margin-right:10px;" class="fa fa-user" aria-hidden="true"></i>Thay đổi</button>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             <div class="tab-pane pad0A fade" id="tab-example-3">

@@ -59,11 +59,17 @@
     <Compile Include="Migrations\201702211329572_addDB.Designer.cs">
       <DependentUpon>201702211329572_addDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703250144130_addAudilogandCard.cs" />
+    <Compile Include="Migrations\201703250144130_addAudilogandCard.Designer.cs">
+      <DependentUpon>201703250144130_addAudilogandCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AuditLog.cs" />
     <Compile Include="Models\DbContexEntities.cs" />
     <Compile Include="Models\District.cs" />
     <Compile Include="Models\Error.cs" />
     <Compile Include="Models\MoreInfomation.cs" />
+    <Compile Include="Models\PaymentCard.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\PostType.cs" />
     <Compile Include="Models\Province.cs" />
@@ -87,6 +93,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201702211329572_addDB.resx">
       <DependentUpon>201702211329572_addDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703250144130_addAudilogandCard.resx">
+      <DependentUpon>201703250144130_addAudilogandCard.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -23,6 +23,8 @@ namespace BoardingHouse.Entities.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<SystemSetting> SystemSettings { get; set; }
         public virtual DbSet<Ward> Wards { get; set; }
+        public virtual DbSet<AuditLog> AuditLogs { get; set; }
+        public virtual DbSet<PaymentCard> PaymentCards { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
