@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201703250144130_addAudilogandCard.Designer.cs">
       <DependentUpon>201703250144130_addAudilogandCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703250215067_updateUserID.cs" />
+    <Compile Include="Migrations\201703250215067_updateUserID.Designer.cs">
+      <DependentUpon>201703250215067_updateUserID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuditLog.cs" />
     <Compile Include="Models\DbContexEntities.cs" />
@@ -96,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703250144130_addAudilogandCard.resx">
       <DependentUpon>201703250144130_addAudilogandCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703250215067_updateUserID.resx">
+      <DependentUpon>201703250215067_updateUserID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

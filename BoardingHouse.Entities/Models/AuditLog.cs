@@ -21,6 +21,6 @@ namespace BoardingHouse.Entities.Models
         public string IPAddress { get; set; }
         [StringLength(256)]
         public string Device { get; set; }
-        public int UserID { get; set; }
+        public string UserID { get; set; }
     }
 }

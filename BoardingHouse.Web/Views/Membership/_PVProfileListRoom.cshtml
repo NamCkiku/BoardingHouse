@@ -1,0 +1,22 @@
+﻿<div ng-controller="PVProfileListRoom">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên bài</th>
+                <th>Gía tiền</th>
+                <th>Trạng thái</th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in data.lstRoom">
+                <td>{{item.RoomID}}</td>
+                <td>{{item.RoomName}}</td>
+                <td>{{item.Price}}</td>
+                <td>{{item.Status}}</td>
+                <td><button class="btn btn-xs btn-primary">Sửa</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

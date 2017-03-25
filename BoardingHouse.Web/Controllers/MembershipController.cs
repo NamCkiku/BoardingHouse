@@ -21,6 +21,9 @@ namespace BoardingHouse.Web.Controllers
         {
             return PartialView();
         }
-
+        public PartialViewResult _PVProfileListRoom()
+        {
+            return PartialView();
+        }
     }
 }

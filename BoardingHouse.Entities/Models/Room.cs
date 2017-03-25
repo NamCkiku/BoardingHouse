@@ -72,6 +72,6 @@ namespace BoardingHouse.Entities.Models
         [StringLength(256)]
         public string Email { get; set; }
 
-        public int? UserID{ get; set; }
+        public string UserID{ get; set; }
     }
 }

@@ -143,6 +143,27 @@ namespace BoardingHouse.Service.Service
             }
             return lstroom.Skip((page - 1) * pageSize).Take(pageSize);
         }
+        public IEnumerable<RoomEntity> GetAllListRoomByUser(string userID, int page, int pageSize, out int totalRow)
+        {
+            List<RoomEntity> lstroom = new List<RoomEntity>();
+            try
+            {
+                lstroom = _roomRepository.GetAllListRoom().Where(x => x.UserID == userID)
+                    .ToList();
+                totalRow = lstroom.Count();
+                if (lstroom != null)
+                {
+                    lstroom.Skip((page - 1) * pageSize).Take(pageSize);
+                }
+            }
+            catch (Exception ex)
+            {
+                string FunctionName = string.Format("GetAllListRoomByUser('{0}')", "");
+                Common.Logs.LogCommon.WriteError(ex.ToString(), FunctionName);
+                throw ex;
+            }
+            return lstroom.Skip((page - 1) * pageSize).Take(pageSize);
+        }
         public Room GetById(int id)
         {
             var room = new Room();
