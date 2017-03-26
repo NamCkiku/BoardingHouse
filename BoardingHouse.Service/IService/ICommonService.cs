@@ -12,6 +12,7 @@ namespace BoardingHouse.Service.IService
         IEnumerable<Province> GetAllProvince();
         IEnumerable<District> GetAllDistrict(int id);
         IEnumerable<Ward> GetAllWard(int id);
+        void ApptLog(AuditLog obj);
         void SaveChanges();
     }
 }
