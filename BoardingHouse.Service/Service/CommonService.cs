@@ -15,12 +15,15 @@ namespace BoardingHouse.Service.Service
         private readonly IProvinceRepository _provinceRepository;
         private readonly IDistrictRepository _districtRepository;
         private readonly IWardRepository _wardRepository;
+        private readonly IAuditLogRepository _audilogRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public CommonService(IProvinceRepository roomRepository, IDistrictRepository districtRepository, IWardRepository wardRepository, IUnitOfWork unitOfWork)
+        public CommonService(IProvinceRepository roomRepository, IDistrictRepository districtRepository, IWardRepository wardRepository, IUnitOfWork unitOfWork,
+            IAuditLogRepository audilogRepository)
         {
             this._provinceRepository = roomRepository;
             this._districtRepository = districtRepository;
             this._wardRepository = wardRepository;
+            this._audilogRepository = audilogRepository;
             this._unitOfWork = unitOfWork;
         }
         public IEnumerable<District> GetAllDistrict(int id)
@@ -71,9 +74,30 @@ namespace BoardingHouse.Service.Service
             return lstward;
         }
 
+        public void ApptLog(AuditLog obj)
+        {
+            try
+            {
+                AuditLog oAuditLog = new AuditLog();
+                oAuditLog.CreatedBy = obj.CreatedBy;
+                oAuditLog.Description = obj.Description;
+                oAuditLog.CreatedDate = DateTime.Now;
+                oAuditLog.Device = obj.Device;
+                oAuditLog.IPAddress = obj.IPAddress;
+                oAuditLog.LogType = obj.LogType;
+                oAuditLog.UserID = obj.UserID;
+                _audilogRepository.Add(oAuditLog);
+                _unitOfWork.Commit();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _unitOfWork.Commit();
         }
     }
 }

@@ -132,7 +132,7 @@ namespace BoardingHouse.Service.Service
                 totalRow = lstroom.Count();
                 if (lstroom != null)
                 {
-                    lstroom.Skip((page - 1) * pageSize).Take(pageSize);
+                    lstroom.Skip(page * pageSize).Take(pageSize);
                 }
             }
             catch (Exception ex)
@@ -141,7 +141,7 @@ namespace BoardingHouse.Service.Service
                 Common.Logs.LogCommon.WriteError(ex.ToString(), FunctionName);
                 throw ex;
             }
-            return lstroom.Skip((page - 1) * pageSize).Take(pageSize);
+            return lstroom.Skip(page * pageSize).Take(pageSize);
         }
         public IEnumerable<RoomEntity> GetAllListRoomByUser(string userID, int page, int pageSize, out int totalRow)
         {
@@ -153,7 +153,7 @@ namespace BoardingHouse.Service.Service
                 totalRow = lstroom.Count();
                 if (lstroom != null)
                 {
-                    lstroom.Skip((page - 1) * pageSize).Take(pageSize);
+                    lstroom.Skip(page * pageSize).Take(pageSize);
                 }
             }
             catch (Exception ex)
@@ -162,7 +162,7 @@ namespace BoardingHouse.Service.Service
                 Common.Logs.LogCommon.WriteError(ex.ToString(), FunctionName);
                 throw ex;
             }
-            return lstroom.Skip((page - 1) * pageSize).Take(pageSize);
+            return lstroom.Skip(page * pageSize).Take(pageSize);
         }
         public Room GetById(int id)
         {
