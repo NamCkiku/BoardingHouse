@@ -10,8 +10,8 @@
         $scope.page = 0;
         $scope.pagesCount = 0;
         $scope.totalCount = 0;
-        $scope.GetAllRoomType = GetAllRoomType;
-        function GetAllRoomType(page) {
+        $scope.GetAllRoom = GetAllRoom;
+        function GetAllRoom(page) {
             page = page || 0;
             var myBlockUI = blockUI.instances.get('LstRoomBlockUI');
             myBlockUI.start();
@@ -31,6 +31,6 @@
             }, function (respone) {
             });
         }
-        GetAllRoomType();
+        GetAllRoom();
     }
 })(angular.module('myApp'));

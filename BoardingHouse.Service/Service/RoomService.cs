@@ -31,6 +31,9 @@ namespace BoardingHouse.Service.Service
                 {
                     var room = new Room
                     {
+                        FullName = info.FullName,
+                        Email = info.Email,
+                        UserID = info.UserID,
                         RoomName = info.RoomName,
                         Alias = info.Alias,
                         Phone = info.Phone,
