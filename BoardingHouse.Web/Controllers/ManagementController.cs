@@ -26,31 +26,7 @@ namespace BoardingHouse.Web.Controllers
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
         // GET: Management
-        public JsonResult GetAllRoomType()
-        {
-            JsonResult jsonResult = new JsonResult();
-            HttpRequestBase request = this.HttpContext.Request;
-            if (ValidateRequestHeader(request))
-            {
-                HttpResponseMessage responseMessage = client.GetAsync(url + "/management/getallroomtype").Result;
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    var responseData = responseMessage.Content.ReadAsStringAsync().Result;
-                    var lstRoomType = JsonConvert.DeserializeObject<List<RoomTypeViewModel>>(responseData);
-                    jsonResult = Json(new { success = true, lstData = lstRoomType }, JsonRequestBehavior.AllowGet);
-                }
-                else
-                {
-                    jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
-                }
-            }
-            else
-            {
-                jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
-            }
-            return jsonResult;
-        }
-
+        #region Room
         public JsonResult GetAllProvince()
         {
             JsonResult jsonResult = new JsonResult();
@@ -188,6 +164,7 @@ namespace BoardingHouse.Web.Controllers
             HttpRequestBase request = this.HttpContext.Request;
             if (ValidateRequestHeader(request))
             {
+                rooms.UserID = User.Identity.GetUserId();
                 var json = new JavaScriptSerializer().Serialize(rooms);
                 HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage responseMessage = client.PostAsync(url + "/room/addroom", content).Result;
@@ -208,5 +185,32 @@ namespace BoardingHouse.Web.Controllers
             }
             return jsonResult;
         }
+        #endregion
+        #region RoomType
+        public JsonResult GetAllRoomType()
+        {
+            JsonResult jsonResult = new JsonResult();
+            HttpRequestBase request = this.HttpContext.Request;
+            if (ValidateRequestHeader(request))
+            {
+                HttpResponseMessage responseMessage = client.GetAsync(url + "/management/getallroomtype").Result;
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                    var lstRoomType = JsonConvert.DeserializeObject<List<RoomTypeViewModel>>(responseData);
+                    jsonResult = Json(new { success = true, lstData = lstRoomType }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
+            return jsonResult;
+        }
+        #endregion
     }
 }

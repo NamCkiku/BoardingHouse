@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "CreateRoom";
     Layout = "~/Views/Shared/_LayoutDetail.cshtml";
 }
@@ -40,7 +39,7 @@
                                data-fv-notempty="true"
                                data-fv-notempty-message="Vui lòng nhập tên của bạn"
                                id="userName"
-                               ng-model="rooms.UserName"
+                               ng-model="rooms.FullName"
                                placeholder="Tên của tôi là:"
                                name="userName" type="text">
                     </div>
@@ -53,11 +52,13 @@
                                data-fv-stringlength-max="250"
                                data-fv-stringlength-message="Tiêu đề chỉ được 250 ký tự"
                                data-fv-notempty="true"
+                               data-fv-emailaddress="true"
+                               data-fv-emailaddress-message="Bạn phải nhập đúng định dạng Email"
                                ng-model="rooms.Email"
                                placeholder="Email của tôi là:"
                                data-fv-notempty-message="Vui lòng nhập Email"
                                name="password" type="text"
-                               class="required form-control">
+                               class="form-control">
                     </div>
                 </div>
                 <div class="form-group clearfix">
@@ -67,10 +68,11 @@
                                name="phone"
                                type="text"
                                ng-model="rooms.Phone"
+                               data-fv-integer-message="Bạn phải nhập đúng số điện thoại"
                                data-fv-notempty="true"
                                data-fv-notempty-message="Vui lòng nhập số điện thoại"
                                placeholder="Số điện thoại của tôi là:"
-                               class="required form-control">
+                               class="form-control">
                     </div>
                 </div>
                 <div class="form-group clearfix">
@@ -80,8 +82,10 @@
                                name="adress"
                                ng-model="rooms.Address"
                                type="text"
+                               data-fv-notempty="true"
+                               data-fv-notempty-message="Vui lòng nhập địa chỉ"
                                placeholder="(ghi rõ số nhà, ngõ, phố, phường, quận để khách hàng dễ tìm thấy)"
-                               class="required form-control">
+                               class="form-control">
                     </div>
                 </div>
 
@@ -122,12 +126,13 @@
                     <label class="col-lg-3 control-label " for="userName">Tiêu đề:</label>
                     <div class="col-lg-9  no-padding">
                         <input class="form-control"
+                               data-fv-stringlength="true"
                                data-fv-stringlength-min="20"
                                data-fv-stringlength-message="Tiêu đề phải dài hơn 20 và dưới 250 ký tự"
                                data-fv-stringlength-max="250"
                                ng-model="rooms.RoomName"
                                data-fv-notempty="true"
-                               data-fv-notempty-message="Vui lòng nhập Email"
+                               data-fv-notempty-message="Vui lòng nhập tiêu đề tin của bạn"
                                placeholder="Tiêu đề phải dài hơn 20 kí tự"
                                name="title" type="text">
                     </div>
@@ -141,12 +146,12 @@
                             </div>
                             <div class="fileinput-preview fileinput-exists thumbnail" data-trigger="fileinput" style="width: 100%; height: 115px;"></div>
                             <div>
-                                <span class="btn btn-success btn-sm btn-file">
+                                <span class="btn btn-success btn-xs btn-file">
                                     <span class="fileinput-new"><i class="fa fa-cloud-upload" style="margin-right:5px;" aria-hidden="true"></i>Chọn ảnh</span>
                                     <span class="fileinput-exists"><i class="fa fa-wrench" style="margin-right:5px;" aria-hidden="true"></i>Thay đổi</span>
                                     <input type="file" name="Image" ng-file-select="prepareFiles($files)">
                                 </span>
-                                <a href="#" class="btn btn-danger btn-sm fileinput-exists" data-dismiss="fileinput"><i class="fa fa-trash-o" aria-hidden="true" style="margin-right:5px;"></i>Xóa</a>
+                                <a href="#" class="btn btn-danger btn-xs fileinput-exists" data-dismiss="fileinput"><i class="fa fa-trash-o" aria-hidden="true" style="margin-right:5px;"></i>Xóa</a>
                             </div>
                         </div>
                     </div>
@@ -198,7 +203,7 @@
                                data-fv-between-message="Gía tiền phải lớn hơn 0"
                                placeholder="Giá tiền"
                                name="price" type="number">
-                        <span class="input-group-addon">đ/tháng</span>
+                        @*<span class="input-group-addon">đ/tháng</span>*@
                     </div>
                 </div>
                 <div class="form-group clearfix">
@@ -214,7 +219,7 @@
                                data-fv-between-message="Gía tiền phải lớn hơn 0"
                                placeholder="Diện tích"
                                name="Acreage" type="number">
-                        <span class="input-group-addon">M<sup>2</sup></span>
+                        @*<span class="input-group-addon">M<sup>2</sup></span>*@
                     </div>
                 </div>
             </div>

@@ -42,7 +42,7 @@ namespace BoardingHouse.Web.Models.ViewModel
 
         public DateTime? ExpireDate { get; set; }
 
-        public int ViewCount { get; set; }
+        public int? ViewCount { get; set; }
 
         public bool Status { get; set; }
 
@@ -50,5 +50,9 @@ namespace BoardingHouse.Web.Models.ViewModel
 
         public double? Lng { get; set; }
         public virtual MoreInfomationViewModel MoreInfomations { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+
+        public string UserID { get; set; }
     }
 }

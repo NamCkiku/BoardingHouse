@@ -43,7 +43,7 @@ namespace BoardingHouse.Entities.Entities
 
         public DateTime? ExpireDate { get; set; }
 
-        public int ViewCount { get; set; }
+        public int? ViewCount { get; set; }
 
         public bool Status { get; set; }
 

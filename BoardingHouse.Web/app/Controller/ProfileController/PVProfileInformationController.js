@@ -10,6 +10,13 @@
         $scope.changePassword = {};
         $scope.$on('fireLoadProfileInformationEvent', function (event, userInfo) {
             console.log(userInfo);
+            var profileImage = null;
+            $scope.prepareFiles = prepareFiles;
+            function prepareFiles($files) {
+                profileImage = $files;
+                $scope.UserInfomation.Avatar = $files[0].name;
+                console.log($scope.UserInfomation.Avatar);
+            }
             $scope.UserInfomation = userInfo;
             $scope.SaveUpdateUser = SaveUpdateUser;
             function SaveUpdateUser() {

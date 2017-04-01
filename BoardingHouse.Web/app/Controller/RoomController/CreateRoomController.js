@@ -37,7 +37,7 @@
         };
         Dropzone.autoDiscover = false;
         $scope.dzOptions = {
-            url: '/Home/SaveUploadedFile',
+            url: 'http://localhost:6568/api/room/images/uploadFile',
             paramName: 'photo',
             maxFilesize: 2, // MB
             maxFiles: 8,
@@ -48,17 +48,19 @@
             init: function () {
                 this.on("maxfilesexceeded", function (file) {
                     this.removeFile(file);
-                    //notificationService.displayError('Giới hạn số lượng hình ảnh là 8!');
+                    BaseService.displayError('Giới hạn số lượng hình ảnh là 8!');
                 });
             },
             acceptedFiles: 'image/jpeg, images/jpg, image/png',
             addRemoveLinks: true,
-            autoProcessQueue: false,
+            autoProcessQueue: true,
         };
         $scope.dzCallbacks = {
             'addedfile': function (file) {
+                $scope.rooms.MoreImages = [];
             },
             'thumbnail': function (file, dataUrl) {
+                $scope.rooms.MoreImages.push(file.name);
             },
             'success': function (file, xhr) {
                 console.log(file, xhr);
@@ -113,7 +115,7 @@
             apiService.post('Home/GetUserLogin', true, null, function (respone) {
                 if (respone.data.success == true) {
                     $scope.rooms.Email = respone.data.user.Email;
-                    $scope.rooms.UserName = respone.data.user.UserName;
+                    $scope.rooms.FullName = respone.data.user.UserName;
                     $scope.rooms.Address = respone.data.user.Address;
                     $scope.rooms.PhoneNumber = respone.data.user.PhoneNumber;
 
@@ -179,13 +181,20 @@
                 var frmAdd = angular.element(document.querySelector('#formStep2'));
                 var formValidation = frmAdd.data('formValidation').validate();
                 if (formValidation.isValid()) {
+                    if ($scope.rooms.MoreImages != null) {
+                        $scope.rooms.MoreImages = JSON.stringify($scope.rooms.MoreImages)
+                    }
                     apiService.post('Management/CreateRoom', true, $scope.rooms, function (respone) {
                         if (respone.data.success == true) {
                             if (roomImage) {
-                                fileUploadService.uploadImage(roomImage, respone.data.objData.RoomID);
+                                if (respone.data.objData.RoomID != null) {
+                                    fileUploadService.uploadImage(roomImage, respone.data.objData.RoomID);
+                                }
                             }
                             $scope.isActive = '3';
+                            BaseService.displaySuccess("Chúc mừng bạn đã đăng tin thành công", 5000);
                         } else {
+                            BaseService.displayError("Đăng tin không thành công bạn vui lòng kiểm tra lại thành công", 5000);
                         }
                     }, function (respone) {
                         console.log('Load product failed.');
