@@ -131,6 +131,7 @@
                                data-fv-stringlength-message="Tiêu đề phải dài hơn 20 và dưới 250 ký tự"
                                data-fv-stringlength-max="250"
                                ng-model="rooms.RoomName"
+                               ng-change="GetSeoTitle();"
                                data-fv-notempty="true"
                                data-fv-notempty-message="Vui lòng nhập tiêu đề tin của bạn"
                                placeholder="Tiêu đề phải dài hơn 20 kí tự"
@@ -223,12 +224,14 @@
                     </div>
                 </div>
             </div>
+            <input class="form-control"
+                   ng-model="rooms.Alias" type="hidden">
             <div class="col-lg-12" style="padding-bottom:15px;">
                 <div class="form-group clearfix">
                     <label class="col-lg-2 control-label " for="userName">Tag sản phẩm:</label>
                     <div class="col-lg-10 no-padding">
                         <input class="form-control"
-                               ng-model="rooms.Alias"
+                               ng-model="rooms.Tags"
                                placeholder="Sử dụng dấu phẩy để phân biệt giữa các tags"
                                name="tag" type="text">
                     </div>
@@ -326,6 +329,20 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-12">
+                <div class="form-group clearfix">
+                    <div class="control-label">Kéo thả vị trí trên bản đồ để chỉnh địa điểm chính xác hơn</div>
+                    <fieldset class="gllpLatlonPicker">
+                        <input type="text" class="gllpSearchField form-control" style="width:300px;float:left;margin-bottom:15px;margin-right:15px;" value="">
+                        <input type="button" class="gllpSearchButton btn btn-sm btn-success" value="Tìm vị trí">
+                        <div class="gllpMap" style="height:300px;">Google Maps</div>
+                        <input type="hidden" id="Lat" name="location[N]" ng-model="rooms.Lat" class="gllpLatitude" value="{{rooms.Lat}}" />
+                        <input type="hidden" id="Lng" name="location[E]" ng-model="rooms.Lng" class="gllpLongitude" value="{{rooms.Lng}}" />
+                        <input type="hidden" class="gllpZoom" value="15" />
+                        <input type="hidden" class="gllpUpdateButton" value="update map">
+                    </fieldset>
+                </div>
+            </div>
             <div class="col-lg-12" style="margin-top:20px;">
                 <div class="form-group clearfix">
                     <button class="btn btn-default btn-sm" style="float:left;" ng-click="previousStep(1);"><i class="fa fa-step-backward" style="margin-right:10px;" aria-hidden="true"></i>Quay lại</button>
@@ -366,13 +383,115 @@
                 </div>
                 <div class="checkbox checkbox-success" style="margin-top:20px;">
                     <input type="checkbox">
-                    <label >Hiển thị tin đăng trong mục Tin đăng được tài trợ <a>(Tìm hiểu thêm)</a></label>
+                    <label>Hiển thị tin đăng trong mục Tin đăng được tài trợ <a>(Tìm hiểu thêm)</a></label>
                 </div>
             </div>
             <div class="col-lg-12" style="margin-top:20px;">
                 <div class="form-group clearfix">
                     <button class="btn btn-default btn-sm" style="float:left;" ng-click="previousStep(1);"><i class="fa fa-step-backward" style="margin-right:10px;" aria-hidden="true"></i>Quay lại</button>
                     <button class="btn btn-success btn-sm" style="float:right;" ng-click="nextStep(3);"><i class="fa fa-step-forward" style="margin-right:10px;" aria-hidden="true"></i>Đăng Tin</button>
+                </div>
+            </div>
+        </div>
+        <div class="step step4" ng-show="isActive=='4'">
+            <div class="steps_header">Đăng Tin Thành Công&nbsp;<span class="steps_header_notice"></span></div>
+            <div class="row thankyou-infos">
+                <div class="col-md-12 thankyou-message">
+                    <div class="thankyou-message-icon unprint">
+                        <div class="icon icon--order-success svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="72px" height="72px">
+                                <g fill="none" stroke="#8EC343" stroke-width="2">
+                                    <circle cx="36" cy="36" r="35" style="stroke-dasharray:240px, 240px; stroke-dashoffset: 480px;"></circle>
+                                    <path d="M17.417,37.778l9.93,9.909l25.444-25.393" style="stroke-dasharray:50px, 50px; stroke-dashoffset: 0px;"></path>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="thankyou-message-text">
+                        <h3>Cảm ơn bạn đã đăng tin thành công</h3>
+                        <p>
+                            Một email xác nhận đã được gửi tới {{roomInfomation.Email}}. Xin vui lòng kiểm tra email của bạn
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 customer-info">
+                    <div id="map" style="height: 200px;
+                            width: 100%;"></div>
+                    <input type="hidden" id="hidLat" value="{{roomInfomation.Lat}}" />
+                    <input type="hidden" id="hidLng" value="{{roomInfomation.Lng}}" />
+                    <input type="hidden" id="hidName" value="{{roomInfomation.RoomName}}" />
+                    <script>
+                        function initMap() {
+                            // Create a map object and specify the DOM element for display.
+                            var uluru = { lat: parseFloat($('#hidLat').val()), lng: parseFloat($('#hidLng').val()) };
+                            var map = new google.maps.Map(document.getElementById('map'), {
+                                center: uluru,
+                                scrollwheel: false,
+                                zoom: 15
+                            });
+                            var marker = new google.maps.Marker({
+                                position: uluru,
+                                map: map,
+                                title: $('#hidName').val()
+                            });
+                        };
+                    </script>
+                    <div class="shipping-info">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="order-summary order-summary--white no-border no-padding-top">
+                                    <div class="order-summary-header">
+                                        <h2>
+                                            <label class="control-label">Thông tin liên hệ</label>
+                                        </h2>
+                                    </div>
+                                    <div class="summary-section no-border no-padding-top">
+                                        <p>
+                                            Tên:{{roomInfomation.FullName}}
+                                        </p>
+                                        <p>
+                                            Email:{{roomInfomation.Email}}
+                                        </p>
+                                        <p>
+                                            Số điện thoại:{{roomInfomation.Phone}}
+                                        </p>
+                                        <p>
+                                            Địa chỉ:{{roomInfomation.Address}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="order-summary order-summary--white no-border">
+                                    <div class="order-summary-header">
+                                        <h2>
+                                            <label class="control-label">Nội dung</label>
+                                        </h2>
+                                    </div>
+                                    <div class="summary-section no-border no-padding-top">
+                                        <p>
+                                            Tiêu đề:{{roomInfomation.RoomName}}
+                                        </p>
+                                        <p>
+                                            Giá tiền:{{roomInfomation.Price|number}}vnđ
+                                        </p>
+
+                                        <p>
+                                            Diện tích: {{roomInfomation.Acreage}}m2
+                                        </p>
+                                        <p>
+                                            Ngày đăng:{{roomInfomation.CreateDate|date}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-success unprint">
+                        <a href="/" class="btn btn-primary">
+                            <i class="fa fa-reply-all" style="margin-right:15px;" aria-hidden="true"></i> Trở về trang chủ
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -450,273 +569,432 @@
         </div>
     </div>
 </script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeERa22t2lASaDOgxzPMZe1Fkm3ePJ7ok"
+        type="text/javascript"></script>
+<link href="~/bower_components/jquery-latitude-longitude-picker-gmaps/css/jquery-gmaps-latlon-picker.css" rel="stylesheet" />
+<script src="~/bower_components/jquery-latitude-longitude-picker-gmaps/js/jquery-gmaps-latlon-picker.js"></script>
+
 <style>
     .checkbox {
-  padding-left: 20px; }
-.checkbox label {
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-    padding-left: 5px; }
-.checkbox label::before {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  width: 19px;
-  height: 19px;
-  left: 0;
-  margin-left: -20px;
-  border: 1px solid #cccccc;
-  border-radius: 0px;
-  background-color: #fff;
-  -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
-  -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
-      transition: border 0.15s ease-in-out, color 0.15s ease-in-out; }
-.checkbox label::after {
-  display: inline-block;
-  position: absolute;
-  width: 19px;
-  height: 19px;
-  left: 0;
-  top: 0;
-  margin-left: -20px;
-  padding-left: 3px;
-  padding-top: 1px;
-  font-size: 13px;
-      color: #555555; }
-.checkbox input[type="checkbox"],
-.checkbox input[type="radio"] {
-  opacity: 0;
-    z-index: 1; }
-.checkbox input[type="checkbox"]:focus + label::before,
-.checkbox input[type="radio"]:focus + label::before {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-      outline-offset: -2px; }
-.checkbox input[type="checkbox"]:checked + label::after,
-.checkbox input[type="radio"]:checked + label::after {
-  font-family: "FontAwesome";
-  content: "\f00c";}
-.checkbox input[type="checkbox"]:indeterminate + label::after,
-.checkbox input[type="radio"]:indeterminate + label::after {
-  display: block;
-  content: "";
-  width: 10px;
-  height: 3px;
-  /*background-color: #555555;*/
-  border-radius: 2px;
-  margin-left: -16.5px;
-  margin-top: 7px;
-}
-.checkbox input[type="checkbox"]:disabled + label,
-.checkbox input[type="radio"]:disabled + label {
-      opacity: 0.65; }
-.checkbox input[type="checkbox"]:disabled + label::before,
-.checkbox input[type="radio"]:disabled + label::before {
-  background-color: #eeeeee;
-        cursor: not-allowed; }
-.checkbox.checkbox-circle label::before {
-    border-radius: 50%; }
-.checkbox.checkbox-inline {
-    margin-top: 0; }
+        padding-left: 20px;
+    }
 
-.checkbox-primary input[type="checkbox"]:checked + label::before,
-.checkbox-primary input[type="radio"]:checked + label::before {
-  background-color: #337ab7;
-  border-color: #337ab7; }
-.checkbox-primary input[type="checkbox"]:checked + label::after,
-.checkbox-primary input[type="radio"]:checked + label::after {
-  color: #fff; }
+        .checkbox label {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            padding-left: 5px;
+        }
 
-.checkbox-danger input[type="checkbox"]:checked + label::before,
-.checkbox-danger input[type="radio"]:checked + label::before {
-  background-color: #d9534f;
-  border-color: #d9534f; }
-.checkbox-danger input[type="checkbox"]:checked + label::after,
-.checkbox-danger input[type="radio"]:checked + label::after {
-  color: #fff; }
+            .checkbox label::before {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                width: 19px;
+                height: 19px;
+                left: 0;
+                margin-left: -20px;
+                border: 1px solid #cccccc;
+                border-radius: 0px;
+                background-color: #fff;
+                -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+                -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+                transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+            }
 
-.checkbox-info input[type="checkbox"]:checked + label::before,
-.checkbox-info input[type="radio"]:checked + label::before {
-  background-color: #5bc0de;
-  border-color: #5bc0de; }
-.checkbox-info input[type="checkbox"]:checked + label::after,
-.checkbox-info input[type="radio"]:checked + label::after {
-  color: #fff; }
+            .checkbox label::after {
+                display: inline-block;
+                position: absolute;
+                width: 19px;
+                height: 19px;
+                left: 0;
+                top: 0;
+                margin-left: -20px;
+                padding-left: 3px;
+                padding-top: 1px;
+                font-size: 13px;
+                color: #555555;
+            }
 
-.checkbox-warning input[type="checkbox"]:checked + label::before,
-.checkbox-warning input[type="radio"]:checked + label::before {
-  background-color: #f0ad4e;
-  border-color: #f0ad4e; }
-.checkbox-warning input[type="checkbox"]:checked + label::after,
-.checkbox-warning input[type="radio"]:checked + label::after {
-  color: #fff; }
+        .checkbox input[type="checkbox"],
+        .checkbox input[type="radio"] {
+            opacity: 0;
+            z-index: 1;
+        }
 
-.checkbox-success input[type="checkbox"]:checked + label::before,
-.checkbox-success input[type="radio"]:checked + label::before {
-  background-color: #FF0046;
-  border-color: #FF0046; }
-.checkbox-success input[type="checkbox"]:checked + label::after,
-.checkbox-success input[type="radio"]:checked + label::after {
-  color: #fff;}
+            .checkbox input[type="checkbox"]:focus + label::before,
+            .checkbox input[type="radio"]:focus + label::before {
+                outline: thin dotted;
+                outline: 5px auto -webkit-focus-ring-color;
+                outline-offset: -2px;
+            }
 
-.checkbox-primary input[type="checkbox"]:indeterminate + label::before,
-.checkbox-primary input[type="radio"]:indeterminate + label::before {
-  background-color: #337ab7;
-  border-color: #337ab7;
-}
+            .checkbox input[type="checkbox"]:checked + label::after,
+            .checkbox input[type="radio"]:checked + label::after {
+                font-family: "FontAwesome";
+                content: "\f00c";
+            }
 
-.checkbox-primary input[type="checkbox"]:indeterminate + label::after,
-.checkbox-primary input[type="radio"]:indeterminate + label::after {
-  background-color: #fff;
-}
+            .checkbox input[type="checkbox"]:indeterminate + label::after,
+            .checkbox input[type="radio"]:indeterminate + label::after {
+                display: block;
+                content: "";
+                width: 10px;
+                height: 3px;
+                /*background-color: #555555;*/
+                border-radius: 2px;
+                margin-left: -16.5px;
+                margin-top: 7px;
+            }
 
-.checkbox-danger input[type="checkbox"]:indeterminate + label::before,
-.checkbox-danger input[type="radio"]:indeterminate + label::before {
-  background-color: #d9534f;
-  border-color: #d9534f;
-}
+            .checkbox input[type="checkbox"]:disabled + label,
+            .checkbox input[type="radio"]:disabled + label {
+                opacity: 0.65;
+            }
 
-.checkbox-danger input[type="checkbox"]:indeterminate + label::after,
-.checkbox-danger input[type="radio"]:indeterminate + label::after {
-  background-color: #fff;
-}
+                .checkbox input[type="checkbox"]:disabled + label::before,
+                .checkbox input[type="radio"]:disabled + label::before {
+                    background-color: #eeeeee;
+                    cursor: not-allowed;
+                }
 
-.checkbox-info input[type="checkbox"]:indeterminate + label::before,
-.checkbox-info input[type="radio"]:indeterminate + label::before {
-  background-color: #5bc0de;
-  border-color: #5bc0de;
-}
+        .checkbox.checkbox-circle label::before {
+            border-radius: 50%;
+        }
 
-.checkbox-info input[type="checkbox"]:indeterminate + label::after,
-.checkbox-info input[type="radio"]:indeterminate + label::after {
-  background-color: #fff;
-}
+        .checkbox.checkbox-inline {
+            margin-top: 0;
+        }
 
-.checkbox-warning input[type="checkbox"]:indeterminate + label::before,
-.checkbox-warning input[type="radio"]:indeterminate + label::before {
-  background-color: #f0ad4e;
-  border-color: #f0ad4e;
-}
+    .checkbox-primary input[type="checkbox"]:checked + label::before,
+    .checkbox-primary input[type="radio"]:checked + label::before {
+        background-color: #337ab7;
+        border-color: #337ab7;
+    }
 
-.checkbox-warning input[type="checkbox"]:indeterminate + label::after,
-.checkbox-warning input[type="radio"]:indeterminate + label::after {
-  background-color: #fff;
-}
+    .checkbox-primary input[type="checkbox"]:checked + label::after,
+    .checkbox-primary input[type="radio"]:checked + label::after {
+        color: #fff;
+    }
 
-.checkbox-success input[type="checkbox"]:indeterminate + label::before,
-.checkbox-success input[type="radio"]:indeterminate + label::before {
-  /*background-color: #5cb85c;
-  border-color: #5cb85c;*/
-}
+    .checkbox-danger input[type="checkbox"]:checked + label::before,
+    .checkbox-danger input[type="radio"]:checked + label::before {
+        background-color: #d9534f;
+        border-color: #d9534f;
+    }
 
-.checkbox-success input[type="checkbox"]:indeterminate + label::after,
-.checkbox-success input[type="radio"]:indeterminate + label::after {
-  background-color: #fff;
-}
+    .checkbox-danger input[type="checkbox"]:checked + label::after,
+    .checkbox-danger input[type="radio"]:checked + label::after {
+        color: #fff;
+    }
 
-.radio label {
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-    padding-left: 5px;
-    color: #FFF; }
-.radio label::before {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  left: 0;
-  margin-left: -20px;
-  border: 1px solid #cccccc;
-  border-radius: 50%;
-  background-color: #fff;
-  -webkit-transition: border 0.15s ease-in-out;
-  -o-transition: border 0.15s ease-in-out;
-      transition: border 0.15s ease-in-out; }
-.radio label::after {
-  display: inline-block;
-  position: absolute;
-  content: " ";
-  width: 11px;
-  height: 11px;
-  left: 3px;
-  top: 3px;
-  margin-left: -20px;
-  border-radius: 50%;
-  background-color: #555555;
-  -webkit-transform: scale(0, 0);
-  -ms-transform: scale(0, 0);
-  -o-transform: scale(0, 0);
-  transform: scale(0, 0);
-  -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
-  -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
-  -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
-      transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33); }
-.radio input[type="radio"] {
-  opacity: 0;
-    z-index: 1; }
-.radio input[type="radio"]:focus + label::before {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-      outline-offset: -2px; }
-.radio input[type="radio"]:checked + label::after {
-  -webkit-transform: scale(1, 1);
-  -ms-transform: scale(1, 1);
-  -o-transform: scale(1, 1);
-      transform: scale(1, 1); }
-.radio input[type="radio"]:disabled + label {
-      opacity: 0.65; }
-.radio input[type="radio"]:disabled + label::before {
-        cursor: not-allowed; }
-.radio.radio-inline {
-    margin-top: 0; }
+    .checkbox-info input[type="checkbox"]:checked + label::before,
+    .checkbox-info input[type="radio"]:checked + label::before {
+        background-color: #5bc0de;
+        border-color: #5bc0de;
+    }
 
-.radio-primary input[type="radio"] + label::after {
-  background-color: #337ab7; }
-.radio-primary input[type="radio"]:checked + label::before {
-  border-color: #337ab7; }
-.radio-primary input[type="radio"]:checked + label::after {
-  background-color: #337ab7; }
+    .checkbox-info input[type="checkbox"]:checked + label::after,
+    .checkbox-info input[type="radio"]:checked + label::after {
+        color: #fff;
+    }
 
-.radio-danger input[type="radio"] + label::after {
-  background-color: #ff0046; }
-.radio-danger input[type="radio"]:checked + label::before {
-  border-color: #ff0046; }
-.radio-danger input[type="radio"]:checked + label::after {
-  background-color: #ff0046; }
+    .checkbox-warning input[type="checkbox"]:checked + label::before,
+    .checkbox-warning input[type="radio"]:checked + label::before {
+        background-color: #f0ad4e;
+        border-color: #f0ad4e;
+    }
 
-.radio-info input[type="radio"] + label::after {
-  background-color: #5bc0de; }
-.radio-info input[type="radio"]:checked + label::before {
-  border-color: #5bc0de; }
-.radio-info input[type="radio"]:checked + label::after {
-  background-color: #5bc0de; }
+    .checkbox-warning input[type="checkbox"]:checked + label::after,
+    .checkbox-warning input[type="radio"]:checked + label::after {
+        color: #fff;
+    }
 
-.radio-warning input[type="radio"] + label::after {
-  background-color: #f0ad4e; }
-.radio-warning input[type="radio"]:checked + label::before {
-  border-color: #f0ad4e; }
-.radio-warning input[type="radio"]:checked + label::after {
-  background-color: #f0ad4e; }
+    .checkbox-success input[type="checkbox"]:checked + label::before,
+    .checkbox-success input[type="radio"]:checked + label::before {
+        background-color: #FF0046;
+        border-color: #FF0046;
+    }
 
-.radio-success input[type="radio"] + label::after {
-  background-color: #5cb85c; }
-.radio-success input[type="radio"]:checked + label::before {
-  border-color: #5cb85c; }
-.radio-success input[type="radio"]:checked + label::after {
-  background-color: #5cb85c; }
+    .checkbox-success input[type="checkbox"]:checked + label::after,
+    .checkbox-success input[type="radio"]:checked + label::after {
+        color: #fff;
+    }
 
-input[type="checkbox"].styled:checked + label:after,
-input[type="radio"].styled:checked + label:after {
-  font-family: 'FontAwesome';
-  content: "\f00c"; }
-input[type="checkbox"] .styled:checked + label::before,
-input[type="radio"] .styled:checked + label::before {
-  color: #fff; }
-input[type="checkbox"] .styled:checked + label::after,
-input[type="radio"] .styled:checked + label::after {
-  color: #fff; }
+    .checkbox-primary input[type="checkbox"]:indeterminate + label::before,
+    .checkbox-primary input[type="radio"]:indeterminate + label::before {
+        background-color: #337ab7;
+        border-color: #337ab7;
+    }
 
+    .checkbox-primary input[type="checkbox"]:indeterminate + label::after,
+    .checkbox-primary input[type="radio"]:indeterminate + label::after {
+        background-color: #fff;
+    }
+
+    .checkbox-danger input[type="checkbox"]:indeterminate + label::before,
+    .checkbox-danger input[type="radio"]:indeterminate + label::before {
+        background-color: #d9534f;
+        border-color: #d9534f;
+    }
+
+    .checkbox-danger input[type="checkbox"]:indeterminate + label::after,
+    .checkbox-danger input[type="radio"]:indeterminate + label::after {
+        background-color: #fff;
+    }
+
+    .checkbox-info input[type="checkbox"]:indeterminate + label::before,
+    .checkbox-info input[type="radio"]:indeterminate + label::before {
+        background-color: #5bc0de;
+        border-color: #5bc0de;
+    }
+
+    .checkbox-info input[type="checkbox"]:indeterminate + label::after,
+    .checkbox-info input[type="radio"]:indeterminate + label::after {
+        background-color: #fff;
+    }
+
+    .checkbox-warning input[type="checkbox"]:indeterminate + label::before,
+    .checkbox-warning input[type="radio"]:indeterminate + label::before {
+        background-color: #f0ad4e;
+        border-color: #f0ad4e;
+    }
+
+    .checkbox-warning input[type="checkbox"]:indeterminate + label::after,
+    .checkbox-warning input[type="radio"]:indeterminate + label::after {
+        background-color: #fff;
+    }
+
+    .checkbox-success input[type="checkbox"]:indeterminate + label::before,
+    .checkbox-success input[type="radio"]:indeterminate + label::before {
+        /*background-color: #5cb85c;
+      border-color: #5cb85c;*/
+    }
+
+    .checkbox-success input[type="checkbox"]:indeterminate + label::after,
+    .checkbox-success input[type="radio"]:indeterminate + label::after {
+        background-color: #fff;
+    }
+
+    .radio label {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        padding-left: 5px;
+        color: #FFF;
+    }
+
+        .radio label::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            width: 17px;
+            height: 17px;
+            left: 0;
+            margin-left: -20px;
+            border: 1px solid #cccccc;
+            border-radius: 50%;
+            background-color: #fff;
+            -webkit-transition: border 0.15s ease-in-out;
+            -o-transition: border 0.15s ease-in-out;
+            transition: border 0.15s ease-in-out;
+        }
+
+        .radio label::after {
+            display: inline-block;
+            position: absolute;
+            content: " ";
+            width: 11px;
+            height: 11px;
+            left: 3px;
+            top: 3px;
+            margin-left: -20px;
+            border-radius: 50%;
+            background-color: #555555;
+            -webkit-transform: scale(0, 0);
+            -ms-transform: scale(0, 0);
+            -o-transform: scale(0, 0);
+            transform: scale(0, 0);
+            -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+            -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+            -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+            transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+        }
+
+    .radio input[type="radio"] {
+        opacity: 0;
+        z-index: 1;
+    }
+
+        .radio input[type="radio"]:focus + label::before {
+            outline: thin dotted;
+            outline: 5px auto -webkit-focus-ring-color;
+            outline-offset: -2px;
+        }
+
+        .radio input[type="radio"]:checked + label::after {
+            -webkit-transform: scale(1, 1);
+            -ms-transform: scale(1, 1);
+            -o-transform: scale(1, 1);
+            transform: scale(1, 1);
+        }
+
+        .radio input[type="radio"]:disabled + label {
+            opacity: 0.65;
+        }
+
+            .radio input[type="radio"]:disabled + label::before {
+                cursor: not-allowed;
+            }
+
+    .radio.radio-inline {
+        margin-top: 0;
+    }
+
+    .radio-primary input[type="radio"] + label::after {
+        background-color: #337ab7;
+    }
+
+    .radio-primary input[type="radio"]:checked + label::before {
+        border-color: #337ab7;
+    }
+
+    .radio-primary input[type="radio"]:checked + label::after {
+        background-color: #337ab7;
+    }
+
+    .radio-danger input[type="radio"] + label::after {
+        background-color: #ff0046;
+    }
+
+    .radio-danger input[type="radio"]:checked + label::before {
+        border-color: #ff0046;
+    }
+
+    .radio-danger input[type="radio"]:checked + label::after {
+        background-color: #ff0046;
+    }
+
+    .radio-info input[type="radio"] + label::after {
+        background-color: #5bc0de;
+    }
+
+    .radio-info input[type="radio"]:checked + label::before {
+        border-color: #5bc0de;
+    }
+
+    .radio-info input[type="radio"]:checked + label::after {
+        background-color: #5bc0de;
+    }
+
+    .radio-warning input[type="radio"] + label::after {
+        background-color: #f0ad4e;
+    }
+
+    .radio-warning input[type="radio"]:checked + label::before {
+        border-color: #f0ad4e;
+    }
+
+    .radio-warning input[type="radio"]:checked + label::after {
+        background-color: #f0ad4e;
+    }
+
+    .radio-success input[type="radio"] + label::after {
+        background-color: #5cb85c;
+    }
+
+    .radio-success input[type="radio"]:checked + label::before {
+        border-color: #5cb85c;
+    }
+
+    .radio-success input[type="radio"]:checked + label::after {
+        background-color: #5cb85c;
+    }
+
+    input[type="checkbox"].styled:checked + label:after,
+    input[type="radio"].styled:checked + label:after {
+        font-family: 'FontAwesome';
+        content: "\f00c";
+    }
+
+    input[type="checkbox"] .styled:checked + label::before,
+    input[type="radio"] .styled:checked + label::before {
+        color: #fff;
+    }
+
+    input[type="checkbox"] .styled:checked + label::after,
+    input[type="radio"] .styled:checked + label::after {
+        color: #fff;
+    }
+</style>
+<style>
+    .thankyou-message {
+        margin-top: 7px;
+        margin-bottom: 25px;
+    }
+
+    .thankyou-message-icon {
+        float: left;
+        display: table-cell;
+        margin-right: 20px;
+        padding-top: 3px;
+    }
+
+    svg:not(:root) {
+        overflow: hidden;
+    }
+
+    .icon--order-success svg circle {
+        animation: 0.6s ease-in-out 0s normal backwards 1 running checkmark-circle;
+    }
+
+    .icon--order-success svg path {
+        animation: 0.25s ease-in-out 0.7s normal backwards 1 running checkmark;
+    }
+
+    .thankyou-message-text {
+        display: table-cell;
+    }
+
+        .thankyou-message-text p {
+            margin: 6px 0;
+        }
+
+    .customer-info {
+        padding-top: 7px;
+    }
+
+    .shipping-info {
+        border: 1px solid #dadada;
+        padding-bottom: 15px;
+    }
+
+    .order-summary--white {
+        background: none;
+        border-top: 1px solid #e1e1e1;
+        color: #777;
+    }
+
+    .order-summary-header {
+        padding: 15px;
+        border-top: none;
+    }
+
+    .order-summary .control-label {
+        margin-bottom: 0;
+        font-weight: normal;
+    }
+
+    .order-summary .summary-section {
+        padding: 12px 20px;
+    }
+
+    .no-padding-top {
+        padding-top: 0 !important;
+    }
+
+    .order-success {
+        padding: 20px;
+        text-align: right;
+    }
 </style>

@@ -493,6 +493,10 @@
     <Content Include="bower_components\jasny-bootstrap\css\jasny-bootstrap.min.css" />
     <Content Include="bower_components\jasny-bootstrap\js\jasny-bootstrap.js" />
     <Content Include="bower_components\jasny-bootstrap\js\jasny-bootstrap.min.js" />
+    <Content Include="bower_components\jquery-latitude-longitude-picker-gmaps\css\demo.css" />
+    <Content Include="bower_components\jquery-latitude-longitude-picker-gmaps\css\jquery-gmaps-latlon-picker.css" />
+    <Content Include="bower_components\jquery-latitude-longitude-picker-gmaps\js\jquery-2.1.1.min.js" />
+    <Content Include="bower_components\jquery-latitude-longitude-picker-gmaps\js\jquery-gmaps-latlon-picker.js" />
     <Content Include="bower_components\jquery\AUTHORS.txt" />
     <Content Include="bower_components\jquery\dist\jquery.js" />
     <Content Include="bower_components\jquery\dist\jquery.min.js" />
