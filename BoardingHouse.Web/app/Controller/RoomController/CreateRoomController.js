@@ -1,15 +1,16 @@
 ﻿(function (app) {
     app.controller('CreateRoomController', CreateRoomController);
 
-    CreateRoomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'apiService', '$window', 'fileUploadService'];
+    CreateRoomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'apiService', '$window', 'fileUploadService', 'commonService'];
 
-    function CreateRoomController($scope, blockUI, $modal, $rootScope, BaseService, apiService, $window, fileUploadService) {
-        $scope.isActive = '1';
+    function CreateRoomController($scope, blockUI, $modal, $rootScope, BaseService, apiService, $window, fileUploadService, commonService) {
+        $scope.isActive = '2';
         $scope.rooms = {
             MoreInfomations: {
             },
             Image: "No.jpg",
-            Alias: "No"
+            Lat: 21.0029317912212212,
+            Lng: 105.820226663232323,
         }
         $scope.account = {
             Email: "",
@@ -21,20 +22,13 @@
             lstDistrict: [],
             lstWard: []
         }
-        $scope.tinymceOptions = {
-            height: 100,
-            // menubar: false,
-            plugins: [
-              'advlist autolink lists link image charmap print preview anchor',
-              'searchreplace visualblocks code fullscreen',
-              'insertdatetime media table contextmenu paste code'
-            ],
-            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-            inline: false,
-            skin: 'lightgray',
-            theme: 'modern',
-            menubar: false,
-        };
+        $(document).bind("location_changed", function (event, object) {
+            updateLatLng($(this));
+        });
+        function updateLatLng(object) {
+            $scope.rooms.Lat = $(object).find('.gllpLatitude').val();
+            $scope.rooms.Lng = $(object).find('.gllpLongitude').val();
+        }
         Dropzone.autoDiscover = false;
         $scope.dzOptions = {
             url: 'http://localhost:6568/api/room/images/uploadFile',
@@ -68,6 +62,10 @@
         };
         $scope.dzMethods = {
         };
+        $scope.GetSeoTitle = GetSeoTitle;
+        function GetSeoTitle() {
+            $scope.rooms.Alias = commonService.getSeoTitle($scope.rooms.RoomName);
+        }
         function GetAllRoomType() {
             apiService.post('Management/GetAllRoomType', true, null, function (respone) {
                 if (respone.data.success == true) {
@@ -181,7 +179,7 @@
                 var frmAdd = angular.element(document.querySelector('#formStep2'));
                 var formValidation = frmAdd.data('formValidation').validate();
                 if (formValidation.isValid()) {
-                    $scope.isActive = '3';                   
+                    $scope.isActive = '3';
                 }
             }
             else {
@@ -195,6 +193,7 @@
                                 fileUploadService.uploadImage(roomImage, respone.data.objData.RoomID);
                             }
                         }
+                        $scope.roomInfomation = respone.data.objData;
                         $scope.isActive = '4';
                         BaseService.displaySuccess("Chúc mừng bạn đã đăng tin thành công", 5000);
                     } else {
@@ -203,9 +202,9 @@
                 }, function (respone) {
                     console.log('Load product failed.');
                 });
-                
+
             }
-        }
+        }       
         $scope.previousStep = previousStep;
         function previousStep(item) {
             if (item == 1) {
