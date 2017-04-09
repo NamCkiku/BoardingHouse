@@ -17,7 +17,7 @@
             myBlockUI.start();
             var config = {
                 page: page,
-                pageSize: 5,
+                pageSize: 12,
             }
             apiService.post('Management/GetAllRoom', true, config, function (respone) {
                 if (respone.data.success == true) {

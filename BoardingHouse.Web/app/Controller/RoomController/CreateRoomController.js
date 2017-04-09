@@ -181,30 +181,30 @@
                 var frmAdd = angular.element(document.querySelector('#formStep2'));
                 var formValidation = frmAdd.data('formValidation').validate();
                 if (formValidation.isValid()) {
-                    if ($scope.rooms.MoreImages != null) {
-                        $scope.rooms.MoreImages = JSON.stringify($scope.rooms.MoreImages)
-                    }
-                    apiService.post('Management/CreateRoom', true, $scope.rooms, function (respone) {
-                        if (respone.data.success == true) {
-                            if (roomImage) {
-                                if (respone.data.objData.RoomID != null) {
-                                    fileUploadService.uploadImage(roomImage, respone.data.objData.RoomID);
-                                }
-                            }
-                            $scope.isActive = '3';
-                            BaseService.displaySuccess("Chúc mừng bạn đã đăng tin thành công", 5000);
-                        } else {
-                            BaseService.displayError("Đăng tin không thành công bạn vui lòng kiểm tra lại thành công", 5000);
-                        }
-                    }, function (respone) {
-                        console.log('Load product failed.');
-                    });
+                    $scope.isActive = '3';                   
                 }
             }
             else {
-                $scope.isActive = '4';
+                if ($scope.rooms.MoreImages != null) {
+                    $scope.rooms.MoreImages = JSON.stringify($scope.rooms.MoreImages)
+                }
+                apiService.post('Management/CreateRoom', true, $scope.rooms, function (respone) {
+                    if (respone.data.success == true) {
+                        if (roomImage) {
+                            if (respone.data.objData.RoomID != null) {
+                                fileUploadService.uploadImage(roomImage, respone.data.objData.RoomID);
+                            }
+                        }
+                        $scope.isActive = '4';
+                        BaseService.displaySuccess("Chúc mừng bạn đã đăng tin thành công", 5000);
+                    } else {
+                        BaseService.displayError("Đăng tin không thành công bạn vui lòng kiểm tra lại thành công", 5000);
+                    }
+                }, function (respone) {
+                    console.log('Load product failed.');
+                });
+                
             }
-
         }
         $scope.previousStep = previousStep;
         function previousStep(item) {

@@ -1,5 +1,5 @@
 ﻿<div ng-controller="PVProfileListRoom">
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>ID</th>
@@ -13,9 +13,19 @@
             <tr ng-repeat="item in data.lstRoom">
                 <td>{{item.RoomID}}</td>
                 <td>{{item.RoomName}}</td>
-                <td>{{item.Price}}</td>
-                <td>{{item.Status}}</td>
-                <td><button class="btn btn-xs btn-primary">Sửa</button></td>
+                <td>{{item.Price|number}}vnđ</td>
+                <td>
+                    <span ng-show="item.Status == true" class="label label-success">
+                        Đã duyệt
+                    </span>
+                    <span ng-show="item.Status == false" class='label label-danger'>
+                        Đang chờ duyệt
+                    </span>
+                </td>
+                <td><button class="btn btn-xs btn-info"><i style="margin-right:5px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>Sửa</button>
+                    <button class="btn btn-xs btn-danger"><i style="margin-right:5px;" class="fa fa-trash-o" aria-hidden="true"></i>Xóa</button>
+                    <button class="btn btn-xs btn-primary"><i style="margin-right:5px;" class="fa fa-eye" aria-hidden="true"></i>Xem</button>
+                </td>
             </tr>
         </tbody>
     </table>
