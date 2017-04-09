@@ -165,7 +165,7 @@ namespace BoardingHouse.Service.Service
                 Common.Logs.LogCommon.WriteError(ex.ToString(), FunctionName);
                 throw ex;
             }
-            return lstroom.Skip(page * pageSize).Take(pageSize);
+            return lstroom;
         }
         public Room GetById(int id)
         {

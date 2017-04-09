@@ -18,6 +18,7 @@
                 console.log($scope.UserInfomation.Avatar);
             }
             $scope.UserInfomation = userInfo;
+            $scope.UserInfomation.BirthDay = new Date(parseInt($scope.UserInfomation.BirthDay.replace('/Date(', '')));
             $scope.SaveUpdateUser = SaveUpdateUser;
             function SaveUpdateUser() {
                 BaseService.ValidatorForm("#UpdateUser");

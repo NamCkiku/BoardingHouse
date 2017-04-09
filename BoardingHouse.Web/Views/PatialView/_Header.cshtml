@@ -15,7 +15,7 @@
                     var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
                     var currentUser = manager.FindById(User.Identity.GetUserId());
                     <div class="header-top-avatar">
-                        <img class="img-responsive" src="@currentUser.Avatar">
+                        <img class="img-responsive" src="http://localhost:6568/Content/images/@currentUser.Avatar">
                     </div>
                     <div class="header-top-user">
                         <div class="user-login"><a class="load_modal_login" href="" ng-click="LogOut();">Đăng Xuất</a></div>
