@@ -255,6 +255,8 @@
     <Content Include="bower_components\angular-sanitize\index.js" />
     <Content Include="bower_components\angular-ui-tinymce\dist\tinymce.min.js" />
     <Content Include="bower_components\angular-ui-tinymce\src\tinymce.js" />
+    <Content Include="bower_components\angularjs-dropdown-multiselect\angularjs-dropdown-multiselect.js" />
+    <Content Include="bower_components\angularjs-dropdown-multiselect\angularjs-dropdown-multiselect.min.js" />
     <Content Include="bower_components\angularjs-slider\demo\demo.css" />
     <Content Include="bower_components\angularjs-slider\demo\demo.js" />
     <Content Include="bower_components\angularjs-slider\demo\directiveInCustomTemplate.html" />

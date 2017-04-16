@@ -4,7 +4,7 @@
     CreateRoomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'apiService', '$window', 'fileUploadService', 'commonService'];
 
     function CreateRoomController($scope, blockUI, $modal, $rootScope, BaseService, apiService, $window, fileUploadService, commonService) {
-        $scope.isActive = '2';
+        $scope.isActive = '1';
         $scope.rooms = {
             MoreInfomations: {
             },
@@ -12,6 +12,25 @@
             Lat: 21.0029317912212212,
             Lng: 105.820226663232323,
         }
+        $scope.LstConvenient = [
+            { id: "Chỗ để xe", label: "Chỗ để xe" },
+            { id: "Sân phơi", label: "Sân phơi" },
+            { id: "Thang máy", label: "Thang máy" },
+            { id: "Internet", label: "Internet" },
+            { id: "Điều hòa", label: "Điều hòa" },
+            { id: "Bình nóng lạnh", label: "Bình nóng lạnh" },
+            { id: "Máy giặt", label: "Máy giặt" },
+            { id: "Truyền hình cáp", label: "Truyền hình cáp" },
+            { id: "Tivi", label: "Tivi" },
+        ];
+        $scope.ConvenientModel = [];
+        $scope.MultiselectSettings = {
+            scrollable: true,
+            scrollableHeight: '220px',
+            displayProp: 'label',
+            idDrop: 'label',
+            checkAll: 'Chọn tiện ích'
+        };
         $scope.account = {
             Email: "",
             Password: "",
@@ -112,12 +131,11 @@
         function GetUserLogin() {
             apiService.post('Home/GetUserLogin', true, null, function (respone) {
                 if (respone.data.success == true) {
+                    $('#formStep1').data('formValidation').resetForm();
                     $scope.rooms.Email = respone.data.user.Email;
                     $scope.rooms.FullName = respone.data.user.UserName;
                     $scope.rooms.Address = respone.data.user.Address;
                     $scope.rooms.PhoneNumber = respone.data.user.PhoneNumber;
-
-                    console.log(respone.data.user);
                 } else {
                     $scope.modalInstance = $modal.open({
                         animation: true,
@@ -186,6 +204,11 @@
                 if ($scope.rooms.MoreImages != null) {
                     $scope.rooms.MoreImages = JSON.stringify($scope.rooms.MoreImages)
                 }
+                $scope.rooms.MoreInfomations.Convenient = '';
+                angular.forEach($scope.ConvenientModel, function (value, key) {
+                    $scope.rooms.MoreInfomations.Convenient += value.label + ",";
+                })
+                $scope.rooms.MoreInfomations.Convenient = JSON.stringify($scope.rooms.MoreInfomations.Convenient)
                 apiService.post('Management/CreateRoom', true, $scope.rooms, function (respone) {
                     if (respone.data.success == true) {
                         if (roomImage) {
@@ -204,7 +227,7 @@
                 });
 
             }
-        }       
+        }
         $scope.previousStep = previousStep;
         function previousStep(item) {
             if (item == 1) {
