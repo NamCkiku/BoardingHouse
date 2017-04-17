@@ -247,6 +247,12 @@
     <Content Include="app\Service\apiService.js" />
     <Content Include="app\Service\BaseService.js" />
     <Content Include="App_Data\Kendo.Mvc.dll" />
+    <Content Include="App_Data\Stimulsoft.Base.dll" />
+    <Content Include="App_Data\Stimulsoft.Controls.dll" />
+    <Content Include="App_Data\Stimulsoft.Controls.Win.dll" />
+    <Content Include="App_Data\Stimulsoft.Report.dll" />
+    <Content Include="App_Data\Stimulsoft.Report.Mvc.dll" />
+    <Content Include="App_Data\Stimulsoft.Report.Win.dll" />
     <Content Include="bower_components\angular-animate\angular-animate.js" />
     <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.css" />
     <Content Include="bower_components\angular-block-ui\dist\angular-block-ui.js" />
