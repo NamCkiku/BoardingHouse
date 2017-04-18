@@ -131,7 +131,12 @@
         function GetUserLogin() {
             apiService.post('Home/GetUserLogin', true, null, function (respone) {
                 if (respone.data.success == true) {
-                    $('#formStep1').data('formValidation').resetForm();
+                    BaseService.ValidatorForm("#formStep1");
+                    var frmAdd = angular.element(document.querySelector('#formStep1'));
+                    var formValidation = frmAdd.data('formValidation').validate();
+                    if (!formValidation.isValid()) {
+                        $('#formStep1').data('formValidation').resetForm();
+                    }
                     $scope.rooms.Email = respone.data.user.Email;
                     $scope.rooms.FullName = respone.data.user.UserName;
                     $scope.rooms.Address = respone.data.user.Address;

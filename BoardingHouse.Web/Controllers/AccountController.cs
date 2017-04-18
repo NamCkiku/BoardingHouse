@@ -153,22 +153,23 @@ namespace BoardingHouse.Web.Controllers
         {
             JsonResult jsonResult = new JsonResult();
             HttpRequestBase request = this.HttpContext.Request;
-            if (ValidateRequestHeader(request))
+            //if (ValidateRequestHeader(request))
+            //{
+                
+            //}
+            //else
+            //{
+            //    jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            //}
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+            var result = await UserManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    jsonResult = Json(new { success = true }, JsonRequestBehavior.AllowGet);
-                }
-                else
-                {
-                    jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
-                }
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                jsonResult = Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             else
             {

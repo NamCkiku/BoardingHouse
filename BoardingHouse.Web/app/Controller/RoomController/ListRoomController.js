@@ -5,11 +5,22 @@
 
     function ListRoomController($scope, blockUI, $modal, $rootScope, BaseService, apiService, $window, fileUploadService) {
         $scope.data = {
-            lstRoom:[],
+            lstRoom: [],
+            lstRoomType:[],
         }
         $scope.page = 0;
         $scope.pagesCount = 0;
         $scope.totalCount = 0;
+        function GetAllRoomType() {
+            apiService.post('Management/GetAllRoomType', true, null, function (respone) {
+                if (respone.data.success == true) {
+                    console.log(respone.data);
+                    $scope.data.lstRoomType = respone.data.lstData;
+                } else {
+                }
+            }, function (respone) {
+            });
+        }
         $scope.GetAllRoom = GetAllRoom;
         function GetAllRoom(page) {
             page = page || 0;
@@ -31,6 +42,7 @@
             }, function (respone) {
             });
         }
+        GetAllRoomType();
         GetAllRoom();
     }
 })(angular.module('myApp'));
