@@ -602,6 +602,14 @@
     <Content Include="bower_components\jquery\src\var\support.js" />
     <Content Include="bower_components\jquery\src\var\toString.js" />
     <Content Include="bower_components\jquery\src\wrap.js" />
+    <Content Include="bower_components\lightslider\dist\css\lightslider.css" />
+    <Content Include="bower_components\lightslider\dist\css\lightslider.min.css" />
+    <Content Include="bower_components\lightslider\dist\img\controls.png" />
+    <Content Include="bower_components\lightslider\dist\js\lightslider.js" />
+    <Content Include="bower_components\lightslider\dist\js\lightslider.min.js" />
+    <Content Include="bower_components\lightslider\src\css\lightslider.css" />
+    <Content Include="bower_components\lightslider\src\img\controls.png" />
+    <Content Include="bower_components\lightslider\src\js\lightslider.js" />
     <Content Include="bower_components\ng-timeago\LICENSE.txt" />
     <Content Include="bower_components\ng-timeago\ngtimeago.js" />
     <Content Include="bower_components\ngdropzone\demo\component.html" />
@@ -1083,6 +1091,15 @@
     <Content Include="bower_components\bootstrap-datepicker\package.json" />
     <Content Include="bower_components\bootstrap-datepicker\README.md" />
     <Content Include="bower_components\bootstrap-datepicker\tests\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\RoomDetail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bower_components\lightslider\.bower.json" />
+    <Content Include="bower_components\lightslider\bower.json" />
+    <Content Include="bower_components\lightslider\lightslider.jquery.json" />
+    <Content Include="bower_components\lightslider\package.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
