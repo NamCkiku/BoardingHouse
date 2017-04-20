@@ -24,6 +24,9 @@
             lstDistrict: [],
             lstWard: []
         }
+        $scope.select2Options = {
+            allowClear: true
+        };
         var QueryString = function () {
             // This function is anonymous, is executed immediately and 
             // the return value is assigned to QueryString!

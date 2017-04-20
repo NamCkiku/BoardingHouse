@@ -13,6 +13,7 @@
     "ng-timeago": "~0.0.2",
     "angular-ui-tinymce": "~0.0.18",
     "bootstrap-datepicker": "~1.6.4",
-    "lightslider": "~1.1.6"
+    "lightslider": "~1.1.6",
+    "angular-ui-select2": "~0.0.5"
   }
 }

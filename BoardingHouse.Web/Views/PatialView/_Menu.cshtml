@@ -1,5 +1,4 @@
-﻿
-<div id="header_nav" class="header-nav">
+﻿<div id="header_nav" class="header-nav">
     <nav class="navbar">
         <div class="menu-top hidden-xs container">
             <div class="navbar-header block-navbar">
@@ -14,7 +13,57 @@
                     <li><a href="http://phongtot.vn/mat-bang-cua-hang">Hướng dẫn</a></li>
                     <li><a href="http://phongtot.vn/o-ghep">Ở ghép</a></li>
                     <li><a href="http://phongtot.vn/bai-viet">Nạp Coin</a></li>
-                    <li><a class="active" href="http://phongtot.vn/bai-viet">Nạp Coin</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:;" data-toggle="dropdown" aria-expanded="true">
+                            Đăng nhập
+                        </a>
+                        <div id="user_menu_open" class="dropdown-menu topmenux">
+                            <div class="login_sidebar">
+                                <h3 id="login-div-title-topbar">Login</h3>
+                                <div class="login_form" id="login-div_topbar">
+                                    <div class="loginalert" id="login_message_area_topbar"> </div>
+                                    <input type="text" class="form-control" name="log" id="login_user_topbar" placeholder="Username">
+                                    <input type="password" class="form-control" name="pwd" id="login_pwd_topbar" placeholder="Password">
+                                    <input type="hidden" name="loginpop" id="loginpop_wd_topbar" value="0">
+                                    <input type="hidden" id="security-login-topbar" name="security-login-topbar" value="aefdf57483-1492567731">
+                                    <button class="wpresidence_button" id="wp-login-but-topbar">Login</button>
+                                    <div class="login-links">
+                                        <a href="#" id="widget_register_topbar">Need an account? Register here!</a>
+                                        <a href="#" id="forgot_pass_topbar">Forgot Password?</a>
+                                        <div id="facebookloginsidebar_topbar" data-social="facebook">Login with Facebook</div><div id="googleloginsidebar_topbar" data-social="google">Login with Google</div><div id="yahoologinsidebar_topbar" data-social="yahoo">Login with Yahoo</div>
+                                    </div>
+                                </div>
+                                @*<h3 id="register-div-title-topbar">Register</h3>
+                    <div class="login_form" id="register-div-topbar">
+                        <div class="loginalert" id="register_message_area_topbar"></div>
+                        <input type="text" name="user_login_register" id="user_login_register_topbar" class="form-control" placeholder="Username">
+                        <input type="text" name="user_email_register" id="user_email_register_topbar" class="form-control" placeholder="Email">
+                        <input type="password" name="user_password" id="user_password_topbar" class="form-control" placeholder="Password">
+                        <input type="password" name="user_password_retype" id="user_password_topbar_retype" class="form-control" placeholder="Retype Password">
+                        <input type="checkbox" name="terms" id="user_terms_register_topbar">
+                        <label id="user_terms_register_topbar_label" for="user_terms_register_topbar">I agree with <a href="http://wpresidence.net/terms-and-coditions/ " target="_blank" id="user_terms_register_topbar_link">terms &amp; conditions</a> </label>
+                        <input type="hidden" id="security-register-topbar" name="security-register-topbar" value="16b2d937f5-1492567731">
+                        <button class="wpresidence_button" id="wp-submit-register_topbar">Register</button>
+                        <div class="login-links">
+                            <a href="#" id="widget_login_topbar">Back to Login</a>
+                        </div>
+                    </div>
+                    <h3 id="forgot-div-title-topbar">Reset Password</h3>
+                    <div class="login_form" id="forgot-pass-div">
+                        <div class="loginalert" id="forgot_pass_area_topbar"></div>
+                        <div class="loginrow">
+                            <input type="text" class="form-control" name="forgot_email" id="forgot_email_topbar" placeholder="Enter Your Email Address" size="20">
+                        </div>
+                        <input type="hidden" id="security-forgot-topbar" name="security-forgot-topbar" value="0329afbc7b"><input type="hidden" name="_wp_http_referer" value="/">
+                        <input type="hidden" id="postid" value="'.$post_id.'">
+                        <button class="wpresidence_button" id="wp-forgot-but-topbar" name="forgot">Reset Password</button>
+                        <div class="login-links shortlog">
+                            <a href="#" id="return_login_topbar">Return to Login</a>
+                        </div>
+                    </div>*@
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div> <!--end Menu big-->
@@ -62,3 +111,339 @@
         </div><!-- /.container-fluid -->
     </nav>
 </div>
+
+<style>
+    .header_type1.header_left .user_menu {
+        margin-right: 45px;
+    }
+
+    .customnav .user_menu {
+    }
+
+    .user_menu {
+        display: inline-block;
+        float: right;
+        margin-right: 45px;
+        color: #3C90BE;
+        padding: 0px 0px 0px 0px;
+        cursor: pointer;
+        margin-top: -7px;
+        position: absolute;
+        right: 0px;
+        top: 50%;
+        -webkit-transform-style: preserve-3d;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .menu_user_tools {
+        border-radius: 50%;
+        width: 15px;
+        height: 20px;
+        margin: 0px;
+        float: left;
+        display: inline;
+        cursor: pointer;
+        font-size: 14px;
+        color: #3C90BE;
+    }
+
+    .opensvg {
+        transform: scale(0.75);
+    }
+
+    .navicon-button {
+        display: inline-block;
+        position: relative;
+        padding: 6px;
+        transition: 0.25 !important;
+        cursor: pointer;
+        user-select: none;
+        opacity: .8;
+        width: 30px;
+        height: 30px;
+        float: left;
+    }
+
+        .navicon-button:hover {
+            transition: 0.5s;
+            opacity: 1;
+        }
+
+    .navicon {
+        position: relative;
+        width: 18px;
+        height: 2px;
+        background: #3a4659;
+        transition: 0.5s;
+        border-radius: 2.5rem;
+    }
+
+    .navicon-button .navicon:before, .navicon-button .navicon:after {
+        transition: 0.25s;
+    }
+
+    .navicon:before {
+        top: 5px;
+    }
+
+    .navicon:before, .navicon:after {
+        display: block;
+        content: "";
+        height: 2px;
+        width: 18px;
+        background: #3a4659;
+        position: absolute;
+        transition: 0.5s 0.25s;
+        border-radius: 1rem;
+    }
+
+    .navicon-button .navicon:before, .navicon-button .navicon:after {
+        transition: 0.25s;
+    }
+
+    .navicon:after {
+        top: -5px;
+    }
+
+    .navicon:before, .navicon:after {
+        display: block;
+        content: "";
+        height: 2px;
+        width: 18px;
+        background: #3a4659;
+        position: absolute;
+        transition: 0.5s 0.25s;
+        border-radius: 1rem;
+    }
+
+    #user_menu_open.dropdown-menu {
+        border: 1px solid #dde4e9;
+    }
+
+    #user_menu_open {
+        background-color: #fff;
+        right: 45px;
+        left: auto;
+        z-index: 999999;
+        top: 100%;
+        margin-top: 0px;
+        padding: 0px 0px 0px 0px;
+        background-color: #fdfdfd;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        width: 255px;
+    }
+
+    .dropdown-menu {
+        font-size: 13px;
+        padding: 5px 0 0px 0px;
+        width: 100%;
+    }
+
+    #user_menu_open:before {
+        content: " ";
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #f0f0f0;
+        top: -10px;
+        right: 7px;
+        position: absolute;
+    }
+
+    #user_menu_open #register-div-title-topbar, #user_menu_open #login-div-title-topbar {
+        padding-left: 12px;
+        margin-bottom: 0px;
+    }
+
+    #register-div-title-topbar, #login-div-title-topbar {
+        margin-top: 9px;
+        font-size: 16px;
+    }
+
+    #user_menu_open .login_form {
+        border: none;
+        width: 253px;
+    }
+
+    .login_form {
+        padding: 9px 13px 13px 13px;
+        border: 0px solid #e5e5e5;
+        width: 100%;
+        border-radius: 3px;
+    }
+    #user_menu_open .login_form input[type=text], #user_menu_open .login_form input[type=password], #user_menu_open .login_form input[type=email], #user_menu_open .login_form input[type=url], #user_menu_open .login_form input[type=number], #user_menu_open .login_form textarea, #user_menu_open .btn {
+    width: 227px;
+}
+.login_form input[type=text], .login_form input[type=password], .login_form input[type=email], .login_form input[type=url], .login_form input[type=number], .login_form textarea {
+}
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=number], textarea {
+    font-size: 13px;
+    padding: 9px 0px 9px 9px;
+    color: #8593a9;
+    border: 1px solid #dde4e9;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: none;
+    -webkit-appearance: none;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 9px 12px;
+    font-size: 13px;
+    line-height: 1.428571429;
+    color: #8593a9;
+    vertical-align: middle;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #dde4e9;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: border-color ease-in-out 0.15s,box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s,box-shadow ease-in-out 0.15s;
+    margin-bottom: 13px;
+}
+    #wp-submit-register_mobile, #wp-login-but-mobile, #wp-submit-register_topbar, #wp-login-but-topbar {
+        width: 227px;
+        color: #fff;
+        margin-bottom: 8px;
+    }
+
+    .comment-form #submit, .wpresidence_button {
+        color: #ffffff;
+        float: left;
+        padding: 14px 26px 13px;
+        font-size: 13px;
+        background-color: #3C90BE;
+        webkit-transition: background-color 0.1s linear;
+        -o-transition: background-color 0.1s linear;
+        transition: background-color 0.1s linear;
+        border: none;
+        text-shadow: none;
+        margin-bottom: 13px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        line-height: 1em;
+    }
+
+    .login-links {
+        margin-top: 13px;
+    }
+
+    #user_menu_open #widget_login_topbar, #user_menu_open #widget_register_topbar, #user_menu_open #forgot_pass_topbar {
+        padding-left: 0px;
+    }
+
+    #user_menu_open a {
+        padding: 11px 15px;
+        width: 100%;
+        transition: none;
+        -moz-transition: none;
+        -webkit-transition: none;
+        -o-transition: none;
+        font-size: 13px;
+    }
+
+    #forgot_pass_mobile, #user_menu_open #forgot_pass_topbar {
+        display: inline-block;
+        padding: 6px 0px 0px 0px;
+    }
+
+    #facebooklogin, #facebookloginsidebar_mobile, #facebookloginsidebar_topbar, #facebookloginsidebar {
+        width: 100%;
+        height: 40px;
+        border-radius: 3px;
+        background-color: #4B6CC9;
+        cursor: pointer;
+        margin: 10px 0px -6px 0px;
+        position: relative;
+        color: #fff;
+        padding: 1px 15px;
+        font-size: 13px;
+        display: inline-block;
+        line-height: 40px;
+    }
+
+        #facebooklogin:before, #facebookloginsidebar_mobile:before, #facebookloginsidebar_topbar:before, #facebookloginsidebar:before {
+            content: "\f09a";
+            font-family: FontAwesome;
+            float: right;
+            line-height: 40px;
+            margin-top: -1px;
+            padding-left: 18px;
+            height: 40px;
+            font-size: 15px;
+            background-color: #425398;
+            width: 45px;
+            margin-right: -15px;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+
+    #googlelogin, #googleloginsidebar_mobile, #googleloginsidebar_topbar, #googleloginsidebar {
+        width: 100%;
+        height: 40px;
+        border-radius: 3px;
+        background-color: #ED5565;
+        cursor: pointer;
+        margin-top: 10px;
+        position: relative;
+        color: #fff;
+        padding: 1px 15px;
+        font-size: 13px;
+        display: inline-block;
+        text-align: left;
+        line-height: 40px;
+    }
+
+        #googlelogin:before, #googleloginsidebar_mobile:before, #googleloginsidebar_topbar:before, #googleloginsidebar:before {
+            content: "\f1a0";
+            font-family: FontAwesome;
+            float: right;
+            line-height: 40px;
+            font-size: 15px;
+            margin-top: -1px;
+            padding-left: 18px;
+            background-color: #da4453;
+            width: 45px;
+            margin-right: -15px;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+
+    #yahoologin, #yahoologinsidebar_mobile, #yahoologinsidebar_topbar, #yahoologinsidebar {
+        width: 100%;
+        height: 40px;
+        border-radius: 3px;
+        background-color: #9C62C8;
+        cursor: pointer;
+        margin: 4px 0px 0px 0px;
+        position: relative;
+        color: #fff;
+        padding: 1px 15px;
+        font-size: 13px;
+        display: inline-block;
+        line-height: 40px;
+    }
+
+        #yahoologin:before, #yahoologinsidebar_mobile:before, #yahoologinsidebar_topbar:before, #yahoologinsidebar:before {
+            content: "\f19e";
+            font-family: FontAwesome;
+            float: right;
+            line-height: 40px;
+            font-size: 15px;
+            padding-left: 18px;
+            height: 40px;
+            background-color: #7542a1;
+            width: 45px;
+            margin-right: -15px;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            font-size: 15px;
+            margin-top: -1px;
+        }
+</style>
