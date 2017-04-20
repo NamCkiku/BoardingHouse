@@ -3,7 +3,7 @@
         z-index: 1;
         background-color: rgba(0,0,0,.6);
         width: 80%;
-        margin: 0px auto;
+        margin: 100px auto;
         position: absolute;
         border-top-right-radius: 3px;
         border-bottom-right-radius: 3px;
@@ -69,7 +69,7 @@
         height: 40px;
         width: 100%;
         border: 1px solid #eee;
-        background:#fff;
+        background: #fff;
     }
 
     .select2-choice {
@@ -126,6 +126,33 @@
                 background: url(https://images.vietnamworks.com/img/jobseekers/select2.png) no-repeat 1px 5px;
             }
 </style>
+<script>
+        $(document).ready(function () {
+            (function () {
+
+                var counter = 0,
+                    $items = document.querySelectorAll('.diy-slideshow figure'),
+                    numItems = $items.length;
+                var showCurrent = function () {
+                    var itemToShow = Math.abs(counter % numItems);
+                    [].forEach.call($items, function (el) {
+                        el.classList.remove('show');
+                    });
+
+                    $items[itemToShow].classList.add('show');
+                };
+                $("#next").click(function () {
+                    counter++;
+                    showCurrent();
+                });
+                $("#prev").click(function () {
+                    counter--;
+                    showCurrent();
+                });
+            })();
+        });
+
+</script>
 <div ng-controller="searchController">
     <div class="search-form hidden-xs hidden-sm">
         <div class="slide-home">
@@ -134,7 +161,7 @@
                     <img src="~/Content/img/city.jpg" width="100%" height="400" />
                 </figure>
                 <figure>
-                    <img src="http://phongtot.vn/themes/client/img/xslider-bg.png.pagespeed.ic.IGNTrbGlld.webp" width="100%" height="400" />
+                    <img src="~/Content/img/city.jpg" width="100%" height="400" />
                 </figure>
                 <figure>
                     <img src="~/Content/img/city.jpg" width="100%" height="400" />
@@ -159,55 +186,33 @@
                                     <div class="col-md-3  margin-bottom-15 cities">
                                         <select ui-select2="select2Options"
                                                 ng-model="keywords.Province"
+                                                ng-change="GetAllDistrict(keywords.Province)"
+                                                ng-options="option.provinceid as option.name for option in data.lstProvince"
                                                 data-placeholder="Chọn Tỉnh/TP">
                                             <option value=""></option>
-                                            <option value="one">First</option>
-                                            <option value="two">Second</option>
-                                            <option value="three">Third</option>
-                                            <option value="one">First</option>
-                                            <option value="two">Second</option>
-                                            <option value="three">Third</option>
-                                            <option value="one">First</option>
-                                            <option value="two">Second</option>
-                                            <option value="three">Third</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3 margin-bottom-15 areas">
                                         <select ui-select2="select2Options"
-                                                ng-model="keywords.Province"
+                                                ng-model="keywords.District"
+                                                ng-change="GetAllWard(keywords.District)"
+                                                ng-options="option.districtid as option.name for option in data.lstDistrict"
                                                 data-placeholder="Chọn Quận/Huyện">
                                             <option value=""></option>
-                                            <option value="one">First</option>
-                                            <option value="two">Second</option>
-                                            <option value="three">Third</option>
-                                            <option value="one">First</option>
-                                            <option value="two">Second</option>
-                                            <option value="three">Third</option>
-                                            <option value="one">First</option>
-                                            <option value="two">Second</option>
-                                            <option value="three">Third</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3  margin-bottom-15 property-date">
                                         <select ui-select2="select2Options"
-                                                ng-model="keywords.Province"
+                                                ng-model="keywords.Ward"
+                                                ng-options="option.wardid as option.name for option in data.lstWard"
                                                 data-placeholder="Chọn Phường/Xã">
                                             <option value=""></option>
-                                            <option value="one">First</option>
-                                            <option value="two">Second</option>
-                                            <option value="three">Third</option>
-                                            <option value="one">First</option>
-                                            <option value="two">Second</option>
-                                            <option value="three">Third</option>
-                                            <option value="one">First</option>
-                                            <option value="two">Second</option>
-                                            <option value="three">Third</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3  margin-bottom-15 property_bedrooms">
                                         <select ui-select2="select2Options"
                                                 ng-model="keywords.Province"
-                                                data-placeholder="Pick a number">
+                                                data-placeholder="Chọn diện tích">
                                             <option value=""></option>
                                             <option value="one">First</option>
                                             <option value="two">Second</option>
@@ -222,8 +227,8 @@
                                     </div>
                                     <div class="col-md-6  margin-bottom-15 property_price">
                                         <p style="margin-bottom:0px">
-                                            <label for="amount">Khoảng giá:</label>
-                                            <span id="amount_2" style="border:0; color:#3C90BE; font-weight:bold;">{{slider.minValue}} triệu đến {{slider.maxValue}}triệu</span>
+                                            <label for="amount" style="color:#fff;">Khoảng giá:</label>
+                                            <span id="amount_2" style="border:0; color:#fff; font-weight:bold;">{{slider.minValue}} triệu đến {{slider.maxValue}}triệu</span>
                                         </p>
                                         <rzslider rz-slider-model="slider.minValue" style="margin-top:0px"
                                                   rz-slider-high="slider.maxValue"
@@ -238,181 +243,89 @@
                     </div>
                 </div>
                 <div style="clear:both;"></div>
-            </div>
-            @*<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 search-bar">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4">
-                            <div class="search-bar-group pull-left form-group">
-                                <div class="search-bar-group-title">Chọn khu vực</div>
-                                <div class="col-lg-12">
-                                    <select id="search_room_type"
-                                            ng-model="keywords.Province"
-                                            ng-change="GetAllDistrict(keywords.Province)"
-                                            ng-options="option.provinceid as option.name for option in data.lstProvince"
-                                            class="form-control" name="type">
-                                        <option value="">--Chọn tỉnh thành--</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-12">
-                                    <select id="search_room_type"
-                                            ng-model="keywords.District"
-                                            ng-change="GetAllWard(keywords.District)"
-                                            ng-options="option.districtid as option.name for option in data.lstDistrict"
-                                            class="form-control">
-                                        <option value="">--Chọn quận/huyện--</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-12">
-                                    <select id="search_room_type"
-                                            ng-model="keywords.Ward"
-                                            class="form-control"
-                                            ng-options="option.wardid as option.name for option in data.lstWard">
-                                        <option value="">--Chọn xã/phường--</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="search-bar-group pull-left form-group">
-                                <div class="search-bar-group-title">Chọn loại phòng</div>
-                                <div class="col-lg-12">
-                                    <select id="search_room_type"
-                                            ng-model="keywords.RoomType"
-                                            ng-options="option.RoomTypeID as option.RoomTypeName for option in data.lstRoomType"
-                                            class="form-control">
-                                        <option value="">--Chọn loại phòng--</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-12">
-                                    <input type="text" class="datepicker form-control" placeholder="Ngày bắt đầu" ng-model="keywords.StartDate">
-                                </div>
-                                <div class="col-lg-12">
-                                    <input type="text" class="datepicker form-control" placeholder="Ngày kết thúc" ng-model="keywords.EndDate">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="search-bar-group1 pull-left form-group">
-                                <div class="search-bar-group-title">Chọn Khoảng giá</div>
-                                <div class="col-lg-12">
-                                    <rzslider rz-slider-model="slider.minValue"
-                                              rz-slider-high="slider.maxValue"
-                                              rz-slider-options="slider.options"></rzslider>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="price-from">
-                                        <div class="input-group">
-                                            <input type="text" name="price_from" ng-model="slider.minValue" class="inp js-from form-control">
-                                            <span class="input-group-addon">Triệu</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="price-to">
-                                        <div class="input-group">
-                                            <input type="text" name="price_to" ng-model="slider.maxValue" class="inp js-to form-control">
-                                            <span class="input-group-addon">Triệu</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 search-bar-group" style="margin-top:25px">
-                                    <button type="button" class="btn btn-md btn-search"><span style="padding-right:15px" class="fa fa-search"></span>Tìm kiếm</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
+            </div>          
         </div>
     </div>
     <div class="search-form-small hidden-lg hidden-md">
         <div class="search-bar">
             <div class="col-sm-12 col-xs-12 no-padding">
                 <div class="search-bar-group">
-                    <div class="search-bar-group-title">Chọn khu vực</div>
-                    <div class="col-xs-12 col-sm-12">
-                        <select id="search_room_type" class="form-control" name="type">
-                            <option value="">--Chọn loại tin--</option>
-                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                    <div class="search-bar-group-title">Chọn loại phòng</div>
+                    <div class="col-xs-12 margin-bottom-15">
+                        <select ui-select2="select2Options"
+                                ng-model="keywords.RoomType"
+                                ng-options="option.RoomTypeID as option.RoomTypeName for option in data.lstRoomType"
+                                data-placeholder="Chọn loại phòng">
+                            <option value=""></option>
                         </select>
                     </div>
-                    <div class="col-xs-12 col-sm-12">
-                        <select id="search_room_type" class="form-control" name="type">
-                            <option value="">--Chọn loại tin--</option>
-                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
-                        </select>
-                    </div>
-                    <div class="col-xs-12 col-sm-12">
-                        <select id="search_room_type" class="form-control" name="type">
-                            <option value="">--Chọn loại tin--</option>
-                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                    <div class="col-xs-12 margin-bottom-15">
+                        <select ui-select2="select2Options"
+                                ng-model="keywords.Province"
+                                data-placeholder="Chọn diện tích">
+                            <option value=""></option>
+                            <option value="one">First</option>
+                            <option value="two">Second</option>
+                            <option value="three">Third</option>
+                            <option value="one">First</option>
+                            <option value="two">Second</option>
+                            <option value="three">Third</option>
+                            <option value="one">First</option>
+                            <option value="two">Second</option>
+                            <option value="three">Third</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="col-sm-12 col-xs-12 no-padding">
                 <div class="search-bar-group">
-                    <div class="search-bar-group-title">Chọn loại phòng</div>
-                    <div class="col-xs-12">
-                        <select id="search_room_type" class="form-control" name="type">
-                            <option value="">--Chọn loại phòng--</option>
-                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                    <div class="search-bar-group-title">Chọn khu vực</div>
+                    <div class="col-xs-12 col-sm-12 margin-bottom-15">
+                        <select ui-select2="select2Options"
+                                ng-model="keywords.Province"
+                                ng-change="GetAllDistrict(keywords.Province)"
+                                ng-options="option.provinceid as option.name for option in data.lstProvince"
+                                data-placeholder="Chọn Tỉnh/TP">
+                            <option value=""></option>
                         </select>
                     </div>
-                    <div class="col-xs-12 col-sm-12">
-                        <select id="search_room_type" class="form-control" name="type">
-                            <option value="">--Chọn đối tượng--</option>
-                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
+                    <div class="col-xs-12 col-sm-12 margin-bottom-15">
+                        <select ui-select2="select2Options"
+                                ng-model="keywords.District"
+                                ng-change="GetAllWard(keywords.District)"
+                                ng-options="option.districtid as option.name for option in data.lstDistrict"
+                                data-placeholder="Chọn Quận/Huyện">
+                            <option value=""></option>
                         </select>
                     </div>
-                    <div class="col-xs-12 col-sm-12">
-                        <input type="text" class="form-control" />
+                    <div class="col-xs-12 col-sm-12 margin-bottom-15">
+                        <select ui-select2="select2Options"
+                                ng-model="keywords.Ward"
+                                ng-options="option.wardid as option.name for option in data.lstWard"
+                                data-placeholder="Chọn Phường/Xã">
+                            <option value=""></option>
+                        </select>
                     </div>
                 </div>
             </div>
             <div class="col-sm-12 col-xs-12 no-padding">
                 <div class="search-bar-group">
                     <div class="search-bar-group-title">Chọn Khoảng giá</div>
-                    <div class="col-xs-12 col-sm-12">
-                        <select id="search_room_type" class="form-control" name="type">
-                            <option value="">--Chọn loại phòng--</option>
-                            <option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</option>
-                            <option value="Nhà thuê nguyên căn">Nhà thuê nguyên căn</option>
-                            <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
-                            <option value="Tìm bạn ở ghép">Tìm bạn ở ghép</option>
-                            <option value="Cho thuê mặt bằng">Cho thuê mặt bằng</option>
-                        </select>
-                    </div>
-                    <div class="col-xs-12 col-sm-12">
-                        <input type="text" class="form-control" />
-                    </div>
-                    <div class="col-xs-12 col-sm-12">
-                        <input type="text" class="form-control" />
+                    <div class="col-xs-12 col-sm-12 margin-bottom-15">
+                        <p style="margin-bottom:0px">
+                            <label for="amount" style="color:#fff;">Khoảng giá:</label>
+                            <span id="amount_2" style="border:0; color:#3C90BE; font-weight:bold;">{{slider.minValue}} triệu đến {{slider.maxValue}}triệu</span>
+                        </p>
+                        <rzslider rz-slider-model="slider.minValue" style="margin-top:0px"
+                                  rz-slider-high="slider.maxValue"
+                                  rz-slider-options="slider.options"></rzslider>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12">
+            <div class="clearfix"></div>
+            <div class="col-sm-12 margin-bottom-15">
                 <div class="search-btn-submit">
-                    <button type="button" class="btn btn-md btn-primary"><span style="padding-right:15px" class="fa fa-search"></span>Tìm kiếm</button>
+                    <button type="button" class="wpresidence_button"><span style="padding-right:15px" class="fa fa-search"></span>Tìm kiếm</button>
                 </div>
             </div>
         </div>
@@ -425,6 +338,22 @@
     });
 </script>
 <style>
+    .wpresidence_button {
+        color: #ffffff;
+        float: left;
+        padding: 14px 26px 13px;
+        font-size: 13px;
+        background-color: #3C90BE;
+        webkit-transition: background-color 0.1s linear;
+        -o-transition: background-color 0.1s linear;
+        transition: background-color 0.1s linear;
+        border: none;
+        text-shadow: none;
+        margin-bottom: 13px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        line-height: 1em;
+    }
     .search-bar-group1 .rzslider {
         margin-bottom: 42px;
         margin-top:15px;

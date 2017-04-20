@@ -57,37 +57,7 @@
                 $.slidebars();
             });
         })(jQuery);
-    </script>
-    <script>
-        $(document).ready(function () {
-            (function () {
-
-                var counter = 0,
-                    $items = document.querySelectorAll('.diy-slideshow figure'),
-                    numItems = $items.length;
-                var showCurrent = function () {
-                    var itemToShow = Math.abs(counter % numItems);
-                    [].forEach.call($items, function (el) {
-                        el.classList.remove('show');
-                    });
-
-                    $items[itemToShow].classList.add('show');
-                };
-
-                document.querySelector('.next').addEventListener('click', function () {
-                    counter++;
-                    showCurrent();
-                }, false);
-
-                document.querySelector('.prev').addEventListener('click', function () {
-                    counter--;
-                    showCurrent();
-                }, false);
-
-            })();
-        });
-
-    </script>
+    </script>   
 </head>
 @using BoardingHouse.Web.AntiForgeryToken
 <body>
@@ -96,7 +66,8 @@
         @{ Html.RenderAction("_Header", "PatialView"); }
     </header>
     <div class="line_orn"></div>
-    @{ Html.RenderAction("_Menu", "PatialView"); }
+    <div class="clearfix"></div>
+    @*@{ Html.RenderAction("_Menu", "PatialView"); }*@
     <!-- End menu -->
     <!-- Form SEARCH -->
     @{ Html.RenderAction("_Search", "PatialView"); }
