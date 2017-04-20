@@ -22,7 +22,7 @@
                 windowClass: 'center-modal',
                 scope: $scope,
                 keyboard: false,
-                size: 'md'
+                size: 'sm'
             });
             $scope.ok = function () {
                 BaseService.ValidatorForm("#formLogin");
@@ -58,7 +58,7 @@
                 windowClass: 'center-modal',
                 scope: $scope,
                 keyboard: false,
-                size: 'md'
+                size: 'sm'
             });
             $scope.ok = function () {
                 BaseService.ValidatorForm("#formRegister");

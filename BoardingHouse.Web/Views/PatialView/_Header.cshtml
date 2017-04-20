@@ -1,43 +1,131 @@
 ﻿@using Microsoft.AspNet.Identity
 @using Microsoft.AspNet.Identity.EntityFramework;
 @using BoardingHouse.Web.Models;
-<div class="container" ng-controller="headerController">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="pull-left">
-                <a class="logo" href="#">
-                    <img class="img-responsive" src="~/Content/img/xphongtot_logo.png.pagespeed.ic.UejSBOLzW8.png" />
-                </a>
-            </div>
-            <div class="pull-right hidden-xs">
-                @if (Request.IsAuthenticated)
-                {
-                    var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-                    var currentUser = manager.FindById(User.Identity.GetUserId());
-                    <div class="header-top-avatar">
-                        <img class="img-responsive" src="http://localhost:6568/Content/images/@currentUser.Avatar">
-                    </div>
-                    <div class="header-top-user">
-                        <div class="user-login"><a class="load_modal_login" href="" ng-click="LogOut();">Đăng Xuất</a></div>
-                    </div>
-                }
-                else
-                {
-                    <div class="header-top-avatar">
-                        <img class="img-responsive" src="http://phongtot.vn/themes/client/img/xavatar.png.pagespeed.ic.Hl7NHK7TGA.png">
-                    </div>
-                    <div class="header-top-user">
-                        <div class="user-login"><a class="load_modal_login" href="" ng-click="openLoginModal();">Đăng nhập</a></div>
-                        <div class="user-register load_modal_register">
-                            <a href="javascript: void(0);" ng-click="openRegisterModal();">Tạo tài khoản</a>
+<nav class="navbar horizontal-navbar header-nav" ng-controller="headerController">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed sb-toggle-left" data-toggle="offcanvas" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/vi">
+                <img class="img-responsive" style="height:40px" src="~/Content/img/xphongtot_logo.png.pagespeed.ic.UejSBOLzW8.png" />
+            </a>
+        </div>
+        <div class="collapse navbar-collapse nav-menu">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <a href="#">Tất Cả Việc Làm</a>
+                </li>
+                <li>
+                    <a target="_blank" href="#">Nạp Coin</a>
+                </li>
+                <li>
+                    <a href="/bao-mat">Bản đồ</a>
+                </li>
+            </ul>
+            @if (Request.IsAuthenticated)
+            {
+                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                var currentUser = manager.FindById(User.Identity.GetUserId());
+                <div class="header-top-avatar">
+                    <img class="img-responsive" src="http://localhost:6568/Content/images/@currentUser.Avatar">
+                </div>
+                <div class="header-top-user">
+                    <div class="user-login"><a class="load_modal_login" href="" ng-click="LogOut();">Đăng Xuất</a></div>
+                </div>
+            }
+            else
+            {
+                <ul class="nav navbar-nav navbar-right nav-menu" style="margin-right:15px">
+                    <li>
+                        <a class="alert-notifications notifications dd" href="#" data-original-title="" title="">
+                            <i class="glyphicon glyphicon-bell"></i>
+                            <span style="display: none" class="number">2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/quan-ly-nghe-nghiep/phan-hoi-cua-nha-tuyen-dung" class="notifications" data-original-title="" title="">
+                            <i class="fa fa-lg fa-comments-o"></i>
+                            <span class="number" style="display:none;" id="unread-message"></span>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:;" data-toggle="dropdown" aria-expanded="true">
+                            <i class="fa fa-fw fa-lg fa-sign-in"></i> Đăng nhập
+                        </a>
+                        <div id="user_menu_open" class="dropdown-menu topmenux">
+                            <div class="login_sidebar">
+                                <h3 id="login-div-title-topbar">Login</h3>
+                                <div class="login_form" id="login-div_topbar">
+                                    <div class="loginalert" id="login_message_area_topbar"> </div>
+                                    <input type="text" class="form-control" name="log" id="login_user_topbar" placeholder="Username">
+                                    <input type="password" class="form-control" name="pwd" id="login_pwd_topbar" placeholder="Password">
+                                    <button class="wpresidence_button" id="wp-login-but-topbar">Đăng nhập</button>
+                                    <div class="login-links">
+                                        <a href="#" id="widget_register_topbar">Need an account? Register here!</a>
+                                        <a href="#" id="forgot_pass_topbar">Forgot Password?</a>
+                                        <div id="facebookloginsidebar_topbar" data-social="facebook">Đăng nhập với Facebook</div>
+                                        <div id="googleloginsidebar_topbar" data-social="google">Đăng nhập với Google</div>
+                                        <div id="yahoologinsidebar_topbar" data-social="yahoo">Đăng nhập với Yahoo</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                }
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);" ng-click="openRegisterModal();">Đăng Ký</a>
+                    </li>
+                    
+                </ul>
+            }
+        </div>
 
+        <div class="sb-slidebar sb-left sb-style-overlay hidden-sm hidden-md hidden-lg">
+            <div id="box-action-mobile">
+                <div id="box-tgnavbotton" class="navbar navbar-default hidden-sm hidden-md hidden-lg">
+                    <button aria-controls="navbar-collapse-btp" class="navbar-toggle sb-toggle-left" data-toggle="offcanvas" data-target=".navmenu">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="nav-menumobile">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Tất Cả Việc Làm</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="#">Nạp Coin</a>
+                    </li>
+                    <li>
+                        <a href="/bao-mat">Bảo Mật</a>
+                    </li>
+                    <li>
+                        <a class="alert-notifications notifications dd" href="#" data-original-title="" title="">
+                            <i class="glyphicon glyphicon-bell"></i>
+                            <span style="display: none" class="number">2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/quan-ly-nghe-nghiep/phan-hoi-cua-nha-tuyen-dung" class="notifications" data-original-title="" title="">
+                            <i class="fa fa-lg fa-comments-o"></i>
+                            <span class="number" style="display:none;" id="unread-message"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="openLoginModal();"><i class="fa fa-fw fa-lg fa-sign-in"></i>Đăng Nhập</a>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);" ng-click="openRegisterModal();">Đăng Ký</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-</div>
+</nav>
+<div class="clearfix"></div>
 <script type="text/ng-template" id="ModalLogin.html">
     <div class="modal-header popup_header">
         <button aria-label="Close" data-dismiss="modal" ng-click="close();" class="close" type="button"><span aria-hidden="true">×</span></button>
@@ -47,50 +135,47 @@
     </div>
     <div class="line_orn"></div>
     <div class="modal-body login">
-        <div class="container-fluid">
-            <div class="box">
-                <div class="content">
-                    <div class="social">
-                        <a id="google_login" class="circle google" href="#">
-                            <i class="fa fa-google-plus fa-fw"></i>
-                        </a>
-                        <a id="facebook_login" class="circle facebook" href="#">
-                            <i class="fa fa-facebook fa-fw"></i>
-                        </a>
-                    </div>
-                    <div class="division">
-                        <div class="line l"></div>
-                        <span>Hoặc</span>
-                        <div class="line r"></div>
-                    </div>
-                    <div class="form loginBox">
-                        <div id="formLogin" class="">
-                            <div class="col-lg-12 form-group no-padding">
-                                <input id="email"
-                                       data-fv-notempty="true"
-                                       data-fv-notempty-message="Vui lòng nhập Email"
-                                       data-fv-emailaddress="true"
-                                       data-fv-emailaddress-message="Bạn phải nhập đúng Email"
-                                       ng-model="account.Email"
-                                       class="form-control"
-                                       type="text"
-                                       placeholder="Tên tài khoản"
-                                       name="email">
-                            </div>
-                            <div class="col-lg-12 form-group no-padding">
-                                <input id="password"
-                                       data-fv-notempty="true"
-                                       data-fv-notempty-message="Vui lòng nhập mật khẩu"
-                                       ng-model="account.Password"
-                                       class="form-control"
-                                       type="password"
-                                       placeholder="Mật khẩu"
-                                       name="password">
-
-                            </div>
+        <div class="box">
+            <div class="content">
+                <div class="form loginBox" style="margin-top:10px;">
+                    <div id="formLogin" class="">
+                        <div class="col-lg-12 form-group no-padding">
+                            <input id="email"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập Email"
+                                   data-fv-emailaddress="true"
+                                   data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                   ng-model="account.Email"
+                                   class="form-control"
+                                   type="text"
+                                   placeholder="Tên tài khoản"
+                                   name="email">
                         </div>
-                        <input class="btn btn-default btn-login" ng-click="ok();" type="button" value="Đăng Nhập">
+                        <div class="col-lg-12 form-group no-padding">
+                            <input id="password"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                   ng-model="account.Password"
+                                   class="form-control"
+                                   type="password"
+                                   placeholder="Mật khẩu"
+                                   name="password">
+
+                        </div>
                     </div>
+                    <input class="btn btn-default btn-login" ng-click="ok();" type="button" value="Đăng Nhập">
+                </div>
+                <div class="division">
+                    <div class="line l"></div>
+                    <span>Hoặc</span>
+                    <div class="line r"></div>
+                </div>
+                <div class="login-links">
+                    <a href="#" id="widget_register_topbar">Need an account? Register here!</a>
+                    <a href="#" id="forgot_pass_topbar">Forgot Password?</a>
+                    <div id="facebookloginsidebar_topbar" data-social="facebook">Đăng nhập với Facebook</div>
+                    <div id="googleloginsidebar_topbar" data-social="google">Đăng nhập với Google</div>
+                    <div id="yahoologinsidebar_topbar" data-social="yahoo">Đăng nhập với Yahoo</div>
                 </div>
             </div>
         </div>
@@ -101,10 +186,6 @@
                 <a href="javascript: showRegisterForm();">Tạo tài khoản</a>
                 ?
             </span>
-        </div>
-        <div class="forgot register-footer" style="display: none;">
-            <span>Already have an account?</span>
-            <a href="javascript: showLoginForm();">Đăng Nhập</a>
         </div>
     </div>
 </script>
@@ -218,7 +299,7 @@
 
     .login .division {
         float: none;
-        margin: 0 auto 18px;
+        margin: 20px auto 0px;
         overflow: hidden;
         position: relative;
         text-align: center;
@@ -305,7 +386,7 @@
         color: #FFFFFF;
         display: block;
         margin: 0 auto;
-        padding: 15px 50px;
+        padding: 10px 50px;
         text-transform: uppercase;
         width: 100%;
     }
@@ -315,7 +396,7 @@
             color: #FFFFFF;
         }
 
-    .login .form-control {
+    /*.login .form-control {
         border-radius: 3px;
         background-color: rgba(0, 0, 0, 0.09);
         box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
@@ -330,17 +411,18 @@
             box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.04) inset;
             background-color: rgba(0,0,0,0.23);
             color: #FFFFFF;
-        }
+        }*/
 
     .login .box .form input[type="text"], .login .box .form input[type="password"] {
+        font-size: 13px;
+        padding: 9px 0px 9px 9px;
+        color: #8593a9;
+        border: 1px solid #dde4e9;
         border-radius: 3px;
-        border: none;
-        color: #333333;
-        font-size: 16px;
-        height: 46px;
-        margin-bottom: 15px;
-        padding: 13px 12px;
-        width: 100%;
+        height:40px;
+        background-color: #fff;
+        box-shadow: none;
+        -webkit-appearance: none;
     }
 
 
