@@ -5,26 +5,39 @@
 }
 <link href="~/bower_components/lightslider/dist/css/lightslider.css" rel="stylesheet" />
 <script src="~/bower_components/lightslider/dist/js/lightslider.js"></script>
-<div class="col-md-9 col-sm-9 col-xs-12" style="margin-top:30px;">
+<div class="col-md-12">
+    <div class="map-content">
+        <fieldset class="gllpLatlonPicker" id="_MAP_5302">
+            <input type="hidden" class="gllpSearchField">
+            <input type="hidden" class="gllpSearchButton" value="search">
+            <!-- <br/><br/> -->
+            <div class="gllpMap" style="height:300px!important;">Google Maps</div>
+            <!-- <br/>
+            lat/lon: -->
+            <input type="hidden" class="gllpLatitude" value="10.7917429">
+            <!-- / -->
+            <input type="hidden" class="gllpLongitude" value="106.67485869999996">
+            <!-- zoom: --> <input type="hidden" class="gllpZoom" value="15">
+            <input type="hidden" class="gllpUpdateButton" value="update map">
+        </fieldset>
+    </div>
+</div>
+<div class="col-md-9 col-sm-9 col-xs-12" style="margin-top:10px;">
     <div class="real-estate ">
         <div class="real-estate-detail">
             <h1 class="title">Cho thuê nhà trọ khắp cả nước giá rẻ, diện tích từ 20 - 150 m2. Thích hợp sinh viên, vợ chồng trẻ</h1>
             <div class="main-info">
-                <div class="row">
-                    <div class="col-md-8 left-info no-padding-right">
+                <div class="col-md-8 left-info nopadding-xs no-padding-left">
+                    <div class="room-detail-info margin-bottom-15">
                         <div class="address">
                             <span class="btn info-label">Địa chỉ</span>
-                            <a class="" href="">22 đường số 1 , hiệp Bình Chánh, Thủ Đức</a>, <a class="" href="">1</a>, <a class="" href="">Thủ Đức</a>, <a class="" href="">Hồ Chí Minh</a>
+                            <a class="" href="">22 đường số 1 , hiệp Bình Chánh, Thủ Đức</a>
                         </div>
                         <div class="size">
                             <span class="btn info-label">Diện tích</span>
                             <a href="" class="btn info-data">50m<sup>2</sup></a>
                             <span class="btn info-label">Loại phòng</span>
                             <a href="">Phòng trọ, nhà trọ</a>
-                        </div>
-                        <div class="tang">
-                            <span class="btn info-label">Tầng</span>
-                            <a href="" class="btn info-data"> 1 </a>
                         </div>
                         <div class="vs">
                             <span class="btn info-label">Vệ sinh</span>
@@ -39,23 +52,63 @@
                             <a href="">10000 Nghìn/số</a>
                         </div>
                         <div class="type">
-                            <span class="btn info-label">Tiện ích</span>
-                            <a href="">Chỗ để xe</a>
-                            , <a href="">Sân phơi</a>
-                            , <a href="">Internet</a>
-                            , <a href="">Máy giặt</a>
+                            <span class="btn info-label">Giá điện</span>
+                            <a href="" class="btn info-data">2500 Nghìn/số</a>
+                            <span class="btn info-label">Giá nước</span>
+                            <a href="">10000 Nghìn/số</a>
                         </div>
                     </div>
-                    <div class="col-md-4 info-contact no-padding-left">
-                        <div class="contact-label">
-                            <a href="">Thông tin liên hệ</a>
-                        </div>
-                        <div class="chr"><hr></div>
+
+                    <div class="margin-bottom-15">
+                        <img class="img-responsive" style="height:87px" src="https://thuephongtro.com/Style/images/banner.gif" width="662" alt="">
+                    </div>
+                    <div class="margin-bottom-15">
+                        <img class="img-responsive"  style="height:87px" src="https://thuephongtro.com/Style/images/banner.gif" width="662" alt="">
+                    </div>
+                </div>
+                <div class="col-md-4 no-padding margin-bottom-10">
+                    <div class="info-contact">
                         <div class="agentAvatar">
                             <a href="http://mariusn.com/themes/reales-wp/agents/rust-cohle/"><img class="avatar agentAvatarImg" src="http://mariusn.com/themes/reales-wp/wp-content/uploads/2014/12/avatar-6.png" alt="Rust Cohle"></a>
                         </div>
                         <div class="info-boss">
-                            <a href=""><span class="fa fa-user"></span>linh tran</a>
+                            <div class="info-boss-name" style="padding-bottom: 5px;">
+                                <a href="#"><strong class="info-strong-name">Anh Chiến </strong></a>
+                            </div>
+                            <div class="info-boss-address">
+                                <i style="display: table-cell;" class="fa fa-map-marker"></i><span class="info-span-adress">số 16D Ngõ 95 Chùa Bộc, Đống Đa, HN</span>
+                            </div>
+                            @*<div class="info-boss-address">
+                                    <i style="display: table-cell;" class="fa fa-envelope"></i><span class="info-span-adress">tranhoangnam11373@gmail.com</span>
+                                </div>*@
+                        </div>
+                        <div class="info-price">
+                            <span>500,000 Đ/Tháng</span>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="info-help" style="padding: 10px 10px 0;">
+                        <div class="info-help-phone" style="margin-bottom: 10px;">
+                            <a id="show_phone_bnt" class="btn btn-success btn-block">
+                                <i style="margin-right: 10px;" class="fa fa-phone"></i><span>Nhấn để hiện số</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="quick-fill hidden-xs">
+                        <div class="title-input"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="font-weight:bold">Thuê phòng an toàn</span></div>
+                        <ul style="padding-left:15px" class="text-justify">
+                            <li>
+                                <em>KHÔNG trả tiền trước khi nhận hàng.</em>
+                            </li>
+                            <li><em>Kiểm tra hàng cẩn thận, đặc biệt với hàng đắt tiền.</em></li>
+                            <li><em>Hẹn gặp ở nơi công cộng.</em></li>
+                            <li><em>Nếu bạn mua hàng hiệu, hãy gặp mặt tại cửa hàng để nhờ xác minh, tránh mua phải hàng giả.</em></li>
+                        </ul>
+                    </div>
+                    @*<div class="info-boss">
+                            <a href=""><span class="fa fa-location-arrow">số 16D Ngõ 95 Chùa Bộc, Đống Đa, HN</span></a>
                         </div>
                         <div class="info-price">
                             <a href=""><span class="fa fa-money"></span>1,000,000 Đ/tháng</a>
@@ -65,8 +118,7 @@
                         </div>
                         <div class="info-feedback">
                             <a class="btn btn-save-room clearfix" style="width:100%" href="#">Lưu tin</a>
-                        </div>
-                    </div>
+                        </div>*@
                 </div>
             </div>
             <div class="clearfix padding-top-10"></div>
@@ -76,89 +128,49 @@
             <div class="product-image product-main-image">
                 <ul id="product_gallery">
                     <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img src="~/Content/img/city.jpg" />
+                        <img style="height:100%" src="~/Content/img/city.jpg" />
                     </li>
                     <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img src="~/Content/img/city.jpg" />
+                        <img style="height:100%" src="~/Content/img/city.jpg" />
                     </li>
                     <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img src="~/Content/img/city.jpg" />
+                        <img style="height:100%" src="~/Content/img/city.jpg" />
                     </li>
                     <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img src="~/Content/img/city.jpg" />
+                        <img style="height:100%" src="~/Content/img/city.jpg" />
                     </li>
                     <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img src="~/Content/img/city.jpg" />
+                        <img style="height:100%" src="~/Content/img/city.jpg" />
                     </li>
                     <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img src="~/Content/img/city.jpg" />
+                        <img style="height:100%" src="~/Content/img/city.jpg" />
                     </li>
                     <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img src="~/Content/img/city.jpg" />
+                        <img style="height:100%" src="~/Content/img/city.jpg" />
                     </li>
                     <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img src="~/Content/img/city.jpg" />
+                        <img style="height:100%" src="~/Content/img/city.jpg" />
                     </li>
                     <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img src="~/Content/img/city.jpg" />
+                        <img style="height:100%" src="~/Content/img/city.jpg" />
                     </li>
                     <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img src="~/Content/img/city.jpg" />
+                        <img style="height:100%" src="~/Content/img/city.jpg" />
                     </li>
                     <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img src="~/Content/img/city.jpg" />
+                        <img style="height:100%" src="~/Content/img/city.jpg" />
                     <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img src="~/Content/img/city.jpg" />
-                    </li>
+                        <img style="height:100%" src="~/Content/img/city.jpg" />
                     </li>
                 </ul>
                 <div class="clearfix padB10"></div>
             </div><!-- Product Single - Gallery End -->
             <!-- End Light Slider -->
-            <div class="room-detail-des">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="des-label room-list-category">
-                            <div class="pull-left">
-                                <a href="javascript: void(0);"><h3><span>Thông tin</span> chi tiết <i class="fa fa-angle-right"></i></h3></a>
-                            </div>
-                            <div class="clearfix"></div>
-                            <hr>
-                        </div>
-                        <div class="dis-content"><strong>Cho 1 nữ thuê phòng trọ<br>Phòng sạch sẽ, rộng rãi thoáng mát<br>Có cửa sổ, ban công thoáng mát<br>Gần chợ, siêu thị,quán ăn rất tiện lợi<br>Nhà vệ sinh riêng sạch sẽ<br>Nằm trong khu vực an ninh cao, lịch sự<br>Bao điện nước<br>Internet cáp quang(wifi/ADSL) miễn phí<br>Để biết thêm chi tiết, vui lòng liên hệ C.Hồng Tel: 01228791945</strong></div>
-                    </div>
-                </div>
-            </div>
-            <div class="room-detail-map">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="map-label room-list-category">
-                            <div class="pull-left">
-                                <a href=""><h3><span>Bản đồ</span> vị trí <i class="fa fa-angle-right"></i></h3></a>
-                            </div>
-                            <div class="clearfix"></div>
-                            <hr>
-                        </div>
-                        <div class="map-content">
-                            <fieldset class="gllpLatlonPicker" id="_MAP_5302">
-                                <input type="hidden" class="gllpSearchField">
-                                <input type="hidden" class="gllpSearchButton" value="search">
-                                <!-- <br/><br/> -->
-                                <div class="gllpMap" style="height:300px;">Google Maps</div>
-                                <!-- <br/>
-                                lat/lon: -->
-                                <input type="hidden" class="gllpLatitude" value="10.7917429">
-                                <!-- / -->
-                                <input type="hidden" class="gllpLongitude" value="106.67485869999996">
-                                <!-- zoom: --> <input type="hidden" class="gllpZoom" value="15">
-                                <input type="hidden" class="gllpUpdateButton" value="update map">
-                            </fieldset>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
+</div>
+<div class="col-lg-3">
+
 </div>
 <script>
     $(document).ready(function () {
@@ -177,305 +189,3 @@
         });
     });
 </script>
-<style>
-    .real-estate .real-estate-detail h2.title, .real-estate .real-estate-detail h1.title {
-        margin-top: 0px;
-        padding-bottom: 10px;
-        color: rgb(1, 30, 43);
-        font-size: 24px;
-        margin-bottom: 10px;
-        border-bottom: 1px solid rgb(204, 204, 204);
-    }
-
-    .product-image {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .lSSlideOuter .lSPager.lSGallery img {
-        display: block;
-        height: 100%;
-        max-width: 100%;
-    }
-
-    .main-info .left-info a {
-        text-decoration: none;
-        font-weight: 600;
-        color: #2e3339;
-        margin-left: 5px;
-    }
-
-        .main-info .left-info a:hover {
-            color: #FF0047;
-        }
-
-    .main-info .address {
-        border-bottom: 1px solid #ecf0f1;
-        border-top: 1px solid #ecf0f1;
-    }
-
-    .main-info .tang {
-        border-bottom: 1px solid #ecf0f1;
-    }
-
-    .main-info .size {
-        border-bottom: 1px solid #ecf0f1;
-    }
-
-    .main-info .bed-room {
-        border-bottom: 1px solid #ecf0f1;
-    }
-
-    .main-info .vs {
-        border-bottom: 1px solid #ecf0f1;
-    }
-
-    .main-info .type {
-        border-bottom: 1px solid #ecf0f1;
-    }
-
-    .main-info .info-label {
-        /*cursor: inherit;*/
-        border-radius: 0px;
-        border: none;
-        width: 100px;
-        height: 36px;
-        background-color: #ecf0f1;
-        padding: 6px 12px;
-        text-align: left;
-        font-weight: 600;
-    }
-
-    .main-info .info-data {
-        border-radius: 0px;
-        border: none;
-        width: 180px;
-        height: 36px;
-        padding: 6px 0px;
-        text-align: left;
-        font-weight: 600;
-    }
-
-    .main-info .info-contact .contact-label a {
-        font-size: 18px;
-        padding-left: 12px;
-        color: #2e3339;
-        text-decoration: none;
-        font-weight: 600;
-        text-transform: capitalize;
-    }
-
-    .main-info .info-contact .contact-label {
-        text-align: center;
-    }
-
-        .main-info .info-contact .contact-label a:hover {
-            color: #FF0047;
-        }
-
-        .main-info .info-contact .contact-label a span {
-            margin-top: 15px;
-        }
-
-        .main-info .info-contact .contact-label a span {
-            color: #33cc66;
-            margin-right: 10px;
-            font-size: 20px;
-        }
-
-        .main-info .info-contact .contact-label a:hover span {
-            color: #FF0047;
-        }
-
-    .main-info .info-contact .chr {
-        padding: 0px 12px;
-    }
-
-        .main-info .info-contact .chr hr {
-            border-color: #33cc66;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
-    .main-info .info-contact .info-price {
-        margin-bottom: 15px;
-    }
-
-        .main-info .info-contact .info-price a {
-            font-size: 16px;
-            padding-left: 12px;
-            color: #FF0047;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: capitalize;
-        }
-
-            .main-info .info-contact .info-price a:hover {
-                color: #33cc66;
-            }
-
-                .main-info .info-contact .info-price a:hover span {
-                    color: #33cc66;
-                }
-
-            .main-info .info-contact .info-price a span {
-                color: #2e3339;
-                margin-right: 10px;
-                font-size: 16px;
-            }
-
-    .main-info .info-contact .info-boss {
-        margin-bottom: 15px;
-    }
-
-        .main-info .info-contact .info-boss a {
-            font-size: 14px;
-            padding-left: 12px;
-            color: #2e3339;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: capitalize;
-        }
-
-            .main-info .info-contact .info-boss a:hover {
-                color: #FF0047;
-            }
-
-                .main-info .info-contact .info-boss a:hover span {
-                    color: #FF0047;
-                }
-
-            .main-info .info-contact .info-boss a span {
-                color: #2e3339;
-                margin-right: 10px;
-                font-size: 16px;
-            }
-
-    .main-info .info-contact .info-phone a {
-        font-size: 14px;
-        padding-left: 14px;
-        color: #2e3339;
-        text-decoration: none;
-        font-weight: 600;
-        text-transform: capitalize;
-    }
-
-        .main-info .info-contact .info-phone a:hover {
-            color: #FF0047;
-        }
-
-            .main-info .info-contact .info-phone a:hover span {
-                color: #FF0047;
-            }
-
-        .main-info .info-contact .info-phone a span {
-            color: #2e3339;
-            margin-right: 13px;
-            font-size: 18px;
-        }
-
-    .main-info .info-contact .info-phone {
-        margin-bottom: 30px;
-    }
-
-    .main-info .info-feedback a {
-        color: #FFF;
-        font-size: 14px;
-        font-weight: 600;
-        text-transform: capitalize;
-        text-decoration: none;
-    }
-
-    .main-info .info-feedback .btn-report-room, .main-info .info-feedback .btn-save-room, #modal-feed-back .modal-footer .btn-report-room {
-        border: none;
-        border-radius: 0px;
-        background-color: #33cc66;
-        padding: 6px 12px;
-        margin-left: 12px;
-    }
-
-        .main-info .info-feedback .btn-report-room:hover, .main-info .info-feedback .btn-save-room:hover, #modal-feed-back .modal-footer .btn-report-room:hover {
-            background-color: #FF0047;
-        }
-
-    .agentAvatar {
-        text-align: center;
-        float: left;
-        padding: 10px;
-    }
-
-    .agentAvatarImg {
-        width: 70px;
-        height: auto;
-        border: 1px solid #e8e8e8;
-        padding: 3px;
-        border-radius: 50%;
-    }
-
-    .agentName {
-        padding: 2px 0 10px 0;
-        font-size: 13px;
-    }
-
-    .room-detail-des {
-        margin-top: 20px;
-    }
-
-        .room-detail-des .des-label .pull-left a h3, .room-detail-map .map-label .pull-left a h3 {
-            margin-bottom: 5px;
-        }
-
-        .room-detail-des .dis-content {
-            font-family: 'Arial';
-            font-size: 15px;
-            text-align: justify;
-            background-color: #ecf0f1;
-            padding: 10px 5px;
-            margin-top: -10px;
-        }
-
-    .room-detail-map {
-        margin-top: 20px;
-    }
-
-    .room-detail-map {
-        margin-top: 20px;
-        margin-bottom: 30px;
-    }
-
-        .room-detail-map .map-content {
-            margin-top: -10px;
-        }
-
-            .room-detail-map .map-content .gllpMap {
-                width: 100% !important;
-                height: 420px !important;
-            }
-
-    .room-list-category .pull-left a {
-        text-transform: uppercase;
-        text-decoration: none;
-        color: #2e3339;
-    }
-
-        .room-list-category .pull-left a h3 i {
-            font-size: 24px;
-        }
-
-        .room-list-category .pull-left a h3 {
-            font-size: 22px;
-        }
-
-        .room-list-category .pull-left a:hover {
-            color: #33cc66;
-        }
-
-        .room-list-category .pull-left a h3 span {
-            color: #33cc66;
-        }
-
-    .room-list-category hr {
-        margin-top: 0px;
-        border-color: #33cc66;
-    }
-</style>
