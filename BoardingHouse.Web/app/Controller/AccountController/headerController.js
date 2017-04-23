@@ -13,6 +13,23 @@
             Password: "",
             ConfirmPassword: ""
         }
+        $scope.Login = function () {
+            BaseService.ValidatorForm("#user_menu_open");
+            var frmAdd = angular.element(document.querySelector('#user_menu_open'));
+            var formValidation = frmAdd.data('formValidation').validate();
+            if (formValidation.isValid()) {
+                apiService.post('Account/Login', true, $scope.account, function (respone) {
+                    if (respone.data.success == true) {
+                        $window.location.reload();
+                        $scope.modalInstance.dismiss('cancel');
+                    } else {
+                        $scope.messageError = respone.data.message;
+                    }
+                }, function (respone) {
+                    console.log('Load product failed.');
+                });
+            }
+        };
         $scope.openLoginModal = openLoginModal;
         function openLoginModal() {
             $scope.modalInstance = $modal.open({
