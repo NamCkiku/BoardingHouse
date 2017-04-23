@@ -1,6 +1,18 @@
 ﻿@using Microsoft.AspNet.Identity
 @using Microsoft.AspNet.Identity.EntityFramework;
 @using BoardingHouse.Web.Models;
+<style>
+    .alert-message, .login-alert {
+        color: rgb(255, 255, 255);
+        font-size: 13px;
+        line-height: 22px;
+        max-width: 227px;
+        background-color: rgb(237, 85, 101);
+        margin-bottom: 13px;
+        padding: 1px 5px;
+        border-radius: 3px;
+    }
+</style>
 <nav class="navbar horizontal-navbar header-nav" ng-controller="headerController">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -72,20 +84,46 @@
                 else
                 {
                     <li class="dropdown">
-                        <a href="javascript:;" data-toggle="dropdown" aria-expanded="true">
+                        <a href="javascript:;" data-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-fw fa-lg fa-sign-in"></i> Đăng nhập
                         </a>
-                        <div id="user_menu_open" class="dropdown-menu topmenux">
+                        <div id="user_menu_open" class="dropdown-menu topmenux" style="display:block;">
                             <div class="login_sidebar">
-                                <h3 id="login-div-title-topbar">Login</h3>
-                                <div class="login_form" id="login-div_topbar">
-                                    <div class="loginalert" id="login_message_area_topbar"> </div>
-                                    <input type="text" class="form-control" name="log" id="login_user_topbar" placeholder="Username">
-                                    <input type="password" class="form-control" name="pwd" id="login_pwd_topbar" placeholder="Password">
-                                    <button class="wpresidence_button" id="wp-login-but-topbar">Đăng nhập</button>
+                                <h3 id="login-div-title-topbar" style="color:#000">Đăng nhập</h3>
+                                <div class="login_form">
+                                    <div class="login-alert" ng-if="messageError!=null">{{messageError}} </div>
+                                    <div class="form-group no-padding">
+                                        <input id="email"
+                                               data-fv-notempty="true"
+                                               data-fv-notempty-message="Vui lòng nhập Email"
+                                               data-fv-emailaddress="true"
+                                               data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                               ng-model="account.Email"
+                                               class="form-control"
+                                               type="text"
+                                               placeholder="Tên tài khoản"
+                                               name="email">
+                                    </div>
+                                    <div class="form-group no-padding">
+                                        <input id="password"
+                                               data-fv-notempty="true"
+                                               data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                               ng-model="account.Password"
+                                               class="form-control"
+                                               type="password"
+                                               placeholder="Mật khẩu"
+                                               name="password">
+
+                                    </div>
+                                    <button class="wpresidence_button" style="width:100%" ng-click="Login();">Đăng nhập</button>
                                     <div class="login-links">
-                                        <a href="#" id="widget_register_topbar">Need an account? Register here!</a>
-                                        <a href="#" id="forgot_pass_topbar">Forgot Password?</a>
+                                        <a href="#" id="widget_register_topbar">Bạn chưa có tài khoản?</a>
+                                        <a href="#" id="forgot_pass_topbar">Quên mật khâu?</a>
+                                        <div class="division">
+                                            <div class="line l"></div>
+                                            <span>Hoặc</span>
+                                            <div class="line r"></div>
+                                        </div>
                                         <div id="facebookloginsidebar_topbar" data-social="facebook">Đăng nhập với Facebook</div>
                                         <div id="googleloginsidebar_topbar" data-social="google">Đăng nhập với Google</div>
                                         <div id="yahoologinsidebar_topbar" data-social="yahoo">Đăng nhập với Yahoo</div>
