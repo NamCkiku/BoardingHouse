@@ -22,8 +22,8 @@ namespace BoardingHouse.Repositoty.Repositories
         public IEnumerable<RoomEntity> GetAllListRoom()
         {
             var query = (from a in DbContext.Rooms
-                         from b in DbContext.RoomTypes.Where(x => x.RoomTypeID == a.RoomTypeID).DefaultIfEmpty()
-                         from c in DbContext.Provinces.Where(x => x.provinceid == a.ProvinceID).DefaultIfEmpty()
+                         from b in DbContext.RoomTypes.Where(x => x.RoomTypeID == a.RoomTypeID)
+                         from c in DbContext.Provinces.Where(x => x.provinceid == a.ProvinceID)
                          select new RoomEntity
                          {
                              RoomID = a.RoomID,
@@ -36,6 +36,8 @@ namespace BoardingHouse.Repositoty.Repositories
                              Acreage = a.Acreage,
                              UserID = a.UserID,
                              Status=a.Status,
+                             FullName=a.FullName,
+                             Address=a.Address,
                          }).ToList();
             return query;
         }

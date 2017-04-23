@@ -8,6 +8,7 @@ using BoardingHouse.Entities.Models;
 using BoardingHouse.Repositoty.Repositories;
 using BoardingHouse.Repositoty.Infrastructure;
 using BoardingHouse.Entities.Entities;
+using BoardingHouse.Entities.SearchEntity;
 
 namespace BoardingHouse.Service.Service
 {
@@ -90,6 +91,28 @@ namespace BoardingHouse.Service.Service
         public Room Delete(int id)
         {
             throw new NotImplementedException();
+        }
+        public IEnumerable<RoomEntity> GetAllRoomFullSearch(SearchRoomEntity filter, int page, int pageSize, out int totalRow)
+        {
+            List<RoomEntity> lstroom = new List<RoomEntity>();
+            try
+            {
+                lstroom = _roomRepository.GetAllListRoom().Where(x => x.Status == true
+                && (x.RoomTypeID == filter.RoomTypeID || filter.RoomTypeID == null)
+                && (x.Price >= filter.PriceFrom || filter.PriceFrom == null)
+                && (x.Price <= filter.PriceTo || filter.PriceTo == null)
+                && (x.ProvinceID <= filter.ProvinceID || filter.ProvinceID == null)
+                && (x.DistrictID <= filter.DistrictID || filter.DistrictID == null)
+                && (x.WardID <= filter.WardID || filter.WardID == null)
+                && (x.RoomName.Contains(filter.Keywords) || x.Description.Contains(filter.Keywords) || string.IsNullOrEmpty(filter.Keywords))
+                ).ToList();
+                totalRow = lstroom.Count();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return lstroom.Skip((page - 1) * pageSize).Take(pageSize);
         }
 
         public IEnumerable<RoomEntity> GetAllPaging(SearchEntity filter, int page, int pageSize, out int totalRow)

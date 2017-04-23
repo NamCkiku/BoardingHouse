@@ -1,5 +1,6 @@
 ﻿using BoardingHouse.Entities.Entities;
 using BoardingHouse.Entities.Models;
+using BoardingHouse.Entities.SearchEntity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace BoardingHouse.Service.IService
         void Update(Room info);
 
         Room Delete(int id);
+        IEnumerable<RoomEntity> GetAllRoomFullSearch(SearchRoomEntity filter, int page, int pageSize, out int totalRow);
         IEnumerable<RoomEntity> GetAllPaging(SearchEntity filter, int page, int pageSize, out int totalRow);
         IEnumerable<RoomEntity> GetAllListRoom(int page, int pageSize, out int totalRow);
         IEnumerable<RoomEntity> GetAllListRoomByUser(string userID, int page, int pageSize, out int totalRow);

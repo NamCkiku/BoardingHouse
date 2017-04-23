@@ -1,4 +1,5 @@
 ﻿using BoardingHouse.Web.Infrastructure.Core;
+using BoardingHouse.Web.Models.SearchViewModel;
 using BoardingHouse.Web.Models.ViewModel;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
@@ -146,6 +147,34 @@ namespace BoardingHouse.Web.Controllers
                     {
                         jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
                     }
+                }
+                else
+                {
+                    jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
+            return jsonResult;
+        }
+        public JsonResult GetAllRoomFullSearch(SearchRoomViewModels filter, int page = 0, int pageSize = 20)
+        {
+            JsonResult jsonResult = new JsonResult();
+            HttpRequestBase request = this.HttpContext.Request;
+            if (ValidateRequestHeader(request))
+            {
+                HttpResponseMessage responseMessage =
+                    client.GetAsync(url + "/room/getallroomfullsearch/?page=" + page + "&pageSize=" + pageSize +
+                    "&PriceFrom=" + filter.PriceFrom + "&PriceTo=" + filter.PriceTo +
+                    "&RoomTypeID=" + filter.RoomTypeID + "&Keywords=" + filter.Keywords +
+                    "&WardID=" + filter.WardID + "&DistrictID=" + filter.DistrictID + "&ProvinceID=" + filter.ProvinceID + "").Result;
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                    var lstroom = JsonConvert.DeserializeObject<PaginationSet<RoomViewModel>>(responseData);
+                    jsonResult = Json(new { success = true, lstData = lstroom }, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
