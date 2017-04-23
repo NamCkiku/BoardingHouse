@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BoardingHouse.Entities.Entities;
+using BoardingHouse.Entities.SearchEntity;
 using BoardingHouse.Service.IService;
 using BoaringHouse.API.Infrastructure.Core;
 using BoaringHouse.API.Models.ViewModel;
@@ -50,6 +51,27 @@ namespace BoaringHouse.API.Controllers
             {
                 int totalRow = 0;
                 var listRoom = _roomService.GetAllListRoomByUser(userID, page, pageSize, out totalRow).OrderByDescending(x => x.CreateDate);
+                var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
+                var paginationSet = new PaginationSet<RoomViewModel>()
+                {
+                    Items = listRoomVm,
+                    Page = page,
+                    TotalCount = totalRow,
+                    TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
+                };
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+
+                return response;
+            });
+        }
+        [Route("getallroomfullsearch")]
+        [HttpGet]
+        public HttpResponseMessage GetAllRoomFullSearch(HttpRequestMessage request, [FromUri]SearchRoomEntity filter, int page = 0, int pageSize = 20)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                int totalRow = 0;
+                var listRoom = _roomService.GetAllRoomFullSearch(filter, page, pageSize, out totalRow).OrderByDescending(x => x.CreateDate);
                 var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
                 var paginationSet = new PaginationSet<RoomViewModel>()
                 {

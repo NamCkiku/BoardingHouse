@@ -15,7 +15,7 @@
             </a>
         </div>
         <div class="collapse navbar-collapse nav-menu">
-            <ul class="nav navbar-nav navbar-left">
+            <ul class="nav navbar-nav navbar-left hidden-sm">
                 <li>
                     <a href="#">Tất Cả Việc Làm</a>
                 </li>
@@ -26,32 +26,51 @@
                     <a href="/bao-mat">Bản đồ</a>
                 </li>
             </ul>
-            @if (Request.IsAuthenticated)
-            {
-                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-                var currentUser = manager.FindById(User.Identity.GetUserId());
-                <div class="header-top-avatar">
-                    <img class="img-responsive" src="http://localhost:6568/Content/images/@currentUser.Avatar">
-                </div>
-                <div class="header-top-user">
-                    <div class="user-login"><a class="load_modal_login" href="" ng-click="LogOut();">Đăng Xuất</a></div>
-                </div>
-            }
-            else
-            {
-                <ul class="nav navbar-nav navbar-right nav-menu" style="margin-right:15px">
+            <ul class="nav navbar-nav navbar-right nav-menu">
+                <li>
+                    <a href="javascript: void(0);" class="alert-notifications notifications dd" data-toggle="dropdown" aria-expanded="true">
+                        <i class="fa fa-bell-o" style="font-size:18px"></i>
+                        <span class="badge number">2</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-notifications">
+                        <li>
+                            <a href="#">
+                                <span class="label label-danger"><i class="fa fa-bullhorn"></i></span>
+                                Có 18 vị trí mới hấp dẫn cho bạn
+                                <span class="small italic">(34 phút)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="label label-danger"><i class="fa fa-bullhorn"></i></span>
+                                Có 18 vị trí mới hấp dẫn cho bạn
+                                <span class="small italic">(34 phút)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @if (Request.IsAuthenticated)
+                {
+                    var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                    var currentUser = manager.FindById(User.Identity.GetUserId());
                     <li>
-                        <a class="alert-notifications notifications dd" href="#" data-original-title="" title="">
-                            <i class="glyphicon glyphicon-bell"></i>
-                            <span style="display: none" class="number">2</span>
+                        <a href="javascript: void(0);" data-toggle="dropdown" aria-expanded="true" style="margin-top:5px;">
+                            <img class="avatar agentAvatarImg" style="width:50px;" src="http://localhost:6568/Content/images/@currentUser.Avatar" alt="Rust Cohle">
+                            @currentUser.FullName
+                            <span class="caret"></span>
                         </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="@Url.Action("Membership","Membership")"><i class="fa fa-fw fa-lg fa-user"></i>Tài Khoản</a>
+                            </li>
+                            <li>
+                                <a href="/thoat"><i class="fa fa-lg fa-sign-out fa-fw"></i>&nbsp;Thoát</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="/quan-ly-nghe-nghiep/phan-hoi-cua-nha-tuyen-dung" class="notifications" data-original-title="" title="">
-                            <i class="fa fa-lg fa-comments-o"></i>
-                            <span class="number" style="display:none;" id="unread-message"></span>
-                        </a>
-                    </li>
+                }
+                else
+                {
                     <li class="dropdown">
                         <a href="javascript:;" data-toggle="dropdown" aria-expanded="true">
                             <i class="fa fa-fw fa-lg fa-sign-in"></i> Đăng nhập
@@ -78,9 +97,11 @@
                     <li>
                         <a href="javascript: void(0);" ng-click="openRegisterModal();">Đăng Ký</a>
                     </li>
-                    
-                </ul>
-            }
+                }
+                <li class="horizontal-navbar-create-room">
+                    <a class="btn-addroom" href="#"><i style="margin-right:10px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>Đăng tin miễn phí</a>
+                </li>
+            </ul>
         </div>
 
         <div class="sb-slidebar sb-left sb-style-overlay hidden-sm hidden-md hidden-lg">
@@ -104,14 +125,8 @@
                     </li>
                     <li>
                         <a class="alert-notifications notifications dd" href="#" data-original-title="" title="">
-                            <i class="glyphicon glyphicon-bell"></i>
+                            <i class="fa fa-bell-o"></i>
                             <span style="display: none" class="number">2</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/quan-ly-nghe-nghiep/phan-hoi-cua-nha-tuyen-dung" class="notifications" data-original-title="" title="">
-                            <i class="fa fa-lg fa-comments-o"></i>
-                            <span class="number" style="display:none;" id="unread-message"></span>
                         </a>
                     </li>
                     <li>
@@ -419,7 +434,7 @@
         color: #8593a9;
         border: 1px solid #dde4e9;
         border-radius: 3px;
-        height:40px;
+        height: 40px;
         background-color: #fff;
         box-shadow: none;
         -webkit-appearance: none;

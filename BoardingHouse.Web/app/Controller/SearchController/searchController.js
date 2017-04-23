@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('searchController', searchController);
 
-    searchController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'apiService'];
+    searchController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'apiService', '$window'];
 
-    function searchController($scope, blockUI, $modal, $rootScope, apiService) {
+    function searchController($scope, blockUI, $modal, $rootScope, apiService, $window) {
         $scope.page = 0;
         $scope.pagesCount = 0;
         $scope.slider = {
@@ -51,14 +51,16 @@
         }();
         $scope.keywords = {
         };
+        $scope.Search = Search;
         function Search() {
             var params = {
-                CategoryID: $scope.keywords.CategoryID,
+                RoomTypeID: $scope.keywords.RoomType,
                 PriceFrom: $scope.slider.minValue,
                 PriceTo: $scope.slider.maxValue,
-                Wardid: $scope.keywords.Wardid,
-                Districtid: $scope.keywords.Districtid,
-                Provinceid: $scope.keywords.Provinceid
+                WardID: $scope.keywords.Ward,
+                DistrictID: $scope.keywords.District,
+                ProvinceID: $scope.keywords.Province,
+                Keywords: $scope.keywords.Keywords
             };
             var queryString = [];
             for (var key in params) {
@@ -66,8 +68,7 @@
                     queryString.push(key + '=' + params[key]);
                 }
             }
-            $window.location.href = '/Info/Search?' + queryString.join('&');
-
+            $window.location.href = '/Home/RoomDetail?' + queryString.join('&');
         }
         function GetAllRoomType() {
             apiService.post('Management/GetAllRoomType', true, null, function (respone) {
@@ -111,9 +112,34 @@
             }, function (respone) {
             });
         }
+        $scope.ResultSearch = ResultSearch;
+        function ResultSearch(page) {
+            page = page || 0;
+            var filter = {
+                RoomTypeID: QueryString.RoomTypeID,
+                PriceFrom: QueryString.PriceFrom * 1000000,
+                PriceTo: QueryString.PriceTo * 1000000,
+                WardID: QueryString.WardID,
+                DistrictID: QueryString.DistrictID,
+                ProvinceID: QueryString.ProvinceID,
+                Keywords: QueryString.Keywords,
+                page: page,
+                pageSize: 10,
+                //sort: $scope.sortKey
+            }
+            apiService.post('Management/GetAllRoomFullSearch', true, filter, function (respone) {
+                if (respone.data.success == true) {
+                    $scope.data.lstRoom = respone.data.lstData;
+                    console.log($scope.data.lstRoom);
+                } else {
+                }
+            }, function () {
+            });
+        }
         function load() {
             GetAllProvince();
             GetAllRoomType();
+            ResultSearch();
         }
         load();
     }

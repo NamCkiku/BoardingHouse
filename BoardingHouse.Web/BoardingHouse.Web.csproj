@@ -219,6 +219,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SearchViewModel\SearchRoomViewModels.cs" />
     <Compile Include="Models\ViewModel\DistrictViewModel.cs" />
     <Compile Include="Models\ViewModel\MoreInfomationViewModel.cs" />
     <Compile Include="Models\ViewModel\ProvinceViewModel.cs" />
@@ -874,12 +875,15 @@
     <Content Include="Content\css\Responsive.css" />
     <Content Include="Content\img\city.jpg" />
     <Content Include="Content\img\floor-elevator.png" />
+    <Content Include="Content\img\grid-view-bg.png" />
     <Content Include="Content\img\icon_new_2.png" />
     <Content Include="Content\img\img_code.jpg" />
     <Content Include="Content\img\kak.png" />
     <Content Include="Content\img\news-icon-1.png" />
     <Content Include="Content\img\orn.png" />
     <Content Include="Content\img\reservas-paso-active.png" />
+    <Content Include="Content\img\unit.png" />
+    <Content Include="Content\img\unitshare.png" />
     <Content Include="Content\img\xphongtot_logo.png.pagespeed.ic.UejSBOLzW8.png" />
     <Content Include="Content\js\bootstrapextend.min.js" />
     <Content Include="Content\js\formValidation.min.js" />
@@ -1180,6 +1184,9 @@
     <Content Include="bower_components\select2\release.sh" />
     <Content Include="bower_components\select2\select2.jquery.json" />
     <Content Include="bower_components\select2\select2_locale_en.js.template" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\ListRoom.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

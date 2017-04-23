@@ -4,28 +4,65 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
-    .view-mode {
-        float: right;
-    }
-
-        .view-mode a.active {
-            color: #33cc66;
-            border: 1px solid #33cc66;
-        }
-
-        .view-mode a {
-            float: left;
-            font-size: 18px;
-            margin-left: 10px;
-            color: #9c9c9c;
-            line-height: 30px;
-            border: 1px solid #9c9c9c;
-            padding: 2px 8px 0;
-        }
+    .property_agent_image {
+    width: 30px;
+    height: 30px;
+    float: left;
+    background-size: cover;
+    margin-right: 10px;
+    border-radius: 100%;
+}
+    .property_listing a {
+    text-decoration: none;
+}
 </style>
 <div class="row" ng-controller="ListRoomController">
+    <div class="col-lg-9 col-md-9">
+        <div class="row" style="margin-top:30px;">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 no-touch" ng-repeat="item in data.lstRoom">
+                <a href="#" class="card" id="card-309">
+                    <div class="figure">
+                        <div class="featured-label">
+                            <div class="featured-label-left"></div>
+                            <div class="featured-label-content"><span class="fa fa-star"></span></div>
+                            <div class="featured-label-right"></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="img" style="background-image:url(http://localhost:6568/Content/images/{{item.Image}});"></div>
+                        <div class="figCaption">
+                            <div><span class="fa fa-home" style="margin-right:10px"></span>{{item.RoomTypeName}}</div>
+                            <span><span class="fa fa-eye"></span> 9999+</span>
+                            <span><span class="fa fa-heart-o"></span> 2</span>
+                        </div>
+                        <div class="figView"><span class="fa fa-eye"></span></div>
+                        <div class="figType">{{item.Price|number}} Đ/tháng</div>
+                    </div>
+                    <h2>{{item.RoomName}}</h2>
+                    <div class="cardAddress">
+                        <span class="fa fa-map-marker" style="margin-right:10px;"></span>{{item.Address}}
+                    </div>
+                    <ul class="cardFeat">
+                        <li><span class="fa fa-bed"></span><span style="margin-left:5px;">2</span></li>
+                        <li><span class="fa fa-info"></span><span style="margin-left:5px;">{{item.Acreage|number}} m<sup>2</sup></span></li>
+                        <li></li>
+                        <li><span class="fa fa-male" style="margin-right:10px;"></span>5</li>
+                        @*<li>
+                            <span class="fa fa-user"></span>
+                            <span>
+                               {{item.FullName}}
+                            </span>
+                            <span>
+                               {{item.FullName}}
+                            </span>
+                        </li>*@
+                    </ul>
+                    <div class="clearfix"></div>
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="col-md-3 sidebar">
-        <div class="row" style="margin-top:42px;">
+        <div class="row" style="margin-top:30px;">
             <div class="col-sm-6 col-md-12 sidebar-ads nopadding-xs hidden-xs hidden-sm">
                 <div class="box_collection_pr">
                     <div class="title_st">
@@ -36,19 +73,23 @@
                         <span class="arrow_title visible-md visible-md"></span>
                         <div class="show_nav_bar hidden-lg hidden-md"></div>
                     </div>
-                    <div class="list_item_collection show1">
+                    <div class="list_item_collection">
                         <ul>
-                            <li class="li_lv1 active"><a href="">Tất cả</a> </li>
-                            <li ng-repeat="item in data.lstRoomType" class="li_lv1"><a href="">{{item.RoomTypeName}}</a> </li>
+                            <li class="li_lv1"><a href="">Tất cả<span class="facet-count">(1,844)</span></a> </li>
+                            <li ng-repeat="item in data.lstRoomType" class="li_lv1"><a href="">{{item.RoomTypeName}}<span class="facet-count">(1,844)</span></a> </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-12 sidebar-ads nopadding-xs margin-top-20 hidden-xs hidden-sm">
+            <div class="clearfix"></div>
+            <div class="col-sm-6 col-md-12 sidebar-ads nopadding-xs hidden-xs hidden-sm" style="margin-top:20px;">
+                <img style="width:100%;height:auto" src="https://www.chotot.com/chotot/dist/04721d9197488d2299f33c7090858a51.gif" />
+            </div>
+            <div class="col-sm-6 col-md-12 margin-top-20">
                 <div class="widget_bestsellers">
                     <div class="title_st">
                         <h2>
-                            <div class="show_nav_bar1"><i class="fa fa-bars"></i></div>
+                            <div class="show_nav_bar1"><i class="fa fa-newspaper-o"></i></div>
                             Tin tức
                         </h2>
                         <span class="arrow_title visible-md visible-md"></span>
@@ -138,63 +179,6 @@
             </div>
         </div>
         <div class="clearfix"></div>
-    </div>
-    <div class="col-lg-9 col-md-9">
-        <div class="row">
-            <div class="col-md-12 room-main-content nopadding-xs">
-                <div class="menu-tab">
-                    <div class="menu-tab-title"><a href=""><span>Tin</span> Mới nhất <i class="fa fa-angle-right"></i></a></div>
-                    <div class="menu-tab-title-right">
-                        <div class="view-mode">
-                            <a href="javascript:;" class="active">
-                                <i class="fa fa-th"></i>
-                            </a>
-                            <a href="javascript:;" class="switch-view" data-view="list">
-                                <i class="fa fa-bars"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="tab_type_1">
-                        <div class="room-info-list" block-ui="LstRoomBlockUI">
-                            <div class="col-sm-6 col-md-4 room-info-item" ng-repeat="item in data.lstRoom">
-                                <div class="room-info">
-                                    <a href="#" title="CHO THUÊ NHÀ TRỌ QUẬN 4 GIÁ 3.2 TRIỆU THÁNG">
-                                        <img class="cover img-reponsive" src="http://localhost:6568/Content/images/{{item.Image}}">
-                                    </a>
-                                    <div class="room-item-vip">
-                                        <a href="">Vip</a>
-                                    </div>
-                                    <div class="room-item-price">
-                                        <a href="">{{item.Price|number}} Đ/tháng</a>
-                                    </div>
-                                    <div class="caption">
-                                        <div class="title">
-                                            <h2><a href="">{{item.RoomName}}</a></h2>
-                                        </div>
-                                        <div class="extra">
-                                            <div class="pull-left">
-                                                <a href="#"><span class="fa fa-map-marker"></span>{{item.ProvinceName}}</a>
-                                            </div>
-                                            <div class="pull-right">
-                                                <a href=""><span class="fa fa-info"></span>{{item.Acreage|number}} m<sup>2</sup></a>
-                                            </div>
-                                            <div class="type">
-                                                <a href=""><span class="fa fa-home"></span>{{item.RoomTypeName}}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <pager-directive page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="GetAllRoom(page)"></pager-directive>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 

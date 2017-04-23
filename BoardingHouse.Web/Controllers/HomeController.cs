@@ -20,6 +20,10 @@ namespace BoardingHouse.Web.Controllers
         {
             return View();
         }
+        public ActionResult ListRoom()
+        {
+            return View();
+        }
         public ActionResult CreateRoom()
         {
             if (HttpContext.Request.IsAuthenticated)
