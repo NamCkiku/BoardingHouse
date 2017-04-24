@@ -1,18 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
 @using Microsoft.AspNet.Identity.EntityFramework;
 @using BoardingHouse.Web.Models;
-<style>
-    .alert-message, .login-alert {
-        color: rgb(255, 255, 255);
-        font-size: 13px;
-        line-height: 22px;
-        max-width: 227px;
-        background-color: rgb(237, 85, 101);
-        margin-bottom: 13px;
-        padding: 1px 5px;
-        border-radius: 3px;
-    }
-</style>
 <nav class="navbar horizontal-navbar header-nav" ng-controller="headerController">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -67,7 +55,14 @@
                     var currentUser = manager.FindById(User.Identity.GetUserId());
                     <li>
                         <a href="javascript: void(0);" data-toggle="dropdown" aria-expanded="true" style="margin-top:5px;">
-                            <img class="avatar agentAvatarImg" style="width:50px;" src="http://localhost:6568/Content/images/@currentUser.Avatar" alt="Rust Cohle">
+                            @if (@currentUser.Avatar != null)
+                            {
+                                <img class="avatar agentAvatarImg" style="width:50px;" src="http://localhost:6568/Content/images/@currentUser.Avatar">
+                            }
+                            else
+                            {
+                                <img class="avatar agentAvatarImg" style="width:50px;" src="~/Content/img/boy-512.png" />
+                            }
                             @currentUser.FullName
                             <span class="caret"></span>
                         </a>
@@ -83,54 +78,54 @@
                 }
                 else
                 {
-                    <li class="dropdown">
-                        <a href="javascript:;" data-toggle="dropdown" aria-expanded="false">
+                    <li>
+                        <a href="javascript:;" ng-click="openLoginModal();">
                             <i class="fa fa-fw fa-lg fa-sign-in"></i> Đăng nhập
                         </a>
-                        <div id="user_menu_open" class="dropdown-menu topmenux" style="display:block;">
-                            <div class="login_sidebar">
-                                <h3 id="login-div-title-topbar" style="color:#000">Đăng nhập</h3>
-                                <div class="login_form">
-                                    <div class="login-alert" ng-if="messageError!=null">{{messageError}} </div>
-                                    <div class="form-group no-padding">
-                                        <input id="email"
-                                               data-fv-notempty="true"
-                                               data-fv-notempty-message="Vui lòng nhập Email"
-                                               data-fv-emailaddress="true"
-                                               data-fv-emailaddress-message="Bạn phải nhập đúng Email"
-                                               ng-model="account.Email"
-                                               class="form-control"
-                                               type="text"
-                                               placeholder="Tên tài khoản"
-                                               name="email">
-                                    </div>
-                                    <div class="form-group no-padding">
-                                        <input id="password"
-                                               data-fv-notempty="true"
-                                               data-fv-notempty-message="Vui lòng nhập mật khẩu"
-                                               ng-model="account.Password"
-                                               class="form-control"
-                                               type="password"
-                                               placeholder="Mật khẩu"
-                                               name="password">
-
-                                    </div>
-                                    <button class="wpresidence_button" style="width:100%" ng-click="Login();">Đăng nhập</button>
-                                    <div class="login-links">
-                                        <a href="#" id="widget_register_topbar">Bạn chưa có tài khoản?</a>
-                                        <a href="#" id="forgot_pass_topbar">Quên mật khâu?</a>
-                                        <div class="division">
-                                            <div class="line l"></div>
-                                            <span>Hoặc</span>
-                                            <div class="line r"></div>
+                        @*<div id="user_menu_open" class="dropdown-menu topmenux">
+                                <div class="login_sidebar">
+                                    <h3 id="login-div-title-topbar" style="color:#000">Đăng nhập</h3>
+                                    <div class="login_form">
+                                        <div class="login-alert" ng-if="messageError!=null">{{messageError}} </div>
+                                        <div class="form-group no-padding">
+                                            <input id="email"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Vui lòng nhập Email"
+                                                   data-fv-emailaddress="true"
+                                                   data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                                   ng-model="account.Email"
+                                                   class="form-control"
+                                                   type="text"
+                                                   placeholder="Tên tài khoản"
+                                                   name="email">
                                         </div>
-                                        <div id="facebookloginsidebar_topbar" data-social="facebook">Đăng nhập với Facebook</div>
-                                        <div id="googleloginsidebar_topbar" data-social="google">Đăng nhập với Google</div>
-                                        <div id="yahoologinsidebar_topbar" data-social="yahoo">Đăng nhập với Yahoo</div>
+                                        <div class="form-group no-padding">
+                                            <input id="password"
+                                                   data-fv-notempty="true"
+                                                   data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                                   ng-model="account.Password"
+                                                   class="form-control"
+                                                   type="password"
+                                                   placeholder="Mật khẩu"
+                                                   name="password">
+
+                                        </div>
+                                        <button class="wpresidence_button" style="width:100%" ng-click="Login();">Đăng nhập</button>
+                                        <div class="login-links">
+                                            <a href="#" id="widget_register_topbar">Bạn chưa có tài khoản?</a>
+                                            <a href="#" id="forgot_pass_topbar">Quên mật khâu?</a>
+                                            <div class="division">
+                                                <div class="line l"></div>
+                                                <span>Hoặc</span>
+                                                <div class="line r"></div>
+                                            </div>
+                                            <div id="facebookloginsidebar_topbar" data-social="facebook">Đăng nhập với Facebook</div>
+                                            <div id="googleloginsidebar_topbar" data-social="google">Đăng nhập với Google</div>
+                                            <div id="yahoologinsidebar_topbar" data-social="yahoo">Đăng nhập với Yahoo</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div>*@
                     </li>
                     <li>
                         <a href="javascript: void(0);" ng-click="openRegisterModal();">Đăng Ký</a>
@@ -189,10 +184,10 @@
     <div class="line_orn"></div>
     <div class="modal-body login">
         <div class="box">
-            <div class="content">
+            <div class="content" id="user_menu_open">
                 <div class="form loginBox" style="margin-top:10px;">
                     <div id="formLogin" class="">
-                        <div class="col-lg-12 form-group no-padding">
+                        <div class="form-group no-padding">
                             <input id="email"
                                    data-fv-notempty="true"
                                    data-fv-notempty-message="Vui lòng nhập Email"
@@ -204,7 +199,7 @@
                                    placeholder="Tên tài khoản"
                                    name="email">
                         </div>
-                        <div class="col-lg-12 form-group no-padding">
+                        <div class="form-group no-padding">
                             <input id="password"
                                    data-fv-notempty="true"
                                    data-fv-notempty-message="Vui lòng nhập mật khẩu"
@@ -216,16 +211,16 @@
 
                         </div>
                     </div>
-                    <input class="btn btn-default btn-login" ng-click="ok();" type="button" value="Đăng Nhập">
-                </div>
-                <div class="division">
-                    <div class="line l"></div>
-                    <span>Hoặc</span>
-                    <div class="line r"></div>
+                    <button class="wpresidence_button" style="width:100%" ng-click="ok();">Đăng nhập</button>
                 </div>
                 <div class="login-links">
-                    <a href="#" id="widget_register_topbar">Need an account? Register here!</a>
-                    <a href="#" id="forgot_pass_topbar">Forgot Password?</a>
+                    <a href="#" id="widget_register_topbar">Bạn chưa có tài khoản?</a>
+                    <a href="#" id="forgot_pass_topbar">Quên mật khâu?</a>
+                    <div class="division">
+                        <div class="line l"></div>
+                        <span>Hoặc</span>
+                        <div class="line r"></div>
+                    </div>
                     <div id="facebookloginsidebar_topbar" data-social="facebook">Đăng nhập với Facebook</div>
                     <div id="googleloginsidebar_topbar" data-social="google">Đăng nhập với Google</div>
                     <div id="yahoologinsidebar_topbar" data-social="yahoo">Đăng nhập với Yahoo</div>
@@ -251,61 +246,63 @@
     </div>
     <div class="line_orn"></div>
     <div class="modal-body login">
-        <div class="container-fluid">
-            <div class="box">
-                <div class="content">
-                    <div class="social">
-                        <a id="google_login" class="circle google" href="#">
-                            <i class="fa fa-google-plus fa-fw"></i>
-                        </a>
-                        <a id="facebook_login" class="circle facebook" href="#">
-                            <i class="fa fa-facebook fa-fw"></i>
-                        </a>
-                    </div>
-                    <div class="division">
-                        <div class="line l"></div>
-                        <span>Hoặc</span>
-                        <div class="line r"></div>
-                    </div>
-                    <div class="form loginBox">
-                        <div id="formRegister" class="">
-                            <div class="col-lg-12 form-group no-padding">
-                                <input id="email"
-                                       data-fv-notempty="true"
-                                       data-fv-notempty-message="Vui lòng nhập Email"
-                                       data-fv-emailaddress="true"
-                                       data-fv-emailaddress-message="Bạn phải nhập đúng Email"
-                                       ng-model="accountRegister.Email"
-                                       class="form-control"
-                                       type="text"
-                                       placeholder="Tên tài khoản"
-                                       name="email">
-                            </div>
-                            <div class="col-lg-12 form-group no-padding">
-                                <input id="password"
-                                       data-fv-notempty="true"
-                                       data-fv-notempty-message="Vui lòng nhập mật khẩu"
-                                       ng-model="accountRegister.Password"
-                                       class="form-control"
-                                       type="password"
-                                       placeholder="Mật khẩu"
-                                       name="password">
-
-                            </div>
-                            <div class="col-lg-12 form-group no-padding">
-                                <input id="ConfirmPassword"
-                                       data-fv-notempty="true"
-                                       data-fv-notempty-message="Vui lòng nhập mật khẩu"
-                                       ng-model="accountRegister.ConfirmPassword"
-                                       class="form-control"
-                                       type="password"
-                                       placeholder="Nhập lại mật khẩu"
-                                       name="ConfirmPassword">
-
-                            </div>
+        <div class="box">
+            <div class="content" id="user_menu_open">
+                <div class="form loginBox" style="margin-top:10px;">
+                    <div id="formRegister" class="">
+                        <div class="form-group no-padding">
+                            <input id="email"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập Email"
+                                   data-fv-emailaddress="true"
+                                   data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                   ng-model="accountRegister.FullName"
+                                   class="form-control"
+                                   type="text"
+                                   placeholder="Tên hiển thị"
+                                   name="email">
                         </div>
-                        <input class="btn btn-default btn-login" ng-click="ok();" type="button" value="Đăng kí">
+                        <div class="form-group no-padding">
+                            <input id="email"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập Email"
+                                   data-fv-emailaddress="true"
+                                   data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                   ng-model="accountRegister.Email"
+                                   class="form-control"
+                                   type="text"
+                                   placeholder="Email"
+                                   name="email">
+                        </div>
+                        <div class="form-group no-padding">
+                            <input id="password"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                   ng-model="accountRegister.Password"
+                                   class="form-control"
+                                   type="password"
+                                   placeholder="Mật khẩu"
+                                   name="password">
+
+                        </div>
+                        <div class="form-group no-padding">
+                            <input id="ConfirmPassword"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                   ng-model="accountRegister.ConfirmPassword"
+                                   class="form-control"
+                                   type="password"
+                                   placeholder="Nhập lại mật khẩu"
+                                   name="ConfirmPassword">
+
+                        </div>
+                        <div class="form-group no-padding">
+                            <input type="checkbox" name="terms" id="user_terms_register_topbar">
+                            <label id="user_terms_register_topbar_label">Bạn có đồng ý với <a href="">mọi điều khoản của chúng tôi không</a> </label>
+                        </div>
+                        <button class="wpresidence_button" style="width:100%" ng-click="ok();">Đăng ký</button>
                     </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>
@@ -323,194 +320,3 @@
         </div>
     </div>
 </script>
-<style>
-    .popup_header {
-        background: #f4f0e2;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        border-bottom: none;
-    }
-
-    .popup_title img {
-        color: #FFFFFF;
-        display: block;
-        margin: 0 auto;
-        height: 45px;
-        width: 240px;
-        text-align: center;
-    }
-
-    .login .modal-dialog {
-        width: 350px;
-    }
-
-    .login .modal-footer {
-        border-top: 0;
-        margin-top: 0px;
-        padding: 10px 20px 20px;
-    }
-
-    .login .division {
-        float: none;
-        margin: 20px auto 0px;
-        overflow: hidden;
-        position: relative;
-        text-align: center;
-        width: 100%;
-    }
-
-        .login .division .line {
-            border-top: 1px solid #DFDFDF;
-            position: absolute;
-            top: 10px;
-            width: 34%;
-        }
-
-            .login .division .line.l {
-                left: 0;
-            }
-
-            .login .division .line.r {
-                right: 0;
-            }
-
-        .login .division span {
-            color: #424242;
-            font-size: 17px;
-        }
-
-    .login .box .social {
-        float: none;
-        margin: 40px auto 5px;
-        text-align: center;
-    }
-
-    .login .social .circle {
-        background-color: #EEEEEE;
-        color: #FFFFFF;
-        border-radius: 100px;
-        display: inline-block;
-        margin: 0 17px;
-        padding: 15px;
-    }
-
-        .login .social .circle .fa {
-            font-size: 16px;
-        }
-
-    .login .social .facebook {
-        background-color: #455CA8;
-        color: #FFFFFF;
-    }
-
-    .login .social .google {
-        background-color: #F74933;
-    }
-
-    .login .social .github {
-        background-color: #403A3A;
-    }
-
-    .login .facebook:hover {
-        background-color: #6E83CD;
-    }
-
-    .login .google:hover {
-        background-color: #FF7566;
-    }
-
-    .login .github:hover {
-        background-color: #4D4D4d;
-        ;
-    }
-
-    .login .forgot {
-        color: #797979;
-        margin-left: 0;
-        overflow: hidden;
-        text-align: center;
-        width: 100%;
-    }
-
-    .login .btn-login, .registerBox .btn-register {
-        background-color: #00BBFF;
-        border-color: #00BBFF;
-        border-width: 0;
-        color: #FFFFFF;
-        display: block;
-        margin: 0 auto;
-        padding: 10px 50px;
-        text-transform: uppercase;
-        width: 100%;
-    }
-
-        .login .btn-login:hover, .registerBox .btn-register:hover {
-            background-color: #00A4E4;
-            color: #FFFFFF;
-        }
-
-    /*.login .form-control {
-        border-radius: 3px;
-        background-color: rgba(0, 0, 0, 0.09);
-        box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
-        color: #FFFFFF;
-    }
-
-        .login .form-control:hover {
-            background-color: rgba(0,0,0,.16);
-        }
-
-        .login .form-control:focus {
-            box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.04) inset;
-            background-color: rgba(0,0,0,0.23);
-            color: #FFFFFF;
-        }*/
-
-    .login .box .form input[type="text"], .login .box .form input[type="password"] {
-        font-size: 13px;
-        padding: 9px 0px 9px 9px;
-        color: #8593a9;
-        border: 1px solid #dde4e9;
-        border-radius: 3px;
-        height: 40px;
-        background-color: #fff;
-        box-shadow: none;
-        -webkit-appearance: none;
-    }
-
-
-    @@media (max-width:400px) {
-        .login .modal-dialog {
-            width: 100%;
-        }
-    }
-
-    .big-login, .big-register {
-        background-color: #00bbff;
-        color: #FFFFFF;
-        border-radius: 7px;
-        border-width: 2px;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 200;
-        padding: 16px 60px;
-        text-transform: uppercase;
-        transition: all 0.3s ease 0s;
-    }
-
-        .big-login:hover {
-            background-color: #00A4E4;
-            color: #FFFFFF;
-        }
-
-    .big-register {
-        background-color: rgba(0,0,0,.0);
-        color: #00bbff;
-        border-color: #00bbff;
-    }
-
-        .big-register:hover {
-            border-color: #00A4E4;
-            color: #00A4E4;
-        }
-</style>
