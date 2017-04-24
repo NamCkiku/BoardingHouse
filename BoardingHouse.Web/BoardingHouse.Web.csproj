@@ -873,6 +873,7 @@
     <Content Include="Content\css\BoardingHouse.css" />
     <Content Include="Content\css\Step.css" />
     <Content Include="Content\css\Responsive.css" />
+    <Content Include="Content\img\boy-512.png" />
     <Content Include="Content\img\city.jpg" />
     <Content Include="Content\img\floor-elevator.png" />
     <Content Include="Content\img\grid-view-bg.png" />

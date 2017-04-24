@@ -61,9 +61,9 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 sidebar">
+    <div class="col-lg-3 col-md-3 col-xs-12 sidebar">
         <div class="row" style="margin-top:30px;">
-            <div class="col-sm-6 col-md-12 sidebar-ads nopadding-xs hidden-xs hidden-sm">
+            <div class="col-sm-6 col-md-12 col-lg-12 sidebar-ads margin-bottom-20">
                 <div class="box_collection_pr">
                     <div class="title_st">
                         <h2>
@@ -75,17 +75,14 @@
                     </div>
                     <div class="list_item_collection">
                         <ul>
-                            <li class="li_lv1"><a href="">Tất cả<span class="facet-count">(1,844)</span></a> </li>
-                            <li ng-repeat="item in data.lstRoomType" class="li_lv1"><a href="">{{item.RoomTypeName}}<span class="facet-count">(1,844)</span></a> </li>
+                            <li class="li_lv1"><a href=""><i class="fa fa-angle-double-right" style="margin-right:10px" aria-hidden="true"></i>Tất cả<span class="facet-count">(1,844)</span></a> </li>
+                            <li ng-repeat="item in data.lstRoomType" class="li_lv1"><a href=""><i class="fa fa-angle-double-right" style="margin-right:10px" aria-hidden="true"></i>{{item.RoomTypeName}}<span class="facet-count">(1,844)</span></a> </li>
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-sm-6 col-md-12 sidebar-ads nopadding-xs hidden-xs hidden-sm" style="margin-top:20px;">
-                <img style="width:100%;height:auto" src="https://www.chotot.com/chotot/dist/04721d9197488d2299f33c7090858a51.gif" />
-            </div>
-            <div class="col-sm-6 col-md-12 margin-top-20">
+                <div class="clearfix"></div>
+            </div>           
+            <div class="col-sm-6 col-md-12 col-lg-12">
                 <div class="widget_bestsellers">
                     <div class="title_st">
                         <h2>
@@ -176,6 +173,9 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+            <div class="col-sm-6 col-md-12 col-lg-12 sidebar-ads nopadding-xs hidden-xs hidden-sm" style="margin-top:20px;">
+                <img style="width:100%;height:auto" src="https://www.chotot.com/chotot/dist/04721d9197488d2299f33c7090858a51.gif" />
             </div>
         </div>
         <div class="clearfix"></div>

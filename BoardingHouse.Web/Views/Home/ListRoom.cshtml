@@ -3,35 +3,15 @@
     ViewBag.Title = "ListRoom";
     Layout = "~/Views/Shared/_LayoutDetail.cshtml";
 }
-<div class="col-lg-9" style="margin-top:20px;">
-    <div class="toolbar">
-        <div class="pager">
-            <div class="sort-by">
-                <select class="form-control input-sm">
-                    <option selected="selected">Position</option>
-                    <option>Name</option>
-                    <option>Price</option>
-                </select>
-                <a title="" href="#"><span class="fa fa-map-marker"></span></a>
-            </div>
-            <div class="sort-by">
-                <select class="form-control input-sm">
-                    <option selected="selected">Position</option>
-                    <option>Name</option>
-                    <option>Price</option>
-                </select>
-                <a title="Set Descending Direction" href="#"><span class="fa fa-sort-amount-desc"></span></a>
-            </div>
-            <div class="sort-by">
-                <select class="form-control input-sm">
-                    <option>9</option>
-                    <option selected="selected">12</option>
-                    <option>24</option>
-                    <option>36</option>
-                </select>
-                <a href="#"><span class="fa fa-eye"></span></a>
-            </div>
-        </div><!--- /.pager -->
+<div class="col-md-9 col-lg-9 col-xs-12">
+    <div class="breadcrumbs">
+        <ul class="breadcrumb">
+            <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a> <span class="divider"></span></li>
+            <li>Tất cả sản phẩm</li>
+        </ul>
+    </div>
+    <div class="bannercollection">
+        <img style="width:100%" src="//bizweb.dktcdn.net/100/109/381/themes/161997/assets/img_collection.jpg?1492597369483" alt="Tất cả sản phẩm">
     </div>
     <div class="box-room-list">
         <div class="has_prop_slider  listing_wrapper col-md-12 no-padding">
@@ -40,40 +20,17 @@
                     <div class="prop_new_details">
                         <div class="prop_new_details_back"></div>
                         <div class="property_media">
-                            <i class="fa fa-video-camera" aria-hidden="true"></i><i class="fa fa-camera" aria-hidden="true"></i> 3
+                            <i class="fa fa-home" aria-hidden="true"></i> Văn phòng
                         </div>
                         <div class="property_location_image">
                             <span class="property_marker"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
                             <a href="" rel="tag">Flamengo</a>, <a href="" rel="tag">Rio de Janeiro</a>
                         </div>
                     </div>
-                    <div id="property_unit_carousel_58fae6645f914" class="carousel property_unit_carousel slide " data-ride="carousel" data-interval="false">
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/">
-                                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image" alt="" data-original="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg">
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/">
-                                    <img data-lazy-load-src="http://rio.wpresidence.net/wp-content/uploads/2014/05/architecture-interior-modern-design-modern-interior-designer-1-525x328.jpg" alt="Villa On Washington Ave" class="img-responsive" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/architecture-interior-modern-design-modern-interior-designer-1-525x328.jpg">
-                                </a>
-                            </div><div class="item">
-                                <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/">
-                                    <img data-lazy-load-src="http://rio.wpresidence.net/wp-content/uploads/2014/05/Brand-of-interior-design-ideas-for-small-studio-apartments-About-Remodel-Apartment-Design-Interior-with-interior-design-ideas-for-small-studio-apartments-Apartment-Design-Easy-2-525x328.jpg" alt="Villa On Washington Ave" class="img-responsive" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/Brand-of-interior-design-ideas-for-small-studio-apartments-About-Remodel-Apartment-Design-Interior-with-interior-design-ideas-for-small-studio-apartments-Apartment-Design-Easy-2-525x328.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/"> </a><a class="left  carousel-control" href="#property_unit_carousel_58fae6645f914" data-slide="prev">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                        <a class="right  carousel-control" href="#property_unit_carousel_58fae6645f914" data-slide="next">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </div>
+                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image">
                 </div>
                 <h4>
-                    <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/">
+                    <a href="#">
                         Cho thuê phòng trọ số 19, Ngách 236/8, Ngõ 236 Khương Đình,
                     </a>
                 </h4>
@@ -94,14 +51,13 @@
                     <div class="property_agent_wrapper">
                         <div class="property_agent_image" style="background-image:url('http://rio.wpresidence.net/wp-content/uploads/2014/05/agent4-1-14-120x120.jpg')"></div>
                         <div class="property_agent_image_sign"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
-                        <a href="http://rio.wpresidence.net/agents/maria-barlow/">Maria Barlow</a>
+                        <a href="#">Maria Barlow</a>
                     </div>
 
                     <div class="listing_actions">
-                        <span class="share_list" data-original-title="share"></span>
-                        <span class="icon-fav icon-fav-off" data-original-title="add to favorites" data-postid="139"></span>
-
-                        <span class="compare-action" data-original-title="compare" data-pimage="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-143x83.jpg" data-pid="139"></span>
+                        <span class="share_list"></span>
+                        <span class="icon-fav icon-fav-off"></span>
+                        <span class="compare-action"></span>
                     </div>
                 </div>
             </div>
@@ -112,40 +68,17 @@
                     <div class="prop_new_details">
                         <div class="prop_new_details_back"></div>
                         <div class="property_media">
-                            <i class="fa fa-video-camera" aria-hidden="true"></i><i class="fa fa-camera" aria-hidden="true"></i> 3
+                            <i class="fa fa-home" aria-hidden="true"></i> Văn phòng
                         </div>
                         <div class="property_location_image">
-                            <span class="property_marker"></span>
-                            <a href="http://rio.wpresidence.net/area/flamengo/" rel="tag">Flamengo</a>, <a href="http://rio.wpresidence.net/city/rio-de-janeiro/" rel="tag">Rio de Janeiro</a>
+                            <span class="property_marker"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                            <a href="" rel="tag">Flamengo</a>, <a href="" rel="tag">Rio de Janeiro</a>
                         </div>
                     </div>
-                    <div id="property_unit_carousel_58fae6645f914" class="carousel property_unit_carousel slide " data-ride="carousel" data-interval="false">
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/">
-                                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image" alt="" data-original="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg">
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/">
-                                    <img data-lazy-load-src="http://rio.wpresidence.net/wp-content/uploads/2014/05/architecture-interior-modern-design-modern-interior-designer-1-525x328.jpg" alt="Villa On Washington Ave" class="img-responsive" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/architecture-interior-modern-design-modern-interior-designer-1-525x328.jpg">
-                                </a>
-                            </div><div class="item">
-                                <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/">
-                                    <img data-lazy-load-src="http://rio.wpresidence.net/wp-content/uploads/2014/05/Brand-of-interior-design-ideas-for-small-studio-apartments-About-Remodel-Apartment-Design-Interior-with-interior-design-ideas-for-small-studio-apartments-Apartment-Design-Easy-2-525x328.jpg" alt="Villa On Washington Ave" class="img-responsive" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/Brand-of-interior-design-ideas-for-small-studio-apartments-About-Remodel-Apartment-Design-Interior-with-interior-design-ideas-for-small-studio-apartments-Apartment-Design-Easy-2-525x328.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/"> </a><a class="left  carousel-control" href="#property_unit_carousel_58fae6645f914" data-slide="prev">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                        <a class="right  carousel-control" href="#property_unit_carousel_58fae6645f914" data-slide="next">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </div>
+                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image">
                 </div>
                 <h4>
-                    <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/">
+                    <a href="#">
                         Cho thuê phòng trọ số 19, Ngách 236/8, Ngõ 236 Khương Đình,
                     </a>
                 </h4>
@@ -166,14 +99,13 @@
                     <div class="property_agent_wrapper">
                         <div class="property_agent_image" style="background-image:url('http://rio.wpresidence.net/wp-content/uploads/2014/05/agent4-1-14-120x120.jpg')"></div>
                         <div class="property_agent_image_sign"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
-                        <a href="http://rio.wpresidence.net/agents/maria-barlow/">Maria Barlow</a>
+                        <a href="#">Maria Barlow</a>
                     </div>
 
                     <div class="listing_actions">
-                        <span class="share_list" data-original-title="share"></span>
-                        <span class="icon-fav icon-fav-off" data-original-title="add to favorites" data-postid="139"></span>
-
-                        <span class="compare-action" data-original-title="compare" data-pimage="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-143x83.jpg" data-pid="139"></span>
+                        <span class="share_list"></span>
+                        <span class="icon-fav icon-fav-off"></span>
+                        <span class="compare-action"></span>
                     </div>
                 </div>
             </div>
@@ -184,40 +116,17 @@
                     <div class="prop_new_details">
                         <div class="prop_new_details_back"></div>
                         <div class="property_media">
-                            <i class="fa fa-video-camera" aria-hidden="true"></i><i class="fa fa-camera" aria-hidden="true"></i> 3
+                            <i class="fa fa-home" aria-hidden="true"></i> Văn phòng
                         </div>
                         <div class="property_location_image">
-                            <span class="property_marker"></span>
-                            <a href="http://rio.wpresidence.net/area/flamengo/" rel="tag">Flamengo</a>, <a href="http://rio.wpresidence.net/city/rio-de-janeiro/" rel="tag">Rio de Janeiro</a>
+                            <span class="property_marker"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                            <a href="" rel="tag">Flamengo</a>, <a href="" rel="tag">Rio de Janeiro</a>
                         </div>
                     </div>
-                    <div id="property_unit_carousel_58fae6645f914" class="carousel property_unit_carousel slide " data-ride="carousel" data-interval="false">
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/">
-                                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image" alt="" data-original="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg">
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/">
-                                    <img data-lazy-load-src="http://rio.wpresidence.net/wp-content/uploads/2014/05/architecture-interior-modern-design-modern-interior-designer-1-525x328.jpg" alt="Villa On Washington Ave" class="img-responsive" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/architecture-interior-modern-design-modern-interior-designer-1-525x328.jpg">
-                                </a>
-                            </div><div class="item">
-                                <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/">
-                                    <img data-lazy-load-src="http://rio.wpresidence.net/wp-content/uploads/2014/05/Brand-of-interior-design-ideas-for-small-studio-apartments-About-Remodel-Apartment-Design-Interior-with-interior-design-ideas-for-small-studio-apartments-Apartment-Design-Easy-2-525x328.jpg" alt="Villa On Washington Ave" class="img-responsive" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/Brand-of-interior-design-ideas-for-small-studio-apartments-About-Remodel-Apartment-Design-Interior-with-interior-design-ideas-for-small-studio-apartments-Apartment-Design-Easy-2-525x328.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/"> </a><a class="left  carousel-control" href="#property_unit_carousel_58fae6645f914" data-slide="prev">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                        <a class="right  carousel-control" href="#property_unit_carousel_58fae6645f914" data-slide="next">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </div>
+                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image">
                 </div>
                 <h4>
-                    <a href="http://rio.wpresidence.net/properties/villa-on-washington-ave/">
+                    <a href="#">
                         Cho thuê phòng trọ số 19, Ngách 236/8, Ngõ 236 Khương Đình,
                     </a>
                 </h4>
@@ -238,19 +147,321 @@
                     <div class="property_agent_wrapper">
                         <div class="property_agent_image" style="background-image:url('http://rio.wpresidence.net/wp-content/uploads/2014/05/agent4-1-14-120x120.jpg')"></div>
                         <div class="property_agent_image_sign"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
-                        <a href="http://rio.wpresidence.net/agents/maria-barlow/">Maria Barlow</a>
+                        <a href="#">Maria Barlow</a>
                     </div>
 
                     <div class="listing_actions">
-                        <span class="share_list" data-original-title="share"></span>
-                        <span class="icon-fav icon-fav-off" data-original-title="add to favorites" data-postid="139"></span>
+                        <span class="share_list"></span>
+                        <span class="icon-fav icon-fav-off"></span>
+                        <span class="compare-action"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="has_prop_slider  listing_wrapper col-md-12 no-padding">
+            <div class="property_listing">
+                <div class="listing-unit-img-wrapper">
+                    <div class="prop_new_details">
+                        <div class="prop_new_details_back"></div>
+                        <div class="property_media">
+                            <i class="fa fa-home" aria-hidden="true"></i> Văn phòng
+                        </div>
+                        <div class="property_location_image">
+                            <span class="property_marker"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                            <a href="" rel="tag">Flamengo</a>, <a href="" rel="tag">Rio de Janeiro</a>
+                        </div>
+                    </div>
+                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image">
+                </div>
+                <h4>
+                    <a href="#">
+                        Cho thuê phòng trọ số 19, Ngách 236/8, Ngõ 236 Khương Đình,
+                    </a>
+                </h4>
+                <div class="listing_unit_price_wrapper">
+                    <span class="price_label price_label_before"> 2,100,000 Đ/tháng</span>
+                </div>
+                <div class="property_listing_details">
+                    <span class="inforoom"></span>5 phòng
+                    <span style="margin-left:10px" class="infobath"></span>Khép kín
+                    <span style="margin-left:10px" class="infosize"></span>250 m<sup>2</sup>
+                </div>
+                <div class="property_listing_details">
+                    <i class="fa fa-eye" aria-hidden="true"></i><span>3000.000</span>
+                    <i class="fa fa-heart" aria-hidden="true"></i><span>3000.000</span>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i><span>30 phút trước</span>
+                </div>
+                <div class="property_location">
+                    <div class="property_agent_wrapper">
+                        <div class="property_agent_image" style="background-image:url('http://rio.wpresidence.net/wp-content/uploads/2014/05/agent4-1-14-120x120.jpg')"></div>
+                        <div class="property_agent_image_sign"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
+                        <a href="#">Maria Barlow</a>
+                    </div>
 
-                        <span class="compare-action" data-original-title="compare" data-pimage="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-143x83.jpg" data-pid="139"></span>
+                    <div class="listing_actions">
+                        <span class="share_list"></span>
+                        <span class="icon-fav icon-fav-off"></span>
+                        <span class="compare-action"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="has_prop_slider  listing_wrapper col-md-12 no-padding">
+            <div class="property_listing">
+                <div class="listing-unit-img-wrapper">
+                    <div class="prop_new_details">
+                        <div class="prop_new_details_back"></div>
+                        <div class="property_media">
+                            <i class="fa fa-home" aria-hidden="true"></i> Văn phòng
+                        </div>
+                        <div class="property_location_image">
+                            <span class="property_marker"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                            <a href="" rel="tag">Flamengo</a>, <a href="" rel="tag">Rio de Janeiro</a>
+                        </div>
+                    </div>
+                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image">
+                </div>
+                <h4>
+                    <a href="#">
+                        Cho thuê phòng trọ số 19, Ngách 236/8, Ngõ 236 Khương Đình,
+                    </a>
+                </h4>
+                <div class="listing_unit_price_wrapper">
+                    <span class="price_label price_label_before"> 2,100,000 Đ/tháng</span>
+                </div>
+                <div class="property_listing_details">
+                    <span class="inforoom"></span>5 phòng
+                    <span style="margin-left:10px" class="infobath"></span>Khép kín
+                    <span style="margin-left:10px" class="infosize"></span>250 m<sup>2</sup>
+                </div>
+                <div class="property_listing_details">
+                    <i class="fa fa-eye" aria-hidden="true"></i><span>3000.000</span>
+                    <i class="fa fa-heart" aria-hidden="true"></i><span>3000.000</span>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i><span>30 phút trước</span>
+                </div>
+                <div class="property_location">
+                    <div class="property_agent_wrapper">
+                        <div class="property_agent_image" style="background-image:url('http://rio.wpresidence.net/wp-content/uploads/2014/05/agent4-1-14-120x120.jpg')"></div>
+                        <div class="property_agent_image_sign"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
+                        <a href="#">Maria Barlow</a>
+                    </div>
+
+                    <div class="listing_actions">
+                        <span class="share_list"></span>
+                        <span class="icon-fav icon-fav-off"></span>
+                        <span class="compare-action"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="has_prop_slider  listing_wrapper col-md-12 no-padding">
+            <div class="property_listing">
+                <div class="listing-unit-img-wrapper">
+                    <div class="prop_new_details">
+                        <div class="prop_new_details_back"></div>
+                        <div class="property_media">
+                            <i class="fa fa-home" aria-hidden="true"></i> Văn phòng
+                        </div>
+                        <div class="property_location_image">
+                            <span class="property_marker"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                            <a href="" rel="tag">Flamengo</a>, <a href="" rel="tag">Rio de Janeiro</a>
+                        </div>
+                    </div>
+                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image">
+                </div>
+                <h4>
+                    <a href="#">
+                        Cho thuê phòng trọ số 19, Ngách 236/8, Ngõ 236 Khương Đình,
+                    </a>
+                </h4>
+                <div class="listing_unit_price_wrapper">
+                    <span class="price_label price_label_before"> 2,100,000 Đ/tháng</span>
+                </div>
+                <div class="property_listing_details">
+                    <span class="inforoom"></span>5 phòng
+                    <span style="margin-left:10px" class="infobath"></span>Khép kín
+                    <span style="margin-left:10px" class="infosize"></span>250 m<sup>2</sup>
+                </div>
+                <div class="property_listing_details">
+                    <i class="fa fa-eye" aria-hidden="true"></i><span>3000.000</span>
+                    <i class="fa fa-heart" aria-hidden="true"></i><span>3000.000</span>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i><span>30 phút trước</span>
+                </div>
+                <div class="property_location">
+                    <div class="property_agent_wrapper">
+                        <div class="property_agent_image" style="background-image:url('http://rio.wpresidence.net/wp-content/uploads/2014/05/agent4-1-14-120x120.jpg')"></div>
+                        <div class="property_agent_image_sign"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
+                        <a href="#">Maria Barlow</a>
+                    </div>
+
+                    <div class="listing_actions">
+                        <span class="share_list"></span>
+                        <span class="icon-fav icon-fav-off"></span>
+                        <span class="compare-action"></span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="col-lg-3">
+<div class="col-lg-3 col-md-3 col-xs-12">
+    <div class="row" style="margin-top:55px;">
+        <div class="clearfix"></div>
+        <div class="col-sm-6 col-md-12 col-lg-12 margin-bottom-20">
+            <div class="box-search-sidebar">
+                <div class="title_st">
+                    <h2>
+                        <div class="show_nav_bar1"><i class="fa fa-newspaper-o"></i></div>
+                        Tìm kiếm
+                    </h2>
+                </div>
+                <div class="box_search">
+                    <div class="col-lg-12 margin-bottom-15 categories margin-top-10">
+                        <input type="text" placeholder="Từ khóa tìm kiếm......" ng-model="keywords.Keywords" class="form-control" style="height: 40px;border-radius: 0px;" />
+                    </div>
+                    <div class="col-lg-12 margin-bottom-15 categories">
+                        <select ui-select2="select2Options"
+                                ng-model="keywords.RoomType"
+                                ng-options="option.RoomTypeID as option.RoomTypeName for option in data.lstRoomType"
+                                data-placeholder="Chọn loại phòng">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-lg-12 margin-bottom-15 categories"  >
+                        <select ui-select2="select2Options"
+                                ng-model="keywords.Province"
+                                ng-change="GetAllDistrict(keywords.Province)"
+                                ng-options="option.provinceid as option.name for option in data.lstProvince"
+                                data-placeholder="Chọn Tỉnh/TP">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-lg-12 margin-bottom-15 categories">
+                        <select ui-select2="select2Options"
+                                ng-model="keywords.District"
+                                ng-change="GetAllWard(keywords.District)"
+                                ng-options="option.districtid as option.name for option in data.lstDistrict"
+                                data-placeholder="Chọn Quận/Huyện">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-lg-12 margin-bottom-15 categories">
+                        <select ui-select2="select2Options"
+                                ng-model="keywords.Ward"
+                                ng-options="option.wardid as option.name for option in data.lstWard"
+                                data-placeholder="Chọn Phường/Xã">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-lg-12 margin-bottom-15 categories">
+                        <p style="margin-bottom:0px">
+                            <label for="amount" style="color:#fff;">Khoảng giá:</label>
+                            <span id="amount_2" style="border:0; color:#fff; font-weight:bold;">{{slider.minValue}} triệu đến {{slider.maxValue}}triệu</span>
+                        </p>
+                        <rzslider rz-slider-model="slider.minValue" style="margin-top:0px"
+                                  rz-slider-high="slider.maxValue"
+                                  rz-slider-options="slider.options"></rzslider>
+                    </div>
+                    <div class="col-lg-12 margin-bottom-15 categories">
+                        <button type="button" ng-click="Search();" style="width:100%" class="wpresidence_button"><i class="fa fa-search" style="margin-right:15px" aria-hidden="true"></i>Tìm Kiếm</button>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="col-sm-6 col-md-12 col-lg-12 margin-bottom-20">
+            <div class="widget_bestsellers">
+                <div class="title_st">
+                    <h2>
+                        <span class="show_nav_bar1"><i class="fa fa-newspaper-o"></i></span>
+                        Tin tức
+                    </h2>
+                </div>
+                <div class="box_produt_hot">
+                    <ul class="available_pc">
+
+                        <li>
+                            <div class="box_pr_small">
+                                <div class="box_pr_img">
+                                    <a href="/11-mon-do-gia-dung-tiem-an-nguy-co-gay-ung-thu" title="11 món đồ gia dụng tiềm ẩn nguy cơ gây ung thư">
+
+                                        <img src="//bizweb.dktcdn.net/thumb/small/100/029/262/articles/5-cach-dung-sai-chao-chong-dinh-gay-ung-thu-1.jpg?v=1447062492553">
+
+                                    </a>
+                                </div>
+                                <div class="box_pr_title">
+                                    <h3><a href="/11-mon-do-gia-dung-tiem-an-nguy-co-gay-ung-thu">11 món đồ gia dụng tiềm ẩn nguy cơ gây ung thư</a></h3>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="box_pr_small">
+                                <div class="box_pr_img">
+                                    <a href="/goi-y-nhung-mon-qua-20-11-tang-co-giao-y-nghia-nam-2015" title="Gợi ý những món quà 20/11 tặng cô giáo ý nghĩa năm 2015">
+
+                                        <img src="//bizweb.dktcdn.net/thumb/small/100/029/262/articles/nhung-bai-van-xuc-dong-ve-ngay-nha-giao-viet-nam.jpg?v=1447061216243">
+
+                                    </a>
+                                </div>
+                                <div class="box_pr_title">
+                                    <h3><a href="/goi-y-nhung-mon-qua-20-11-tang-co-giao-y-nghia-nam-2015">Gợi ý những món quà 20/11 tặng cô giáo ý nghĩa ...</a></h3>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="box_pr_small">
+                                <div class="box_pr_img">
+                                    <a href="/vi-sao-khong-nen-lam-dung-nuoc-hoa" title="Vì sao không nên lạm dụng nước hoa?">
+
+                                        <img src="//bizweb.dktcdn.net/thumb/small/100/029/262/articles/su-dung-va-bao-quan-nuoc-hoa-dung-cach-1.jpg?v=1447059254860">
+
+                                    </a>
+                                </div>
+                                <div class="box_pr_title">
+                                    <h3><a href="/vi-sao-khong-nen-lam-dung-nuoc-hoa">Vì sao không nên lạm dụng nước hoa?</a></h3>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="box_pr_small">
+                                <div class="box_pr_img">
+                                    <a href="/nguoi-viet-mua-gan-8-000-chiec-iphone-6s-6s-plus-mot-ngay" title="Người Việt mua gần 8.000 chiếc iPhone 6s, 6s Plus một ngày">
+
+                                        <img src="//bizweb.dktcdn.net/thumb/small/100/029/262/articles/15233535047-d067d3a247-o.jpg?v=1447059615803">
+
+                                    </a>
+                                </div>
+                                <div class="box_pr_title">
+                                    <h3><a href="/nguoi-viet-mua-gan-8-000-chiec-iphone-6s-6s-plus-mot-ngay">Người Việt mua gần 8.000 chiếc iPhone 6s, 6s Pl...</a></h3>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="box_pr_small">
+                                <div class="box_pr_img">
+                                    <a href="/bai-viet-mau" title="ASUS ZENFONE 5 CHÍNH HÃNG BẮT ĐẦU BÁN TỪ HÔM NAY">
+
+                                        <img src="//bizweb.dktcdn.net/thumb/small/100/029/262/articles/498-img2.jpg?v=1447059439943">
+
+                                    </a>
+                                </div>
+                                <div class="box_pr_title">
+                                    <h3><a href="/bai-viet-mau">ASUS ZENFONE 5 CHÍNH HÃNG BẮT ĐẦU BÁN TỪ HÔM NAY</a></h3>
+                                </div>
+                            </div>
+                        </li>
+                        <div class="more_view"><a href="/san-pham-noi-bat">Xem Thêm</a></div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-12 col-lg-12 sidebar-ads nopadding-xs hidden-xs hidden-sm margin-bottom-20" style="margin-top:20px;">
+            <img class="img-responsive" src="https://www.chotot.com/chotot/dist/04721d9197488d2299f33c7090858a51.gif" />
+        </div>
+    </div>
 </div>

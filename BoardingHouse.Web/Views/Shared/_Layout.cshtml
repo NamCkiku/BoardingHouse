@@ -62,10 +62,10 @@
 @using BoardingHouse.Web.AntiForgeryToken
 <body>
     <input id="antiForgeryToken" value="@AntiForgeryExtension.GetTokenHeaderValue()" type="hidden" />
-    <div class="line_orn"></div>
     <header id="header" class="header-top">
         @{ Html.RenderAction("_Header", "PatialView"); }
     </header>
+    @*<div class="line_orn"></div>*@
     <div class="clearfix"></div>
     @*@{ Html.RenderAction("_Menu", "PatialView"); }*@
     <!-- End menu -->
