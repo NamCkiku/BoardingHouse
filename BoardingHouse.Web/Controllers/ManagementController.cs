@@ -214,6 +214,31 @@ namespace BoardingHouse.Web.Controllers
             }
             return jsonResult;
         }
+        [OutputCache(Location = System.Web.UI.OutputCacheLocation.ServerAndClient, Duration = int.MaxValue, VaryByParam = "id")]
+        public JsonResult GetRoomByID(int id)
+        {
+            JsonResult jsonResult = new JsonResult();
+            HttpRequestBase request = this.HttpContext.Request;
+            if (ValidateRequestHeader(request))
+            {
+                HttpResponseMessage responseMessage = client.GetAsync(url + "/room/getroombyid/" + id).Result;
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                    var ObjRoom = JsonConvert.DeserializeObject<RoomViewModel>(responseData);
+                    jsonResult = Json(new { success = true, Objdata = ObjRoom }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
+            return jsonResult;
+        }
         #endregion
         #region RoomType
         public JsonResult GetAllRoomType()
