@@ -5,182 +5,154 @@
 }
 <link href="~/bower_components/lightslider/dist/css/lightslider.css" rel="stylesheet" />
 <script src="~/bower_components/lightslider/dist/js/lightslider.js"></script>
-<div class="col-md-12 margin-bottom-15">
-    <div class="breadcrumbs">
-        <ul class="breadcrumb">
-            <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a> <span class="divider"></span></li>
-            <li><a href="/">Sản phẩm</a></li>
-            <li>Cho thuê nhà trọ khắp cả nước giá rẻ, diện tích từ 20 - 150 m2. Thích hợp sinh viên, vợ chồng trẻ</li>
-        </ul>
+<div ng-controller="RoomDetailController">
+    <div class="col-md-12 margin-bottom-15">
+        <div class="breadcrumbs">
+            <ul class="breadcrumb">
+                <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a> <span class="divider"></span></li>
+                <li><a href="/">Sản phẩm</a></li>
+                <li>{{RoomInfo.RoomName}}</li>
+            </ul>
+        </div>
+        <div class="map-content">
+            <fieldset class="gllpLatlonPicker" id="_MAP_5302">
+                <input type="hidden" class="gllpSearchField">
+                <input type="hidden" class="gllpSearchButton" value="search">
+                <!-- <br/><br/> -->
+                <div class="gllpMap" style="height:300px!important;">Google Maps</div>
+                <!-- <br/>
+                lat/lon: -->
+                <input type="hidden" class="gllpLatitude" value="{{RoomInfo.Lat}}">
+                <!-- / -->
+                <input type="hidden" class="gllpLongitude" value="{{RoomInfo.Lng}}">
+                <!-- zoom: --> <input type="hidden" class="gllpZoom" value="15">
+                <input type="hidden" class="gllpUpdateButton" value="update map">
+            </fieldset>
+        </div>
     </div>
-    <div class="map-content">
-        <fieldset class="gllpLatlonPicker" id="_MAP_5302">
-            <input type="hidden" class="gllpSearchField">
-            <input type="hidden" class="gllpSearchButton" value="search">
-            <!-- <br/><br/> -->
-            <div class="gllpMap" style="height:300px!important;">Google Maps</div>
-            <!-- <br/>
-            lat/lon: -->
-            <input type="hidden" class="gllpLatitude" value="10.7917429">
-            <!-- / -->
-            <input type="hidden" class="gllpLongitude" value="106.67485869999996">
-            <!-- zoom: --> <input type="hidden" class="gllpZoom" value="15">
-            <input type="hidden" class="gllpUpdateButton" value="update map">
-        </fieldset>
-    </div>
-</div>
-<div class="col-md-9 col-lg-9 col-xs-12 margin-bottom-10">
-    <div class="real-estate ">
-        <div class="real-estate-detail">
-            <h1 class="title">Cho thuê nhà trọ khắp cả nước giá rẻ, diện tích từ 20 - 150 m2. Thích hợp sinh viên, vợ chồng trẻ</h1>
-            <div class="main-info">
-                <div class="col-md-8 left-info nopadding-xs no-padding-left">
-                    <div class="room-detail-info margin-bottom-15">
-                        <div class="address">
-                            <span class="btn info-label">Địa chỉ</span>
-                            <a class="" href="">22 đường số 1 , hiệp Bình Chánh, Thủ Đức</a>
+    <div class="col-md-9 col-lg-9 col-xs-12 margin-bottom-10">
+        <div class="real-estate ">
+            <div class="real-estate-detail">
+                <h1 class="title">{{RoomInfo.RoomName}}</h1>
+                <div class="main-info">
+                    <div class="col-md-8 left-info nopadding-xs no-padding-left">
+                        <div class="room-detail-info margin-bottom-15">
+                            <div class="address">
+                                <span class="btn info-label">Địa chỉ</span>
+                                <a class="" href="">{{RoomInfo.Address}}</a>
+                            </div>
+                            <div class="size">
+                                <span class="btn info-label">Diện tích</span>
+                                <a href="" class="btn info-data">{{RoomInfo.Acreage|number}}m<sup>2</sup></a>
+                                <span class="btn info-label">Loại phòng</span>
+                                <a href="">Phòng trọ, nhà trọ</a>
+                            </div>
+                            <div class="vs">
+                                <span class="btn info-label">Vệ sinh</span>
+                                <a href="" class="btn info-data">Khép kín</a>
+                                <span class="btn info-label">Số người ở</span>
+                                <a href="">1</a>
+                            </div>
+                            <div class="type">
+                                <span class="btn info-label">Giá điện</span>
+                                <a href="" class="btn info-data">2500 Nghìn/số</a>
+                                <span class="btn info-label">Giá nước</span>
+                                <a href="">10000 Nghìn/số</a>
+                            </div>
+                            <div class="type">
+                                <span class="btn info-label">Giá điện</span>
+                                <a href="" class="btn info-data">2500 Nghìn/số</a>
+                                <span class="btn info-label">Giá nước</span>
+                                <a href="">10000 Nghìn/số</a>
+                            </div>
                         </div>
-                        <div class="size">
-                            <span class="btn info-label">Diện tích</span>
-                            <a href="" class="btn info-data">50m<sup>2</sup></a>
-                            <span class="btn info-label">Loại phòng</span>
-                            <a href="">Phòng trọ, nhà trọ</a>
-                        </div>
-                        <div class="vs">
-                            <span class="btn info-label">Vệ sinh</span>
-                            <a href="" class="btn info-data">Khép kín</a>
-                            <span class="btn info-label">Số người ở</span>
-                            <a href="">1</a>
-                        </div>
-                        <div class="type">
-                            <span class="btn info-label">Giá điện</span>
-                            <a href="" class="btn info-data">2500 Nghìn/số</a>
-                            <span class="btn info-label">Giá nước</span>
-                            <a href="">10000 Nghìn/số</a>
-                        </div>
-                        <div class="type">
-                            <span class="btn info-label">Giá điện</span>
-                            <a href="" class="btn info-data">2500 Nghìn/số</a>
-                            <span class="btn info-label">Giá nước</span>
-                            <a href="">10000 Nghìn/số</a>
-                        </div>
-                    </div>
 
-                    <div class="margin-bottom-15">
-                        <img class="img-responsive" style="height:87px" src="https://thuephongtro.com/Style/images/banner.gif" width="662" alt="">
+                        <div class="margin-bottom-15">
+                            <img class="img-responsive" style="height:87px" src="https://thuephongtro.com/Style/images/banner.gif" width="662" alt="">
+                        </div>
+                        <div class="margin-bottom-15">
+                            <img class="img-responsive" style="height:87px" src="https://thuephongtro.com/Style/images/banner.gif" width="662" alt="">
+                        </div>
                     </div>
-                    <div class="margin-bottom-15">
-                        <img class="img-responsive"  style="height:87px" src="https://thuephongtro.com/Style/images/banner.gif" width="662" alt="">
+                    <div class="col-md-4 no-padding margin-bottom-10">
+                        <div class="info-contact">
+                            <div class="agentAvatar">
+                                <a href="http://mariusn.com/themes/reales-wp/agents/rust-cohle/">
+                                <img class="avatar agentAvatarImg" src="http://mariusn.com/themes/reales-wp/wp-content/uploads/2014/12/avatar-6.png" alt="Rust Cohle"></a>
+                            </div>
+                            <div class="info-boss">
+                                <div class="info-boss-name" style="padding-bottom: 5px;">
+                                    <a href="#"><strong class="info-strong-name">Anh Chiến </strong></a>
+                                </div>
+                                <div class="info-boss-address">
+                                    <i style="display: table-cell;" class="fa fa-map-marker"></i><span class="info-span-adress">{{RoomInfo.Address}}</span>
+                                </div>
+                                @*<div class="info-boss-address">
+                                        <i style="display: table-cell;" class="fa fa-envelope"></i><span class="info-span-adress">tranhoangnam11373@gmail.com</span>
+                                    </div>*@
+                            </div>
+                            <div class="info-price">
+                                <span>{{RoomInfo.Price|number}} Đ/Tháng</span>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="info-help" style="padding: 10px 10px 0;">
+                            <div class="info-help-phone" style="margin-bottom: 10px;">
+                                <a id="show_phone_bnt" class="btn btn-primary btn-block">
+                                    <i style="margin-right: 10px;" class="fa fa-phone"></i><span>Nhấn để hiện số</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                        </div>
+                        <div class="quick-fill hidden-xs">
+                            <div class="title-input"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="font-weight:bold">Thuê phòng an toàn</span></div>
+                            <ul style="padding-left:15px" class="text-justify">
+                                <li>
+                                    <em>KHÔNG trả tiền trước khi nhận hàng.</em>
+                                </li>
+                                <li><em>Kiểm tra hàng cẩn thận, đặc biệt với hàng đắt tiền.</em></li>
+                                <li><em>Hẹn gặp ở nơi công cộng.</em></li>
+                                <li><em>Nếu bạn mua hàng hiệu, hãy gặp mặt tại cửa hàng để nhờ xác minh, tránh mua phải hàng giả.</em></li>
+                            </ul>
+                        </div>
+                        @*<div class="info-boss">
+                                <a href=""><span class="fa fa-location-arrow">số 16D Ngõ 95 Chùa Bộc, Đống Đa, HN</span></a>
+                            </div>
+                            <div class="info-price">
+                                <a href=""><span class="fa fa-money"></span>1,000,000 Đ/tháng</a>
+                            </div>
+                            <div class="info-phone">
+                                <a href=""><span class="fa fa-mobile-phone"></span>0917966136</a>
+                            </div>
+                            <div class="info-feedback">
+                                <a class="btn btn-save-room clearfix" style="width:100%" href="#">Lưu tin</a>
+                            </div>*@
                     </div>
                 </div>
-                <div class="col-md-4 no-padding margin-bottom-10">
-                    <div class="info-contact">
-                        <div class="agentAvatar">
-                            <a href="http://mariusn.com/themes/reales-wp/agents/rust-cohle/"><img class="avatar agentAvatarImg" src="http://mariusn.com/themes/reales-wp/wp-content/uploads/2014/12/avatar-6.png" alt="Rust Cohle"></a>
-                        </div>
-                        <div class="info-boss">
-                            <div class="info-boss-name" style="padding-bottom: 5px;">
-                                <a href="#"><strong class="info-strong-name">Anh Chiến </strong></a>
-                            </div>
-                            <div class="info-boss-address">
-                                <i style="display: table-cell;" class="fa fa-map-marker"></i><span class="info-span-adress">số 16D Ngõ 95 Chùa Bộc, Đống Đa, HN</span>
-                            </div>
-                            @*<div class="info-boss-address">
-                                    <i style="display: table-cell;" class="fa fa-envelope"></i><span class="info-span-adress">tranhoangnam11373@gmail.com</span>
-                                </div>*@
-                        </div>
-                        <div class="info-price">
-                            <span>500,000 Đ/Tháng</span>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="info-help" style="padding: 10px 10px 0;">
-                        <div class="info-help-phone" style="margin-bottom: 10px;">
-                            <a id="show_phone_bnt" class="btn btn-primary btn-block">
-                                <i style="margin-right: 10px;" class="fa fa-phone"></i><span>Nhấn để hiện số</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="clearfix">
-                    </div>
-                    <div class="quick-fill hidden-xs">
-                        <div class="title-input"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="font-weight:bold">Thuê phòng an toàn</span></div>
-                        <ul style="padding-left:15px" class="text-justify">
-                            <li>
-                                <em>KHÔNG trả tiền trước khi nhận hàng.</em>
-                            </li>
-                            <li><em>Kiểm tra hàng cẩn thận, đặc biệt với hàng đắt tiền.</em></li>
-                            <li><em>Hẹn gặp ở nơi công cộng.</em></li>
-                            <li><em>Nếu bạn mua hàng hiệu, hãy gặp mặt tại cửa hàng để nhờ xác minh, tránh mua phải hàng giả.</em></li>
-                        </ul>
-                    </div>
-                    @*<div class="info-boss">
-                            <a href=""><span class="fa fa-location-arrow">số 16D Ngõ 95 Chùa Bộc, Đống Đa, HN</span></a>
-                        </div>
-                        <div class="info-price">
-                            <a href=""><span class="fa fa-money"></span>1,000,000 Đ/tháng</a>
-                        </div>
-                        <div class="info-phone">
-                            <a href=""><span class="fa fa-mobile-phone"></span>0917966136</a>
-                        </div>
-                        <div class="info-feedback">
-                            <a class="btn btn-save-room clearfix" style="width:100%" href="#">Lưu tin</a>
-                        </div>*@
+                <div class="clearfix padding-top-10"></div>
+                <!-- Light Slider -->
+                <!-- Product Single - Gallery
+                ============================================= -->
+                <div class="product-image product-main-image margin-bottom-15">
+                    <ul id="product_gallery">
+                        <li ng-repeat="img in moreImages" data-thumb="http://localhost:6568/Content/images/{{img}}">
+                            <img style="height:100%;width:100%" ng-src="http://localhost:6568/Content/images/{{img}}" />
+                        </li>
+                    </ul>
+                    <div class="clearfix padB10"></div>
+                </div><!-- Product Single - Gallery End -->
+                <!-- End Light Slider -->
+                <div class="room-info-des">
+                    <div class="steps_header">Thông tin chi tiết</div>
+                    <div class="dis-content">Cho thuê phòng trọ tại Bạch Mai]<br>Hiện tại nhà mình đang dư 1 phòng trên tầng 3 trong nhà 4 tầng, ngay đầu ngõ 220 Bạch Mai. Trước đó giữ phòng cho ông anh zai, nhưng vì bạn ông ý lại chuẩn bị lấy vk nên k thể chịu ở đc 1m.&nbsp;<br>1- Có thể ở ghép với ông anh zai mình<br>2- Có thể thuê riêng 1m 1 phòng này. (Anh mình đi chỗ khác&nbsp;:D)<br>Phòng gần như full đầy đủ đồ 1 giường 1m2 kèm đệm, 1 bàn dài, 1 tủ gỗ đựng quần áo, 1 bàn kèm giá sách, Sàn gỗ, điều hòa. Nhà vệ sinh có nóng lạnh ở giữa&nbsp;2 phòng dùng chung, máy giặt, Vòi hoa sen, chậu rửa, chổi lau nhà thùng dựng rác... tất cả đều full.<br>- Phòng 16m2 - giá 2,3trieu/1 tháng<br>Điện nước giá dân<br>Mạng đầy đủ. (Mỗi người tầm 50k/1 tháng)<br>Nấu ăn để xe dưới tầng 1 free.<br>Giặt quần áo bằng máy giặt và phơi trên tầng 4<br>Đồ dư để trên 1 kho nhỏ trên tầng 4 luôn.<br>Nhà ngay mặt ngõ đi chục bước chân là ra tới đường phố Bạch Mai to và bến Bus ngay đầu ngõ luôn. Vài bước chân là đến ngã tư Bạch Mai - Lê Thanh nghị☺️<br>Chợ ngay ngõ đối điện.Khu dân cư an ninh tốt. Rất tiện đi lại.<br>Bệnh viện bạch mai, thanh nhàn và các trường đại học rất gần ở xung quanh.<br>Giờ giấc đi lại thoải mái, không chung chủ, tự do đón tiếp người thân, k gây ồn ào và quá đông đúc là okie.<br>Tiền nhà đóng 3 tháng cọc 1 tháng. Nhà hiện tại đóng theo đợt vào các ngày 15/3, 15/6, 15/9, 15/12. Nên đợt này ai đến ở thì có thể chỉ cần đóng khoảng hơn 1 tháng và cọc 1 tháng, Từ 15/6 mới phải đóng 3 tháng tiếp theo.<br>Nhà ít người, hiện toàn người đi làm, sáng đi tối mới về đến nhà nên nhà rất yên tĩnh k lộm nhộm.<br>P/s: Mình cũng nói luôn phòng rộng là như vậy nhưng vì full đồ nên cũng chỉ để ở. Nếu đòi hỏi rộng thênh thang thì k có. Vì nấu ăn, tủ lạnh để dưới nhà ăn và ăn ngay dưới nhà, đồ dư các thứ để trên tầng 4 nhà kho, nên rộng cũng chẳng để làm gì cả chỉ bừa đồ hơn thôi. Thứ 2 là nhà vsinh bên ngoài xây theo kiểu hộ gia đình, k muốn nhà vsinh trong phòng vì sẽ rất bẩn và nước ẩm thấp.<br>Sống chung như 1 gia đình. Nhà cực sạch sẽ lau dọn hàng ngày. Nên mình cũng chỉ ưu tiên người sạch sẽ đến ở.<br>Ai có thiện ý đến qua xem trực tiếp để cảm nhận. Chưa xem hoặc k thuê xin đừng nói lời cay đắng</div>
                 </div>
+
             </div>
-            <div class="clearfix padding-top-10"></div>
-            <!-- Light Slider -->
-            <!-- Product Single - Gallery
-            ============================================= -->
-            <div class="product-image product-main-image margin-bottom-15">
-                <ul id="product_gallery">
-                    <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img style="height:100%" src="~/Content/img/city.jpg" />
-                    </li>
-                    <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img style="height:100%" src="~/Content/img/city.jpg" />
-                    </li>
-                    <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img style="height:100%" src="~/Content/img/city.jpg" />
-                    </li>
-                    <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img style="height:100%" src="~/Content/img/city.jpg" />
-                    </li>
-                    <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img style="height:100%" src="~/Content/img/city.jpg" />
-                    </li>
-                    <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img style="height:100%" src="~/Content/img/city.jpg" />
-                    </li>
-                    <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img style="height:100%" src="~/Content/img/city.jpg" />
-                    </li>
-                    <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img style="height:100%" src="~/Content/img/city.jpg" />
-                    </li>
-                    <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img style="height:100%" src="~/Content/img/city.jpg" />
-                    </li>
-                    <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img style="height:100%" src="~/Content/img/city.jpg" />
-                    </li>
-                    <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img style="height:100%" src="~/Content/img/city.jpg" />
-                    <li data-thumb="/Content/img/city.jpg" data-src="/Content/img/city.jpg">
-                        <img style="height:100%" src="~/Content/img/city.jpg" />
-                    </li>
-                </ul>
-                <div class="clearfix padB10"></div>
-            </div><!-- Product Single - Gallery End -->
-            <!-- End Light Slider -->
-            <div class="room-info-des">
-                <div class="steps_header">Thông tin chi tiết</div>
-                <div class="dis-content">Cho thuê phòng trọ tại Bạch Mai]<br>Hiện tại nhà mình đang dư 1 phòng trên tầng 3 trong nhà 4 tầng, ngay đầu ngõ 220 Bạch Mai. Trước đó giữ phòng cho ông anh zai, nhưng vì bạn ông ý lại chuẩn bị lấy vk nên k thể chịu ở đc 1m.&nbsp;<br>1- Có thể ở ghép với ông anh zai mình<br>2- Có thể thuê riêng 1m 1 phòng này. (Anh mình đi chỗ khác&nbsp;:D)<br>Phòng gần như full đầy đủ đồ 1 giường 1m2 kèm đệm, 1 bàn dài, 1 tủ gỗ đựng quần áo, 1 bàn kèm giá sách, Sàn gỗ, điều hòa. Nhà vệ sinh có nóng lạnh ở giữa&nbsp;2 phòng dùng chung, máy giặt, Vòi hoa sen, chậu rửa, chổi lau nhà thùng dựng rác... tất cả đều full.<br>- Phòng 16m2 - giá 2,3trieu/1 tháng<br>Điện nước giá dân<br>Mạng đầy đủ. (Mỗi người tầm 50k/1 tháng)<br>Nấu ăn để xe dưới tầng 1 free.<br>Giặt quần áo bằng máy giặt và phơi trên tầng 4<br>Đồ dư để trên 1 kho nhỏ trên tầng 4 luôn.<br>Nhà ngay mặt ngõ đi chục bước chân là ra tới đường phố Bạch Mai to và bến Bus ngay đầu ngõ luôn. Vài bước chân là đến ngã tư Bạch Mai - Lê Thanh nghị☺️<br>Chợ ngay ngõ đối điện.Khu dân cư an ninh tốt. Rất tiện đi lại.<br>Bệnh viện bạch mai, thanh nhàn và các trường đại học rất gần ở xung quanh.<br>Giờ giấc đi lại thoải mái, không chung chủ, tự do đón tiếp người thân, k gây ồn ào và quá đông đúc là okie.<br>Tiền nhà đóng 3 tháng cọc 1 tháng. Nhà hiện tại đóng theo đợt vào các ngày 15/3, 15/6, 15/9, 15/12. Nên đợt này ai đến ở thì có thể chỉ cần đóng khoảng hơn 1 tháng và cọc 1 tháng, Từ 15/6 mới phải đóng 3 tháng tiếp theo.<br>Nhà ít người, hiện toàn người đi làm, sáng đi tối mới về đến nhà nên nhà rất yên tĩnh k lộm nhộm.<br>P/s: Mình cũng nói luôn phòng rộng là như vậy nhưng vì full đồ nên cũng chỉ để ở. Nếu đòi hỏi rộng thênh thang thì k có. Vì nấu ăn, tủ lạnh để dưới nhà ăn và ăn ngay dưới nhà, đồ dư các thứ để trên tầng 4 nhà kho, nên rộng cũng chẳng để làm gì cả chỉ bừa đồ hơn thôi. Thứ 2 là nhà vsinh bên ngoài xây theo kiểu hộ gia đình, k muốn nhà vsinh trong phòng vì sẽ rất bẩn và nước ẩm thấp.<br>Sống chung như 1 gia đình. Nhà cực sạch sẽ lau dọn hàng ngày. Nên mình cũng chỉ ưu tiên người sạch sẽ đến ở.<br>Ai có thiện ý đến qua xem trực tiếp để cảm nhận. Chưa xem hoặc k thuê xin đừng nói lời cay đắng</div>
-            </div>
-            
         </div>
     </div>
 </div>
+
 <div class="col-lg-3 col-md-3 col-xs-12">
     <div class="row">
         <div class="clearfix"></div>
@@ -340,23 +312,6 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function () {
-        $('#product_gallery').lightSlider({
-            gallery: true,
-            item: 1,
-            loop: true,
-            currentPagerPosition: 'middle',
-            verticalHeight: 390,
-            vThumbWidth: 130,
-            vThumbHeight: 800,
-            thumbMargin: 5,
-            slideMargin: 0,
-            thumbItem: 5,
-            vertical: true,
-        });
-    });
-</script>
 <style>
     .room-info-des .dis-content {
         font-family: 'Arial';

@@ -237,6 +237,7 @@
     <Content Include="app\Controller\ProfileController\PVProfileListRoom.js" />
     <Content Include="app\Controller\RoomController\CreateRoomController.js" />
     <Content Include="app\Controller\RoomController\ListRoomController.js" />
+    <Content Include="app\Controller\RoomController\RoomDetailController.js" />
     <Content Include="app\Controller\SearchController\searchController.js" />
     <Content Include="app\Directive\pagerDirective.html" />
     <Content Include="app\Directive\pagerDirective.js" />

@@ -44,6 +44,17 @@ namespace BoaringHouse.API.Controllers
                 return response;
             });
         }
+        [Route("getroombyid/{id:int}")]
+        public HttpResponseMessage GetRoomByID(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var Room = _roomService.GetById(id);
+                var RoomVm = Mapper.Map<RoomViewModel>(Room);
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, RoomVm);
+                return response;
+            });
+        }
         [Route("getallbyuserid")]
         public HttpResponseMessage GetAllByUserID(HttpRequestMessage request, string userID, int page = 0, int pageSize = 20)
         {
