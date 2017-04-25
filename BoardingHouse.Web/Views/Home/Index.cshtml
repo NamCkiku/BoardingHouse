@@ -3,22 +3,44 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    .property_agent_image {
-    width: 30px;
-    height: 30px;
-    float: left;
-    background-size: cover;
-    margin-right: 10px;
-    border-radius: 100%;
-}
-    .property_listing a {
-    text-decoration: none;
-}
-</style>
+<div class="row top-companies">
+    <div class="col-md-2 col-xs-4">
+        <a href="https://www.topcv.vn/cong-ty/cong-ty-cp-dich-vu-di-dong-ononpay-viet-nam/15.html" target="_blank">
+            <img src="https://static.topcv.vn/company_logos/cong-ty-cp-dich-vu-di-dong-ononpay-viet-nam-58ef018324a15.jpg" class="img-responsive">
+        </a>
+    </div>
+    <div class="col-md-2 col-xs-4">
+        <a href="https://www.topcv.vn/cong-ty/cong-ty-co-phan-jamja/333.html" target="_blank">
+            <img src="https://static.topcv.vn/company_logos/cong-ty-co-phan-jamja-583ce430731cf.jpg" class="img-responsive">
+        </a>
+    </div>
+    <div class="col-md-2 col-xs-4">
+        <a href="https://www.topcv.vn/cong-ty/cong-ty-co-phan-vat-gia-viet-nam-vnp-group/5.html" target="_blank">
+            <img src="https://static.topcv.vn/company_logos/cong-ty-co-phan-vat-gia-viet-nam-vnp-57982df8d7f68.jpg" class="img-responsive">
+        </a>
+    </div>
+    <div class="col-md-2 col-xs-4">
+        <a href="https://www.topcv.vn/cong-ty/tap-doan-internet-novaon/473.html" target="_blank">
+            <img src="https://static.topcv.vn/company_logos/tap-doan-internet-novaon-57a59d767bc36.jpg" class="img-responsive">
+        </a>
+    </div>
+    <div class="col-md-2 col-xs-4">
+        <a href="https://www.topcv.vn/cong-ty/cong-ty-co-phan-mog-viet-nam/821.html" target="_blank">
+            <img src="https://static.topcv.vn/company_logos/cong-ty-co-phan-mog-viet-nam-57d1127d1f3db.jpg" class="img-responsive">
+        </a>
+    </div>
+    <div class="col-md-2 col-xs-4">
+        <a href="https://www.topcv.vn/cong-ty/uber-vietnam/124.html" target="_blank">
+            <img src="https://static.topcv.vn/company_logos/uber-vietnam-57d11d8d610f8.jpg" class="img-responsive">
+        </a>
+    </div>
+</div>
 <div class="row" ng-controller="ListRoomController">
-    <div class="col-lg-9 col-md-9">
-        <div class="row" style="margin-top:30px;">
+    <div class="col-lg-9 col-md-9 boder margin-bottom-15">
+        <div class="row box-room-info">
+            <div class="modtitle">
+                <h2><a href="frontpage">Tin nổi bật</a></h2>
+            </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 no-touch" ng-repeat="item in data.lstRoom">
                 <a href="#" class="card" id="card-309">
                     <div class="figure">
@@ -47,22 +69,36 @@
                         <li></li>
                         <li><span class="fa fa-male" style="margin-right:10px;"></span>5</li>
                         @*<li>
-                            <span class="fa fa-user"></span>
-                            <span>
-                               {{item.FullName}}
-                            </span>
-                            <span>
-                               {{item.FullName}}
-                            </span>
-                        </li>*@
+                                <span class="fa fa-user"></span>
+                                <span>
+                                   {{item.FullName}}
+                                </span>
+                                <span>
+                                   {{item.FullName}}
+                                </span>
+                            </li>*@
                     </ul>
                     <div class="clearfix"></div>
                 </a>
             </div>
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li class="disabled">
+                        <span>«</span>
+                    </li>
+                    <li class="active"><span>1</span></li>
+                    <li><a href="">2</a></li>
+                    <li><a href="">3</a></li>
+                    <li><a href="">4</a></li>
+                    <li><a href="">5</a></li>
+                    <li><a href="">6</a></li>
+                    <li><a href="" rel="next">»</a></li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="col-lg-3 col-md-3 col-xs-12 sidebar">
-        <div class="row" style="margin-top:30px;">
+        <div class="row">
             <div class="col-sm-6 col-md-12 col-lg-12 sidebar-ads margin-bottom-20">
                 <div class="box_collection_pr">
                     <div class="title_st">
@@ -81,7 +117,7 @@
                     </div>
                 </div>
                 <div class="clearfix"></div>
-            </div>           
+            </div>
             <div class="col-sm-6 col-md-12 col-lg-12">
                 <div class="widget_bestsellers">
                     <div class="title_st">
