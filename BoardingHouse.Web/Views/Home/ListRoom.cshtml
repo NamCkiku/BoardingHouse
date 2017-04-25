@@ -3,6 +3,10 @@
     ViewBag.Title = "ListRoom";
     Layout = "~/Views/Shared/_LayoutDetail.cshtml";
 }
+<style>
+ 
+
+</style>
 <div class="col-md-9 col-lg-9 col-xs-12">
     <div class="breadcrumbs">
         <ul class="breadcrumb">
@@ -303,6 +307,20 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-12">
+        <ul class="pagination">
+            <li class="disabled">
+                <span>«</span>
+            </li>
+            <li class="active"><span>1</span></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+            <li><a href="">5</a></li>
+            <li><a href="">6</a></li>
+            <li><a href="" rel="next">»</a></li>
+        </ul>
+    </div>
 </div>
 <div class="col-lg-3 col-md-3 col-xs-12">
     <div class="row" style="margin-top:55px;">
@@ -327,7 +345,7 @@
                             <option value=""></option>
                         </select>
                     </div>
-                    <div class="col-lg-12 margin-bottom-15 categories"  >
+                    <div class="col-lg-12 margin-bottom-15 categories">
                         <select ui-select2="select2Options"
                                 ng-model="keywords.Province"
                                 ng-change="GetAllDistrict(keywords.Province)"
@@ -369,7 +387,7 @@
             </div>
             <div class="clearfix"></div>
         </div>
-        
+
         <div class="col-sm-6 col-md-12 col-lg-12 margin-bottom-20">
             <div class="widget_bestsellers">
                 <div class="title_st">
