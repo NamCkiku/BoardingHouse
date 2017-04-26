@@ -24,6 +24,8 @@ namespace BoardingHouse.Repositoty.Repositories
             var query = (from a in DbContext.Rooms
                          from b in DbContext.RoomTypes.Where(x => x.RoomTypeID == a.RoomTypeID)
                          from c in DbContext.Provinces.Where(x => x.provinceid == a.ProvinceID)
+                         from d in DbContext.AspNetUsers.Where(x => x.Id == a.UserID).DefaultIfEmpty()
+                         from e in DbContext.MoreInfomations.Where(x => x.MoreInfomationID == a.MoreInfomationID).DefaultIfEmpty()
                          select new RoomEntity
                          {
                              RoomID = a.RoomID,
@@ -36,12 +38,23 @@ namespace BoardingHouse.Repositoty.Repositories
                              Acreage = a.Acreage,
                              UserID = a.UserID,
                              Status = a.Status,
-                             FullName = a.FullName,
                              Address = a.Address,
                              RoomTypeID = a.RoomTypeID,
                              ProvinceID = a.ProvinceID,
                              DistrictID = a.DistrictID,
-                             WardID = a.WardID
+                             WardID = a.WardID,
+                             UserAvatar = d.Avatar,
+                             FullName = d.UserName,
+                             Lat = a.Lat,
+                             Lng = a.Lng,
+                             FloorNumber = e.FloorNumber,
+                             ToiletNumber = e.ToiletNumber,
+                             WaterPrice = e.WaterPrice,
+                             BedroomNumber = e.BedroomNumber,
+                             ElectricPrice = e.ElectricPrice,
+                             Convenient = e.Convenient,
+                             Compass = e.Compass,
+                             ViewCount = a.ViewCount,
                          }).ToList();
             return query;
         }

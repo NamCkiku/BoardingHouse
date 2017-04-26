@@ -23,11 +23,11 @@ namespace BoaringHouse.API.Models.ViewModel
 
         public string MoreImages { get; set; }
 
-        public int WardID { get; set; }
+        public int? WardID { get; set; }
 
-        public int DistrictID { get; set; }
+        public int? DistrictID { get; set; }
 
-        public int ProvinceID { get; set; }
+        public int? ProvinceID { get; set; }
         public string ProvinceName { get; set; }
 
         public double? Acreage { get; set; }
@@ -42,12 +42,29 @@ namespace BoaringHouse.API.Models.ViewModel
 
         public DateTime? ExpireDate { get; set; }
 
-        public int ViewCount { get; set; }
+        public int? ViewCount { get; set; }
 
         public bool Status { get; set; }
 
-        public double Lat { get; set; }
+        public double? Lat { get; set; }
 
-        public double Lng { get; set; }
+        public double? Lng { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string UserAvatar { get; set; }
+
+        public string UserID { get; set; }
+        public string FloorNumber { get; set; }
+
+        public string ToiletNumber { get; set; }
+
+        public string BedroomNumber { get; set; }
+
+        public string Compass { get; set; }
+
+        public int? ElectricPrice { get; set; }
+
+        public int? WaterPrice { get; set; }
+        public string Convenient { get; set; }
     }
 }

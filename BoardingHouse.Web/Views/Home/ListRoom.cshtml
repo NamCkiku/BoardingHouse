@@ -42,20 +42,25 @@
                     <span class="price_label price_label_before"> {{item.Price|number}} Đ/tháng</span>
                 </div>
                 <div class="property_listing_details">
-                    <span class="inforoom"></span>5 phòng
-                    <span style="margin-left:10px" class="infobath"></span>Khép kín
+                    <span class="inforoom"></span>{{item.BedroomNumber}} phòng
+                    <span style="margin-left:10px" class="infobath"></span>{{item.ToiletNumber}}
                     <span style="margin-left:10px" class="infosize"></span>{{item.Acreage|number}} m<sup>2</sup>
                 </div>
                 <div class="property_listing_details">
-                    <i class="fa fa-eye" aria-hidden="true"></i><span>3000.000</span>
-                    <i class="fa fa-heart" aria-hidden="true"></i><span>3000.000</span>
-                    <i class="fa fa-clock-o" aria-hidden="true"></i><span>30 phút trước</span>
+                    <i class="fa fa-eye" aria-hidden="true"></i><span>{{item.ViewCount}}</span>
+                    <i class="fa fa-heart" aria-hidden="true"></i><span>133131</span>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i><span>{{item.CreateDate}} phút trước</span>
                 </div>
                 <div class="property_location">
                     <div class="property_agent_wrapper">
-                        <div class="property_agent_image" style="background-image:url('http://rio.wpresidence.net/wp-content/uploads/2014/05/agent4-1-14-120x120.jpg')"></div>
+                        <div class="property_agent_image" ng-if="item.UserAvatar!=null" style="background-image:url('http://localhost:6568/Content/images/{{item.UserAvatar}}')">
+
+                        </div>
+                        <div class="property_agent_image" ng-if="item.UserAvatar==null" style="background-image:url('/Content/img/boy-512.png')">
+
+                        </div>
                         <div class="property_agent_image_sign"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
-                        <a href="#">Maria Barlow</a>
+                        <a href="#">{{item.FullName}}</a>
                     </div>
 
                     <div class="listing_actions">
