@@ -214,7 +214,7 @@ namespace BoardingHouse.Web.Controllers
             }
             return jsonResult;
         }
-        [OutputCache(Location = System.Web.UI.OutputCacheLocation.ServerAndClient, Duration = int.MaxValue, VaryByParam = "id")]
+        //[OutputCache(Location = System.Web.UI.OutputCacheLocation.ServerAndClient, Duration = int.MaxValue, VaryByParam = "id")]
         public JsonResult GetRoomByID(int id)
         {
             JsonResult jsonResult = new JsonResult();

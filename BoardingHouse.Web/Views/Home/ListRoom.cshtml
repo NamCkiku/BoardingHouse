@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_LayoutDetail.cshtml";
 }
 <style>
- 
+
 
 </style>
-<div class="col-md-9 col-lg-9 col-xs-12">
+<div class="col-md-9 col-lg-9 col-xs-12" ng-controller="searchController">
     <div class="breadcrumbs">
         <ul class="breadcrumb">
             <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a> <span class="divider"></span></li>
@@ -18,273 +18,33 @@
         <img style="width:100%" src="//bizweb.dktcdn.net/100/109/381/themes/161997/assets/img_collection.jpg?1492597369483" alt="Tất cả sản phẩm">
     </div>
     <div class="box-room-list">
-        <div class="has_prop_slider  listing_wrapper col-md-12 no-padding">
+        <div class="has_prop_slider  listing_wrapper col-md-12 no-padding" ng-repeat="item in data.lstRoom">
             <div class="property_listing">
                 <div class="listing-unit-img-wrapper">
                     <div class="prop_new_details">
                         <div class="prop_new_details_back"></div>
                         <div class="property_media">
-                            <i class="fa fa-home" aria-hidden="true"></i> Văn phòng
+                            <i class="fa fa-home" aria-hidden="true"></i> {{item.RoomTypeName}}
                         </div>
                         <div class="property_location_image">
                             <span class="property_marker"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                            <a href="" rel="tag">Flamengo</a>, <a href="" rel="tag">Rio de Janeiro</a>
+                            <a href="" rel="tag">{{item.ProvinceName}}</a>, <a href="" rel="tag">{{item.RoomTypeName}}</a>
                         </div>
                     </div>
-                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image">
+                    <img width="525" height="328" src="http://localhost:6568/Content/images/{{item.Image}}" class="lazyload img-responsive wp-post-image">
                 </div>
                 <h4>
                     <a href="#">
-                        Cho thuê phòng trọ số 19, Ngách 236/8, Ngõ 236 Khương Đình,
+                        {{item.RoomName}}
                     </a>
                 </h4>
                 <div class="listing_unit_price_wrapper">
-                    <span class="price_label price_label_before"> 2,100,000 Đ/tháng</span>
+                    <span class="price_label price_label_before"> {{item.Price|number}} Đ/tháng</span>
                 </div>
                 <div class="property_listing_details">
                     <span class="inforoom"></span>5 phòng
                     <span style="margin-left:10px" class="infobath"></span>Khép kín
-                    <span style="margin-left:10px" class="infosize"></span>250 m<sup>2</sup>
-                </div>
-                <div class="property_listing_details">
-                    <i class="fa fa-eye" aria-hidden="true"></i><span>3000.000</span>
-                    <i class="fa fa-heart" aria-hidden="true"></i><span>3000.000</span>
-                    <i class="fa fa-clock-o" aria-hidden="true"></i><span>30 phút trước</span>
-                </div>
-                <div class="property_location">
-                    <div class="property_agent_wrapper">
-                        <div class="property_agent_image" style="background-image:url('http://rio.wpresidence.net/wp-content/uploads/2014/05/agent4-1-14-120x120.jpg')"></div>
-                        <div class="property_agent_image_sign"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
-                        <a href="#">Maria Barlow</a>
-                    </div>
-
-                    <div class="listing_actions">
-                        <span class="share_list"></span>
-                        <span class="icon-fav icon-fav-off"></span>
-                        <span class="compare-action"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="has_prop_slider  listing_wrapper col-md-12 no-padding">
-            <div class="property_listing">
-                <div class="listing-unit-img-wrapper">
-                    <div class="prop_new_details">
-                        <div class="prop_new_details_back"></div>
-                        <div class="property_media">
-                            <i class="fa fa-home" aria-hidden="true"></i> Văn phòng
-                        </div>
-                        <div class="property_location_image">
-                            <span class="property_marker"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                            <a href="" rel="tag">Flamengo</a>, <a href="" rel="tag">Rio de Janeiro</a>
-                        </div>
-                    </div>
-                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image">
-                </div>
-                <h4>
-                    <a href="#">
-                        Cho thuê phòng trọ số 19, Ngách 236/8, Ngõ 236 Khương Đình,
-                    </a>
-                </h4>
-                <div class="listing_unit_price_wrapper">
-                    <span class="price_label price_label_before"> 2,100,000 Đ/tháng</span>
-                </div>
-                <div class="property_listing_details">
-                    <span class="inforoom"></span>5 phòng
-                    <span style="margin-left:10px" class="infobath"></span>Khép kín
-                    <span style="margin-left:10px" class="infosize"></span>250 m<sup>2</sup>
-                </div>
-                <div class="property_listing_details">
-                    <i class="fa fa-eye" aria-hidden="true"></i><span>3000.000</span>
-                    <i class="fa fa-heart" aria-hidden="true"></i><span>3000.000</span>
-                    <i class="fa fa-clock-o" aria-hidden="true"></i><span>30 phút trước</span>
-                </div>
-                <div class="property_location">
-                    <div class="property_agent_wrapper">
-                        <div class="property_agent_image" style="background-image:url('http://rio.wpresidence.net/wp-content/uploads/2014/05/agent4-1-14-120x120.jpg')"></div>
-                        <div class="property_agent_image_sign"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
-                        <a href="#">Maria Barlow</a>
-                    </div>
-
-                    <div class="listing_actions">
-                        <span class="share_list"></span>
-                        <span class="icon-fav icon-fav-off"></span>
-                        <span class="compare-action"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="has_prop_slider  listing_wrapper col-md-12 no-padding">
-            <div class="property_listing">
-                <div class="listing-unit-img-wrapper">
-                    <div class="prop_new_details">
-                        <div class="prop_new_details_back"></div>
-                        <div class="property_media">
-                            <i class="fa fa-home" aria-hidden="true"></i> Văn phòng
-                        </div>
-                        <div class="property_location_image">
-                            <span class="property_marker"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                            <a href="" rel="tag">Flamengo</a>, <a href="" rel="tag">Rio de Janeiro</a>
-                        </div>
-                    </div>
-                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image">
-                </div>
-                <h4>
-                    <a href="#">
-                        Cho thuê phòng trọ số 19, Ngách 236/8, Ngõ 236 Khương Đình,
-                    </a>
-                </h4>
-                <div class="listing_unit_price_wrapper">
-                    <span class="price_label price_label_before"> 2,100,000 Đ/tháng</span>
-                </div>
-                <div class="property_listing_details">
-                    <span class="inforoom"></span>5 phòng
-                    <span style="margin-left:10px" class="infobath"></span>Khép kín
-                    <span style="margin-left:10px" class="infosize"></span>250 m<sup>2</sup>
-                </div>
-                <div class="property_listing_details">
-                    <i class="fa fa-eye" aria-hidden="true"></i><span>3000.000</span>
-                    <i class="fa fa-heart" aria-hidden="true"></i><span>3000.000</span>
-                    <i class="fa fa-clock-o" aria-hidden="true"></i><span>30 phút trước</span>
-                </div>
-                <div class="property_location">
-                    <div class="property_agent_wrapper">
-                        <div class="property_agent_image" style="background-image:url('http://rio.wpresidence.net/wp-content/uploads/2014/05/agent4-1-14-120x120.jpg')"></div>
-                        <div class="property_agent_image_sign"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
-                        <a href="#">Maria Barlow</a>
-                    </div>
-
-                    <div class="listing_actions">
-                        <span class="share_list"></span>
-                        <span class="icon-fav icon-fav-off"></span>
-                        <span class="compare-action"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="has_prop_slider  listing_wrapper col-md-12 no-padding">
-            <div class="property_listing">
-                <div class="listing-unit-img-wrapper">
-                    <div class="prop_new_details">
-                        <div class="prop_new_details_back"></div>
-                        <div class="property_media">
-                            <i class="fa fa-home" aria-hidden="true"></i> Văn phòng
-                        </div>
-                        <div class="property_location_image">
-                            <span class="property_marker"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                            <a href="" rel="tag">Flamengo</a>, <a href="" rel="tag">Rio de Janeiro</a>
-                        </div>
-                    </div>
-                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image">
-                </div>
-                <h4>
-                    <a href="#">
-                        Cho thuê phòng trọ số 19, Ngách 236/8, Ngõ 236 Khương Đình,
-                    </a>
-                </h4>
-                <div class="listing_unit_price_wrapper">
-                    <span class="price_label price_label_before"> 2,100,000 Đ/tháng</span>
-                </div>
-                <div class="property_listing_details">
-                    <span class="inforoom"></span>5 phòng
-                    <span style="margin-left:10px" class="infobath"></span>Khép kín
-                    <span style="margin-left:10px" class="infosize"></span>250 m<sup>2</sup>
-                </div>
-                <div class="property_listing_details">
-                    <i class="fa fa-eye" aria-hidden="true"></i><span>3000.000</span>
-                    <i class="fa fa-heart" aria-hidden="true"></i><span>3000.000</span>
-                    <i class="fa fa-clock-o" aria-hidden="true"></i><span>30 phút trước</span>
-                </div>
-                <div class="property_location">
-                    <div class="property_agent_wrapper">
-                        <div class="property_agent_image" style="background-image:url('http://rio.wpresidence.net/wp-content/uploads/2014/05/agent4-1-14-120x120.jpg')"></div>
-                        <div class="property_agent_image_sign"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
-                        <a href="#">Maria Barlow</a>
-                    </div>
-
-                    <div class="listing_actions">
-                        <span class="share_list"></span>
-                        <span class="icon-fav icon-fav-off"></span>
-                        <span class="compare-action"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="has_prop_slider  listing_wrapper col-md-12 no-padding">
-            <div class="property_listing">
-                <div class="listing-unit-img-wrapper">
-                    <div class="prop_new_details">
-                        <div class="prop_new_details_back"></div>
-                        <div class="property_media">
-                            <i class="fa fa-home" aria-hidden="true"></i> Văn phòng
-                        </div>
-                        <div class="property_location_image">
-                            <span class="property_marker"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                            <a href="" rel="tag">Flamengo</a>, <a href="" rel="tag">Rio de Janeiro</a>
-                        </div>
-                    </div>
-                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image">
-                </div>
-                <h4>
-                    <a href="#">
-                        Cho thuê phòng trọ số 19, Ngách 236/8, Ngõ 236 Khương Đình,
-                    </a>
-                </h4>
-                <div class="listing_unit_price_wrapper">
-                    <span class="price_label price_label_before"> 2,100,000 Đ/tháng</span>
-                </div>
-                <div class="property_listing_details">
-                    <span class="inforoom"></span>5 phòng
-                    <span style="margin-left:10px" class="infobath"></span>Khép kín
-                    <span style="margin-left:10px" class="infosize"></span>250 m<sup>2</sup>
-                </div>
-                <div class="property_listing_details">
-                    <i class="fa fa-eye" aria-hidden="true"></i><span>3000.000</span>
-                    <i class="fa fa-heart" aria-hidden="true"></i><span>3000.000</span>
-                    <i class="fa fa-clock-o" aria-hidden="true"></i><span>30 phút trước</span>
-                </div>
-                <div class="property_location">
-                    <div class="property_agent_wrapper">
-                        <div class="property_agent_image" style="background-image:url('http://rio.wpresidence.net/wp-content/uploads/2014/05/agent4-1-14-120x120.jpg')"></div>
-                        <div class="property_agent_image_sign"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
-                        <a href="#">Maria Barlow</a>
-                    </div>
-
-                    <div class="listing_actions">
-                        <span class="share_list"></span>
-                        <span class="icon-fav icon-fav-off"></span>
-                        <span class="compare-action"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="has_prop_slider  listing_wrapper col-md-12 no-padding">
-            <div class="property_listing">
-                <div class="listing-unit-img-wrapper">
-                    <div class="prop_new_details">
-                        <div class="prop_new_details_back"></div>
-                        <div class="property_media">
-                            <i class="fa fa-home" aria-hidden="true"></i> Văn phòng
-                        </div>
-                        <div class="property_location_image">
-                            <span class="property_marker"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                            <a href="" rel="tag">Flamengo</a>, <a href="" rel="tag">Rio de Janeiro</a>
-                        </div>
-                    </div>
-                    <img width="525" height="328" src="http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-525x328.jpg" class="lazyload img-responsive wp-post-image">
-                </div>
-                <h4>
-                    <a href="#">
-                        Cho thuê phòng trọ số 19, Ngách 236/8, Ngõ 236 Khương Đình,
-                    </a>
-                </h4>
-                <div class="listing_unit_price_wrapper">
-                    <span class="price_label price_label_before"> 2,100,000 Đ/tháng</span>
-                </div>
-                <div class="property_listing_details">
-                    <span class="inforoom"></span>5 phòng
-                    <span style="margin-left:10px" class="infobath"></span>Khép kín
-                    <span style="margin-left:10px" class="infosize"></span>250 m<sup>2</sup>
+                    <span style="margin-left:10px" class="infosize"></span>{{item.Acreage|number}} m<sup>2</sup>
                 </div>
                 <div class="property_listing_details">
                     <i class="fa fa-eye" aria-hidden="true"></i><span>3000.000</span>
@@ -308,18 +68,7 @@
         </div>
     </div>
     <div class="col-lg-12">
-        <ul class="pagination">
-            <li class="disabled">
-                <span>«</span>
-            </li>
-            <li class="active"><span>1</span></li>
-            <li><a href="">2</a></li>
-            <li><a href="">3</a></li>
-            <li><a href="">4</a></li>
-            <li><a href="">5</a></li>
-            <li><a href="">6</a></li>
-            <li><a href="" rel="next">»</a></li>
-        </ul>
+        <pager-directive page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="ResultSearch(page)"></pager-directive>
     </div>
 </div>
 <div class="col-lg-3 col-md-3 col-xs-12">

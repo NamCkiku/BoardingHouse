@@ -35,9 +35,13 @@ namespace BoardingHouse.Repositoty.Repositories
                              CreateDate = a.CreateDate,
                              Acreage = a.Acreage,
                              UserID = a.UserID,
-                             Status=a.Status,
-                             FullName=a.FullName,
-                             Address=a.Address,
+                             Status = a.Status,
+                             FullName = a.FullName,
+                             Address = a.Address,
+                             RoomTypeID = a.RoomTypeID,
+                             ProvinceID = a.ProvinceID,
+                             DistrictID = a.DistrictID,
+                             WardID = a.WardID
                          }).ToList();
             return query;
         }

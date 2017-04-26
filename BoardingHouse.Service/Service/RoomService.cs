@@ -95,16 +95,20 @@ namespace BoardingHouse.Service.Service
         public IEnumerable<RoomEntity> GetAllRoomFullSearch(SearchRoomEntity filter, int page, int pageSize, out int totalRow)
         {
             List<RoomEntity> lstroom = new List<RoomEntity>();
+            if (filter.Keywords == null)
+            {
+                filter.Keywords = "";
+            }
             try
             {
-                lstroom = _roomRepository.GetAllListRoom().Where(x => x.Status == true
+                lstroom = _roomRepository.GetAllListRoom().Where(x => x.Status == false
                 && (x.RoomTypeID == filter.RoomTypeID || filter.RoomTypeID == null)
                 && (x.Price >= filter.PriceFrom || filter.PriceFrom == null)
                 && (x.Price <= filter.PriceTo || filter.PriceTo == null)
-                && (x.ProvinceID <= filter.ProvinceID || filter.ProvinceID == null)
-                && (x.DistrictID <= filter.DistrictID || filter.DistrictID == null)
-                && (x.WardID <= filter.WardID || filter.WardID == null)
-                && (x.RoomName.Contains(filter.Keywords) || x.Description.Contains(filter.Keywords) || string.IsNullOrEmpty(filter.Keywords))
+                && (x.ProvinceID == filter.ProvinceID || filter.ProvinceID == null)
+                && (x.DistrictID == filter.DistrictID || filter.DistrictID == null)
+                && (x.WardID == filter.WardID || filter.WardID == null)
+                && (x.RoomName.Contains(filter.Keywords) || string.IsNullOrEmpty(filter.Keywords))
                 ).ToList();
                 totalRow = lstroom.Count();
             }
@@ -112,7 +116,7 @@ namespace BoardingHouse.Service.Service
             {
                 throw ex;
             }
-            return lstroom.Skip((page - 1) * pageSize).Take(pageSize);
+            return lstroom.Skip((page) * pageSize).Take(pageSize);
         }
 
         public IEnumerable<RoomEntity> GetAllPaging(SearchEntity filter, int page, int pageSize, out int totalRow)
@@ -146,7 +150,7 @@ namespace BoardingHouse.Service.Service
             {
                 throw ex;
             }
-            return lstroom.Skip((page - 1) * pageSize).Take(pageSize);
+            return lstroom.Skip((page) * pageSize).Take(pageSize);
         }
         public IEnumerable<RoomEntity> GetAllListRoom(int page, int pageSize, out int totalRow)
         {
@@ -195,7 +199,7 @@ namespace BoardingHouse.Service.Service
             var room = new Room();
             if (id > 0)
             {
-                room = _roomRepository.GetSingleById(id);
+                room = _roomRepository.GetSingleByCondition(x => x.RoomID == id);
             }
             return room;
         }
