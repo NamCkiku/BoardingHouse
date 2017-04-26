@@ -53,7 +53,20 @@ namespace BoardingHouse.Entities.Entities
         public virtual MoreInfomationEntity MoreInfomations { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
+        public string UserAvatar { get; set; }
 
         public string UserID { get; set; }
+        public string FloorNumber { get; set; }
+
+        public string ToiletNumber { get; set; }
+
+        public string BedroomNumber { get; set; }
+
+        public string Compass { get; set; }
+
+        public int? ElectricPrice { get; set; }
+
+        public int? WaterPrice { get; set; }
+        public string Convenient { get; set; }
     }
 }

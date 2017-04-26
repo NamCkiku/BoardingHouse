@@ -65,13 +65,15 @@ namespace BoardingHouse.Entities.Models
         public double? Lat { get; set; }
 
         public double? Lng { get; set; }
+
         [Required]
         [StringLength(256)]
         public string FullName { get; set; }
+
         [Required]
         [StringLength(256)]
         public string Email { get; set; }
 
-        public string UserID{ get; set; }
+        public string UserID { get; set; }
     }
 }
