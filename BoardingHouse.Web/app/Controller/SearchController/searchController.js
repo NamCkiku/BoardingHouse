@@ -4,8 +4,10 @@
     searchController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'apiService', '$window'];
 
     function searchController($scope, blockUI, $modal, $rootScope, apiService, $window) {
+        $scope.pageSize = 10;
         $scope.page = 0;
         $scope.pagesCount = 0;
+        $scope.totalCount = 0;
         $scope.slider = {
             minValue: 0,
             maxValue: 50,
@@ -68,7 +70,7 @@
                     queryString.push(key + '=' + params[key]);
                 }
             }
-            $window.location.href = '/Home/RoomDetail?' + queryString.join('&');
+            $window.location.href = '/Home/ListRoom?' + queryString.join('&');
         }
         function GetAllRoomType() {
             apiService.post('Management/GetAllRoomType', true, null, function (respone) {
@@ -129,7 +131,10 @@
             }
             apiService.post('Management/GetAllRoomFullSearch', true, filter, function (respone) {
                 if (respone.data.success == true) {
-                    $scope.data.lstRoom = respone.data.lstData;
+                    $scope.data.lstRoom = respone.data.lstData.Items;
+                    $scope.page = respone.data.lstData.Page;
+                    $scope.pagesCount = respone.data.lstData.TotalPages;
+                    $scope.totalCount = respone.data.lstData.TotalCount;
                     console.log($scope.data.lstRoom);
                 } else {
                 }
