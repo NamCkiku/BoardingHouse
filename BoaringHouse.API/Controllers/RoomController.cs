@@ -49,7 +49,7 @@ namespace BoaringHouse.API.Controllers
         {
             return CreateHttpResponse(request, () =>
             {
-                var Room = _roomService.GetById(id);
+                var Room = _roomService.GetRoomById(id);
                 var RoomVm = Mapper.Map<RoomViewModel>(Room);
                 HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, RoomVm);
                 return response;

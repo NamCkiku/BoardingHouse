@@ -204,9 +204,19 @@ namespace BoardingHouse.Service.Service
             return room;
         }
 
+        public RoomEntity GetRoomById(int id)
+        {
+            var room = new RoomEntity();
+            if (id > 0)
+            {
+                room = _roomRepository.GetAllListRoom().Where(x => x.RoomID == id).FirstOrDefault();
+            }
+            return room;
+        }
+
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _unitOfWork.Commit();
         }
 
         public void Update(Room info)
