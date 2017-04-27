@@ -10,7 +10,7 @@
         <div class="breadcrumbs">
             <ul class="breadcrumb">
                 <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a> <span class="divider"></span></li>
-                <li><a href="/">Sản phẩm</a></li>
+                <li><a href="/">{{RoomInfo.RoomTypeName}}</a></li>
                 <li>{{RoomInfo.RoomName}}</li>
             </ul>
         </div>
@@ -45,25 +45,29 @@
                                 <span class="btn info-label">Diện tích</span>
                                 <a href="" class="btn info-data">{{RoomInfo.Acreage|number}}m<sup>2</sup></a>
                                 <span class="btn info-label">Loại phòng</span>
-                                <a href="">Phòng trọ, nhà trọ</a>
+                                <a href="">{{RoomInfo.RoomTypeName}}</a>
                             </div>
                             <div class="vs">
                                 <span class="btn info-label">Vệ sinh</span>
-                                <a href="" class="btn info-data">Khép kín</a>
+                                <a href="" class="btn info-data">{{RoomInfo.ToiletNumber}}</a>
                                 <span class="btn info-label">Số người ở</span>
-                                <a href="">1</a>
+                                <a href="">{{RoomInfo.BedroomNumber}}</a>
                             </div>
                             <div class="type">
                                 <span class="btn info-label">Giá điện</span>
-                                <a href="" class="btn info-data">2500 Nghìn/số</a>
+                                <a href="" class="btn info-data">{{RoomInfo.ElectricPrice |number}} Nghìn/số</a>
                                 <span class="btn info-label">Giá nước</span>
-                                <a href="">10000 Nghìn/số</a>
+                                <a href="">{{RoomInfo.WaterPrice |number}} Nghìn/số</a>
                             </div>
                             <div class="type">
-                                <span class="btn info-label">Giá điện</span>
-                                <a href="" class="btn info-data">2500 Nghìn/số</a>
-                                <span class="btn info-label">Giá nước</span>
-                                <a href="">10000 Nghìn/số</a>
+                                <span class="btn info-label">Tầng</span>
+                                <a href="" class="btn info-data">{{RoomInfo.FloorNumber}}</a>
+                                <span class="btn info-label">Hướng nhà</span>
+                                <a href="">{{RoomInfo.Compass}}</a>
+                            </div>
+                            <div class="Compass">
+                                <span class="btn info-label">Tiện ích</span>
+                                <a class="" href="">{{RoomInfo.Convenient}}</a>
                             </div>
                         </div>
 
@@ -77,12 +81,16 @@
                     <div class="col-md-4 no-padding margin-bottom-10">
                         <div class="info-contact">
                             <div class="agentAvatar">
-                                <a href="http://mariusn.com/themes/reales-wp/agents/rust-cohle/">
-                                <img class="avatar agentAvatarImg" src="http://mariusn.com/themes/reales-wp/wp-content/uploads/2014/12/avatar-6.png" alt="Rust Cohle"></a>
+                                <a href="#" ng-if="RoomInfo.UserAvatar!=null">
+                                    <img class="avatar agentAvatarImg" src="http://localhost:6568/Content/images/{{RoomInfo.UserAvatar}}" alt="Rust Cohle">
+                                </a>
+                                <a href="#" ng-if="RoomInfo.UserAvatar==null">
+                                    <img class="avatar agentAvatarImg" src="~/Content/img/boy-512.png" alt="Rust Cohle">
+                                </a>
                             </div>
                             <div class="info-boss">
                                 <div class="info-boss-name" style="padding-bottom: 5px;">
-                                    <a href="#"><strong class="info-strong-name">Anh Chiến </strong></a>
+                                    <a href="#"><strong class="info-strong-name">{{RoomInfo.FullName}}</strong></a>
                                 </div>
                                 <div class="info-boss-address">
                                     <i style="display: table-cell;" class="fa fa-map-marker"></i><span class="info-span-adress">{{RoomInfo.Address}}</span>
@@ -131,9 +139,11 @@
                     <div class="clearfix padB10"></div>
                 </div><!-- Product Single - Gallery End -->
                 <!-- End Light Slider -->
-                <div class="room-info-des">
+                <div class="room-info-des" ng-if="RoomInfo.Content!=null">
                     <div class="steps_header">Thông tin chi tiết</div>
-                    <div class="dis-content">Cho thuê phòng trọ tại Bạch Mai]<br>Hiện tại nhà mình đang dư 1 phòng trên tầng 3 trong nhà 4 tầng, ngay đầu ngõ 220 Bạch Mai. Trước đó giữ phòng cho ông anh zai, nhưng vì bạn ông ý lại chuẩn bị lấy vk nên k thể chịu ở đc 1m.&nbsp;<br>1- Có thể ở ghép với ông anh zai mình<br>2- Có thể thuê riêng 1m 1 phòng này. (Anh mình đi chỗ khác&nbsp;:D)<br>Phòng gần như full đầy đủ đồ 1 giường 1m2 kèm đệm, 1 bàn dài, 1 tủ gỗ đựng quần áo, 1 bàn kèm giá sách, Sàn gỗ, điều hòa. Nhà vệ sinh có nóng lạnh ở giữa&nbsp;2 phòng dùng chung, máy giặt, Vòi hoa sen, chậu rửa, chổi lau nhà thùng dựng rác... tất cả đều full.<br>- Phòng 16m2 - giá 2,3trieu/1 tháng<br>Điện nước giá dân<br>Mạng đầy đủ. (Mỗi người tầm 50k/1 tháng)<br>Nấu ăn để xe dưới tầng 1 free.<br>Giặt quần áo bằng máy giặt và phơi trên tầng 4<br>Đồ dư để trên 1 kho nhỏ trên tầng 4 luôn.<br>Nhà ngay mặt ngõ đi chục bước chân là ra tới đường phố Bạch Mai to và bến Bus ngay đầu ngõ luôn. Vài bước chân là đến ngã tư Bạch Mai - Lê Thanh nghị☺️<br>Chợ ngay ngõ đối điện.Khu dân cư an ninh tốt. Rất tiện đi lại.<br>Bệnh viện bạch mai, thanh nhàn và các trường đại học rất gần ở xung quanh.<br>Giờ giấc đi lại thoải mái, không chung chủ, tự do đón tiếp người thân, k gây ồn ào và quá đông đúc là okie.<br>Tiền nhà đóng 3 tháng cọc 1 tháng. Nhà hiện tại đóng theo đợt vào các ngày 15/3, 15/6, 15/9, 15/12. Nên đợt này ai đến ở thì có thể chỉ cần đóng khoảng hơn 1 tháng và cọc 1 tháng, Từ 15/6 mới phải đóng 3 tháng tiếp theo.<br>Nhà ít người, hiện toàn người đi làm, sáng đi tối mới về đến nhà nên nhà rất yên tĩnh k lộm nhộm.<br>P/s: Mình cũng nói luôn phòng rộng là như vậy nhưng vì full đồ nên cũng chỉ để ở. Nếu đòi hỏi rộng thênh thang thì k có. Vì nấu ăn, tủ lạnh để dưới nhà ăn và ăn ngay dưới nhà, đồ dư các thứ để trên tầng 4 nhà kho, nên rộng cũng chẳng để làm gì cả chỉ bừa đồ hơn thôi. Thứ 2 là nhà vsinh bên ngoài xây theo kiểu hộ gia đình, k muốn nhà vsinh trong phòng vì sẽ rất bẩn và nước ẩm thấp.<br>Sống chung như 1 gia đình. Nhà cực sạch sẽ lau dọn hàng ngày. Nên mình cũng chỉ ưu tiên người sạch sẽ đến ở.<br>Ai có thiện ý đến qua xem trực tiếp để cảm nhận. Chưa xem hoặc k thuê xin đừng nói lời cay đắng</div>
+                    <div class="dis-content">
+                        {{RoomInfo.Content}}
+                    </div>
                 </div>
 
             </div>
@@ -191,7 +201,7 @@
                         </select>
                     </div>
                     <div class="col-lg-12 margin-bottom-15 categories">
-                        
+
                         <rzslider rz-slider-model="slider.minValue" style="margin-top:0px"
                                   rz-slider-high="slider.maxValue"
                                   rz-slider-options="slider.options"></rzslider>

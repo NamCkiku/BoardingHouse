@@ -23,6 +23,7 @@ namespace BoardingHouse.Service.IService
         IEnumerable<Room> GetAll();
 
         Room GetById(int id);
+        RoomEntity GetRoomById(int id);
 
         bool ChangeStatus(int id);
 
