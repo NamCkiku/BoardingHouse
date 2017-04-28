@@ -10,8 +10,8 @@ namespace BoardingHouse.Service.IService
     public interface ICommonService
     {
         IEnumerable<Province> GetAllProvince();
-        IEnumerable<District> GetAllDistrict(int id);
-        IEnumerable<Ward> GetAllWard(int id);
+        IEnumerable<District> GetAllDistrict();
+        IEnumerable<Ward> GetAllWard();
         void ApptLog(AuditLog obj);
         void SaveChanges();
     }

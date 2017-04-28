@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('searchController', searchController);
 
-    searchController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'apiService', '$window'];
+    searchController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'apiService', '$window', '$filter'];
 
-    function searchController($scope, blockUI, $modal, $rootScope, apiService, $window) {
+    function searchController($scope, blockUI, $modal, $rootScope, apiService, $window, $filter) {
         $scope.pageSize = 10;
         $scope.page = 0;
         $scope.pagesCount = 0;
@@ -94,10 +94,10 @@
         }
         $scope.GetAllDistrict = GetAllDistrict;
         function GetAllDistrict(id) {
-            apiService.post('Management/GetAllDistrict', true, { id: id }, function (respone) {
+            apiService.post('Management/GetAllDistrict', true, null, function (respone) {
                 if (respone.data.success == true) {
                     console.log(respone.data);
-                    $scope.data.lstDistrict = respone.data.lstData;
+                    $scope.data.lstDistrict = $filter('filter')(respone.data.lstData, { provinceid: id }, true);
                 } else {
                 }
             }, function (respone) {
@@ -105,10 +105,10 @@
         }
         $scope.GetAllWard = GetAllWard;
         function GetAllWard(id) {
-            apiService.post('Management/GetAllWard', true, { id: id }, function (respone) {
+            apiService.post('Management/GetAllWard', true, null, function (respone) {
                 if (respone.data.success == true) {
                     console.log(respone.data);
-                    $scope.data.lstWard = respone.data.lstData;
+                    $scope.data.lstWard = $filter('filter')(respone.data.lstData, { districtid: id }, true);
                 } else {
                 }
             }, function (respone) {

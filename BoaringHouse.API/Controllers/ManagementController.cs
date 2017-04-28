@@ -53,12 +53,12 @@ namespace BoaringHouse.API.Controllers
                 return response;
             });
         }
-        [Route("getalldistrict/{id:int}")]
-        public HttpResponseMessage GetAllDistrict(HttpRequestMessage request, int id)
+        [Route("getalldistrict")]
+        public HttpResponseMessage GetAllDistrict(HttpRequestMessage request)
         {
             return CreateHttpResponse(request, () =>
             {
-                var listdistrict = _commonService.GetAllDistrict(id).OrderByDescending(x => x.name).ToList();
+                var listdistrict = _commonService.GetAllDistrict().OrderByDescending(x => x.name).ToList();
 
                 var listdistrictVm = Mapper.Map<List<DistrictViewModel>>(listdistrict);
 
@@ -67,12 +67,12 @@ namespace BoaringHouse.API.Controllers
                 return response;
             });
         }
-        [Route("getallward/{id:int}")]
-        public HttpResponseMessage GetAllWard(HttpRequestMessage request, int id)
+        [Route("getallward")]
+        public HttpResponseMessage GetAllWard(HttpRequestMessage request)
         {
             return CreateHttpResponse(request, () =>
             {
-                var listward = _commonService.GetAllWard(id).OrderByDescending(x => x.name).ToList();
+                var listward = _commonService.GetAllWard().OrderByDescending(x => x.name).ToList();
 
                 var listwardVm = Mapper.Map<List<WardViewModel>>(listward);
 
@@ -116,6 +116,6 @@ namespace BoaringHouse.API.Controllers
             }
 
             Request.CreateResponse(HttpStatusCode.OK, new { fileName = fileName });
-        }       
+        }
     }
 }

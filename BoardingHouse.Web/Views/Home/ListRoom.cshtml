@@ -3,10 +3,6 @@
     ViewBag.Title = "ListRoom";
     Layout = "~/Views/Shared/_LayoutDetail.cshtml";
 }
-<style>
-
-
-</style>
 <div class="col-md-9 col-lg-9 col-xs-12" ng-controller="searchController">
     <div class="breadcrumbs">
         <ul class="breadcrumb">
@@ -76,7 +72,7 @@
         <pager-directive page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="ResultSearch(page)"></pager-directive>
     </div>
 </div>
-<div class="col-lg-3 col-md-3 col-xs-12">
+<div class="col-lg-3 col-md-3 col-xs-12"  ng-controller="searchController">
     <div class="row" style="margin-top:55px;">
         <div class="clearfix"></div>
         <div class="col-sm-6 col-md-12 col-lg-12 margin-bottom-20">

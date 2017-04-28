@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('CreateRoomController', CreateRoomController);
 
-    CreateRoomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'apiService', '$window', 'fileUploadService', 'commonService'];
+    CreateRoomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'apiService', '$window', 'fileUploadService', 'commonService', '$filter'];
 
-    function CreateRoomController($scope, blockUI, $modal, $rootScope, BaseService, apiService, $window, fileUploadService, commonService) {
+    function CreateRoomController($scope, blockUI, $modal, $rootScope, BaseService, apiService, $window, fileUploadService, commonService, $filter) {
         $scope.isActive = '1';
         $scope.rooms = {
             MoreInfomations: {
@@ -107,10 +107,10 @@
         }
         $scope.GetAllDistrict = GetAllDistrict;
         function GetAllDistrict(id) {
-            apiService.post('Management/GetAllDistrict', true, { id: id }, function (respone) {
+            apiService.post('Management/GetAllDistrict', true, null, function (respone) {
                 if (respone.data.success == true) {
                     console.log(respone.data);
-                    $scope.data.lstDistrict = respone.data.lstData;
+                    $scope.data.lstDistrict = $filter('filter')(respone.data.lstData, { provinceid: id }, true);
                 } else {
                 }
             }, function (respone) {
@@ -118,10 +118,10 @@
         }
         $scope.GetAllWard = GetAllWard;
         function GetAllWard(id) {
-            apiService.post('Management/GetAllWard', true, { id: id }, function (respone) {
+            apiService.post('Management/GetAllWard', true, null, function (respone) {
                 if (respone.data.success == true) {
                     console.log(respone.data);
-                    $scope.data.lstWard = respone.data.lstData;
+                    $scope.data.lstWard = $filter('filter')(respone.data.lstData, { districtid: id }, true);
                 } else {
                 }
             }, function (respone) {

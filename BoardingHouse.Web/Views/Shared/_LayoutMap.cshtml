@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="myApp">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <baseurl value='@Url.Content("~/")'></baseurl>
+    <link href="~/Content/assets/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/assets/font-awesome-4.5.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/assets/slidebar/slidebars.css" rel="stylesheet" />
+    <link href="~/bower_components/toastr/toastr.css" rel="stylesheet" />
+    <link href="~/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/bower_components/angularjs-slider/dist/rzslider.css" rel="stylesheet" />
+    <link href="~/bower_components/dropzone/dist/dropzone.css" rel="stylesheet" />
+    <link href="~/bower_components/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
+    <link href="~/bower_components/angular-block-ui/dist/angular-block-ui.css" rel="stylesheet" />
+    <link href="~/bower_components/select2/select2.css" rel="stylesheet" />
+    <link href="~/Content/css/BoardingHouse.css" rel="stylesheet" />
+    <link href="~/Content/css/Responsive.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/js/formValidation.min.js"></script>
+    <script src="~/Content/js/bootstrapextend.min.js"></script>
+    <script src="~/Content/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/slidebar/slidebars.min.js"></script>
+    <script src="~/bower_components/toastr/toastr.js"></script>
+    <script src="~/bower_components/tinymce/tinymce.js"></script>
+    <script src="~/bower_components/dropzone/dist/dropzone.js"></script>
+    <script src="~/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script src="~/bower_components/select2/select2.js"></script>
+    <script src="~/bower_components/jasny-bootstrap/js/jasny-bootstrap.js"></script>
+    <script src="~/bower_components/angular/angular.js"></script>
+    <script src="~/app/app.js"></script>
+    <script src="~/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="~/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="~/bower_components/angular-block-ui/dist/angular-block-ui.js"></script>
+    <script src="~/bower_components/angularjs-slider/dist/rzslider.js"></script>
+    <script src="~/bower_components/angular-ui-tinymce/src/tinymce.js"></script>
+    <script src="~/bower_components/ngdropzone/dist/ng-dropzone.js"></script>
+    <script src="~/Content/assets/UIBoostrap/ui-bootstrap.js"></script>
+    <script src="~/Content/assets/UIBoostrap/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <script src="~/Content/assets/UIBoostrap/ui-bootstrap-tpls.js"></script>
+    <script src="~/bower_components/angular-file-upload/angular-file-upload.js"></script>
+    <script src="~/app/Directive/pagerDirective.js"></script>
+    <script src="~/bower_components/angularjs-dropdown-multiselect/angularjs-dropdown-multiselect.min.js"></script>
+    <script src="~/bower_components/angular-ui-select2/src/select2.js"></script>
+    <script src="~/app/Service/apiService.js"></script>
+    <script src="~/app/Service/BaseService.js"></script>
+    <script src="~/app/Service/commonService.js"></script>
+    <script src="~/app/Service/fileUploadService.js"></script>
+    <script src="~/app/Controller/AccountController/headerController.js"></script>
+    <script src="~/app/Controller/SearchController/searchController.js"></script>
+    <script src="~/app/Controller/RoomController/CreateRoomController.js"></script>
+    <script src="~/app/Controller/RoomController/ListRoomController.js"></script>
+    <script src="~/app/Controller/RoomController/RoomDetailController.js"></script>
+    <script src="~/app/Controller/ProfileController/ProfileController.js"></script>
+    <script src="~/app/Controller/ProfileController/PVProfileInformationController.js"></script>
+    <script src="~/app/Controller/ProfileController/PVProfileListRoom.js"></script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                $.slidebars();
+            });
+        })(jQuery);
+    </script>
+</head>
+@using BoardingHouse.Web.AntiForgeryToken
+<body>
+    <input id="antiForgeryToken" value="@AntiForgeryExtension.GetTokenHeaderValue()" type="hidden" />
+    <header id="header" class="header-top">
+        @{ Html.RenderAction("_Header", "PatialView"); }
+    </header>
+    <div class="line_orn"></div>
+    <div class="clearfix"></div>
+    @*@{ Html.RenderAction("_Menu", "PatialView"); }*@
+    <!-- End menu -->
+    <!-- Form SEARCH -->
+    <!-- End Form SEARCH -->
+    <!-- CONTENT -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <!--End CONTENT -->
+    <div class="clearfix"></div>
+    <footer id="footer" class="footer">
+        <div id="back-top">
+            <a href="#top" title="Trở về đầu trang">TOP</a>
+        </div>
+        <div class="widget">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="col-md-7 col-sm-6">
+                            <div class="widget-item">
+                                <h2 class="widget-title">VỀ CHÚNG TÔI</h2>
+                                <ul class="widget-menu first-footer-ul">
+                                    <li class="location-title">Rengar mang lại cho bạn một không gian sống hoàn toàn mới với các dòng sản phẩm về nội thất chất lượng cao, chủng loại phong phú và đa dạng.</li>
+                                    <li class="widget-address">
+                                        <span><i class="fa fa-map-marker theme_color w2"></i> Tầng 4 - Tòa nhà Hanoi Group - 442 Đội Cấn - Ba Đình - Hà Nội</span>
+                                    </li>
+                                    <li>
+                                        <span><i class="fa fa-mobile theme_color w2"></i> (04) 6674 2332</span> - <span>(04) 3786 8904</span>
+                                    </li>
+                                    <li>
+                                        <span><i class="fa fa-envelope-o theme_color w2"></i> support@bizweb.vn</span>
+                                    </li>
+                                </ul>
+                                <!-- End .widget-menu -->
+                            </div>
+                            <!-- End .widget-item -->
+                        </div>
+                        <div class="col-md-5 col-sm-6">
+                            <div class="widget-item">
+                                <h2 class="widget-title">CHÍNH SÁCH</h2>
+                                <!-- End .widget-title -->
+                                <ul class="widget-menu">
+
+                                    <li>
+                                        <a href="/chinh-sach"><i class="fa fa-caret-right"></i> Hướng dẫn mua hàng</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/chinh-sach"><i class="fa fa-caret-right"></i> Thông tin khách hàng</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/chinh-sach"><i class="fa fa-caret-right"></i> Chính sách đãi ngộ</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/chinh-sach"><i class="fa fa-caret-right"></i> Thông tin tuyển dụng</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/account/register"><i class="fa fa-caret-right"></i> Đắng ký thành viên</a>
+                                    </li>
+
+                                </ul>
+                                <!-- End .widget-menu -->
+                            </div>
+                            <!-- End .widget-item -->
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="col-md-5 col-sm-6">
+                            <div class="widget-item">
+                                <h2 class="widget-title">THÔNG TIN</h2>
+                                <!-- End .widget-title -->
+                                <ul class="widget-menu">
+
+                                    <li>
+                                        <a href="/gioi-thieu"><i class="fa fa-caret-right"></i> Giới thiệu công ty</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/chinh-sach"><i class="fa fa-caret-right"></i> Chính sách bảo hành</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/dich-vu"><i class="fa fa-caret-right"></i> Trung tâm tư vấn</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/huong-dan"><i class="fa fa-caret-right"></i> Câu hỏi thường gặp</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/chinh-sach"><i class="fa fa-caret-right"></i> Chính sách đổi trả</a>
+                                    </li>
+
+                                </ul>
+                                <!-- End .widget-menu -->
+                            </div>
+                            <!-- End .widget-item -->
+                        </div>
+                        <div class="col-md-7 col-sm-6">
+                            <div class="widget-item">
+                                <h2 class="widget-title">ĐĂNG KÝ NHẬN TIN</h2>
+                                <!-- End .widget-title -->
+                                <ul class="widget-menu">
+                                    <li>
+                                        Hãy đăng kí theo form dưới đây để nhận được tin tức và khuyến mại từ chúng tôi.
+                                    </li>
+                                    <li>
+                                        <ul class="social_icon">
+                                            <li><a href="http://www.facebook.com/#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="https://twitter.com/#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="https://plus.google.com/#"><i class="fa fa-google-plus"></i></a></li>
+                                            <li><a href="skype"><i class="fa fa-skype"></i></a></li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                                <!-- End .widget-menu -->
+                            </div>
+                            <!-- End .widget-item -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End .widget -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-7 col-sm-push-5">
+                        <div class="pull-right">
+                            <ul>
+
+                                <li><a href="/" title="Trang chủ">Trang chủ</a></li>
+
+                                <li><a href="/gioi-thieu" title="Giới thiệu">Giới thiệu</a></li>
+
+                                <li><a href="/collections/all" title="Sản phẩm">Sản phẩm</a></li>
+
+                                <li><a href="/dich-vu" title="Dịch vụ">Dịch vụ</a></li>
+
+                                <li><a href="/tin-tuc" title="Tin tức">Tin tức</a></li>
+
+                                <li><a href="/lien-he" title="Liên hệ">Liên hệ</a></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-sm-pull-7">
+                        <div class="pull-left copyright">
+                            <span>© Bản quyền thuộc về Avent Team | Cung cấp bởi <a href="https://www.bizweb.vn/?utm_source=site-khach-hang&amp;utm_campaign=referral_bizweb&amp;utm_medium=footer&amp;utm_content=cung-cap-boi-bizweb" target="_blank" title="Bizweb">Bizweb</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
