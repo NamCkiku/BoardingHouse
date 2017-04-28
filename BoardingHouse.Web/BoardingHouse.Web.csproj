@@ -232,6 +232,7 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\Controller\AccountController\headerController.js" />
+    <Content Include="app\Controller\MapController\mapController.js" />
     <Content Include="app\Controller\ProfileController\ProfileController.js" />
     <Content Include="app\Controller\ProfileController\PVProfileInformationController.js" />
     <Content Include="app\Controller\ProfileController\PVProfileListRoom.js" />
@@ -878,6 +879,7 @@
     <Content Include="Content\img\city.jpg" />
     <Content Include="Content\img\floor-elevator.png" />
     <Content Include="Content\img\grid-view-bg.png" />
+    <Content Include="Content\img\IconMaker.png" />
     <Content Include="Content\img\icon_new_2.png" />
     <Content Include="Content\img\icotitlemodule.png" />
     <Content Include="Content\img\img_code.jpg" />
@@ -1190,6 +1192,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\ListRoom.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\SearchMap.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_LayoutMap.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

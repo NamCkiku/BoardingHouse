@@ -28,6 +28,7 @@ namespace BoardingHouse.Web.Controllers
         }
         // GET: Management
         #region Room
+        [OutputCache(Duration = int.MaxValue)]
         public JsonResult GetAllProvince()
         {
             JsonResult jsonResult = new JsonResult();
@@ -52,14 +53,14 @@ namespace BoardingHouse.Web.Controllers
             }
             return jsonResult;
         }
-
-        public JsonResult GetAllDistrict(int id)
+        [OutputCache(Duration = int.MaxValue)]
+        public JsonResult GetAllDistrict()
         {
             JsonResult jsonResult = new JsonResult();
             HttpRequestBase request = this.HttpContext.Request;
             if (ValidateRequestHeader(request))
             {
-                HttpResponseMessage responseMessage = client.GetAsync(url + "/management/getalldistrict/" + id).Result;
+                HttpResponseMessage responseMessage = client.GetAsync(url + "/management/getalldistrict").Result;
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var responseData = responseMessage.Content.ReadAsStringAsync().Result;
@@ -77,14 +78,14 @@ namespace BoardingHouse.Web.Controllers
             }
             return jsonResult;
         }
-
-        public JsonResult GetAllWard(int id)
+        [OutputCache( Duration = int.MaxValue)]
+        public JsonResult GetAllWard()
         {
             JsonResult jsonResult = new JsonResult();
             HttpRequestBase request = this.HttpContext.Request;
             if (ValidateRequestHeader(request))
             {
-                HttpResponseMessage responseMessage = client.GetAsync(url + "/management/getallward/" + id).Result;
+                HttpResponseMessage responseMessage = client.GetAsync(url + "/management/getallward").Result;
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var responseData = responseMessage.Content.ReadAsStringAsync().Result;
