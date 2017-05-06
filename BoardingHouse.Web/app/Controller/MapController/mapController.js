@@ -105,7 +105,32 @@
             apiService.post('Management/GetAllRoomFullSearch', true, config, function (respone) {
                 if (respone.data.success == true) {
                     $scope.data.lstRoom = respone.data.lstData.Items;
-                    addMarkers($scope.data.lstRoom, $scope.map)
+                    // Try HTML5 geolocation.
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
+                            var pos = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude
+                            };
+                            var latlng = new google.maps.LatLng(pos.lat, pos.lng);
+                            $scope.pointA = latlng;
+                            $scope.map = new google.maps.Map(document.getElementById('map'), {
+                                center: latlng,
+                                zoom: 14
+                            });
+                            addMarkers($scope.data.lstRoom, $scope.map)
+                            marker1 = new google.maps.Marker({
+                                position: latlng,
+                                map: $scope.map,
+                                icon: '/Content/img/user-marker.png',
+                                draggable: false,
+                                animation: google.maps.Animation.DROP,
+                            });                        
+                        }, function () {
+                        });
+                    } else {
+                        addMarkers($scope.data.lstRoom, $scope.map)
+                    }
                 } else {
                 }
             }, function (respone) {
@@ -114,6 +139,7 @@
         GetAllProvince();
         GetAllRoomType();
         Search();
+
         $scope.markers = [];
         function addMarkers(props, map) {
             var marker;
@@ -164,10 +190,14 @@
                     infoboxContent += '<li><span class="fa fa-moon-o"></span> ' + formatPrice(prop.Acreage) + '</li>';
                 }
                 infoboxContent += '</ul></a>';
+                var directionsService = new google.maps.DirectionsService;
+                var directionsDisplay = new google.maps.DirectionsRenderer;
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {
+                        calculateAndDisplayRoute(directionsService, directionsDisplay, $scope.pointA, latlng);
                         infobox.setContent(infoboxContent);
                         infobox.open(map, marker);
+                        directionsDisplay.setMap(map);
                     }
                 })(marker, i));
 
@@ -202,6 +232,18 @@
             center: $scope.uluru,
             zoom: 14
         });
-
+        function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB) {
+            directionsService.route({
+                origin: pointA,
+                destination: pointB,
+                travelMode: 'DRIVING'
+            }, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
+        }
     }
 })(angular.module('myApp'));
