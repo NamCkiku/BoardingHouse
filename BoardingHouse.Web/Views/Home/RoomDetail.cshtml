@@ -5,6 +5,15 @@
 }
 <link href="~/bower_components/lightslider/dist/css/lightslider.css" rel="stylesheet" />
 <script src="~/bower_components/lightslider/dist/js/lightslider.js"></script>
+<style>
+    /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+    #map {
+        height: 300px;
+        width: 100%;
+        position: relative;
+    }
+</style>
 <div ng-controller="RoomDetailController">
     <div class="col-md-12 margin-bottom-15">
         <div class="breadcrumbs">
@@ -15,19 +24,7 @@
             </ul>
         </div>
         <div class="map-content">
-            <fieldset class="gllpLatlonPicker" id="_MAP_5302">
-                <input type="hidden" class="gllpSearchField">
-                <input type="hidden" class="gllpSearchButton" value="search">
-                <!-- <br/><br/> -->
-                <div class="gllpMap" style="height:300px!important;">Google Maps</div>
-                <!-- <br/>
-                lat/lon: -->
-                <input type="hidden" class="gllpLatitude" value="{{RoomInfo.Lat}}">
-                <!-- / -->
-                <input type="hidden" class="gllpLongitude" value="{{RoomInfo.Lng}}">
-                <!-- zoom: --> <input type="hidden" class="gllpZoom" value="15">
-                <input type="hidden" class="gllpUpdateButton" value="update map">
-            </fieldset>
+            <div id="map"></div>
         </div>
     </div>
     <div class="col-md-9 col-lg-9 col-xs-12 margin-bottom-10">

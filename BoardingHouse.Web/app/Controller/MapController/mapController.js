@@ -105,32 +105,7 @@
             apiService.post('Management/GetAllRoomFullSearch', true, config, function (respone) {
                 if (respone.data.success == true) {
                     $scope.data.lstRoom = respone.data.lstData.Items;
-                    // Try HTML5 geolocation.
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function (position) {
-                            var pos = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude
-                            };
-                            var latlng = new google.maps.LatLng(pos.lat, pos.lng);
-                            $scope.pointA = latlng;
-                            $scope.map = new google.maps.Map(document.getElementById('map'), {
-                                center: latlng,
-                                zoom: 14
-                            });
-                            addMarkers($scope.data.lstRoom, $scope.map)
-                            marker1 = new google.maps.Marker({
-                                position: latlng,
-                                map: $scope.map,
-                                icon: '/Content/img/user-marker.png',
-                                draggable: false,
-                                animation: google.maps.Animation.DROP,
-                            });                        
-                        }, function () {
-                        });
-                    } else {
-                        addMarkers($scope.data.lstRoom, $scope.map)
-                    }
+                    myLocation($scope.data.lstRoom);
                 } else {
                 }
             }, function (respone) {
@@ -232,6 +207,47 @@
             center: $scope.uluru,
             zoom: 14
         });
+        function myLocation(arr) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    var latlng = new google.maps.LatLng(pos.lat, pos.lng);
+
+                    $scope.pointA = latlng;
+                    $scope.map = new google.maps.Map(document.getElementById('map'), {
+                        center: latlng,
+                        zoom: 14
+                    });
+                    var populationOptions = {
+                        strokeColor: '#67cfd8',
+                        strokeOpacity: 0.6,
+                        strokeWeight: 1,
+                        fillColor: '#67cfd8',
+                        fillOpacity: 0.2,
+                        center: latlng,
+                        map: $scope.map,
+                        radius: 5000
+                    };
+                    var cityCircle = new google.maps.Circle(populationOptions);
+                    var listRoomAround = GetListArround(pos.lat, pos.lng, 5000, arr)
+                    addMarkers(listRoomAround, $scope.map)
+                    marker1 = new google.maps.Marker({
+                        position: latlng,
+                        map: $scope.map,
+                        icon: '/Content/img/user-marker.png',
+                        draggable: false,
+                        animation: google.maps.Animation.DROP,
+                    });
+                }, function () {
+                });
+            } else {
+                addMarkers($scope.data.lstRoom, $scope.map)
+            }
+        }
         function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB) {
             directionsService.route({
                 origin: pointA,
@@ -244,6 +260,37 @@
                     window.alert('Directions request failed due to ' + status);
                 }
             });
+        }
+        function GetListArround(x1, y1, radius, arrSource) {
+            var result = [];
+            if (arrSource != null && arrSource.length > 0) {
+                $.each(arrSource, function (i, prop) {
+                    var room = calculateArourd(x1, y1, prop.Lat, prop.Lng);
+                    if (room <= radius) {
+                        result.push(prop);
+                    }
+                });
+            }
+            return result;
+        }
+        function calculateArourd(x1, y1, x2, y2) {
+            if (x1 === x2 && y1 === y2) return 0;
+            var p1x = x1 * (Math.PI / 180);
+            var p1y = y1 * (Math.PI / 180);
+            var p2x = x2 * (Math.PI / 180);
+            var p2y = y2 * (Math.PI / 180);
+            var kc = 0;
+            var temp = 0;
+            kc = p2x - p1x;
+            temp = Math.cos(kc);
+            temp = temp * Math.cos(p2y);
+            temp = temp * Math.cos(p1y);
+            kc = Math.sin(p1y);
+            kc = kc * Math.sin(p2y);
+            temp = temp + kc;
+            kc = Math.acos(temp);
+            kc = 6378137 * kc;
+            return kc;
         }
     }
 })(angular.module('myApp'));
