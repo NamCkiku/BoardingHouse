@@ -26,6 +26,8 @@ namespace BoardingHouse.Web.Controllers
         }
         public ActionResult SearchMap()
         {
+            //var ip = GetVisitorIPAddress(false);
+            //var location = GetLatLng("32 george Sydney NSW Australia");
             return View();
         }
         public ActionResult CreateRoom()

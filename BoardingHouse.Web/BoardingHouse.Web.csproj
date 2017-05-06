@@ -889,6 +889,7 @@
     <Content Include="Content\img\reservas-paso-active.png" />
     <Content Include="Content\img\unit.png" />
     <Content Include="Content\img\unitshare.png" />
+    <Content Include="Content\img\user-marker.png" />
     <Content Include="Content\img\xphongtot_logo.png.pagespeed.ic.UejSBOLzW8.png" />
     <Content Include="Content\js\bootstrapextend.min.js" />
     <Content Include="Content\js\formValidation.min.js" />
