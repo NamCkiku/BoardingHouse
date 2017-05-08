@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse nav-menu">
             <ul class="nav navbar-nav navbar-left hidden-sm">
                 <li>
-                    <a href="#">Tất Cả Việc Làm</a>
+                    <a href="#">Tất Cả Phòng Trọ</a>
                 </li>
                 <li>
                     <a target="_blank" href="#">Nạp Coin</a>
@@ -75,6 +75,9 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="horizontal-navbar-create-room">
+                        <a class="btn-addroom" href="@Url.Action("CreateRoom","Home")"><i style="margin-right:10px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>Đăng tin miễn phí</a>
+                    </li>
                 }
                 else
                 {
@@ -130,10 +133,11 @@
                     <li>
                         <a href="javascript: void(0);" ng-click="openRegisterModal();">Đăng Ký</a>
                     </li>
+                    <li class="horizontal-navbar-create-room">
+                        <a class="btn-addroom" href="javascript: void(0);" ng-click="openLoginModal();"><i style="margin-right:10px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>Đăng tin miễn phí</a>
+                    </li>
                 }
-                <li class="horizontal-navbar-create-room">
-                    <a class="btn-addroom" href="#"><i style="margin-right:10px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>Đăng tin miễn phí</a>
-                </li>
+                
             </ul>
         </div>
 

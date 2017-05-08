@@ -31,7 +31,7 @@
                 thumbItem: 5,
                 vertical: true,
             });
-        },100);
+        },500);
         function GetRoomDetail() {
             var data = {
                 ID: getID()
@@ -40,6 +40,7 @@
                 if (respone.data.success == true) {
                     $scope.RoomInfo = respone.data.Objdata;
                     $scope.moreImages = JSON.parse($scope.RoomInfo.MoreImages);
+                    console.log($scope.moreImages);
                     console.log($scope.RoomInfo);
                     $scope.uluru = {
                         lat: $scope.RoomInfo.Lat,

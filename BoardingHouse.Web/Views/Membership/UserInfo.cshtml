@@ -1,81 +1,126 @@
 ﻿
 @{
-    ViewBag.Title = "ListRoom";
+    ViewBag.Title = "UserInfo";
     Layout = "~/Views/Shared/_LayoutDetail.cshtml";
 }
-<div class="col-md-9 col-lg-9 col-xs-12" ng-controller="searchController">
+
+<style>
+    .user_info_box {
+        height: 84px;
+        border-radius: 3px;
+        border: 1px solid #f4f0e2;
+        padding: 15px 20px;
+        margin: 0px 0px 20px 0px;
+    }
+
+    .user_info_left {
+        width:80%;
+        float: left;
+    }
+
+    .user_info_img {
+        width: 55px;
+        height: 55px;
+        border-radius: 4px;
+        background: url(https://sharecode.vn/Image/avanta.png);
+        float: left;
+        overflow: hidden;
+    }
+
+    .user_info_title {
+        color: #00648f;
+        width: 30%;
+        height: 20px;
+        overflow: hidden;
+        font-weight: bold;
+        float: left;
+        margin-left:20px;
+        font-size: 12px;
+        margin-top: 2px;
+    }
+
+    .user_info_info {
+        width: 85%;
+        height: 20px;
+        overflow: hidden;
+        float: right;
+        font-size: 12px;
+    }
+
+    .user_info_upload {
+        background: url(https://sharecode.vn/Image/ic_cloud.png) 0 5px no-repeat;
+        padding-left: 20px;
+        height: 20px;
+        overflow: hidden;
+        float: left;
+    }
+
+    .user_margin40 {
+        margin-right: 40px;
+    }
+
+    .user_info_upload span {
+        color: #ff8401;
+    }
+
+    .user_info_date {
+        background: url(https://sharecode.vn/Image/ic_date.png) 0 3px no-repeat;
+        padding-left: 20px;
+        height: 20px;
+        overflow: hidden;
+        float: left;
+    }
+
+        .user_info_date span {
+            color: #ff8401;
+        }
+
+    .point_box {
+        height: 50px;
+        width: 15%;
+        border: 1px solid #ff8401;
+        border-radius: 3px;
+        text-align: center;
+        color: #ff8401;
+        float: right;
+        font-size: 14px;
+    }
+
+    .point_value {
+        font-weight: bold;
+        font-size: 18px;
+        color: white;
+        padding-right: 40px;
+        height: 28px;
+        padding-top: 4px;
+        background: url(https://sharecode.vn/Image/ic_point2.png) #ff8401;
+        background-position: right 0px top 0px;
+        background-repeat: no-repeat;
+    }
+</style>
+<div class="col-md-9 col-lg-9 col-xs-12">
     <div class="breadcrumbs">
         <ul class="breadcrumb">
             <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a> <span class="divider"></span></li>
-            <li>Tất cả sản phẩm</li>
+            <li><a href="/">Trang cá nhân</a><span class="divider"></span></li>
+            <li>NamCkiku</li>
         </ul>
     </div>
-    <div class="bannercollection">
-        <img style="width:100%" src="//bizweb.dktcdn.net/100/109/381/themes/161997/assets/img_collection.jpg?1492597369483" alt="Tất cả sản phẩm">
-    </div>
-    <div class="box-room-list">
-        <div class="has_prop_slider  listing_wrapper col-md-12 no-padding" ng-repeat="item in data.lstRoom">
-            <div class="property_listing">
-                <div class="listing-unit-img-wrapper">
-                    <div class="prop_new_details">
-                        <div class="prop_new_details_back"></div>
-                        <div class="property_media">
-                            <i class="fa fa-home" aria-hidden="true"></i> {{item.RoomTypeName}}
-                        </div>
-                        <div class="property_location_image">
-                            <span class="property_marker"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                            <a href="" rel="tag">{{item.ProvinceName}}</a>@*, <a href="" rel="tag">{{item.RoomTypeName}}</a>*@
-                        </div>
-                    </div>
-                    <a href="@Url.Action("RoomDetail", "Home")/{{item.RoomID}}">
-                        <img width="525" height="328" src="http://localhost:6568/Content/images/{{item.Image}}" class="lazyload img-responsive wp-post-image">
-                    </a>
-                    
-                </div>
-                <h4>
-                    <a href="@Url.Action("RoomDetail", "Home")/{{item.RoomID}}">
-                        {{item.RoomName}}
-                    </a>
-                </h4>
-                <div class="listing_unit_price_wrapper">
-                    <span class="price_label price_label_before"> {{item.Price|number}} Đ/tháng</span>
-                </div>
-                <div class="property_listing_details">
-                    <span class="inforoom"></span>{{item.BedroomNumber}} phòng
-                    <span style="margin-left:10px" class="infobath"></span>{{item.ToiletNumber}}
-                    <span style="margin-left:10px" class="infosize"></span>{{item.Acreage|number}} m<sup>2</sup>
-                </div>
-                <div class="property_listing_details">
-                    <i class="fa fa-eye" aria-hidden="true"></i><span>{{item.ViewCount}}</span>
-                    <i class="fa fa-heart" aria-hidden="true"></i><span>133131</span>
-                    <i class="fa fa-clock-o" aria-hidden="true"></i><span>{{item.CreateDate}} phút trước</span>
-                </div>
-                <div class="property_location">
-                    <div class="property_agent_wrapper">
-                        <div class="property_agent_image" ng-if="item.UserAvatar!=null" style="background-image:url('http://localhost:6568/Content/images/{{item.UserAvatar}}')">
-
-                        </div>
-                        <div class="property_agent_image" ng-if="item.UserAvatar==null" style="background-image:url('/Content/img/boy-512.png')">
-
-                        </div>
-                        <div class="property_agent_image_sign"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
-                        <a href="@Url.Action("Membership", "Membership")">{{item.FullName}}</a>
-                    </div>
-
-                    <div class="listing_actions">
-                        <span class="share_list"></span>
-                        <span class="icon-fav icon-fav-off"></span>
-                        <span class="compare-action"></span>
-                    </div>
-                </div>
+    <div class="user_info_box">
+        <div class="user_info_left">
+            <img src="https://sharecode.vn/FilesUpload/User/2_25_45_thao%20ly.jpg" class="user_info_img" width="50" height="50" alt="Thảo - Thảo Ly" title="Thảo Ly">
+            <h1 class="user_info_title">Nam<span>Ckiku</span></h1>
+            <div class="user_info_info">
+                <span class="user_info_upload user_margin40 hidden-sm hidden-xs">Tin đã đăng: <span>[2]</span></span>
+                <span class="user_info_date hidden-sm hidden-xs">Tham gia: <span>4/4/2017</span></span>
             </div>
         </div>
-    </div>
-    <div class="col-lg-12">
-        <pager-directive page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="ResultSearch(page)"></pager-directive>
+        <div class="point_box">
+           <span class="hidden-xs"> Điểm thưởng</span><span class="hidden-md hidden-lg hidden-sm">10</span><div class="point_value"><span class="hidden-xs">10</span></div>
+        </div>
     </div>
 </div>
-<div class="col-lg-3 col-md-3 col-xs-12"  ng-controller="searchController">
+<div class="col-lg-3 col-md-3 col-xs-12" ng-controller="searchController">
     <div class="row" style="margin-top:55px;">
         <div class="clearfix"></div>
         <div class="col-sm-6 col-md-12 col-lg-12 margin-bottom-20">

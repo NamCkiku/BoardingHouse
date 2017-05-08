@@ -42,7 +42,7 @@
                 <h2><a href="frontpage">Tin nổi bật</a></h2>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 no-touch" ng-repeat="item in data.lstRoom">
-                <a href="/Home/RoomDetail/{{item.RoomID}}" class="card" id="card-309">
+                <a href="@Url.Action("RoomDetail", "Home")/{{item.RoomID}}" class="card" id="card-309">
                     <div class="figure">
                         <div class="featured-label">
                             <div class="featured-label-left"></div>
@@ -59,7 +59,7 @@
                         <div class="figView"><span class="fa fa-eye"></span></div>
                         <div class="figType">{{item.Price|number}} Đ/tháng</div>
                     </div>
-                    <h2>{{item.RoomName}}</h2>
+                    <h2 title="{{item.RoomName}}">{{item.RoomName}}</h2>
                     <div class="cardAddress">
                         <span class="fa fa-map-marker" style="margin-right:10px;"></span>{{item.Address}}
                     </div>
@@ -82,18 +82,7 @@
                 </a>
             </div>
             <div class="col-lg-12">
-                <ul class="pagination">
-                    <li class="disabled">
-                        <span>«</span>
-                    </li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">4</a></li>
-                    <li><a href="">5</a></li>
-                    <li><a href="">6</a></li>
-                    <li><a href="" rel="next">»</a></li>
-                </ul>
+                <pager-directive page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="GetAllRoom(page)"></pager-directive>
             </div>
         </div>
     </div>
