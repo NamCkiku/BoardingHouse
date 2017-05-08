@@ -55,6 +55,9 @@ namespace BoardingHouse.Repositoty.Repositories
                              Convenient = e.Convenient,
                              Compass = e.Compass,
                              ViewCount = a.ViewCount,
+                             Content = a.Content,
+                             MoreImages = a.MoreImages,
+                             Description=a.Description,
                          }).ToList();
             return query;
         }

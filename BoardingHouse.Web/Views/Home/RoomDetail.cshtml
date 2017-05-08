@@ -59,8 +59,8 @@
                             <div class="type">
                                 <span class="btn info-label">Tầng</span>
                                 <a href="" class="btn info-data">{{RoomInfo.FloorNumber}}</a>
-                                <span class="btn info-label">Hướng nhà</span>
-                                <a href="">{{RoomInfo.Compass}}</a>
+                                <span class="btn info-label">Số người ở</span>
+                                <a href="">{{RoomInfo.BedroomNumber}} người</a>
                             </div>
                             <div class="Compass">
                                 <span class="btn info-label">Tiện ích</span>
@@ -79,10 +79,10 @@
                         <div class="info-contact">
                             <div class="agentAvatar">
                                 <a href="#" ng-if="RoomInfo.UserAvatar!=null">
-                                    <img class="avatar agentAvatarImg" src="http://localhost:6568/Content/images/{{RoomInfo.UserAvatar}}" alt="Rust Cohle">
+                                    <img class="avatar agentAvatarImg" ng-src="http://localhost:6568/Content/images/{{RoomInfo.UserAvatar}}" alt="Rust Cohle">
                                 </a>
                                 <a href="#" ng-if="RoomInfo.UserAvatar==null">
-                                    <img class="avatar agentAvatarImg" src="~/Content/img/boy-512.png" alt="Rust Cohle">
+                                    <img class="avatar agentAvatarImg" ng-src="~/Content/img/boy-512.png" alt="Rust Cohle">
                                 </a>
                             </div>
                             <div class="info-boss">
@@ -136,10 +136,10 @@
                     <div class="clearfix padB10"></div>
                 </div><!-- Product Single - Gallery End -->
                 <!-- End Light Slider -->
-                <div class="room-info-des" ng-if="RoomInfo.Content!=null">
+                <div class="room-info-des" ng-if="RoomInfo.Description!=null">
                     <div class="steps_header">Thông tin chi tiết</div>
                     <div class="dis-content">
-                        {{RoomInfo.Content}}
+                        {{RoomInfo.Description}}
                     </div>
                 </div>
 
@@ -315,5 +315,6 @@
         background-color: #ecf0f1;
         padding: 10px 5px;
         margin-top: -10px;
+        height: 360px;
     }
 </style>

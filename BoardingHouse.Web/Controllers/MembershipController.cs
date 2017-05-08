@@ -17,6 +17,10 @@ namespace BoardingHouse.Web.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult UserInfo()
+        {
+            return View();
+        }
         public PartialViewResult _PVProfileInformation()
         {
             return PartialView();
