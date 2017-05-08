@@ -100,8 +100,13 @@
                     </div>
                     <div class="list_item_collection">
                         <ul>
-                            <li class="li_lv1"><a href=""><i class="fa fa-angle-double-right" style="margin-right:10px" aria-hidden="true"></i>Tất cả<span class="facet-count">(1,844)</span></a> </li>
-                            <li ng-repeat="item in data.lstRoomType" class="li_lv1"><a href=""><i class="fa fa-angle-double-right" style="margin-right:10px" aria-hidden="true"></i>{{item.RoomTypeName}}<span class="facet-count">(1,844)</span></a> </li>
+                            <li class="li_lv1"><a href=""><i class="fa fa-angle-double-right" style="margin-right:10px" aria-hidden="true"></i>Tất cả<span class="facet-count">({{getCountRoomType()}})</span></a> </li>
+                            <li ng-repeat="item in data.lstRoomType" class="li_lv1">
+                                <a href="">
+                                    <i class="fa fa-angle-double-right" style="margin-right:10px" aria-hidden="true">
+                                    </i>{{item.RoomTypeName}}<span class="facet-count">({{getCountRoomType(item.RoomTypeID)}})</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

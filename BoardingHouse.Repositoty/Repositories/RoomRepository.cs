@@ -42,6 +42,7 @@ namespace BoardingHouse.Repositoty.Repositories
                              RoomTypeID = a.RoomTypeID,
                              ProvinceID = a.ProvinceID,
                              DistrictID = a.DistrictID,
+                             Phone=a.Phone,
                              WardID = a.WardID,
                              UserAvatar = d.Avatar,
                              FullName = d.UserName,

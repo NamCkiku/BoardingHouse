@@ -103,9 +103,10 @@
                         <div class="clearfix"></div>
                         <div class="info-help" style="padding: 10px 10px 0;">
                             <div class="info-help-phone" style="margin-bottom: 10px;">
-                                <a id="show_phone_bnt" class="btn btn-primary btn-block">
+                                <a id="show_phone_bnt" ng-if="isShowPhoneNumber" ng-click="showPhoneNumber();" class="btn btn-primary btn-block">
                                     <i style="margin-right: 10px;" class="fa fa-phone"></i><span>Nhấn để hiện số</span>
                                 </a>
+                                <h4 ng-if="!isShowPhoneNumber" style="text-align: center;padding: 12.5px;"><strong>{{RoomInfo.Phone}}</strong></h4>
                             </div>
                         </div>
                         <div class="clearfix">
