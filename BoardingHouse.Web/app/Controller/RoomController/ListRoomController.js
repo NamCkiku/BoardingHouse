@@ -1,12 +1,12 @@
 ﻿(function (app) {
     app.controller('ListRoomController', ListRoomController);
 
-    ListRoomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'apiService', '$window', 'fileUploadService'];
+    ListRoomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'apiService', '$window', 'fileUploadService', '$filter'];
 
-    function ListRoomController($scope, blockUI, $modal, $rootScope, BaseService, apiService, $window, fileUploadService) {
+    function ListRoomController($scope, blockUI, $modal, $rootScope, BaseService, apiService, $window, fileUploadService, $filter) {
         $scope.data = {
             lstRoom: [],
-            lstRoomType:[],
+            lstRoomType: [],
         }
         $scope.page = 0;
         $scope.pagesCount = 0;
@@ -44,5 +44,17 @@
         }
         GetAllRoomType();
         GetAllRoom();
+
+
+        $scope.getCountRoomType = function (roomTypeID) {
+            var result = 0;
+            if (roomTypeID != null && roomTypeID != "") {
+                result = $filter('filter')($scope.data.lstRoom, { RoomTypeID: roomTypeID }, true).length;
+            }
+            else {
+                result = $scope.data.lstRoom.length;
+            }
+            return result;
+        }
     }
 })(angular.module('myApp'));

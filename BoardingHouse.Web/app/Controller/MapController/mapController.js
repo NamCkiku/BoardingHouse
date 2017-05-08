@@ -252,7 +252,7 @@
             directionsService.route({
                 origin: pointA,
                 destination: pointB,
-                travelMode: 'DRIVING'
+                travelMode: 'WALKING'
             }, function (response, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);

@@ -74,5 +74,9 @@
             });
         }
         GetRoomDetail();
+        $scope.isShowPhoneNumber = true;
+        $scope.showPhoneNumber = function () {
+            $scope.isShowPhoneNumber = false;
+        }
     }
 })(angular.module('myApp'));
