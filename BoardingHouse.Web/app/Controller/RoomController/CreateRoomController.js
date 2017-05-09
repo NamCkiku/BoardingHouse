@@ -4,7 +4,7 @@
     CreateRoomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'apiService', '$window', 'fileUploadService', 'commonService', '$filter'];
 
     function CreateRoomController($scope, blockUI, $modal, $rootScope, BaseService, apiService, $window, fileUploadService, commonService, $filter) {
-        $scope.isActive = '3';
+        $scope.isActive = '1';
         $scope.rooms = {
             MoreInfomations: {
             },

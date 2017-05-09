@@ -221,6 +221,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ViewModel\DistrictViewModel.cs" />
+    <Compile Include="Models\ViewModel\PostViewModel.cs" />
     <Compile Include="Models\ViewModel\ProvinceViewModel.cs" />
     <Compile Include="Models\ViewModel\RoomTypeViewModel.cs" />
     <Compile Include="Models\ViewModel\RoomViewModel.cs" />
