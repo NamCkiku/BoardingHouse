@@ -126,7 +126,7 @@
                 marker = new google.maps.Marker({
                     position: latlng,
                     map: map,
-                    icon: '/Content/img/IconMaker.png',
+                    icon: $rootScope.baseUrl + 'Content/img/IconMaker.png',
                     draggable: false,
                     animation: google.maps.Animation.DROP,
                 });
@@ -238,7 +238,7 @@
                     marker1 = new google.maps.Marker({
                         position: latlng,
                         map: $scope.map,
-                        icon: '/Content/img/user-marker.png',
+                        icon: $rootScope.baseUrl + 'Content/img/user-marker.png',
                         draggable: false,
                         animation: google.maps.Animation.DROP,
                     });
