@@ -4,7 +4,7 @@
     CreateRoomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'apiService', '$window', 'fileUploadService', 'commonService', '$filter'];
 
     function CreateRoomController($scope, blockUI, $modal, $rootScope, BaseService, apiService, $window, fileUploadService, commonService, $filter) {
-        $scope.isActive = '1';
+        $scope.isActive = '3';
         $scope.rooms = {
             MoreInfomations: {
             },
@@ -222,6 +222,32 @@
                             }
                         }
                         $scope.roomInfomation = respone.data.objData;
+                        $scope.uluru = {
+                            lat: $scope.roomInfomation.Lat,
+                            lng: $scope.roomInfomation.Lng
+                        };
+                        $scope.map = new google.maps.Map(document.getElementById('map'), {
+                            center: $scope.uluru,
+                            zoom: 12
+                        });
+                        $scope.marker = new google.maps.Marker({
+                            position: $scope.uluru,
+                            map: $scope.map,
+                            icon: '/Content/img/IconMaker.png',
+                            draggable: false,
+                            animation: google.maps.Animation.DROP,
+                        });
+                        var populationOptions = {
+                            strokeColor: '#67cfd8',
+                            strokeOpacity: 0.6,
+                            strokeWeight: 1,
+                            fillColor: '#67cfd8',
+                            fillOpacity: 0.2,
+                            center: $scope.uluru,
+                            map: $scope.map,
+                            radius: 5000
+                        };
+                        var cityCircle = new google.maps.Circle(populationOptions);
                         $scope.isActive = '4';
                         BaseService.displaySuccess("Chúc mừng bạn đã đăng tin thành công", 5000);
                     } else {
@@ -232,6 +258,9 @@
                 });
 
             }
+        }
+        $scope.onShowhotrom = onShowhotrom;
+        function onShowhotrom() {
         }
         $scope.previousStep = previousStep;
         function previousStep(item) {

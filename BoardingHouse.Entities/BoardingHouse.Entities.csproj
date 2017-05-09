@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\MoreInfomationEntity.cs" />
+    <Compile Include="Entities\PostEntity.cs" />
     <Compile Include="Entities\RoomEntity.cs" />
     <Compile Include="Entities\RoomTypeEntity.cs" />
     <Compile Include="Entities\SearchEntity.cs" />

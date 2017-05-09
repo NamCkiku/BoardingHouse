@@ -21,6 +21,8 @@ namespace BoaringHouse.API.Mappings
                 config.CreateMap<Province, ProvinceViewModel>();
                 config.CreateMap<District, DistrictViewModel>();
                 config.CreateMap<Ward, WardViewModel>();
+                config.CreateMap<Post, PostViewModel>();
+                config.CreateMap<PostEntity, PostViewModel>();
             });
 
         }

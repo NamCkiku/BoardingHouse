@@ -21,6 +21,14 @@ namespace BoardingHouse.Web.Controllers
         {
             return View();
         }
+        public ActionResult AddCoin()
+        {
+            if (HttpContext.Request.IsAuthenticated)
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
+        }
         public PartialViewResult _PVProfileInformation()
         {
             return PartialView();
