@@ -51,7 +51,7 @@
                             $window.location.reload();
                             $scope.modalInstance.dismiss('cancel');
                         } else {
-                            alert(respone.data.message);
+                            $scope.messageError = respone.data.message;
                         }
                     }, function (respone) {
                         console.log('Load product failed.');
@@ -87,6 +87,7 @@
                             $window.location.reload();
                             $scope.modalInstance.dismiss('cancel');
                         } else {
+                            $scope.messageRegisterError = respone.data.message;
                         }
                     }, function (respone) {
                         console.log('Load product failed.');
@@ -104,8 +105,8 @@
 
 
 
-        $scope.LogOut = LogOut;
-        function LogOut() {
+        $scope.logOut = logOut;
+        function logOut() {
             apiService.post('Account/LogOff', true, null, function (respone) {
                 if (respone.data.success == true) {
                     $window.location.reload();

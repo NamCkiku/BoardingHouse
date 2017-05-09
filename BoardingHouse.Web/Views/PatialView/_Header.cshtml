@@ -71,7 +71,7 @@
                                 <a href="@Url.Action("Membership","Membership")"><i class="fa fa-fw fa-lg fa-user"></i>Tài Khoản</a>
                             </li>
                             <li>
-                                <a href="/thoat"><i class="fa fa-lg fa-sign-out fa-fw"></i>&nbsp;Thoát</a>
+                                <a ng-click="logOut();" href=""><i class="fa fa-lg fa-sign-out fa-fw"></i>Thoát</a>
                             </li>
                         </ul>
                     </li>
@@ -137,7 +137,7 @@
                         <a class="btn-addroom" href="javascript: void(0);" ng-click="openLoginModal();"><i style="margin-right:10px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>Đăng tin miễn phí</a>
                     </li>
                 }
-                
+
             </ul>
         </div>
 
@@ -166,12 +166,29 @@
                             <span style="display: none" class="number">2</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="" ng-click="openLoginModal();"><i class="fa fa-fw fa-lg fa-sign-in"></i>Đăng Nhập</a>
-                    </li>
-                    <li>
-                        <a href="javascript: void(0);" ng-click="openRegisterModal();">Đăng Ký</a>
-                    </li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                        var currentUser = manager.FindById(User.Identity.GetUserId());
+                        <li>
+                            <a href="@Url.Action("Membership","Membership")"><i class="fa fa-fw fa-lg fa-user"></i>@currentUser.FullName</a>
+                        </li>
+                        <li>
+                            <a ng-click="logOut();" href="javascript: void(0);"><i class="fa fa-lg fa-sign-out fa-fw"></i>Thoát</a>
+                        </li>
+                        <li class="horizontal-navbar-create-room">
+                            <a class="btn-addroom" href="@Url.Action("CreateRoom","Home")"><i style="margin-right:10px;" class="fa fa-pencil-square-o" aria-hidden="true"></i>Đăng tin miễn phí</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="" ng-click="openLoginModal();"><i class="fa fa-fw fa-lg fa-sign-in"></i>Đăng Nhập</a>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" ng-click="openRegisterModal();">Đăng Ký</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -188,9 +205,10 @@
     <div class="line_orn"></div>
     <div class="modal-body login">
         <div class="box">
-            <div class="content" id="user_menu_open">
+            <form class="content" id="user_menu_open">
                 <div class="form loginBox" style="margin-top:10px;">
                     <div id="formLogin" class="">
+                        <div class="login-alert" ng-if="messageError!=null">{{messageError}} </div>
                         <div class="form-group no-padding">
                             <input id="email"
                                    data-fv-notempty="true"
@@ -199,7 +217,7 @@
                                    data-fv-emailaddress-message="Bạn phải nhập đúng Email"
                                    ng-model="account.Email"
                                    class="form-control"
-                                   type="text"
+                                   type="email"
                                    placeholder="Tên tài khoản"
                                    name="email">
                         </div>
@@ -215,7 +233,7 @@
 
                         </div>
                     </div>
-                    <button class="wpresidence_button" style="width:100%" ng-click="ok();">Đăng nhập</button>
+                    <button type="submit" class="wpresidence_button" style="width:100%" ng-click="ok();">Đăng nhập</button>
                 </div>
                 <div class="login-links">
                     <a href="#" id="widget_register_topbar">Bạn chưa có tài khoản?</a>
@@ -229,7 +247,7 @@
                     <div id="googleloginsidebar_topbar" data-social="google">Đăng nhập với Google</div>
                     <div id="yahoologinsidebar_topbar" data-social="yahoo">Đăng nhập với Yahoo</div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <div class="modal-footer login">
@@ -251,20 +269,29 @@
     <div class="line_orn"></div>
     <div class="modal-body login">
         <div class="box">
-            <div class="content" id="user_menu_open">
+            <form class="content" id="user_menu_open">
                 <div class="form loginBox" style="margin-top:10px;">
                     <div id="formRegister" class="">
+                        <div class="login-alert" ng-if="messageRegisterError!=null">{{messageRegisterError}} </div>
                         <div class="form-group no-padding">
                             <input id="email"
                                    data-fv-notempty="true"
-                                   data-fv-notempty-message="Vui lòng nhập Email"
-                                   data-fv-emailaddress="true"
-                                   data-fv-emailaddress-message="Bạn phải nhập đúng Email"
+                                   data-fv-notempty-message="Vui lòng nhập tên của bạn"
                                    ng-model="accountRegister.FullName"
                                    class="form-control"
                                    type="text"
                                    placeholder="Tên hiển thị"
-                                   name="email">
+                                   name="FullName">
+                        </div>
+                        {{accountRegister.Avatar}}
+                        <div class="form-group no-padding">
+                            <input data-fv-notempty="true"
+                                   data-fv-notempty-message="Chọn ảnh đại diện của bạn"
+                                   ng-model="accountRegister.Avatar"
+                                   class="form-control"
+                                   type="file"
+                                   placeholder="Tên hiển thị"
+                                   name="Avatar">
                         </div>
                         <div class="form-group no-padding">
                             <input id="email"
@@ -276,7 +303,7 @@
                                    class="form-control"
                                    type="text"
                                    placeholder="Email"
-                                   name="email">
+                                   name="Email">
                         </div>
                         <div class="form-group no-padding">
                             <input id="password"
@@ -286,7 +313,7 @@
                                    class="form-control"
                                    type="password"
                                    placeholder="Mật khẩu"
-                                   name="password">
+                                   name="Password">
 
                         </div>
                         <div class="form-group no-padding">
@@ -304,23 +331,19 @@
                             <input type="checkbox" name="terms" id="user_terms_register_topbar">
                             <label id="user_terms_register_topbar_label">Bạn có đồng ý với <a href="">mọi điều khoản của chúng tôi không</a> </label>
                         </div>
-                        <button class="wpresidence_button" style="width:100%" ng-click="ok();">Đăng ký</button>
+                        <button type="submit" class="wpresidence_button" style="width:100%" ng-click="ok();">Đăng ký</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <div class="modal-footer login">
-        <div class="forgot login-footer" style="display: block;">
-            <span>
-                <a href="javascript: showRegisterForm();">Tạo tài khoản</a>
-                ?
-            </span>
+        @*<div class="forgot login-footer" style="display: block;">
         </div>
         <div class="forgot register-footer" style="display: none;">
             <span>Already have an account?</span>
             <a href="javascript: showLoginForm();">Đăng Nhập</a>
-        </div>
+        </div>*@
     </div>
 </script>
