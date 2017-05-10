@@ -13,25 +13,9 @@
             Password: "",
             ConfirmPassword: ""
         }
-        $scope.Login = function () {
-            BaseService.ValidatorForm("#user_menu_open");
-            var frmAdd = angular.element(document.querySelector('#user_menu_open'));
-            var formValidation = frmAdd.data('formValidation').validate();
-            if (formValidation.isValid()) {
-                apiService.post('Account/Login', true, $scope.account, function (respone) {
-                    if (respone.data.success == true) {
-                        $window.location.reload();
-                        $scope.modalInstance.dismiss('cancel');
-                    } else {
-                        $scope.messageError = respone.data.message;
-                    }
-                }, function (respone) {
-                    console.log('Load product failed.');
-                });
-            }
-        };
         $scope.openLoginModal = openLoginModal;
         function openLoginModal() {
+            //$scope.modalInstanceRegister.dismiss('cancel');
             $scope.modalInstance = $modal.open({
                 animation: true,
                 templateUrl: 'ModalLogin.html',
@@ -49,7 +33,7 @@
                     apiService.post('Account/Login', true, $scope.account, function (respone) {
                         if (respone.data.success == true) {
                             $window.location.reload();
-                            $scope.modalInstance.dismiss('cancel');
+                            $scope.modalInstance.close();
                         } else {
                             $scope.messageError = respone.data.message;
                         }
@@ -58,6 +42,26 @@
                     });
                 }
             };
+
+            $scope.LoginWithFacebook = function () {
+                var data = {
+                    provider: 'Facebook',
+                }
+                apiService.post('Account/ExternalLogin', true, data, function (respone) {
+                    if (respone.data.success == true) {
+                        $window.location.reload();
+                        $scope.modalInstanceRegister.close();
+                    } else {
+                        $scope.messageRegisterError = respone.data.message;
+                    }
+                }, function (respone) {
+                    console.log('Load product failed.');
+                });
+            }
+            $scope.showRegisterModal = function () {
+                $scope.modalInstance.dismiss('cancel');
+                $scope.openRegisterModal();
+            }
             $scope.close = function () {
                 $scope.modalInstance.dismiss('cancel');
             };
@@ -68,7 +72,7 @@
         }
         $scope.openRegisterModal = openRegisterModal;
         function openRegisterModal() {
-            $scope.modalInstance = $modal.open({
+            $scope.modalInstanceRegister = $modal.open({
                 animation: true,
                 templateUrl: 'ModalRegister.html',
                 backdrop: 'static',
@@ -85,7 +89,7 @@
                     apiService.post('Account/Register', true, $scope.accountRegister, function (respone) {
                         if (respone.data.success == true) {
                             $window.location.reload();
-                            $scope.modalInstance.dismiss('cancel');
+                            $scope.modalInstanceRegister.close();
                         } else {
                             $scope.messageRegisterError = respone.data.message;
                         }
@@ -94,10 +98,14 @@
                     });
                 }
             };
+            $scope.showLoginModal = function () {
+                $scope.modalInstanceRegister.dismiss('cancel');
+                $scope.openLoginModal();
+            }
             $scope.close = function () {
-                $scope.modalInstance.dismiss('cancel');
+                $scope.modalInstanceRegister.dismiss('cancel');
             };
-            $scope.modalInstance.result.then(function (response) {
+            $scope.modalInstanceRegister.result.then(function (response) {
 
             }, function () {
             });

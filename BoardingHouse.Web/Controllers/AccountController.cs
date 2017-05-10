@@ -292,9 +292,9 @@ namespace BoardingHouse.Web.Controllers
 
         //
         // POST: /Account/ExternalLogin
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
             // Request a redirect to the external login provider
@@ -365,7 +365,37 @@ namespace BoardingHouse.Web.Controllers
                     return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
         }
+        //[AllowAnonymous]
+        //public async Task<JsonResult> ExternalLoginCallback(string provider, string returnUrl)
+        //{
+        //    JsonResult jsonResult = new JsonResult();
+        //    HttpRequestBase request = this.HttpContext.Request;
+        //    if (ValidateRequestHeader(request))
+        //    {
+        //        var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+        //        if (loginInfo == null)
+        //        {
+        //            return jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+        //        }
+        //        var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
+        //        switch (result)
+        //        {
 
+        //            case SignInStatus.Success:
+        //                return jsonResult = Json(new { success = true }, JsonRequestBehavior.AllowGet);
+        //            case SignInStatus.LockedOut:
+        //                return jsonResult = Json(new { success = false, message = "Tài khoản của bạn đang bị khóa" }, JsonRequestBehavior.AllowGet); ;
+        //            case SignInStatus.RequiresVerification:
+        //                return jsonResult = Json(new { success = false, message = "Tài khoản của bạn đang bị khóa" }, JsonRequestBehavior.AllowGet);
+        //            case SignInStatus.Failure:
+        //            default:
+        //                ViewBag.ReturnUrl = returnUrl;
+        //                ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
+        //                return jsonResult = Json(new { success = true }, JsonRequestBehavior.AllowGet);
+        //        }
+        //    }
+        //    return jsonResult;
+        //}
         //
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
