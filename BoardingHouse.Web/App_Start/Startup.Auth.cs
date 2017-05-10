@@ -54,9 +54,9 @@ namespace BoardingHouse.Web
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "596145737253141",
+               appSecret: "ceca5ea262238393f4a9c0bb7c503b64");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

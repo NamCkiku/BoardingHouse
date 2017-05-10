@@ -225,6 +225,9 @@
                             <input id="password"
                                    data-fv-notempty="true"
                                    data-fv-notempty-message="Vui lòng nhập mật khẩu"
+                                   data-fv-stringlength="true"
+                                   data-fv-stringlength-min="6"
+                                   data-fv-stringlength-message="Mật khẩu phải ít nhất 6 kí tự"
                                    ng-model="account.Password"
                                    class="form-control"
                                    type="password"
@@ -236,14 +239,13 @@
                     <button type="submit" class="wpresidence_button" style="width:100%" ng-click="ok();">Đăng nhập</button>
                 </div>
                 <div class="login-links">
-                    <a href="#" id="widget_register_topbar">Bạn chưa có tài khoản?</a>
                     <a href="#" id="forgot_pass_topbar">Quên mật khâu?</a>
                     <div class="division">
                         <div class="line l"></div>
                         <span>Hoặc</span>
                         <div class="line r"></div>
-                    </div>
-                    <div id="facebookloginsidebar_topbar" data-social="facebook">Đăng nhập với Facebook</div>
+                    </div> 
+                    <div id="facebookloginsidebar_topbar" href="" ng-click="LoginWithFacebook();" data-social="facebook">Đăng nhập với Facebook</div>
                     <div id="googleloginsidebar_topbar" data-social="google">Đăng nhập với Google</div>
                     <div id="yahoologinsidebar_topbar" data-social="yahoo">Đăng nhập với Yahoo</div>
                 </div>
@@ -253,8 +255,7 @@
     <div class="modal-footer login">
         <div class="forgot login-footer" style="display: block;">
             <span>
-                <a href="javascript: showRegisterForm();">Tạo tài khoản</a>
-                ?
+                <a href="" ng-click="showRegisterModal();">Bạn chưa có tài khoản?</a>
             </span>
         </div>
     </div>
@@ -283,9 +284,9 @@
                                    placeholder="Tên hiển thị"
                                    name="FullName">
                         </div>
-                        {{accountRegister.Avatar}}
                         <div class="form-group no-padding">
                             <input data-fv-notempty="true"
+                                   id="file-upload"
                                    data-fv-notempty-message="Chọn ảnh đại diện của bạn"
                                    ng-model="accountRegister.Avatar"
                                    class="form-control"
@@ -328,7 +329,12 @@
 
                         </div>
                         <div class="form-group no-padding">
-                            <input type="checkbox" name="terms" id="user_terms_register_topbar">
+                            <input type="checkbox"
+                                   ng-model="accountRegister.Terms"
+                                   name="terms"
+                                   data-fv-notempty="true"
+                                   data-fv-notempty-message="Bạn phải đồng ý với điều khoản của chúng tôi"
+                                   id="user_terms_register_topbar">
                             <label id="user_terms_register_topbar_label">Bạn có đồng ý với <a href="">mọi điều khoản của chúng tôi không</a> </label>
                         </div>
                         <button type="submit" class="wpresidence_button" style="width:100%" ng-click="ok();">Đăng ký</button>
@@ -339,11 +345,8 @@
         </div>
     </div>
     <div class="modal-footer login">
-        @*<div class="forgot login-footer" style="display: block;">
+        <div class="forgot login-footer" style="display: block;">
+            <a href="" ng-click="showLoginModal();">Bạn đã có tài khoản?</a>
         </div>
-        <div class="forgot register-footer" style="display: none;">
-            <span>Already have an account?</span>
-            <a href="javascript: showLoginForm();">Đăng Nhập</a>
-        </div>*@
     </div>
 </script>
