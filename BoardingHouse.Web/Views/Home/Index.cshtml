@@ -68,6 +68,7 @@
                         <li><span class="fa fa-info"></span><span style="margin-left:5px;">{{item.Acreage|number}} m<sup>2</sup></span></li>
                         <li></li>
                         <li><span class="fa fa-male" style="margin-right:10px;"></span>5</li>
+                        <li><i class="fa fa-clock-o" style="margin-right:10px;" aria-hidden="true"></i><span>{{formatDate(item.CreateDate)|timeago}}</span></li>
                         @*<li>
                                 <span class="fa fa-user"></span>
                                 <span>
@@ -102,7 +103,7 @@
                         <ul>
                             <li class="li_lv1"><a href=""><i class="fa fa-angle-double-right" style="margin-right:10px" aria-hidden="true"></i>Tất cả<span class="facet-count">({{getCountRoomType()}})</span></a> </li>
                             <li ng-repeat="item in data.lstRoomType" class="li_lv1">
-                                <a href="">
+                                <a href="@Url.Action("ListRoom","Home")?RoomTypeID={{item.RoomTypeID}}">
                                     <i class="fa fa-angle-double-right" style="margin-right:10px" aria-hidden="true">
                                     </i>{{item.RoomTypeName}}<span class="facet-count">({{getCountRoomType(item.RoomTypeID)}})</span>
                                 </a>

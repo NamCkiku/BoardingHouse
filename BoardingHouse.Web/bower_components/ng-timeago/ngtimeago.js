@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 var myapp = angular.module('ngtimeago', []);
 
@@ -13,22 +13,22 @@ myapp.filter('timeago', function() {
                 date = (new Date(input)).getTime(),
                 //refreshMillis= 6e4, //A minute
                 allowFuture = p_allowFuture || false,
-                strings= {
+                strings = {
                     prefixAgo: null,
                     prefixFromNow: null,
-                    suffixAgo: "ago",
+                    suffixAgo: "trước",
                     suffixFromNow: "from now",
                     seconds: "less than a minute",
-                    minute: "about a minute",
-                    minutes: "%d minutes",
-                    hour: "about an hour",
-                    hours: "about %d hours",
-                    day: "a day",
-                    days: "%d days",
-                    month: "about a month",
-                    months: "%d months",
-                    year: "about a year",
-                    years: "%d years"
+                    minute: "khoảng 1 phut",
+                    minutes: "%d phút",
+                    hour: "khoảng 1 giờ",
+                    hours: "khoảng %d giờ",
+                    day: "1 ngày",
+                    days: "%d ngày",
+                    month: "khoảng 1 tháng",
+                    months: "%d tháng",
+                    year: "khoảng 1 năm",
+                    years: "%d năm"
                 },
                 dateDifference = nowTime - date,
                 words,

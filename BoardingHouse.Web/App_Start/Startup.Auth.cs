@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using BoardingHouse.Web.Models;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace BoardingHouse.Web
 {
@@ -58,11 +60,22 @@ namespace BoardingHouse.Web
                appId: "596145737253141",
                appSecret: "ceca5ea262238393f4a9c0bb7c503b64");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            var googleOptions = new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "472411283152-cgt90mm2odl7jfdthq79kd7pk82enteq.apps.googleusercontent.com",
+                ClientSecret = "BI1J3VxMv4fQQG7suDCOfMBd",
+                Provider = new GoogleOAuth2AuthenticationProvider()
+                {
+                    OnAuthenticated = context =>
+                    {
+                        var userDetail = context.User;
+                        var image = userDetail.GetValue("image").ToString();
+                        context.Identity.AddClaim(new Claim("image", image));
+                        return Task.FromResult(0);
+                    },
+                },
+            };
+            app.UseGoogleAuthentication(googleOptions);
         }
     }
 }

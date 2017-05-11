@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BoardingHouse.Web.Models;
+using Newtonsoft.Json.Linq;
 
 namespace BoardingHouse.Web.Controllers
 {
@@ -292,13 +293,13 @@ namespace BoardingHouse.Web.Controllers
 
         //
         // POST: /Account/ExternalLogin
-        //[HttpPost]
+        [HttpPost]
         //[AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public ActionResult ExternalLogin(string provider, string returnUrl)
+        public ActionResult ExternalLogin(string provider)
         {
             // Request a redirect to the external login provider
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account"));
         }
 
         //
@@ -346,7 +347,19 @@ namespace BoardingHouse.Web.Controllers
             {
                 return RedirectToAction("Login");
             }
-
+            if (loginInfo.Login.LoginProvider == "Google")
+            {
+                var externalIdentity = AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+                var emailClaim = externalIdentity.Result.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email);
+                var lastNameClaim = externalIdentity.Result.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname);
+                var givenNameClaim = externalIdentity.Result.Claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName);
+                var givenImageClaim = externalIdentity.Result.Claims.FirstOrDefault(c => c.Type.Equals("image"));
+                var email = emailClaim.Value;
+                var firstName = givenNameClaim.Value;
+                var lastname = lastNameClaim.Value;
+                var obj = JObject.Parse(givenImageClaim.Value);
+                var image = obj.Value<string>("url");
+            }
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)

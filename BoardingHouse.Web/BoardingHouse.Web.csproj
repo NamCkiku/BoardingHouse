@@ -895,6 +895,7 @@
     <Content Include="Content\js\formValidation.min.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
     <Content Include="Content\js\jquery-1.8.3.min.js" />
+    <Content Include="Content\js\moment.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

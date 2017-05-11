@@ -11,6 +11,9 @@
         $scope.page = 0;
         $scope.pagesCount = 0;
         $scope.totalCount = 0;
+        $scope.formatDate = function (date) {
+            return BaseService.formatDate(date);
+        }
         function GetAllRoomType() {
             apiService.post('Management/GetAllRoomType', true, null, function (respone) {
                 if (respone.data.success == true) {
