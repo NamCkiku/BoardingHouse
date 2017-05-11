@@ -45,9 +45,9 @@
 
             $scope.LoginWithFacebook = function () {
                 var data = {
-                    provider: 'Facebook',
+                    provider: 'Google',
                 }
-                apiService.post('Account/ExternalLogin', true, data, function (respone) {
+                apiService.post('Account/ExternalLogin', false, data, function (respone) {
                     if (respone.data.success == true) {
                         $window.location.reload();
                         $scope.modalInstanceRegister.close();

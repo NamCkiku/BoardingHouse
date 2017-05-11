@@ -28,9 +28,9 @@
                         </div>
                     </div>
                     <a href="@Url.Action("RoomDetail", "Home")/{{item.RoomID}}">
-                        <img width="525" height="328" src="http://localhost:6568/Content/images/{{item.Image}}" class="lazyload img-responsive wp-post-image">
+                        <img width="525" height="328" ng-src="http://localhost:6568/Content/images/{{item.Image}}" class="lazyload img-responsive wp-post-image">
                     </a>
-                    
+
                 </div>
                 <h4>
                     <a href="@Url.Action("RoomDetail", "Home")/{{item.RoomID}}">
@@ -48,7 +48,7 @@
                 <div class="property_listing_details">
                     <i class="fa fa-eye" aria-hidden="true"></i><span>{{item.ViewCount}}</span>
                     <i class="fa fa-heart" aria-hidden="true"></i><span>133131</span>
-                    <i class="fa fa-clock-o" aria-hidden="true"></i><span>{{item.CreateDate}} phút trước</span>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i><span>{{formatDate(item.CreateDate)|timeago}}</span>
                 </div>
                 <div class="property_location">
                     <div class="property_agent_wrapper">
@@ -75,7 +75,7 @@
         <pager-directive page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="ResultSearch(page)"></pager-directive>
     </div>
 </div>
-<div class="col-lg-3 col-md-3 col-xs-12"  ng-controller="searchController">
+<div class="col-lg-3 col-md-3 col-xs-12" ng-controller="searchController">
     <div class="row" style="margin-top:55px;">
         <div class="clearfix"></div>
         <div class="col-sm-6 col-md-12 col-lg-12 margin-bottom-20">

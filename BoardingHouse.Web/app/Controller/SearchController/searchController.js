@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('searchController', searchController);
 
-    searchController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'apiService', '$window', '$filter'];
+    searchController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'apiService', '$window', '$filter', 'BaseService'];
 
-    function searchController($scope, blockUI, $modal, $rootScope, apiService, $window, $filter) {
+    function searchController($scope, blockUI, $modal, $rootScope, apiService, $window, $filter, BaseService) {
         $scope.pageSize = 10;
         $scope.page = 0;
         $scope.pagesCount = 0;
@@ -25,6 +25,9 @@
             lstProvince: [],
             lstDistrict: [],
             lstWard: []
+        }
+        $scope.formatDate = function (date) {
+            return BaseService.formatDate(date);
         }
         $scope.select2Options = {
             allowClear: true
