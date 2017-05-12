@@ -257,30 +257,38 @@ namespace BoardingHouse.Web.Controllers
             return code == null ? View("Error") : View();
         }
 
-        //
-        // POST: /Account/ResetPassword
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
+        public async Task<JsonResult> ResetPassword(ResetPasswordViewModel model)
         {
-            if (!ModelState.IsValid)
+            JsonResult jsonResult = new JsonResult();
+            HttpRequestBase request = this.HttpContext.Request;
+            if (ValidateRequestHeader(request))
             {
-                return View(model);
+                if (!ModelState.IsValid)
+                {
+                    jsonResult = Json(new { success = false, message = "Không thành công" }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    var user = await UserManager.FindByNameAsync(model.Email);
+                    string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                    if (user == null)
+                    {
+                        jsonResult = Json(new { success = false, message = "Tài khoản của bạn không tồn tại" }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        var result = await UserManager.ResetPasswordAsync(user.Id, code, model.Password);
+                        if (result.Succeeded)
+                        {
+                            jsonResult = Json(new { success = true, message = "Không thành công" }, JsonRequestBehavior.AllowGet);
+                        }
+                    }
+                }
             }
-            var user = await UserManager.FindByNameAsync(model.Email);
-            if (user == null)
-            {
-                // Don't reveal that the user does not exist
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
-            if (result.Succeeded)
-            {
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
-            AddErrors(result);
-            return View();
+
+            return jsonResult;
         }
 
         //
