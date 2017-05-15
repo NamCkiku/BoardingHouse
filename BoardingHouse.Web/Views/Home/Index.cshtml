@@ -64,20 +64,10 @@
                         <span class="fa fa-map-marker" style="margin-right:10px;"></span>{{item.Address}}
                     </div>
                     <ul class="cardFeat">
-                        <li><span class="fa fa-bed"></span><span style="margin-left:5px;">2</span></li>
+                        <li><span class="fa fa-male"></span><span style="margin-left:5px;">{{item.FullName}}</span></li>
                         <li><span class="fa fa-info"></span><span style="margin-left:5px;">{{item.Acreage|number}} m<sup>2</sup></span></li>
-                        <li></li>
-                        <li><span class="fa fa-male" style="margin-right:10px;"></span>5</li>
-                        <li><i class="fa fa-clock-o" style="margin-right:10px;" aria-hidden="true"></i><span>{{formatDate(item.CreateDate)|timeago}}</span></li>
-                        @*<li>
-                                <span class="fa fa-user"></span>
-                                <span>
-                                   {{item.FullName}}
-                                </span>
-                                <span>
-                                   {{item.FullName}}
-                                </span>
-                            </li>*@
+                        @*<li><span class="fa fa-male" style="margin-right:5px;"></span>{{item.BedroomNumber}}</li>*@
+                        <li><i class="fa fa-clock-o" style="margin-right:5px;" aria-hidden="true"></i><span>{{formatDate(item.CreateDate)|timeago}}</span></li>
                     </ul>
                     <div class="clearfix"></div>
                 </a>

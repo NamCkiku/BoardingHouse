@@ -230,7 +230,7 @@
                         fillOpacity: 0.2,
                         center: latlng,
                         map: $scope.map,
-                        radius: 5000
+                        radius: Math.sqrt(25000000)
                     };
                     var cityCircle = new google.maps.Circle(populationOptions);
                     var listRoomAround = GetListArround(pos.lat, pos.lng, 5000, arr)
@@ -273,24 +273,20 @@
             }
             return result;
         }
-        function calculateArourd(x1, y1, x2, y2) {
-            if (x1 === x2 && y1 === y2) return 0;
-            var p1x = x1 * (Math.PI / 180);
-            var p1y = y1 * (Math.PI / 180);
-            var p2x = x2 * (Math.PI / 180);
-            var p2y = y2 * (Math.PI / 180);
-            var kc = 0;
-            var temp = 0;
-            kc = p2x - p1x;
-            temp = Math.cos(kc);
-            temp = temp * Math.cos(p2y);
-            temp = temp * Math.cos(p1y);
-            kc = Math.sin(p1y);
-            kc = kc * Math.sin(p2y);
-            temp = temp + kc;
-            kc = Math.acos(temp);
-            kc = 6378137 * kc;
-            return kc;
+
+        function calculateArourd(lat1, lon1, lat2, lon2) {
+            console.log(lat1, lon1, lat2, lon2)
+            var radlat1 = Math.PI * lat1 / 180
+            var radlat2 = Math.PI * lat2 / 180
+            var theta = lon1 - lon2
+            var radtheta = Math.PI * theta / 180
+            var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+            dist = Math.acos(dist)
+            dist = dist * 180 / Math.PI
+            dist = dist * 60 * 1.1515
+            dist = dist * 1.609344 *1000;
+            console.log(dist);
+            return dist
         }
     }
 })(angular.module('myApp'));
