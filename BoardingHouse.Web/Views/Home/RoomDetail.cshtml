@@ -19,7 +19,7 @@
         <div class="breadcrumbs">
             <ul class="breadcrumb">
                 <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a> <span class="divider"></span></li>
-                <li><a href="/">{{RoomInfo.RoomTypeName}}</a></li>
+                <li><a href="@Url.Action("ListRoom","Home")?RoomTypeID={{RoomInfo.RoomTypeID}}">{{RoomInfo.RoomTypeName}}</a></li>
                 <li>{{RoomInfo.RoomName}}</li>
             </ul>
         </div>

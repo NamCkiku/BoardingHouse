@@ -835,7 +835,7 @@ figure.show {
 }
 
     .search-form-small .search-bar {
-       background-image: url(/Content/img/city.jpg);
+        background-image: url(/Content/img/city.jpg);
         float: left;
     }
 
@@ -1214,6 +1214,8 @@ a.card ul.cardFeat, div.card ul.cardFeat {
     list-style-type: none;
     margin: 0;
     padding: 0 10px 10px 10px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
     a.card ul.cardFeat li, div.card ul.cardFeat li {
@@ -1222,6 +1224,12 @@ a.card ul.cardFeat, div.card ul.cardFeat {
         font-size: 11px;
         line-height: 11px;
         color: #333;
+        max-width: 45%;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        vertical-align: middle;
     }
 
         a.card ul.cardFeat li span, div.card ul.cardFeat li span {
@@ -1925,7 +1933,7 @@ footer#footer ul.social_icon {
 .lSSlideOuter .lSPager.lSGallery img {
     display: block;
     height: 100% !important;
-    width: 100%!important;
+    width: 100% !important;
 }
 
 .main-info .left-info a {
