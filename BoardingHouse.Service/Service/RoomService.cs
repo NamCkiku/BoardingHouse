@@ -114,7 +114,10 @@ namespace BoardingHouse.Service.Service
             }
             catch (Exception ex)
             {
-                throw ex;
+                string FunctionName = string.Format("AddRoom('{0}')", lstroom);
+                Common.Logs.LogCommon.WriteError(ex.ToString(), FunctionName);
+                totalRow = 0;
+                return null;
             }
             return lstroom.Skip((page) * pageSize).Take(pageSize);
         }
@@ -130,25 +133,23 @@ namespace BoardingHouse.Service.Service
             List<RoomEntity> lstroom = new List<RoomEntity>();
             try
             {
-                lstroom = _roomRepository.GetMulti(x => x.Status == filter.Status
-                && ((filter.StartDate == null || x.CreateDate >= st || x.CreateDate == null))
-                && ((filter.EndDate == null || x.CreateDate < et || x.CreateDate == null))
+                lstroom = _roomRepository.GetAllListRoom().Where(x => x.Status == filter.Status
+                && (filter.RoomType == null || x.RoomTypeID == filter.RoomType)
+                && (filter.Province == null || x.ProvinceID == filter.Province)
+                && (filter.District == null || x.DistrictID == filter.District)
+                && (filter.Ward == null || x.WardID == filter.Ward)
+                && (filter.StartDate == null || x.CreateDate >= st || x.CreateDate == null)
+                && (filter.EndDate == null || x.CreateDate < et || x.CreateDate == null)
                 && (x.RoomName.Contains(filter.Keywords) || x.Description.Contains(filter.Keywords) || string.IsNullOrEmpty(filter.Keywords))
-                ).Select(x => new RoomEntity
-                {
-                    RoomID = x.RoomID,
-                    RoomName = x.RoomName,
-                    Address = x.Address,
-                    Price = x.Price,
-                    Acreage = x.Acreage,
-                    Content = x.Content,
-                    CreateDate = x.CreateDate
-                }).OrderByDescending(x => x.CreateDate).ToList();
+                ).OrderByDescending(x => x.CreateDate).ToList();
                 totalRow = lstroom.Count();
             }
             catch (Exception ex)
             {
-                throw ex;
+                string FunctionName = string.Format("GetAllPaging('{0}')", lstroom);
+                Common.Logs.LogCommon.WriteError(ex.ToString(), FunctionName);
+                totalRow = 0;
+                return null;
             }
             return lstroom.Skip((page) * pageSize).Take(pageSize);
         }
@@ -167,7 +168,7 @@ namespace BoardingHouse.Service.Service
             }
             catch (Exception ex)
             {
-                string FunctionName = string.Format("AddRoom('{0}')", "");
+                string FunctionName = string.Format("GetAllListRoom('{0}')", "");
                 Common.Logs.LogCommon.WriteError(ex.ToString(), FunctionName);
                 throw ex;
             }
