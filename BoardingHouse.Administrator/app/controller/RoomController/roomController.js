@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('roomController', roomController);
 
-    roomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'ENUMS', 'apiService'];
+    roomController.$inject = ['$scope', 'blockUI', '$modal', '$rootScope', 'BaseService', 'ENUMS', 'apiService', '$filter', '$timeout'];
 
-    function roomController($scope, blockUI, $modal, $rootScope, BaseService, ENUMS, apiService) {
+    function roomController($scope, blockUI, $modal, $rootScope, BaseService, ENUMS, apiService, $filter, $timeout) {
         $scope.enums = ENUMS;
         $scope.pageSize = 10;
         $scope.filter = {
@@ -12,13 +12,60 @@
             EndDate: "",
             searchByStartDate: true,
             searchByEndDate: true,
-            Status: true
+            Status: false
+        }
+        $scope.data = {
+            lstRoomType: [],
+            lstProvince: [],
+            lstDistrict: [],
+            lstWard: [],
+        }
+        function GetAllRoomType() {
+            apiService.post('Management/LoadAllRoomType', true, null, function (respone) {
+                if (respone.data.success == true) {
+                    $scope.data.lstRoomType = respone.data.lstData;
+                } else {
+                }
+            }, function (respone) {
+            });
+        }
+        $scope.isDistrict = true;
+        $scope.isWard = true;
+        function GetAllProvince() {
+            apiService.post('Management/LoadAllProvince', true, null, function (respone) {
+                if (respone.data.success == true) {
+                    $scope.data.lstProvince = respone.data.lstData;
+                } else {
+                }
+            }, function (respone) {
+            });
+        }
+        $scope.GetAllDistrict = GetAllDistrict;
+        function GetAllDistrict(id) {
+            apiService.post('Management/LoadAllDistrict', true, null, function (respone) {
+                if (respone.data.success == true) {
+                    $scope.data.lstDistrict = $filter('filter')(respone.data.lstData, { provinceid: id }, true);
+                    $scope.isDistrict = false;
+                } else {
+                }
+            }, function (respone) {
+            });
+        }
+        $scope.GetAllWard = GetAllWard;
+        function GetAllWard(id) {
+            apiService.post('Management/LoadAllWard', true, null, function (respone) {
+                if (respone.data.success == true) {
+                    $scope.data.lstWard = $filter('filter')(respone.data.lstData, { districtid: id }, true);
+                    $scope.isWard = false;
+                } else {
+                }
+            }, function (respone) {
+            });
         }
         function load() {
+            GetAllProvince();
+            GetAllRoomType();
             filterData();
-            //var myBlockUI = blockUI.instances.get('BlockUIRoom');
-            //myBlockUI.start();
-            //myBlockUI.stop();
         }
         load();
         $scope.Search = Search;
@@ -113,9 +160,12 @@
                 alert(1);
             }
         }
-
+        $scope.moreImages = [];
+        $scope.map;
+        $scope.marker;
+        $scope.uluru = { lat: 21.0029317912212212, lng: 105.820226663232323 };
         $scope.openModal = openModal;
-        function openModal() {
+        function openModal(item) {
             $scope.modalInstance = $modal.open({
                 animation: true,
                 templateUrl: 'Modal.html',
@@ -125,9 +175,24 @@
                 keyboard: false,
                 size: 'lg'
             });
-            //BaseService.postData("Report", "GetReportSnapshot", false, null).then(function (response) {
-            //    alert(1);
-            //})
+            $scope.RoomInfo = item;
+            $timeout(function () {
+                $('#product_gallery').lightSlider({
+                    gallery: true,
+                    item: 1,
+                    loop: true,
+                    currentPagerPosition: 'middle',
+                    verticalHeight: 390,
+                    vThumbWidth: 130,
+                    vThumbHeight: 800,
+                    thumbMargin: 5,
+                    slideMargin: 0,
+                    thumbItem: 5,
+                    vertical: true,
+                });
+            }, 500);
+            console.log($scope.RoomInfo);
+            $scope.moreImages = JSON.parse($scope.RoomInfo.MoreImages);
             $scope.ok = function () {
                 BaseService.displaySuccess("Chuc Mung Nam Moi", 5000);
                 var msgInfor = {
@@ -185,12 +250,17 @@
                             StartDate: startDate,
                             EndDate: endDate,
                             Status: $scope.filter.Status,
-                            page: options.data.page,
+                            Province: $scope.filter.ProvinceID,
+                            District: $scope.filter.DistrictID,
+                            Ward: $scope.filter.WardID,
+                            RoomType: $scope.filter.RoomTypeID,
+                            page: options.data.page - 1,
                             pageSize: options.data.pageSize
                         }
                         apiService.post('Room/LoadAllRoom', true, filter, function (respone) {
                             if (respone.data.lstData.Success == true) {
                                 options.success(respone.data.lstData);
+                                console.log(respone.data.lstData)
                                 myBlockUI.stop();
                             } else {
                             }
@@ -201,14 +271,32 @@
                         });
                     }
                 },
+                group: [{ field: "ProvinceName" }, { field: "RoomTypeName" }],
                 serverPaging: true,
-                sortable: true,
                 pageable: {
                     refresh: true,
                     pageSizes: true,
                     buttonCount: 5
                 },
-                pageSize: 10,
+                sortable: true,
+                selectable: "multiple",
+                pageable: true,
+                groupable: true,
+                filterable: true,
+                columnMenu: true,
+                reorderable: true,
+                resizable: true,
+                toolbar: ["excel"],
+                excel: {
+                    fileName: "Kendo UI Grid Export.xlsx",
+                    proxyURL: "https://demos.telerik.com/kendo-ui/service/export",
+                    filterable: true
+                },
+                sortable: {
+                    mode: "single",
+                    allowUnsort: false
+                },
+                pageSize: 5,
                 schema: {
                     data: "Items",
                     total: "TotalCount"
@@ -216,8 +304,51 @@
             };
         };
         $scope.gridColumns = [
+            {
+                field: "Image", title: "Ảnh",
+                width: "60px",
+                template: "# if (Image != '')" + "{#<div class='customer-photo'" +
+                                    "style='background-image: url(http://localhost:6568/Content/images/#:data.Image#);'></div>#}#",
+            },
                { field: "RoomName", title: "Tên Phòng" },
-                { field: "Address", title: "Địa Chỉ" },
+               { field: "Address", title: "Địa Chỉ" },
+               {
+                   field: "Phone", title: "Số điện thoại",
+               },
+               {
+                   field: "Price", title: "Gía tiền(vnđ)",
+                   template: "#=Price == null ? '' : kendo.toString(Price, 'n0') #" + " (Vnđ)"
+               },
+               {
+                   field: "Acreage", title: "Diện tích(m2)",
+                   template: "#=Acreage == null ? '' : kendo.toString(Acreage, 'n0') #" + "<span style=\"margin-left:5px;\">m<sup>2</sup></span>"
+               },
+               {
+                   field: "UserAvatar", title: "Người đăng",
+                   template: "# if (UserAvatar != null)"
+                                + "{#<div class='customer-photo'"
+                                + "style='background-image: url(#:data.UserAvatar#);'></div>"
+                                + "<div class='customer-name'>#: FullName #</div>#}#"
+                                + "# if(UserAvatar ==null)"
+                                + "{#<div class='customer-photo'"
+                                + "style='background-image: url(http://localhost:15144/Content/img/boy-512.png);'></div>"
+                                + "<div class='customer-name'>#: FullName #</div>#}#",
+               },
+               { field: "RoomTypeName", title: "Loại phòng" },
+               {
+                   field: "CreateDate", title: "Ngày đăng",
+                   template: "#=CreateDate == null ? '' : kendo.toString(kendo.parseDate(CreateDate, 'yyyy-MM-dd'), '" + $rootScope.RootScopeDateFormat + "') #"
+               },
+
+               { field: "ProvinceName", title: "Tỉnh/Thành phố" },
+               {
+                   field: "", title: "Chức năng",
+                   width: "200px",
+                   template: "<button class=\"btn btn-xs btn-primary\" ng-click=\"openModal(this.dataItem);\" style=\"margin-right:5px;\"><i style=\"margin-right:5px;\" class=\"fa fa-eye\" aria-hidden=\"true\"></i>Xem</button>" +
+                             //"<button class=\"btn btn-xs btn-info\" style=\"margin-right:5px;\"><i style=\"margin-right:5px;\" class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>Sửa</button>" +
+                             "<button class=\"btn btn-xs btn-danger\" style=\"margin-right:5px;\"><i style=\"margin-right:5px;\" class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Xóa</button>"
+
+               },
         ];
     }
 })(angular.module('myApp'));

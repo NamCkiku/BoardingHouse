@@ -3,11 +3,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using BoardingHouse.Common.CommonConstants
+<style>
+    .customer-photo {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-size: 32px 35px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 32px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-left: 5px;
+    }
+
+    .customer-name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 32px;
+        padding-left: 3px;
+    }
+</style>
 <div ng-controller="roomController" block-ui="BlockUIRoom">
     <div class="row">
-        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
-            <h3 class="panel-title">Room List</h3>
-        </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 taskbar-order-main margin-top-15">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="input-field col-sm-6 col-lg-2 col-xs-12 ">
@@ -16,7 +34,7 @@
                            type="text">
                 </div>
                 <div class="input-field col-sm-6 col-lg-2 col-xs-12 ">
-                    <label class="form-details-title">Start Date</label>
+                    <label class="form-details-title">Từ ngày</label>
                     <div class="input-group">
                         <div class="input-group-checkbox">
                             <div class="checkbox c-checkbox pull-left">
@@ -34,7 +52,7 @@
                     </div>
                 </div>
                 <div class="input-field  col-sm-6 col-lg-2 col-xs-12 ">
-                    <label class="form-details-title">End Date</label>
+                    <label class="form-details-title">Đến ngày</label>
                     <div class="input-group">
                         <div class="input-group-checkbox">
                             <div class="checkbox c-checkbox pull-left">
@@ -55,12 +73,77 @@
                     <label class="form-details-title">Trạng Thái</label>
                     <div class="clearfix"></div>
                     <input bs-switch
+                           switch-on-text="Đã duyệt"
+                           switch-off-text="Khóa"
                            ng-model="filter.Status"
                            type="checkbox">
                 </div>
                 <div class="input-field col-sm-6 col-lg-2 col-xs-12" style="padding-top:24px;">
                     <button type="button" ng-click="Search()" class="btn btn-info"><i style="padding-right:10px;" class="fa fa-search"></i>Tìm Kiếm</button>
                 </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="input-field col-sm-6 col-lg-2 col-xs-12">
+                    <label class="form-details-title">Loại phòng</label>
+                    <select kendo-drop-down-list
+                            k-option-label="'Chọn Loại Phòng'"
+                            k-data-text-field="'RoomTypeName'"
+                            k-data-value-field="'RoomTypeID'"
+                            k-filter="'contains'"
+                            k-suggest="true"
+                            ng-disabled="isFilterSystem"
+                            k-value-primitive="true"
+                            k-auto-bind="false"
+                            k-data-source="data.lstRoomType"
+                            k-ng-model="filter.RoomTypeID"
+                            style="width: 100%"></select>
+                </div>
+                <div class="input-field col-sm-6 col-lg-2 col-xs-12 ">
+                    <label class="form-details-title">Tỉnh/Thành Phố</label>
+                    <select kendo-drop-down-list
+                            k-option-label="'Chọn Tỉnh/Thành Phố'"
+                            k-data-text-field="'name'"
+                            k-data-value-field="'provinceid'"
+                            k-filter="'contains'"
+                            k-suggest="true"
+                            k-value-primitive="true"
+                            k-auto-bind="false"
+                            k-data-source="data.lstProvince"
+                            k-on-change="GetAllDistrict(filter.ProvinceID)"
+                            k-ng-model="filter.ProvinceID"
+                            style="width: 100%"></select>
+                </div>
+                <div class="input-field col-sm-6 col-lg-2 col-xs-12 ">
+                    <label class="form-details-title">Quận/Huyện</label>
+                    <select kendo-drop-down-list
+                            k-option-label="'Chọn Quận/Huyện'"
+                            k-data-text-field="'name'"
+                            k-data-value-field="'districtid'"
+                            k-filter="'contains'"
+                            k-suggest="true"
+                            ng-disabled="isDistrict"
+                            k-value-primitive="true"
+                            k-auto-bind="false"
+                            k-data-source="data.lstDistrict"
+                            k-on-change="GetAllWard(filter.DistrictID)"
+                            k-ng-model="filter.DistrictID"
+                            style="width: 100%"></select>
+                </div>
+                <div class="input-field  col-sm-6 col-lg-2 col-xs-12 ">
+                    <label class="form-details-title">Xã/Phường</label>
+                    <select kendo-drop-down-list
+                            k-option-label="'Chọn Xã/Phường'"
+                            k-data-text-field="'name'"
+                            k-data-value-field="'wardid'"
+                            k-filter="'contains'"
+                            k-suggest="true"
+                            ng-disabled="isWard"
+                            k-value-primitive="true"
+                            k-auto-bind="false"
+                            k-data-source="data.lstWard"
+                            k-ng-model="filter.WardID"
+                            style="width: 100%"></select>
+                </div>              
             </div>
             @*<div search-control></div>*@
         </div>
@@ -77,70 +160,385 @@
                 <ul class="add-request ">
                     <li><button ng-click="openModal();" class="btn label-warning">+ Thêm Mới</button></li>
                 </ul>
-                <div class="margin-top-15" kendo-grid k-data-source='mainGridOptions'
+                <div class="margin-top-15" kendo-grid
+                     k-options='mainGridOptions'
+                     k-data-source='mainGridOptions'
                      k-pageable='{"refresh": true, "pageSizes": true }'
                      k-columns="gridColumns"></div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-6">
-            <section class="panel">
-                <header class="panel-heading">
-                    Basic Forms
-                </header>
-                <div class="panel-body">
-                    <div id="frmAdd" class="form-horizontal">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="text"
-                                   data-fv-stringlength="true"
-                                   data-fv-stringlength-max="250"
-                                   data-fv-stringlength-message="Tiêu đề chỉ được 250 ký tự"
-                                   data-fv-notempty="true"
-                                   data-fv-notempty-message="Vui lòng nhập tiêu đề"
-                                   ng-model="add.Name"
-                                   class="form-control"
-                                   name="Email" />
+    @*<div class="row">
+            <div class="col-lg-6">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Basic Forms
+                    </header>
+                    <div class="panel-body">
+                        <div id="frmAdd" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="text"
+                                       data-fv-stringlength="true"
+                                       data-fv-stringlength-max="250"
+                                       data-fv-stringlength-message="Tiêu đề chỉ được 250 ký tự"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập tiêu đề"
+                                       ng-model="add.Name"
+                                       class="form-control"
+                                       name="Email" />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password"
+                                       data-fv-stringlength="true"
+                                       data-fv-stringlength-max="250"
+                                       data-fv-stringlength-message="Tiêu đề chỉ được 250 ký tự"
+                                       data-fv-notempty="true"
+                                       data-fv-notempty-message="Vui lòng nhập tiêu đề"
+                                       ng-model="add.Name"
+                                       class="form-control"
+                                       name="Password" />
+                            </div>
+                            <button ng-click="Add();" type="button" class="btn btn-info">Submit</button>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password"
-                                   data-fv-stringlength="true"
-                                   data-fv-stringlength-max="250"
-                                   data-fv-stringlength-message="Tiêu đề chỉ được 250 ký tự"
-                                   data-fv-notempty="true"
-                                   data-fv-notempty-message="Vui lòng nhập tiêu đề"
-                                   ng-model="add.Name"
-                                   class="form-control"
-                                   name="Password" />
-                        </div>
-                        <button ng-click="Add();" type="button" class="btn btn-info">Submit</button>
-                    </div>
 
-                </div>
-            </section>
-        </div>
-    </div>
+                    </div>
+                </section>
+            </div>
+        </div>*@
 </div>
 <script type="text/ng-template" id="Modal.html">
     <div class="modal-header">
         <button aria-label="Close" data-dismiss="modal" ng-click="close();" class="close" type="button"><span aria-hidden="true">×</span></button>
-        <h4 class="modal-title" id="messageDel">Xóa Tin Tức</h4>
+        <h4 class="modal-title" id="messageDel">Thông tin phòng</h4>
     </div>
     <div class="modal-body">
         <div class="container-fluid">
-            <div class="row">
-                @*<textarea kendo-editor
-                          name="Content"
-                          ng-model="Content"
-                          k-options="{{editorOptions}}"></textarea>*@
-                
+            <div class="row" style="height:100%">
+                <div class="real-estate ">
+                    <div class="real-estate-detail">
+                        <h1 class="title">{{RoomInfo.RoomName}}</h1>
+                        <div class="main-info">
+                            <div class="col-md-8 left-info nopadding-xs no-padding-left">
+                                <div class="room-detail-info margin-bottom-15">
+                                    <div class="address">
+                                        <span class="btn info-label">Địa chỉ</span>
+                                        <a class="" href="">{{RoomInfo.Address}}</a>
+                                    </div>
+                                    <div class="size">
+                                        <span class="btn info-label">Diện tích</span>
+                                        <a href="" class="btn info-data">{{RoomInfo.Acreage|number}}m<sup>2</sup></a>
+                                        <span class="btn info-label">Loại phòng</span>
+                                        <a href="">{{RoomInfo.RoomTypeName}}</a>
+                                    </div>
+                                    <div class="vs">
+                                        <span class="btn info-label">Vệ sinh</span>
+                                        <a href="" class="btn info-data">{{RoomInfo.ToiletNumber}}</a>
+                                        <span class="btn info-label">Số người ở</span>
+                                        <a href="">{{RoomInfo.BedroomNumber}}</a>
+                                    </div>
+                                    <div class="type">
+                                        <span class="btn info-label">Giá điện</span>
+                                        <a href="" class="btn info-data">{{RoomInfo.ElectricPrice |number}} Nghìn/số</a>
+                                        <span class="btn info-label">Giá nước</span>
+                                        <a href="">{{RoomInfo.WaterPrice |number}} Nghìn/số</a>
+                                    </div>
+                                    <div class="type">
+                                        <span class="btn info-label">Tầng</span>
+                                        <a href="" class="btn info-data">{{RoomInfo.FloorNumber}}</a>
+                                        <span class="btn info-label">Số người ở</span>
+                                        <a href="">{{RoomInfo.BedroomNumber}} người</a>
+                                    </div>
+                                    <div class="Compass">
+                                        <span class="btn info-label">Tiện ích</span>
+                                        <a class="" href="">{{RoomInfo.Convenient}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 no-padding margin-bottom-10">
+                                <div class="info-contact">
+                                    <div class="agentAvatar">
+                                        <a href="#" ng-if="RoomInfo.UserAvatar!=null">
+                                            <img class="avatar agentAvatarImg" ng-src="{{RoomInfo.UserAvatar}}" alt="Rust Cohle">
+                                        </a>
+                                        <a href="#" ng-if="RoomInfo.UserAvatar==null">
+                                            <img class="avatar agentAvatarImg" ng-src="http://localhost:15144/Content/img/boy-512.png" alt="Rust Cohle">
+                                        </a>
+                                    </div>
+                                    <div class="info-boss">
+                                        <div class="info-boss-name" style="padding-bottom: 5px;">
+                                            <a href="#"><strong class="info-strong-name">{{RoomInfo.FullName}}</strong></a>
+                                        </div>
+                                        <div class="info-boss-address">
+                                            <i style="display: table-cell;" class="fa fa-map-marker"></i><span class="info-span-adress">{{RoomInfo.Address}}</span>
+                                        </div>
+                                        @*<div class="info-boss-address">
+                                    <i style="display: table-cell;" class="fa fa-envelope"></i><span class="info-span-adress">tranhoangnam11373@gmail.com</span>
+                                </div>*@
+                                    </div>
+                                    <div class="info-price">
+                                        <span>{{RoomInfo.Price|number}} Đ/Tháng</span>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="info-help" style="padding: 10px 10px 0;">
+                                    <div class="info-help-phone" style="margin-bottom: 10px;">
+                                        <a id="show_phone_bnt" ng-if="isShowPhoneNumber" ng-click="showPhoneNumber();" class="btn btn-primary btn-block">
+                                            <i style="margin-right: 10px;" class="fa fa-phone"></i><span>Nhấn để hiện số</span>
+                                        </a>
+                                        <h4 ng-if="!isShowPhoneNumber" style="text-align: center;padding: 12.5px;"><strong>{{RoomInfo.Phone}}</strong></h4>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix padding-top-10"></div>
+                        <!-- Light Slider -->
+                        <!-- Product Single - Gallery
+            ============================================= -->
+                        <div class="product-image product-main-image margin-bottom-15" ng-if="moreImages != null">
+                            <ul id="product_gallery">
+                                <li ng-repeat="img in moreImages" data-thumb="http://localhost:6568/Content/images/{{img}}">
+                                    <img style="height:100%;width:100%" ng-src="http://localhost:6568/Content/images/{{img}}" />
+                                </li>
+                            </ul>
+                            <div class="clearfix padB10"></div>
+                        </div><!-- Product Single - Gallery End -->
+                        <!-- End Light Slider -->
+                        <div class="room-info-des" ng-if="RoomInfo.Content!=null">
+                            <div class="dis-content">
+                                {{RoomInfo.Content}}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-warning" type="button" ng-click="ok();"><i class="fa fa-pencil-square-o" aria-hidden="true" style="padding-right:10px"></i>Lưu</button>
+        <button class="btn btn-warning" type="button" ng-click="ok();"><i class="fa fa-pencil-square-o" aria-hidden="true" style="padding-right:10px"></i>Duyệt bài</button>
         <button class="btn btn-info" ng-click="close();" type="button"><i class="fa fa-reply-all" aria-hidden="true" style="padding-right:10px"></i>Quay Lại</button>
     </div>
 </script>
+<style>
+     #map {
+        height: 300px;
+        width: 100%;
+        position: relative;
+    }
+    /*Detail-Room*/
+.real-estate .real-estate-detail h2.title, .real-estate .real-estate-detail h1.title {
+    margin-top: 0px;
+    padding-bottom: 10px;
+    color: rgb(1, 30, 43);
+    font-size: 24px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.lSSlideOuter .lSPager.lSGallery img {
+    display: block;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.main-info .left-info a {
+    text-decoration: none;
+    color: #2e3339;
+    margin-left: 5px;
+}
+
+    .main-info .left-info a:hover {
+        color: #FF0047;
+    }
+
+.room-detail-info {
+    border: 1px solid #ecf0f1;
+}
+
+.main-info .address {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .tang {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .size {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .bed-room {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .vs {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .type {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .info-label {
+    /*cursor: inherit;*/
+    border-radius: 0px;
+    border: none;
+    width: 100px;
+    height: 36px;
+    background-color: #ecf0f1;
+    padding: 6px 12px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.main-info .info-data {
+    border-radius: 0px;
+    border: none;
+    width: 150px;
+    height: 36px;
+    padding: 6px 0px;
+    text-align: left;
+}
+
+.main-info .info-contact .contact-label a {
+    font-size: 18px;
+    padding-left: 12px;
+    color: #2e3339;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+
+.room-detail-des {
+    margin-top: 20px;
+}
+
+    .room-detail-des .des-label .pull-left a h3, .room-detail-map .map-label .pull-left a h3 {
+        margin-bottom: 5px;
+    }
+
+    .room-detail-des .dis-content {
+        font-family: 'Arial';
+        font-size: 15px;
+        text-align: justify;
+        background-color: #ecf0f1;
+        padding: 10px 5px;
+        margin-top: -10px;
+    }
+
+.main-info {
+    float: left;
+    width: 100%;
+}
+
+    .main-info .info-contact {
+        position: relative;
+        float: left;
+        border-bottom: 1px solid #e5e5e5;
+        width: 100%;
+    }
+
+        .main-info .info-contact:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -6px;
+            left: calc(50% - 5px);
+            width: 10px;
+            height: 10px;
+            -webkit-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+            background: #fff;
+            border-left: 1px solid #e5e5e5;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .main-info .info-contact .chr {
+            padding: 0;
+        }
+
+            .main-info .info-contact .chr hr {
+                border-color: #33cc66;
+                margin-top: 0px;
+                margin-bottom: 10px;
+            }
+
+.agentAvatar {
+    text-align: center;
+    float: left;
+    padding-left: 10px;
+}
+
+.agentAvatarImg {
+    width: 60px;
+    height: auto;
+    border: 1px solid #e8e8e8;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+.main-info .info-contact .info-boss {
+    float: right;
+    vertical-align: middle;
+    width: calc(100% - 80px);
+    margin-bottom: 15px;
+}
+
+.info-boss .info-boss-name .info-strong-name {
+    color: #000;
+    font-weight: 400;
+    font-size: 16px;
+    max-width: 88%;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    -webkit-transition: color .1s ease-in-out;
+    transition: color .1s ease-in-out;
+}
+
+    .info-boss .info-boss-name .info-strong-name:hover {
+        color: #c90927;
+    }
+
+.info-boss .info-boss-address .info-span-adress {
+    font-size: 12px;
+    display: table-cell;
+    padding-left: 5px;
+    color: #979797;
+}
+
+.info-contact .info-price {
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+    .info-contact .info-price span {
+        font-size: 20px;
+        color: red;
+        margin-bottom: 10px;
+        font-weight: 700;
+        line-height: 25px;
+    }
+    .room-info-des .dis-content {
+    font-family: 'Arial';
+    font-size: 15px;
+    text-align: justify;
+    background-color: #ecf0f1;
+    padding: 10px 5px;
+    margin-top: -10px;
+    height: 360px;
+}
+</style>

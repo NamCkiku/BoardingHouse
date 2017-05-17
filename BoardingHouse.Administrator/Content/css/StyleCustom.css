@@ -39,7 +39,7 @@
     background: #fff;
     border: 1px solid #ddd;
     box-shadow: 1px 1px 5px #ddd;
-    padding: 15px;
+    padding-top: 15px;
     margin-bottom: 15px;
     position: relative;
 }
@@ -214,9 +214,6 @@ input[type="checkbox"]:checked + span::before, input[type="radio"]:checked + spa
     height: 28px;
 }
 
-.taskbar-order-main .k-state-default > .k-select {
-    background: #fff;
-}
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
     cursor: not-allowed;
     background-color: #fff !important;
