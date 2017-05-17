@@ -48,7 +48,10 @@
                     };
                     $scope.map = new google.maps.Map(document.getElementById('map'), {
                         center: $scope.uluru,
-                        zoom: 12
+                        zoom: 12,
+                        zoomControl: false,
+                        scaleControl: false,
+                        scrollwheel: false,
                     });
                     $scope.marker = new google.maps.Marker({
                         position: $scope.uluru,
@@ -57,6 +60,26 @@
                         draggable: false,
                         animation: google.maps.Animation.DROP,
                     });
+                    var infobox = new google.maps.InfoWindow({
+                        disableAutoPan: false,
+                        maxWidth: 202,
+                        pixelOffset: new google.maps.Size(0, 0),
+                        zIndex: null,
+                        boxStyle: {
+                            background: "url(http://mariusn.com/themes/reales-wp/wp-content/themes/reales/images/infobox-bg.png) no-repeat",
+                            opacity: 1,
+                            width: "202px",
+                            height: "300px"
+                        },
+                        closeBoxMargin: "28px 26px 0px 0px",
+                        closeBoxURL: "",
+                        infoBoxClearance: new google.maps.Size(1, 1),
+                        pane: "floatPane",
+                        enableEventPropagation: false
+                    });
+                    var infoboxContent = $scope.RoomInfo.Address;
+                    infobox.setContent(infoboxContent);
+                    infobox.open($scope.map, $scope.marker);
                     var populationOptions = {
                         strokeColor: '#67cfd8',
                         strokeOpacity: 0.6,

@@ -3052,6 +3052,258 @@ svg:not(:root) {
 .box-room-info {
     background: #f5f5f5;
 }
+
+
+
+/*=======Widget========*/
+.propsWidget {
+        border: 1px solid #eee;
+    }
+
+        .propsWidget ul.propList {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+    .propList li {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .propsWidget ul.propList li a {
+        padding: 0;
+        margin: 0;
+        display: block;
+    }
+
+        .propsWidget ul.propList li a .image {
+            width: 25%;
+            border-radius: 3px;
+            float: left;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .propsWidget ul.propList li a .image img {
+                width: 100%;
+            }
+
+        .propsWidget ul.propList li a .info {
+            float: left;
+            margin-left: 10px;
+            max-width: 70%;
+            padding-top: 5px;
+            overflow: hidden;
+        }
+
+            .propsWidget ul.propList li a .info .name {
+                font-size: 14px;
+                line-height: 16px;
+                max-width: 95%;
+                display: inline-block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                vertical-align: middle;
+            }
+
+    .no-touch .propsWidget ul.propList li a:hover .info .name {
+        color: #0eaaa6;
+    }
+
+    .propsWidget ul.propList li a .info .price {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .no-touch .propsWidget ul.propList li a:hover .info .price {
+        color: #fff;
+    }
+
+    .propsWidget ul.propList li a .info .price .badge {
+        background-color: #eab134;
+        font-size: 10px;
+        line-height: 11px;
+        color: #fff;
+        padding: 2px 4px;
+        border-radius: 2px;
+        text-transform: uppercase;
+        font-weight: normal;
+    }
+
+    .propsWidget ul.propList li a .info .address {
+        font-size: 11px;
+        line-height: 13px;
+        color: #999;
+        font-style: italic;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+    }
+
+
+    /*==========Post Detail===========*/
+    .article-detail {
+        margin-top: -15px;
+    }
+
+        .article-detail .article-title {
+            margin-bottom: 15px;
+        }
+
+            .article-detail .article-title a {
+                text-decoration: none;
+                color: #2e3339;
+            }
+
+                .article-detail .article-title a:hover {
+                    color: #ff9928;
+                }
+
+                .article-detail .article-title a h1 {
+                    font-size: 20px;
+                    font-weight: 600;
+                    text-decoration: none;
+                }
+
+        .article-detail .social .pull-right a {
+            text-decoration: none;
+            color: #00648f;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .article-detail .social .facebook {
+            margin-right: 5px;
+        }
+
+        .article-detail .social .pull-right a:hover, .article-detail .social .pull-right a:hover span {
+            color: #ff9928;
+        }
+
+        .article-detail .social .pull-right a span {
+            color: #2e3339;
+        }
+
+    .article-hr hr {
+        border-color: #00648f;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .article-detail .article-content {
+        text-align: justify;
+        font-size: 15px;
+        font-family: 'Arial';
+    }
+
+        .article-detail .article-content img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+
+    .article-detail .article-tag {
+        padding-top: 20px;
+        font-size: 14px;
+    }
+
+        .article-detail .article-tag span {
+            color: #337ab7;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .article-detail .article-tag a, .article-detail .article-item-same-category .article-container-same-category-more a {
+            color: #2e3339;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+            .article-detail .article-tag a:hover, .article-detail .article-container-same-category-more a:hover {
+                color: #ff9928;
+            }
+
+    .article-detail .article-social-end {
+        height: 45px;
+        border-top: 1px dotted #2e3339;
+        border-bottom: 1px dotted #2e3339;
+        margin-top: 20px;
+        padding-top: 5px;
+    }
+
+        .article-detail .article-social-end .pull-right {
+            padding-top: 5px;
+            margin-left: 5px;
+        }
+
+    .article-detail .article-comment, .article-detail .article-item-same-category {
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-top: 20px;
+    }
+
+        .article-detail .article-comment hr {
+            margin-top: 0px;
+            margin-bottom: 10px;
+            border-top: 1px solid #00648f;
+        }
+
+        .article-detail .article-item-same-category hr {
+            margin-top: 0px;
+            margin-bottom: 10px;
+            border-top: 1px solid #33cc66;
+        }
+
+    .article-detail .same-category-item .article-item-a {
+        position: relative;
+        display: block;
+    }
+
+    .article-detail .same-category-item {
+        margin-bottom: 30px;
+    }
+
+        .article-detail .same-category-item .same-category-item-title {
+            position: absolute;
+            bottom: -10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #FFF;
+            text-transform: capitalize;
+            width: 100%;
+            padding: 5px 5px;
+            font-size: 14px;
+            font-family: 'Open Sans';
+            font-weight: 400;
+            line-height: 1.42857143;
+        }
+
+            .article-detail .same-category-item .same-category-item-title:hover {
+                background-color: #ff9928;
+            }
+
+    .td-a-rec-id-content_bottom {
+        clear: both;
+        text-align: center;
+    }
+
+        .td-a-rec-id-content_bottom > div {
+            margin-bottom: 21px;
+        }
+
+    .td-all-devices {
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        .td-all-devices img {
+            width: 100%;
+            display: block;
+        }
 /* === Puclib === */
 .padding-0 {
     padding: 0px;

@@ -109,7 +109,7 @@ namespace BoardingHouse.Service.Service
                 && (x.DistrictID == filter.DistrictID || filter.DistrictID == null)
                 && (x.WardID == filter.WardID || filter.WardID == null)
                 && (x.RoomName.Contains(filter.Keywords) || string.IsNullOrEmpty(filter.Keywords))
-                ).ToList();
+                ).OrderByDescending(x => x.CreateDate).ToList();
                 totalRow = lstroom.Count();
             }
             catch (Exception ex)
@@ -143,7 +143,7 @@ namespace BoardingHouse.Service.Service
                     Acreage = x.Acreage,
                     Content = x.Content,
                     CreateDate = x.CreateDate
-                }).ToList();
+                }).OrderByDescending(x => x.CreateDate).ToList();
                 totalRow = lstroom.Count();
             }
             catch (Exception ex)
@@ -157,7 +157,7 @@ namespace BoardingHouse.Service.Service
             List<RoomEntity> lstroom = new List<RoomEntity>();
             try
             {
-                lstroom = _roomRepository.GetAllListRoom().Where(x => x.Status == false)
+                lstroom = _roomRepository.GetAllListRoom().Where(x => x.Status == false).OrderByDescending(x => x.CreateDate)
                     .ToList();
                 totalRow = lstroom.Count();
                 if (lstroom != null)
