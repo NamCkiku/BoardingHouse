@@ -30,7 +30,7 @@ namespace BoaringHouse.API.Controllers
             return CreateHttpResponse(request, () =>
             {
                 int totalRow = 0;
-                var listRoom = _roomService.GetAllListRoom(page, pageSize, out totalRow).OrderByDescending(x => x.CreateDate);
+                var listRoom = _roomService.GetAllListRoom(page, pageSize, out totalRow);
                 var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
                 var paginationSet = new PaginationSet<RoomViewModel>()
                 {
@@ -82,7 +82,7 @@ namespace BoaringHouse.API.Controllers
             return CreateHttpResponse(request, () =>
             {
                 int totalRow = 0;
-                var listRoom = _roomService.GetAllRoomFullSearch(filter, page, pageSize, out totalRow).OrderByDescending(x => x.CreateDate);
+                var listRoom = _roomService.GetAllRoomFullSearch(filter, page, pageSize, out totalRow);
                 var listRoomVm = Mapper.Map<List<RoomViewModel>>(listRoom);
                 var paginationSet = new PaginationSet<RoomViewModel>()
                 {
