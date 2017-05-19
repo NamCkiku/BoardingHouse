@@ -12,7 +12,7 @@
             EndDate: "",
             searchByStartDate: true,
             searchByEndDate: true,
-            Status: false
+            Status: true
         }
         $scope.data = {
             lstRoomType: [],
@@ -194,24 +194,31 @@
             console.log($scope.RoomInfo);
             $scope.moreImages = JSON.parse($scope.RoomInfo.MoreImages);
             $scope.ok = function () {
-                BaseService.displaySuccess("Chuc Mung Nam Moi", 5000);
-                var msgInfor = {
-                    headerText: "NamCkiku",
-                    bodyMsg: "Không có gì hết",
-                    size: "lg",
-                    btnOK: "OK",
-                    btnCancel: "Cancel",
-                    type: $scope.enums.ModalType.Warning,
-                }
-                BaseService.showCommonDialog(msgInfor).then(function (result) {
+                //BaseService.displaySuccess("Chuc Mung Nam Moi", 5000);
+                //var msgInfor = {
+                //    headerText: "NamCkiku",
+                //    bodyMsg: "Không có gì hết",
+                //    size: "lg",
+                //    btnOK: "OK",
+                //    btnCancel: "Cancel",
+                //    type: $scope.enums.ModalType.Warning,
+                //}
+                //BaseService.showCommonDialog(msgInfor).then(function (result) {
+                //});
+                apiService.post('Room/ChangeStatus', true, { id: $scope.RoomInfo.RoomID }, function (respone) {
+                    if (respone.data.success == true) {
+                        BaseService.displaySuccess(respone.data.message, 5000);
+                        filterData();
+                    } else {
+                    }
+                }, function (respone) {
+                    BaseService.displayError("Duyệt bài không thành công", 5000);
                 });
                 $scope.modalInstance.dismiss('cancel');
             };
             $scope.close = function () {
                 $scope.modalInstance.dismiss('cancel');
             };
-            $scope.modalInstance.rendered.then(function (response) {
-            })
             $scope.modalInstance.result.then(function (response) {
 
             }, function () {

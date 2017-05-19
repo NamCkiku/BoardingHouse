@@ -21,7 +21,7 @@ namespace BoardingHouse.Administrator.Controllers
         {
             return View();
         }
-        public JsonResult LoadAllRoom(SearchEntity filter, int page, int pageSize=20)
+        public JsonResult LoadAllRoom(SearchEntity filter, int page, int pageSize = 20)
         {
             JsonResult jsonResult = new JsonResult();
             try
@@ -38,6 +38,37 @@ namespace BoardingHouse.Administrator.Controllers
                         Success = true
                     };
                     jsonResult = Json(new { lstData = paginationSet }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                jsonResult = Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                throw ex;
+            }
+            return jsonResult;
+        }
+
+        public JsonResult ChangeStatus(int id)
+        {
+            JsonResult jsonResult = new JsonResult();
+            try
+            {
+                HttpRequestBase request = this.HttpContext.Request;
+                if (ValidateRequestHeader(request))
+                {
+                    var data = _roomService.ChangeStatus(id);
+                    if (data)
+                    {
+                        jsonResult = Json(new { success = true, message = "Chúc mừng bạn đã duyệt bài thành công" }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        jsonResult = Json(new { success = true, message = "Chúc mừng bạn đã hủy bài thành công" }, JsonRequestBehavior.AllowGet);
+                    }
                 }
                 else
                 {

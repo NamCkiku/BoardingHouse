@@ -85,7 +85,13 @@ namespace BoardingHouse.Service.Service
 
         public bool ChangeStatus(int id)
         {
-            throw new NotImplementedException();
+            var room = _roomRepository.GetSingleById(id);
+            if (room != null)
+            {
+                room.Status = !room.Status;
+                _unitOfWork.Commit();
+            }
+            return room.Status;
         }
 
         public Room Delete(int id)
@@ -101,7 +107,7 @@ namespace BoardingHouse.Service.Service
             }
             try
             {
-                lstroom = _roomRepository.GetAllListRoom().Where(x => x.Status == false
+                lstroom = _roomRepository.GetAllListRoom().Where(x => x.Status == true
                 && (x.RoomTypeID == filter.RoomTypeID || filter.RoomTypeID == null)
                 && (x.Price >= filter.PriceFrom || filter.PriceFrom == null)
                 && (x.Price <= filter.PriceTo || filter.PriceTo == null)
@@ -158,7 +164,7 @@ namespace BoardingHouse.Service.Service
             List<RoomEntity> lstroom = new List<RoomEntity>();
             try
             {
-                lstroom = _roomRepository.GetAllListRoom().Where(x => x.Status == false).OrderByDescending(x => x.CreateDate)
+                lstroom = _roomRepository.GetAllListRoom().Where(x => x.Status == true).OrderByDescending(x => x.CreateDate)
                     .ToList();
                 totalRow = lstroom.Count();
                 if (lstroom != null)
