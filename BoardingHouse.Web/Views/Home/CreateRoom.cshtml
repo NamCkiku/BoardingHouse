@@ -75,7 +75,7 @@
                     <div class="col-lg-9 no-padding">
                         <input id="phone"
                                name="phone"
-                               type="text"
+                               type="number"
                                ng-model="rooms.Phone"
                                data-fv-integer-message="Bạn phải nhập đúng số điện thoại"
                                data-fv-notempty="true"
@@ -92,6 +92,7 @@
                                ng-model="rooms.Address"
                                type="text"
                                data-fv-notempty="true"
+                               ng-change="onChangeAddress(rooms.Address)"
                                data-fv-notempty-message="Vui lòng nhập địa chỉ"
                                placeholder="(ghi rõ số nhà, ngõ, phố, phường, quận để khách hàng dễ tìm thấy)"
                                class="form-control">
@@ -111,7 +112,7 @@
                 <div class="form-group clearfix">
                     <div class="control-label">Kéo thả vị trí trên bản đồ để chỉnh địa điểm chính xác hơn</div>
                     <fieldset class="gllpLatlonPicker">
-                        <input type="text" class="gllpSearchField form-control" style="width:300px;float:left;margin-bottom:15px;margin-right:15px;" value="">
+                        <input type="text" ng-model="rooms.Address" class="gllpSearchField form-control" style="width:300px;float:left;margin-bottom:15px;margin-right:15px;" value="">
                         <input type="button" class="gllpSearchButton btn btn-sm btn-success" value="Tìm vị trí">
                         <div class="gllpMap" style="height:300px;">Google Maps</div>
                         <input type="hidden" id="Lat" name="location[N]" ng-model="rooms.Lat" class="gllpLatitude" value="{{rooms.Lat}}" />

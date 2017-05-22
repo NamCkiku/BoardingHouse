@@ -88,7 +88,6 @@
         function GetAllRoomType() {
             apiService.post('Management/GetAllRoomType', true, null, function (respone) {
                 if (respone.data.success == true) {
-                    console.log(respone.data);
                     $scope.data.lstRoomType = respone.data.lstData;
                 } else {
                 }
@@ -98,7 +97,6 @@
         function GetAllProvince() {
             apiService.post('Management/GetAllProvince', true, null, function (respone) {
                 if (respone.data.success == true) {
-                    console.log(respone.data);
                     $scope.data.lstProvince = respone.data.lstData;
                 } else {
                 }
@@ -109,7 +107,6 @@
         function GetAllDistrict(id) {
             apiService.post('Management/GetAllDistrict', true, null, function (respone) {
                 if (respone.data.success == true) {
-                    console.log(respone.data);
                     $scope.data.lstDistrict = $filter('filter')(respone.data.lstData, { provinceid: id }, true);
                 } else {
                 }
@@ -120,7 +117,6 @@
         function GetAllWard(id) {
             apiService.post('Management/GetAllWard', true, null, function (respone) {
                 if (respone.data.success == true) {
-                    console.log(respone.data);
                     $scope.data.lstWard = $filter('filter')(respone.data.lstData, { districtid: id }, true);
                 } else {
                 }
@@ -180,8 +176,24 @@
                 console.log('Load product failed.');
             });
         }
-
-
+        function getLatLong(address, callback) {
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    //return results[0].geometry.location;
+                    var item = {
+                        lat: results[0].geometry.location.lat(),
+                        lng: results[0].geometry.location.lng()
+                    };
+                    console.log(item);
+                    return callback(item);
+                    //var latitude = results[0].geometry.location.lat();
+                    //var longitude = results[0].geometry.location.lng();
+                } else {
+                    alert("Request failed.")
+                }
+            });
+        }
         var roomImage = null;
         $scope.prepareFiles = prepareFiles;
         function prepareFiles($files) {
@@ -194,6 +206,11 @@
                 var frmAdd = angular.element(document.querySelector('#formStep1'));
                 var formValidation = frmAdd.data('formValidation').validate();
                 if (formValidation.isValid()) {
+                    //getLatLong($scope.rooms.Address, function call(data) {
+                    //    var location = data;
+                    //    $scope.rooms.Lat = location.lat;
+                    //    $scope.rooms.Lng = location.lng;
+                    //});
                     $scope.isActive = '2';
                 }
             }

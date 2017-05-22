@@ -48,6 +48,22 @@ namespace BoardingHouse.Service.Service
             }
             return flag;
         }
+        public void SettingUpdate(string Key, string Value)
+        {
+            try
+            {
+                var setting = _systemSettingRepository.GetSingleByCondition(x => x.Field == Key);
+                setting.Field = Key;
+                setting.Value = Value;
+                //Get Connection string from db
+                _systemSettingRepository.Update(setting);
+                _unitOfWork.Commit();
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
         public string GetSettings(string Key)
         {
             string Value = string.Empty;

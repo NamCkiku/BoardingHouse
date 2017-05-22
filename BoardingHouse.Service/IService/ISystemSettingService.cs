@@ -10,6 +10,7 @@ namespace BoardingHouse.Service.IService
     {
         bool Settings(string Key, string Value);
         string GetSettings(string Key);
+        void SettingUpdate(string Key, string Value);
         void LoadSystemSettingConfiguration();
         void LoadDefaultValuesSetings();
     }
