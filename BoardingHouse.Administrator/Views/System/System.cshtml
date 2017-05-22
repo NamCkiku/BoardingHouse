@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "System";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using BoardingHouse.Common.CommonConstants
+<div ng-controller="SystemConfigController">
+    <div block-ui="systemBlockUI" class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Cài đặt chung
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <div class="row">
+                        <form class="form-horizontal" role="form">
+                            <div class="col-lg-6">
+                                <section class="panel">
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">Ngày tháng</label>
+                                            <div class="col-lg-10">
+                                                <input type="text"
+                                                       class="form-control"
+                                                       id="inputEmail1"
+                                                       ng-init="settings.DateFormat = '@Var.sDateFormat'"
+                                                       ng-model="settings.DateFormat"
+                                                       placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">Email</label>
+                                            <div class="col-lg-10">
+                                                <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">Email</label>
+                                            <div class="col-lg-10">
+                                                <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">Email</label>
+                                            <div class="col-lg-10">
+                                                <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-lg-6">
+                                <section class="panel">
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">Email</label>
+                                            <div class="col-lg-10">
+                                                <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">Email</label>
+                                            <div class="col-lg-10">
+                                                <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">Email</label>
+                                            <div class="col-lg-10">
+                                                <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">Email</label>
+                                            <div class="col-lg-10">
+                                                <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-lg-offset-9">
+                                                <button class="btn btn-danger" ng-click="SaveThemeSetting();" type="button">Lưu thay đổi</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Cài đặt Email
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Cài đặt Hệ thống
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

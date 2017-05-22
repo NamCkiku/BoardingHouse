@@ -8,44 +8,44 @@
                 <span>Danh Mục</span>
             </a>
         </li>
-
         <li class="sub-menu">
             <a href="javascript:;">
                 <i class="fa fa-tasks"></i>
+                <span>Phòng Tốt</span>
+            </a>
+            <ul class="sub">
+                <li><a href="@Url.Action("Room","Room")">Quản lý phòng</a></li>
+                <li><a href="/Administrator/NewsAdmin/Add">Thống kê</a></li>
+            </ul>
+        </li>
+        <li class="sub-menu">
+            <a href="javascript:;">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
                 <span>Tin Tức</span>
             </a>
             <ul class="sub">
-                <li><a href="/Administrator/NewsAdmin/ViewNews">Quản lý tin tức</a></li>
-                <li><a href="/Administrator/NewsAdmin/Add">Thêm tin tức</a></li>
+                <li><a href="@Url.Action("Post","Post")">Quản lý tin tức</a></li>
+                <li><a href="@Url.Action("Room","Room")">Quản lý loại tin tức</a></li>
             </ul>
         </li>
         <li class="sub-menu">
             <a href="javascript:;">
                 <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                <span>Loại Tin Tức</span>
+                <span>Người dùng</span>
             </a>
             <ul class="sub">
-                <li><a href="/Administrator/CategoryAdmin/ViewCategory">Quản lý loại tin</a></li>
-                <li><a href="/Administrator/CategoryAdmin/Add">Thêm loại tin</a></li>
+                <li><a href="/Administrator/SilderAdmin/ViewSilder">Quản lý người dùng</a></li>
+                <li><a href="/Administrator/SilderAdmin/Add">Quản lý nhóm quyền</a></li>
+                <li><a href="/Administrator/SilderAdmin/Add">Quản lý quyền</a></li>
             </ul>
         </li>
         <li class="sub-menu">
             <a href="javascript:;">
                 <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                <span>Slider</span>
+                <span>Hệ Thống</span>
             </a>
             <ul class="sub">
-                <li><a href="/Administrator/SilderAdmin/ViewSilder">Quản lý Silder</a></li>
-                <li><a href="/Administrator/SilderAdmin/Add">Thêm Silder</a></li>
-            </ul>
-        </li>
-        <li class="sub-menu">
-            <a href="javascript:;">
-                <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                <span>Header</span>
-            </a>
-            <ul class="sub">
-                <li><a href="/Administrator/Header/ViewHeader">Quản lý Header</a></li>
+                <li><a href="@Url.Action("System","System")">Quản lý hệ thống</a></li>
                 <li><a href="/Administrator/Header/Add">Thêm Header</a></li>
             </ul>
         </li>
