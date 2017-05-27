@@ -1418,6 +1418,7 @@
     <Content Include="Content\img\customSelect-arrow.gif" />
     <Content Include="Content\img\input-spinner.gif" />
     <Content Include="Content\img\left-arrow.png" />
+    <Content Include="Content\img\loader11.GIF" />
     <Content Include="Content\img\mask.png" />
     <Content Include="Content\img\mega_icon1.png" />
     <Content Include="Content\img\mega_icon2.png" />
