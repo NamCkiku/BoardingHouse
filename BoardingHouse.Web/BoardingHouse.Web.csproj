@@ -631,6 +631,80 @@
     <Content Include="bower_components\ngdropzone\dist\ng-dropzone.min.js" />
     <Content Include="bower_components\ngdropzone\gulpfile.js" />
     <Content Include="bower_components\ngdropzone\src\js\ng-dropzone.js" />
+    <Content Include="bower_components\owl-carousel\assets\css\bootstrapTheme.css" />
+    <Content Include="bower_components\owl-carousel\assets\css\custom.css" />
+    <Content Include="bower_components\owl-carousel\assets\css\responsive.css" />
+    <Content Include="bower_components\owl-carousel\assets\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="bower_components\owl-carousel\assets\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="bower_components\owl-carousel\assets\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="bower_components\owl-carousel\assets\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="bower_components\owl-carousel\assets\ico\favicon.png" />
+    <Content Include="bower_components\owl-carousel\assets\img\AjaxLoader.gif" />
+    <Content Include="bower_components\owl-carousel\assets\img\demo-slides\controls.png" />
+    <Content Include="bower_components\owl-carousel\assets\img\demo-slides\css3.png" />
+    <Content Include="bower_components\owl-carousel\assets\img\demo-slides\feather.png" />
+    <Content Include="bower_components\owl-carousel\assets\img\demo-slides\grab.png" />
+    <Content Include="bower_components\owl-carousel\assets\img\demo-slides\modern.png" />
+    <Content Include="bower_components\owl-carousel\assets\img\demo-slides\multi.png" />
+    <Content Include="bower_components\owl-carousel\assets\img\demo-slides\responsive.png" />
+    <Content Include="bower_components\owl-carousel\assets\img\demo-slides\tons.png" />
+    <Content Include="bower_components\owl-carousel\assets\img\demo-slides\touch.png" />
+    <Content Include="bower_components\owl-carousel\assets\img\demo-slides\zombie.png" />
+    <Content Include="bower_components\owl-carousel\assets\img\glyphicons-halflings-green.png" />
+    <Content Include="bower_components\owl-carousel\assets\img\glyphicons-halflings-white.png" />
+    <Content Include="bower_components\owl-carousel\assets\img\glyphicons-halflings.png" />
+    <Content Include="bower_components\owl-carousel\assets\img\owl-logo.png" />
+    <Content Include="bower_components\owl-carousel\assets\js\application.js" />
+    <Content Include="bower_components\owl-carousel\assets\js\bootstrap-collapse.js" />
+    <Content Include="bower_components\owl-carousel\assets\js\bootstrap-tab.js" />
+    <Content Include="bower_components\owl-carousel\assets\js\bootstrap-transition.js" />
+    <Content Include="bower_components\owl-carousel\assets\js\google-code-prettify\prettify.css" />
+    <Content Include="bower_components\owl-carousel\assets\js\google-code-prettify\prettify.js" />
+    <Content Include="bower_components\owl-carousel\assets\js\google-code-prettify\run_prettify.js" />
+    <Content Include="bower_components\owl-carousel\assets\js\jquery-1.9.1.min.js" />
+    <Content Include="bower_components\owl-carousel\changelog.html" />
+    <Content Include="bower_components\owl-carousel\demos\assets\fullimage1.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\assets\fullimage2.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\assets\fullimage3.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\assets\fullimage4.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\assets\fullimage5.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\assets\fullimage6.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\assets\fullimage7.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\assets\owl1.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\assets\owl2.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\assets\owl3.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\assets\owl4.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\assets\owl5.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\assets\owl6.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\assets\owl7.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\assets\owl8.jpg" />
+    <Content Include="bower_components\owl-carousel\demos\autoHeight.html" />
+    <Content Include="bower_components\owl-carousel\demos\click.html" />
+    <Content Include="bower_components\owl-carousel\demos\custom.html" />
+    <Content Include="bower_components\owl-carousel\demos\customJson.html" />
+    <Content Include="bower_components\owl-carousel\demos\full.html" />
+    <Content Include="bower_components\owl-carousel\demos\images.html" />
+    <Content Include="bower_components\owl-carousel\demos\itemsCustom.html" />
+    <Content Include="bower_components\owl-carousel\demos\json.html" />
+    <Content Include="bower_components\owl-carousel\demos\lazyLoad.html" />
+    <Content Include="bower_components\owl-carousel\demos\manipulations.html" />
+    <Content Include="bower_components\owl-carousel\demos\navOnTop.html" />
+    <Content Include="bower_components\owl-carousel\demos\navOnTop2.html" />
+    <Content Include="bower_components\owl-carousel\demos\one.html" />
+    <Content Include="bower_components\owl-carousel\demos\owlStatus.html" />
+    <Content Include="bower_components\owl-carousel\demos\progressBar.html" />
+    <Content Include="bower_components\owl-carousel\demos\randomOrder.html" />
+    <Content Include="bower_components\owl-carousel\demos\scaleup.html" />
+    <Content Include="bower_components\owl-carousel\demos\sync.html" />
+    <Content Include="bower_components\owl-carousel\demos\transitions.html" />
+    <Content Include="bower_components\owl-carousel\index.html" />
+    <Content Include="bower_components\owl-carousel\owl-carousel\AjaxLoader.gif" />
+    <Content Include="bower_components\owl-carousel\owl-carousel\grabbing.png" />
+    <Content Include="bower_components\owl-carousel\owl-carousel\owl.carousel.css" />
+    <Content Include="bower_components\owl-carousel\owl-carousel\owl.carousel.js" />
+    <Content Include="bower_components\owl-carousel\owl-carousel\owl.carousel.min.js" />
+    <Content Include="bower_components\owl-carousel\owl-carousel\owl.theme.css" />
+    <Content Include="bower_components\owl-carousel\owl-carousel\owl.transitions.css" />
     <Content Include="bower_components\select2\select2-bootstrap.css" />
     <Content Include="bower_components\select2\select2-spinner.gif" />
     <Content Include="bower_components\select2\select2.css" />
@@ -1210,6 +1284,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Post\BlogDetail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bower_components\owl-carousel\.bower.json" />
+    <Content Include="bower_components\owl-carousel\.gitignore" />
+    <Content Include="bower_components\owl-carousel\demos\json\customData.json" />
+    <Content Include="bower_components\owl-carousel\demos\json\data.json" />
+    <Content Include="bower_components\owl-carousel\LICENSE" />
+    <Content Include="bower_components\owl-carousel\README.md" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

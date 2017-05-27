@@ -15,6 +15,7 @@
     <link href="~/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
     <link href="~/bower_components/select2/select2.css" rel="stylesheet" />
     <link href="~/Content/css/BoardingHouse.css" rel="stylesheet" />
+    <link href="~/bower_components/owl-carousel/owl-carousel/owl.carousel.css" rel="stylesheet" />
     <script src="~/Content/js/jquery-1.10.2.min.js"></script>
     <script src="~/Content/js/formValidation.min.js"></script>
     <script src="~/Content/js/bootstrapextend.min.js"></script>
@@ -26,6 +27,7 @@
     <script src="~/bower_components/dropzone/dist/dropzone.js"></script>
     <script src="~/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
     <script src="~/bower_components/select2/select2.js"></script>
+    <script src="~/bower_components/owl-carousel/owl-carousel/owl.carousel.js"></script>
     <script src="~/bower_components/angular/angular.js"></script>
     <script src="~/app/app.js"></script>
     <script src="~/bower_components/angular-animate/angular-animate.js"></script>
@@ -58,9 +60,21 @@
         (function ($) {
             $(document).ready(function () {
                 $.slidebars();
+                $("#owl-demo-people-say").owlCarousel({
+                    pagination: true,
+                    paginationNumbers: false,
+                    autoPlay: 6000,
+                    slideSpeed: 300,
+                    paginationSpeed: 400,
+                    items: 2, //10 items above 1000px browser width
+                    itemsDesktop: [1200, 2], //5 items between 1000px and 901px
+                    itemsDesktopSmall: [991, 2], // betweem 900px and 601px
+                    itemsTablet: [767, 2], //2 items between 600 and 0
+                    itemsMobile: [640, 1] // itemsMobile disabled - inherit from itemsTablet option
+                });
             });
         })(jQuery);
-    </script>   
+    </script>
 </head>
 @using BoardingHouse.Web.AntiForgeryToken
 <body>
@@ -79,8 +93,190 @@
     <!-- CONTENT -->
     <div class="main-content">
         <div class="container">
-           @RenderBody()
+            @RenderBody()
         </div>
+    </div>
+    <div class="clearfix"></div>
+    <section class="people_say">
+        <div class="container">
+            <div class="row ">
+                <style>
+                    .people_say {
+                        background: url("//bizweb.dktcdn.net/100/052/640/themes/517823/assets/people_say.jpg?1493885669766");
+                        background-repeat: no-repeat;
+                        background-position: top center;
+                        background-size: cover;
+                        position: relative;
+                    }
+
+                    h2.people_say_title {
+                        font-size: 24px;
+                        color: #fff;
+                        text-transform: uppercase;
+                        position: relative;
+                        margin-top: 50px;
+                        padding: 0 30px;
+                    }
+
+                    p.people_say_description {
+                        color: #d7d7d7;
+                        position: relative;
+                        font-family: arial,sans-serif;
+                        font-size: 16px;
+                        margin: 20px 0 30px;
+                    }
+
+                    .people-say-content {
+                        position: relative;
+                        overflow: hidden;
+                    }
+
+                        .people-say-content .people-img {
+                            width: 78px;
+                            height: 78px;
+                            overflow: hidden;
+                            border-radius: 50%;
+                            border: 6px solid #fff;
+                            box-shadow: 2px 2px 5px rgba(0,0,0,.15);
+                            position: absolute;
+                            top: 50%;
+                            left: 0;
+                            margin-top: -40px;
+                        }
+
+                            .people-say-content .people-img img {
+                                max-width: 100%;
+                            }
+
+                    .people-right {
+                        background: #fff;
+                        padding: 20px 20px 20px 65px;
+                        border-radius: 5px;
+                        margin-left: 40px;
+                    }
+
+                    h3.people-name {
+                        color: #363636;
+                        font-weight: 700;
+                        font-size: 14px;
+                    }
+
+                    p.people-info {
+                        color: #00b18a;
+                        font-family: arial,sans-serif;
+                        font-style: italic;
+                        font-size: 14px;
+                    }
+
+                    p.people-description {
+                        color: #898989;
+                        font-family: arial,sans-serif;
+                        font-size: 14px;
+                    }
+
+                    .owl-theme .owl-controls {
+                        margin-top: 0;
+                        text-align: center;
+                    }
+
+                    div#owl-demo-people-say .owl-page span {
+                        display: block;
+                        width: 12px;
+                        height: 12px;
+                        margin: 5px 7px;
+                        filter: Alpha(Opacity=50);
+                        opacity: 1;
+                        -webkit-border-radius: 20px;
+                        -moz-border-radius: 20px;
+                        border-radius: 20px;
+                        background: #fff;
+                        display: block;
+                        width: 12px;
+                        height: 12px;
+                        margin: 5px 7px;
+                        filter: Alpha(Opacity=50);
+                        opacity: 1;
+                        -webkit-border-radius: 20px;
+                        -moz-border-radius: 20px;
+                        border-radius: 20px;
+                        background: #fff;
+                    }
+
+                    div#owl-demo-people-say .owl-page.active span, div#owl-demo-people-say .owl-page:hover span {
+                        background: #00b18a;
+                    }
+
+                    div#owl-demo-people-say .owl-controls {
+                        margin: 40px 0 30px;
+                    }
+                    .owl-theme .owl-controls .owl-page {
+    display: inline-block;
+    zoom: 1;
+}
+                </style>
+                <h2 class="people_say_title text-center">Khách hàng nói gì về GreenSpace ?</h2>
+                <p class="people_say_description text-center">Hơn 20.000 khách hàng của GreenSpace đã, đang và sẽ đồng hành cùng chúng tôi trong suốt hơn 8 năm qua sẽ nói cho bạn biết tại sao họ chọn và luôn tin tưởng GreenSpace.</p>
+                <div id="owl-demo-people-say" class="owl-carousel owl-theme">
+                    <div class="item">
+                        <div class="new-item">
+                            <div class="col-xs-12">
+                                <div class="people-say-content">
+                                    <div class="people-img">
+                                        <a href="#Nguyễn Thái Hà" title="Nguyễn Thái Hà"><img src="//bizweb.dktcdn.net/thumb/small/100/052/640/themes/517823/assets/people-ava-2.jpg?1493885669766" alt="Nguyễn Thái Hà"></a>
+                                    </div>
+                                    <div class="people-right">
+                                        <h3 class="people-name">Nguyễn Thái Hà</h3>
+                                        <p class="people-info">Kỹ sư</p>
+                                        <p class="people-description">
+                                            Thật tuyệt khi mua hàng tại Rengar, tôi cảm thấy mình được phục vụ vô cùng chu đáo và tận tình. Chắc chắn tôi sẽ quay lại mua hàng tại Rengar nhiều lần nữa. Chúc Rengar phát triển mạnh mẽ hơn nữa.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="new-item">
+                            <div class="col-xs-12">
+                                <div class="people-say-content">
+                                    <div class="people-img">
+                                        <a href="#Vũ Thu Huyền" title="Vũ Thu Huyền"><img src="//bizweb.dktcdn.net/thumb/small/100/052/640/themes/517823/assets/people-ava-3.jpg?1493885669766" alt="Vũ Thu Huyền"></a>
+                                    </div>
+                                    <div class="people-right">
+                                        <h3 class="people-name">Vũ Thu Huyền</h3>
+                                        <p class="people-info">Ngân hàng</p>
+                                        <p class="people-description">
+                                            Tôi đã mua sản phẩm tại Rengar, điều tôi nhận thấy là phong cách phục vụ thân thiệt, tư vấn nhiệt tình khi chat của anh chị quản lý. Giá rất tốt vì Rengar luôn có chương trình giảm giá từ 10% đến 20%.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="new-item">
+                            <div class="col-xs-12">
+                                <div class="people-say-content">
+                                    <div class="people-img">
+                                        <a href="#Vũ Thu Huyền" title="Vũ Thu Huyền"><img src="//bizweb.dktcdn.net/thumb/small/100/052/640/themes/517823/assets/people-ava-3.jpg?1493885669766" alt="Vũ Thu Huyền"></a>
+                                    </div>
+                                    <div class="people-right">
+                                        <h3 class="people-name">Vũ Thu Huyền</h3>
+                                        <p class="people-info">Ngân hàng</p>
+                                        <p class="people-description">
+                                            Tôi đã mua sản phẩm tại Rengar, điều tôi nhận thấy là phong cách phục vụ thân thiệt, tư vấn nhiệt tình khi chat của anh chị quản lý. Giá rất tốt vì Rengar luôn có chương trình giảm giá từ 10% đến 20%.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clearfix"></div>
+    <div class="porto-map-section " style="height:150px; background-image:url(//www.newsmartwave.net/wordpress/porto/corporate8/wp-content/uploads/sites/14/2016/06/map-2.png);">
     </div>
     <!--End CONTENT -->
     <!-- FOOTER -->
