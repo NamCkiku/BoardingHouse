@@ -230,6 +230,7 @@
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\RoomTypeController.cs" />
     <Compile Include="Controllers\SharedPartialViewController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
     <Compile Include="Global.asax.cs">
@@ -247,6 +248,7 @@
     <Content Include="app\app.js" />
     <Content Include="app\Controller\Post\PostController.js" />
     <Content Include="app\Controller\RoomController\roomController.js" />
+    <Content Include="app\Controller\RoomType\RoomTypeController.js" />
     <Content Include="app\Controller\SystemSetting\SystemConfigController.js" />
     <Content Include="app\Directive\pagerDirective.js" />
     <Content Include="app\Directive\searchDirective.js" />
@@ -2427,6 +2429,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Post\Post.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\RoomType\RoomType.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
