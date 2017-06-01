@@ -12,6 +12,8 @@
             Lat: 21.0029317912212212,
             Lng: 105.820226663232323,
         }
+        var pac_input = document.getElementById('adress');
+        var autocomplete = new google.maps.places.Autocomplete(pac_input);
         $scope.LstConvenient = [
             { id: "Chỗ để xe", label: "Chỗ để xe" },
             { id: "Sân phơi", label: "Sân phơi" },
