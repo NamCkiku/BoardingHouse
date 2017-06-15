@@ -293,12 +293,12 @@
                 columnMenu: true,
                 reorderable: true,
                 resizable: true,
-                toolbar: ["excel"],
-                excel: {
-                    fileName: "Kendo UI Grid Export.xlsx",
-                    proxyURL: "https://demos.telerik.com/kendo-ui/service/export",
-                    filterable: true
-                },
+                //toolbar: ["excel"],
+                //excel: {
+                //    fileName: "Kendo UI Grid Export.xlsx",
+                //    proxyURL: "https://demos.telerik.com/kendo-ui/service/export",
+                //    filterable: true
+                //},
                 sortable: {
                     mode: "single",
                     allowUnsort: false

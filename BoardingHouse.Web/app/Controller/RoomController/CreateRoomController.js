@@ -13,7 +13,10 @@
             Lng: 105.820226663232323,
         }
         var pac_input = document.getElementById('adress');
-        var autocomplete = new google.maps.places.Autocomplete(pac_input);
+        var options = {
+            componentRestrictions: { country: "VN" }
+        };
+        var autocomplete = new google.maps.places.Autocomplete(pac_input, options);
         $scope.LstConvenient = [
             { id: "Chỗ để xe", label: "Chỗ để xe" },
             { id: "Sân phơi", label: "Sân phơi" },
@@ -165,6 +168,9 @@
                                 console.log('Load product failed.');
                             });
                         }
+                        else {
+
+                        }
                     };
                     $scope.close = function () {
                         $scope.modalInstance.dismiss('cancel');
@@ -215,6 +221,9 @@
                     //});
                     $scope.isActive = '2';
                 }
+                else {
+                    BaseService.displayError("Vui lòng nhập đầy đủ thông tin", 5000);
+                }
             }
             else if (item == 2) {
                 BaseService.ValidatorForm("#formStep2");
@@ -222,6 +231,9 @@
                 var formValidation = frmAdd.data('formValidation').validate();
                 if (formValidation.isValid()) {
                     $scope.isActive = '3';
+                }
+                else {
+                    BaseService.displayError("Vui lòng nhập đầy đủ thông tin", 5000);
                 }
             }
             else {
