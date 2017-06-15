@@ -952,6 +952,10 @@
     <Content Include="Content\css\Responsive.css" />
     <Content Include="Content\img\boy-512.png" />
     <Content Include="Content\img\city.jpg" />
+    <Content Include="Content\img\cong-ty-co-phan-jamja-583ce430731cf.jpg" />
+    <Content Include="Content\img\cong-ty-co-phan-mog-viet-nam-57d1127d1f3db.jpg" />
+    <Content Include="Content\img\cong-ty-co-phan-vat-gia-viet-nam-vnp-57982df8d7f68.jpg" />
+    <Content Include="Content\img\cong-ty-cp-dich-vu-di-dong-ononpay-viet-nam-58ef018324a15.jpg" />
     <Content Include="Content\img\floor-elevator.png" />
     <Content Include="Content\img\grid-view-bg.png" />
     <Content Include="Content\img\IconMaker.png" />
@@ -962,6 +966,8 @@
     <Content Include="Content\img\news-icon-1.png" />
     <Content Include="Content\img\orn.png" />
     <Content Include="Content\img\reservas-paso-active.png" />
+    <Content Include="Content\img\tap-doan-internet-novaon-57a59d767bc36.jpg" />
+    <Content Include="Content\img\uber-vietnam-57d11d8d610f8.jpg" />
     <Content Include="Content\img\unit.png" />
     <Content Include="Content\img\unitshare.png" />
     <Content Include="Content\img\user-marker.png" />
@@ -1292,6 +1298,9 @@
     <Content Include="bower_components\owl-carousel\demos\json\data.json" />
     <Content Include="bower_components\owl-carousel\LICENSE" />
     <Content Include="bower_components\owl-carousel\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\PhongTotWeb.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
